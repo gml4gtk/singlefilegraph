@@ -29,7 +29,7 @@ swigpython:
 	rm -v -f ./*.o
 	rm -v -f ./sfg_wrap.c
 	swig -python sfg.i
-	gcc -c sfg.c sfg_wrap.c -I/usr/include/python2.7
+	gcc -fPIC -c sfg.c sfg_wrap.c -I/usr/include/python2.7
 	ld -shared sfg.o sfg_wrap.o -o _sfg.so
 
 # swig perl wrapper
