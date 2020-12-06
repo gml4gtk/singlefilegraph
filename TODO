@@ -1,0 +1,8 @@
+
+- python interface and a python parse-gml to add to have a demo using python for a easy gml graph file as input
+
+- some javascript to run the javascript version of this and a script or html to show it
+
+- generated the java version of sfg.c
+
+- tested python, perl and tcl running sfg.c

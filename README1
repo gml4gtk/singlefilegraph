@@ -1,0 +1,140 @@
+This is a single file graph layout library in c
+which can be compiled-in or used as .a/.so library
+
+The api programming interface is detailed in sfg.h
+
+The example program is sfgdemo.c and program ./sfgdemo
+
+To make the demo program sfgdemo type make
+To cleanup use make clean
+To indent the source use make indent
+To check for memory leaks use make valgrind
+To make libsfg.a library use make sfga
+To make libsfg.so library use make sfgaso
+To make javascript version use make emcc
+To make python module with swig use make swigpython
+To make perl module with swig use make swigperl
+To make c++ with swig use make swigcplus
+To make go with swig use make swiggo
+To make java with swig use make swigjava
+
+Also javascript, php, modula3 and more interfacing
+to sfg.c can be generated with swig software
+
+Using llvm compiler run scan-build-8 make
+
+All routines in sfg.c return (int) 0 at oke status.
+
+First all nodes must be added and then the edges.
+
+For node or edge label a size of a rectangle to fit
+the label text can be specified in (tx,ty) parameter.
+
+Self-edges are allowed but not with a edgelabel.
+
+After sfg_layout() the node and edge data can be
+retrieved using a callback routine.
+
+Also other data can be retrieved using sfg() routines
+described in sfg.h
+
+At error all routines return a < 0 negative value and
+the meaning is described in sfg.h
+
+The sfg.c routines only uses calloc() and free() from
+the c-lib and nothing more than that.
+
+The sfg.c does calculate node and edge positions but
+has not a graph language parser or draw routines
+which must be created by the user.
+
+The sfg.c is usable for embedded software but it may
+have high cpu+memory usage. sfg.c size is 120 Kb
+
+The java version is in sfg.java size 336 Kb
+
+Using sfgdemo the sfgdemo.txt file is a graph which
+can be edited and data directory has some more data.
+
+Usage:
+./sfgdemo
+./sfgdemo input.txt output.svg
+
+It compiles to javascript using emscripten emcc
+
+When using swig software is can generate python interface
+with make swigpython and specify include directory
+Then tested with python-2.7:
+python
+>>> import sfg
+>>> sfg.sfg_version()
+10
+>>>
+
+When using swig software is can generate perl interface
+with make swigperl
+The use:
+perl
+use sfg;
+print sfg::sfg_version(),"\n";
+<ctrl-d>
+10
+
+When using swig software is can generate tcl interface
+with make swigtcl and specify include directory
+Then tested:
+tclsh
+% load ./sfg.so sfg
+% sfg_version
+10
+%
+<ctrl-D>
+
+Also javascript, php, modula3 and more interfacing
+to sfg.c can be generated with swig software
+
+http://www.swig.org/Doc3.0/Contents.html#Contents
+
+/*
+ *  Copyright t lefering
+ *  parts are (C) Universitaet Passau 1986-1991
+ *  parts are Copyright (C) 1998-2021 Free Software Foundation, Inc.
+ *  parts are Copyright (C) Felix von Leitner from dietlibc
+ *
+ *  https://notabug.org/mooigraph/sfgraph
+ *
+ *  This program is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *
+ *  This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ *  These are the four essential freedoms with GNU GPL software:
+ *  1: freedom to run the program, for any purpose
+ *  2: freedom to study how the program works, and change it to make it do what you wish
+ *  3: freedom to redistribute copies to help your Free Software friends
+ *  4: freedom to distribute copies of your modified versions to your Free Software friends
+ *   ,           ,
+ *  /             \
+ * ((__-^^-,-^^-__))
+ * `-_---'  `---_-'
+ *  `--|o`   'o|--'
+ *      \  `  /
+ *       ): :(
+ *       :o_o:
+ *        "-"
+ *
+ * SPDX-License-Identifier: GPL-3.0+
+ * License-Filename: LICENSE
+ */
+
+See also gml4gtk graph viewer on sourceforge.net, email is mooigraph on gmail.com
+
+/* end */

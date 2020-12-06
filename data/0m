@@ -1,0 +1,13 @@
+#!/bin/sh -x
+gcc els2sfg.c
+for i in *.els
+do
+    echo $i
+    ./a.out $i $i.txt
+done
+for i in *.txt
+do
+    echo $i
+    ../sfgdemo $i $i.svg
+done
+rm ./a.out

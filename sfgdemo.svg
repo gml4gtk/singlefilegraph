@@ -1,0 +1,82 @@
+<svg width="187" height="170" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+ <g>
+  <title>sfgdemo</title>
+  <style>
+    .small { font: italic 15px sans-serif; }
+  </style>
+  <rect id="node_1" height="20" width="25" y="0" x="30" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke="#000000" fill="#7fff00"/>
+  <text x="30" y="20" class="small">1</text>
+  <rect id="node_3" height="20" width="25" y="0" x="120" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke="#000000" fill="#7fff00"/>
+  <text x="120" y="20" class="small">3</text>
+  <rect id="node_2" height="20" width="25" y="50" x="0" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke="#000000" fill="#7fff00"/>
+  <text x="0" y="70" class="small">2</text>
+  <rect id="node_4" height="20" width="25" y="50" x="155" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke="#000000" fill="#7fff00"/>
+  <text x="155" y="70" class="small">4</text>
+  <rect id="node_5" height="20" width="25" y="100" x="60" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke="#000000" fill="#7fff00"/>
+  <text x="60" y="120" class="small">5</text>
+  <rect id="node_7" height="20" width="25" y="100" x="30" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke="#000000" fill="#7fff00"/>
+  <text x="30" y="120" class="small">7</text>
+  <rect id="node_8" height="20" width="25" y="50" x="90" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke="#000000" fill="#7fff00"/>
+  <text x="90" y="70" class="small">8</text>
+  <rect id="node_6" height="20" width="25" y="150" x="30" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke="#000000" fill="#7fff00"/>
+  <text x="30" y="170" class="small">6</text>
+  <rect id="node_9" height="0" width="0" y="92" x="167" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke="#000000" fill="#7fff00"/>
+  <rect id="node_10" height="0" width="0" y="92" x="187" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke="#000000" fill="#7fff00"/>
+  <rect id="node_11" height="0" width="0" y="107" x="187" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke="#000000" fill="#7fff00"/>
+  <rect id="node_12" height="0" width="0" y="122" x="187" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke="#000000" fill="#7fff00"/>
+  <rect id="node_13" height="0" width="0" y="142" x="42" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke="#000000" fill="#7fff00"/>
+  <rect id="node_14" height="0" width="0" y="92" x="102" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke="#000000" fill="#7fff00"/>
+  <rect id="node_15" height="0" width="0" y="92" x="132" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke="#000000" fill="#7fff00"/>
+  <rect id="node_16" height="0" width="0" y="142" x="72" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke="#000000" fill="#7fff00"/>
+  <rect id="node_17" height="0" width="0" y="42" x="102" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke="#000000" fill="#7fff00"/>
+  <rect id="node_18" height="0" width="0" y="42" x="152" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke="#000000" fill="#7fff00"/>
+  <rect id="node_19" height="0" width="0" y="60" x="152" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke="#000000" fill="#7fff00"/>
+  <rect id="node_20" height="0" width="0" y="92" x="152" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke="#000000" fill="#7fff00"/>
+  <rect id="node_21" height="0" width="0" y="42" x="167" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke="#000000" fill="#7fff00"/>
+  <rect id="node_22" height="0" width="0" y="42" x="12" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke="#000000" fill="#7fff00"/>
+  <rect id="node_23" height="0" width="0" y="42" x="42" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke="#000000" fill="#7fff00"/>
+  <rect id="node_24" height="0" width="0" y="42" x="72" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke="#000000" fill="#7fff00"/>
+  <rect id="node_25" height="0" width="0" y="60" x="72" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke="#000000" fill="#7fff00"/>
+  <rect id="node_26" height="0" width="0" y="92" x="72" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke="#000000" fill="#7fff00"/>
+  <rect id="node_27" height="0" width="0" y="92" x="42" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke="#000000" fill="#7fff00"/>
+  <rect id="node_28" height="0" width="0" y="92" x="12" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke="#000000" fill="#7fff00"/>
+  <rect id="node_29" height="0" width="0" y="110" x="12" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke="#000000" fill="#7fff00"/>
+  <rect id="node_30" height="0" width="0" y="142" x="12" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke="#000000" fill="#7fff00"/>
+  <line id="edge_15" y2="92" x2="167" y1="70" x1="167" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="2" stroke="#000000" fill="none"/>
+  <line id="edge_16" y2="100" x2="72" y1="92" x1="167" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="2" stroke="#000000" fill="none"/>
+  <line id="edge_17" y2="92" x2="187" y1="70" x1="167" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="2" stroke="#000000" fill="none"/>
+  <line id="edge_18" y2="107" x2="187" y1="92" x1="187" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="2" stroke="#000000" fill="none"/>
+  <line id="edge_19" y2="122" x2="187" y1="107" x1="187" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="2" stroke="#000000" fill="none"/>
+  <line id="edge_20" y2="150" x2="42" y1="122" x1="187" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="2" stroke="#000000" fill="none"/>
+  <line id="edge_21" y2="142" x2="42" y1="120" x1="42" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="2" stroke="#000000" fill="none"/>
+  <line id="edge_22" y2="150" x2="42" y1="142" x1="42" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="2" stroke="#000000" fill="none"/>
+  <line id="edge_23" y2="92" x2="102" y1="70" x1="102" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="2" stroke="#000000" fill="none"/>
+  <line id="edge_24" y2="100" x2="42" y1="92" x1="102" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="2" stroke="#000000" fill="none"/>
+  <line id="edge_25" y2="92" x2="132" y1="70" x1="102" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="2" stroke="#000000" fill="none"/>
+  <line id="edge_26" y2="100" x2="72" y1="92" x1="132" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="2" stroke="#000000" fill="none"/>
+  <line id="edge_27" y2="142" x2="72" y1="120" x1="72" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="2" stroke="#000000" fill="none"/>
+  <line id="edge_28" y2="150" x2="42" y1="142" x1="72" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="2" stroke="#000000" fill="none"/>
+  <line id="edge_29" y2="42" x2="102" y1="20" x1="132" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="2" stroke="#000000" fill="none"/>
+  <line id="edge_30" y2="50" x2="102" y1="42" x1="102" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="2" stroke="#000000" fill="none"/>
+  <line id="edge_31" y2="42" x2="152" y1="20" x1="132" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="2" stroke="#000000" fill="none"/>
+  <line id="edge_32" y2="60" x2="152" y1="42" x1="152" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="2" stroke="#000000" fill="none"/>
+  <line id="edge_33" y2="92" x2="152" y1="60" x1="152" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="2" stroke="#000000" fill="none"/>
+  <line id="edge_34" y2="100" x2="42" y1="92" x1="152" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="2" stroke="#000000" fill="none"/>
+  <line id="edge_35" y2="42" x2="167" y1="20" x1="132" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="2" stroke="#000000" fill="none"/>
+  <line id="edge_36" y2="50" x2="167" y1="42" x1="167" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="2" stroke="#000000" fill="none"/>
+  <line id="edge_37" y2="42" x2="12" y1="20" x1="42" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="2" stroke="#000000" fill="none"/>
+  <line id="edge_38" y2="50" x2="12" y1="42" x1="12" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="2" stroke="#000000" fill="none"/>
+  <line id="edge_39" y2="42" x2="42" y1="20" x1="42" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="2" stroke="#000000" fill="none"/>
+  <line id="edge_40" y2="50" x2="102" y1="42" x1="42" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="2" stroke="#000000" fill="none"/>
+  <line id="edge_41" y2="42" x2="72" y1="20" x1="42" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="2" stroke="#000000" fill="none"/>
+  <line id="edge_42" y2="60" x2="72" y1="42" x1="72" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="2" stroke="#000000" fill="none"/>
+  <line id="edge_43" y2="92" x2="72" y1="60" x1="72" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="2" stroke="#000000" fill="none"/>
+  <line id="edge_44" y2="100" x2="72" y1="92" x1="72" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="2" stroke="#000000" fill="none"/>
+  <line id="edge_45" y2="92" x2="42" y1="70" x1="12" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="2" stroke="#000000" fill="none"/>
+  <line id="edge_46" y2="100" x2="42" y1="92" x1="42" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="2" stroke="#000000" fill="none"/>
+  <line id="edge_47" y2="92" x2="12" y1="70" x1="12" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="2" stroke="#000000" fill="none"/>
+  <line id="edge_48" y2="110" x2="12" y1="92" x1="12" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="2" stroke="#000000" fill="none"/>
+  <line id="edge_49" y2="142" x2="12" y1="110" x1="12" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="2" stroke="#000000" fill="none"/>
+  <line id="edge_50" y2="150" x2="42" y1="142" x1="12" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="2" stroke="#000000" fill="none"/>
+ </g>
+</svg>
