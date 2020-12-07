@@ -63,18 +63,18 @@ static void head(void);
 static void tail(void);
 
 /* this gets the node data after layout */
-static int getnodedata(int num, int level, int pos, void *data, int xpos, int ypos, int tx, int ty, int nselfedges, int type,
+static int getnodedata(int num, int level, int pos, int xpos, int ypos, int tx, int ty, int nselfedges, int type,
 		       int indegree, int outdegree, int ly0, int ly1);
 
 /* this gets the node data after layout */
-static int getnodedataps(int num, int level, int pos, void *data, int xpos, int ypos, int tx, int ty, int nselfedges, int type,
+static int getnodedataps(int num, int level, int pos, int xpos, int ypos, int tx, int ty, int nselfedges, int type,
 			 int indegree, int outdegree, int ly0, int ly1);
 
 /* this gets the edge data after layout */
-static int getedgedata(int num, int from, int to, void *data, int type, int rev);
+static int getedgedata(int num, int from, int to, int type, int rev);
 
 /* this gets the edge data after layout */
-static int getedgedataps(int num, int from, int to, void *data, int type, int rev);
+static int getedgedataps(int num, int from, int to, int type, int rev);
 
 int main(int argc, char *argv[])
 {
@@ -103,7 +103,7 @@ int main(int argc, char *argv[])
 
 		/* add few nodes starting at 1, no user data, small texlabel area */
 		for (nn = 1; nn < 4; nn++) {
-			status = sfg_addnode(nn, 25, 20, NULL);
+			status = sfg_addnode(nn, 25, 20);
 			if (status < 0) {	/* error */
 				break;
 			}
@@ -111,12 +111,12 @@ int main(int argc, char *argv[])
 
 		/* add few edges with number starting at 1 */
 		ne++;
-		status = sfg_addedge(ne, /* from */ 1, /* to */ 2, 0, 0, NULL);
+		status = sfg_addedge(ne, /* from */ 1, /* to */ 2, 0, 0);
 		if (status < 0) {	/* error */
 		}
 
 		ne++;
-		status = sfg_addedge(ne, /* from */ 1, /* to */ 3, 10, 10, NULL);
+		status = sfg_addedge(ne, /* from */ 1, /* to */ 3, 10, 10);
 		if (status < 0) {	/* error */
 		}
 
@@ -207,12 +207,10 @@ int main(int argc, char *argv[])
 }
 
 /* this gets the node data after layout */
-static int getnodedata(int num, int level, int pos, void *data, int xpos, int ypos, int tx, int ty, int nselfedges, int type,
+static int getnodedata(int num, int level, int pos, int xpos, int ypos, int tx, int ty, int nselfedges, int type,
 		       int indegree, int outdegree, int ly0, int ly1)
 {
 	/* return(1); to stop the callback */
-	if (data) {
-	}
 	if (xpos) {
 	}
 	if (ypos) {
@@ -240,11 +238,9 @@ static int getnodedata(int num, int level, int pos, void *data, int xpos, int yp
 }
 
 /* this gets the edge data after layout */
-static int getedgedata(int num, int from, int to, void *data, int type, int rev)
+static int getedgedata(int num, int from, int to, int type, int rev)
 {
 	/* return(1); to stop the callback */
-	if (data) {
-	}
 	if (type) {
 	}
 	printf("edge %d from node %d to %d reversed=%d\n", num, from, to, rev);
@@ -287,7 +283,7 @@ static void readfile(void)
 				if (n == 1) {
 					/* node */
 					printf("parsed node number %d\n", fn);
-					status = sfg_addnode(fn, 25, 20, NULL);
+					status = sfg_addnode(fn, 25, 20);
 					if (status < 0) {	/* error */
 						break;
 					}
@@ -295,7 +291,7 @@ static void readfile(void)
 					/* edge */
 					printf("parsed edge from node %d to node %d\n", fn, tn);
 					ne++;
-					status = sfg_addedge(ne, /* from */ fn, /* to */ tn, 0, 0, NULL);
+					status = sfg_addedge(ne, /* from */ fn, /* to */ tn, 0, 0);
 					if (status < 0) {	/* error */
 					}
 				} else {
@@ -309,13 +305,13 @@ static void readfile(void)
 	}
 	/* testing add few single nodes */
 	if (0) {
-		status = sfg_addnode(100, 25, 20, NULL);
+		status = sfg_addnode(100, 25, 20);
 		if (status < 0) {	/* error */
 		}
-		status = sfg_addnode(101, 25, 40, NULL);
+		status = sfg_addnode(101, 25, 40);
 		if (status < 0) {	/* error */
 		}
-		status = sfg_addnode(102, 25, 30, NULL);
+		status = sfg_addnode(102, 25, 30);
 		if (status < 0) {	/* error */
 		}
 
@@ -324,7 +320,7 @@ static void readfile(void)
 }
 
 /* this gets the node data after layout, see sfg.h */
-static int getnodedataps(int num, int level, int pos, void *data, int xpos, int ypos, int tx, int ty, int nselfedges, int type,
+static int getnodedataps(int num, int level, int pos, int xpos, int ypos, int tx, int ty, int nselfedges, int type,
 			 int indegree, int outdegree, int ly0, int ly1)
 {
 
@@ -335,8 +331,6 @@ static int getnodedataps(int num, int level, int pos, void *data, int xpos, int 
 	if (level) {
 	}
 	if (pos) {
-	}
-	if (data) {
 	}
 	if (xpos) {
 	}
@@ -368,7 +362,7 @@ static int getnodedataps(int num, int level, int pos, void *data, int xpos, int 
 }
 
 /* this gets the edge data after layout, see sfg.h */
-static int getedgedataps(int num, int from, int to, void *data, int type, int rev)
+static int getedgedataps(int num, int from, int to, int type, int rev)
 {
 	int fx = 0;
 	int fy = 0;
@@ -399,9 +393,6 @@ static int getedgedataps(int num, int from, int to, void *data, int type, int re
 	}
 
 	/* return(1); to stop the callback */
-	if (data) {
-		/* optional edge data */
-	}
 
 	/* get type of nodes */
 	typef = sfg_nodetype(from);

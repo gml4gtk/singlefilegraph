@@ -71,7 +71,7 @@ extern int sfg_deinit(void);
  * returns -6 if node already defined
  * returns -7 if other error
  */
-extern int sfg_addnode(int number, int tx, int ty, void *data);
+extern int sfg_addnode(int number, int tx, int ty);
 
 /* add a edge with uniq number starting at 1
  * the from-node number is in from, the to-node number is in to
@@ -89,7 +89,7 @@ extern int sfg_addnode(int number, int tx, int ty, void *data);
  * returns -8 if layout already done
  * returns -9 if other error
  */
-extern int sfg_addedge(int number, int from, int to, int tx, int ty, void *data);
+extern int sfg_addedge(int number, int from, int to, int tx, int ty);
 
 /* run sugiyama barycenter layout
  * returns  0 if oke
@@ -111,6 +111,38 @@ extern int sfg_crossings(void);
  * returns -2 if layout not done
  */
 extern int sfg_initialcrossings(void);
+
+/* get min node number in use after layout
+ * returns value if oke
+ * returns -1 if not inited
+ * returns -2 if layout not done
+ * returns -3 if there are no nodes
+ */
+extern int sfg_nodemin(void);
+
+/* get maxc node number in use after layout
+ * returns value if oke
+ * returns -1 if not inited
+ * returns -2 if layout not done
+ * returns -3 if there are no nodes
+ */
+extern int sfg_nodemax(void);
+
+/* get min edge number in use after layout
+ * returns value if oke
+ * returns -1 if not inited
+ * returns -2 if layout not done
+ * returns -3 if there are no edges
+ */
+extern int sfg_edgemin(void);
+
+/* get max edge number in use after layout
+ * returns value if oke
+ * returns -1 if not inited
+ * returns -2 if layout not done
+ * returns -3 if there are no edges
+ */
+extern int sfg_edgemax(void);
 
 /* set 1 to add edgelabels, or 0 to remove edgelabels
  * returns crossings >= 0 if oke
@@ -243,6 +275,16 @@ extern int sfg_nodeindegree(int num);
  */
 extern int sfg_nodeoutdegree(int num);
 
+/* return edge number of node if edgelabel node
+ * returns number of original edge with edgelabel if oke
+ * returns -1 not inited
+ * returns -2 if layout not done
+ * returns -3 if nodenumber is < 1
+ * returns -4 if node not found
+ * returns -5 if node is not edgelabel
+ */
+extern int sfg_nodeenum(int num);
+
 /* get optional data pointer of node
  * returns data pointer if oke
  * returns NULL if not inited
@@ -251,6 +293,15 @@ extern int sfg_nodeoutdegree(int num);
  * returns NULL if node not found
  */
 extern void *sfg_nodedata(int num);
+
+/* set optional data pointer of node
+ * returns  0 if oke
+ * returns -1 if not inited
+ * returns -2 if layout not done
+ * returns -3 if nodenumber is < 1
+ * returns -4 if node not found
+ */
+extern int sfg_setnodedata(int num, void *data);
 
 /* get from-node of edge
  * returns from-node number if oke
@@ -269,15 +320,6 @@ extern int sfg_edgefrom(int num);
  * returns -4 if edge not found
  */
 extern int sfg_edgeto(int num);
-
-/* get optional data pointer of edge
- * returns data pointer if oke
- * returns NULL if not inited
- * returns NULL if layout not done
- * returns NULL if nodenumber is < 1
- * returns NULL if node not found
- */
-extern void *sfg_edgedata(int num);
 
 /* get edge type
  * returns type if oke, 1=regular, 2=selfedge, 3=hor. edge
@@ -362,7 +404,7 @@ extern int sfg_nedges(void);
  * returns -3 if no callback routine
  */
 extern int sfg_node_foreach(int (*getnodedata)
-			     (int num, int level, int pos, void *data, int xpos, int ypos, int tx, int ty, int nselfedges, int type,
+			     (int num, int level, int pos, int xpos, int ypos, int tx, int ty, int nselfedges, int type,
 			      int indegree, int outdegree, int ly0, int ly1));
 
 /* get edge data and the calculated position
@@ -382,7 +424,7 @@ extern int sfg_node_foreach(int (*getnodedata)
  * returns -2 if no layout is done
  * returns -3 if no callback routine
  */
-extern int sfg_edge_foreach(int (*getedgedata)(int num, int from, int to, void *data, int type, int rev));
+extern int sfg_edge_foreach(int (*getedgedata)(int num, int from, int to, int type, int rev));
 
 #endif
 

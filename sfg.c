@@ -166,6 +166,10 @@ struct gml_graph {
 	int *nume;		/* number of edges */
 	int maxx;		/* max x pos of drawing */
 	int maxy;		/* max y pos of drawing */
+	int nodemin;		/* min. node number in use */
+	int nodemax;		/* max. node number in use */
+	int edgemin;		/* min. edge number in use */
+	int edgemax;		/* max. edge number in use */
 };
 
 struct gml_node {
@@ -210,7 +214,6 @@ struct gml_edge {
 	int tx;			/* text xsize */
 	int ty;			/* text ysize */
 	int elabel;		/* set if there is a edge label */
-	void *data;		/* user data */
 	int reversed;		/* set if edge is reversed */
 	int hedge;		/* set if hor. edge */
 };
@@ -261,11 +264,12 @@ static void barycenter(struct gml_graph *g, int it1v, int it2v);
 static void improve_positions(struct gml_graph *g);
 static void finalxy(struct gml_graph *g);
 static struct gml_edge *findedge(int num);
+static void setminmax(struct gml_graph *g);
 
 /* returns a version number as version 1.0 returns int 10 */
 int sfg_version(void)
 {
-	return (10);
+	return (20);
 }
 
 /* init
@@ -326,7 +330,6 @@ int sfg_deinit(void)
 /* add a node with uniq number starting at 1
  * with (tx,ty) as rectangle size for label text or (0,0)
  * before adding edges all node numbers must be defined
- * the data is optional and can be pointer too own structure
  * returns  0 if oke
  * returns -1 if not inited
  * returns -2 if number is lower then 1
@@ -336,7 +339,7 @@ int sfg_deinit(void)
  * returns -6 if node already defined
  * returns -7 if other error
  */
-int sfg_addnode(int number, int tx, int ty, void *data)
+int sfg_addnode(int number, int tx, int ty)
 {
 	struct gml_node *nn = NULL;
 	struct gml_nlist *nl = NULL;
@@ -372,7 +375,7 @@ int sfg_addnode(int number, int tx, int ty, void *data)
 	nn->nr = number;
 	nn->tx = tx;
 	nn->ty = ty;
-	nn->data = data;
+	/* data field is inited NULL and is set via other routine */
 	nl->node = nn;
 	if (maingraph->nodelist == NULL) {
 		maingraph->nodelist = nl;
@@ -395,7 +398,6 @@ int sfg_addnode(int number, int tx, int ty, void *data)
  * the from-node number is in from, the to-node number is in to
  * self-edges are allowed but not with a label
  * with (tx,ty) as rectangle size for label text or (0,0)
- * the data is optional and can be pointer too own structure
  * returns  0 if oke
  * returns -1 if not inited
  * returns -2 if number is lower then 1
@@ -407,7 +409,7 @@ int sfg_addnode(int number, int tx, int ty, void *data)
  * returns -8 if layout already done
  * returns -9 if other error
  */
-int sfg_addedge(int number, int from, int to, int tx, int ty, void *data)
+int sfg_addedge(int number, int from, int to, int tx, int ty)
 {
 	struct gml_node *fn = NULL;
 	struct gml_node *tn = NULL;
@@ -476,7 +478,6 @@ int sfg_addedge(int number, int from, int to, int tx, int ty, void *data)
 			/* number of edge labels in the graph */
 			maingraph->nedgelabels++;
 		}
-		e->data = data;
 		el->edge = e;
 		if (maingraph->edgelist == NULL) {
 			maingraph->edgelist = el;
@@ -551,6 +552,9 @@ int sfg_layout(void)
 
 	/* final (x,y) positioning of nodes/edges */
 	finalxy(maingraph);
+
+	/* update node min/max and edge min/max */
+	setminmax(maingraph);
 
 	/* set layout is calculated */
 	maingraph->layouted = 1;
@@ -893,6 +897,86 @@ int sfg_maxy(void)
 	return (maingraph->maxy);
 }
 
+/* get min node number in use after layout
+ * returns value if oke
+ * returns -1 if not inited
+ * returns -2 if layout not done
+ * returns -3 if there are no nodes
+ */
+int sfg_nodemin(void)
+{
+	if (maingraph == NULL) {
+		return (-1);
+	}
+	if (maingraph->layouted == 0) {
+		return (-2);
+	}
+	if (maingraph->nodelist == NULL) {
+		return (-3);
+	}
+	return (maingraph->nodemin);
+}
+
+/* get maxc node number in use after layout
+ * returns value if oke
+ * returns -1 if not inited
+ * returns -2 if layout not done
+ * returns -3 if there are no nodes
+ */
+int sfg_nodemax(void)
+{
+	if (maingraph == NULL) {
+		return (-1);
+	}
+	if (maingraph->layouted == 0) {
+		return (-2);
+	}
+	if (maingraph->nodelist == NULL) {
+		return (-3);
+	}
+	return (maingraph->nodemax);
+}
+
+/* get min edge number in use after layout
+ * returns value if oke
+ * returns -1 if not inited
+ * returns -2 if layout not done
+ * returns -3 if there are no edges
+ */
+int sfg_edgemin(void)
+{
+	if (maingraph == NULL) {
+		return (-1);
+	}
+	if (maingraph->layouted == 0) {
+		return (-2);
+	}
+	if (maingraph->edgelist == NULL) {
+		return (-3);
+	}
+	return (maingraph->edgemin);
+}
+
+/* get max edge number in use after layout
+ * returns value if oke
+ * returns -1 if not inited
+ * returns -2 if layout not done
+ * returns -3 if there are no edges
+ */
+int sfg_edgemax(void)
+{
+	if (maingraph == NULL) {
+		return (-1);
+	}
+	if (maingraph->layouted == 0) {
+		return (-2);
+	}
+	if (maingraph->edgelist == NULL) {
+		return (-3);
+	}
+	return (maingraph->edgemax);
+}
+
 /* get number of levels
  * returns value if oke
  * returns -1 if not inited
@@ -1053,6 +1137,36 @@ int sfg_nodeoutdegree(int num)
 	return (n->outdegree);
 }
 
+/* return edge number of node if edgelabel node
+ * returns number of original edge with edgelabel if oke
+ * returns -1 not inited
+ * returns -2 if layout not done
+ * returns -3 if nodenumber is < 1
+ * returns -4 if node not found
+ * returns -5 if node is not edgelabel
+ */
+int sfg_nodeenum(int num)
+{
+	struct gml_node *n = NULL;
+	if (maingraph == NULL) {
+		return (-1);
+	}
+	if (maingraph->layouted == 0) {
+		return (-2);
+	}
+	if (num < 1) {
+		return (-3);
+	}
+	n = uniqnode(maingraph, num);
+	if (n == NULL) {
+		return (-4);
+	}
+	if (n->elabel == 0) {
+		return (-5);
+	}
+	return (n->enumber);
+}
+
 /* get optional data pointer of node
  * returns data pointer if oke
  * returns NULL if not inited
@@ -1077,6 +1191,33 @@ void *sfg_nodedata(int num)
 		return (NULL);
 	}
 	return (n->data);
+}
+
+/* set optional data pointer of node
+ * returns  0 if oke
+ * returns -1 if not inited
+ * returns -2 if layout not done
+ * returns -3 if nodenumber is < 1
+ * returns -4 if node not found
+ */
+int sfg_setnodedata(int num, void *data)
+{
+	struct gml_node *n = NULL;
+	if (maingraph == NULL) {
+		return (-1);
+	}
+	if (maingraph->layouted == 0) {
+		return (-2);
+	}
+	if (num < 1) {
+		return (-3);
+	}
+	n = uniqnode(maingraph, num);
+	if (n == NULL) {
+		return (-4);
+	}
+	n->data = data;
+	return (0);
 }
 
 /* get node data and the calculated positions
@@ -1109,7 +1250,7 @@ void *sfg_nodedata(int num)
  * returns -3 if no callback routine
  */
 int sfg_node_foreach(int (*getnodedata)
-		      (int num, int level, int pos, void *data, int xpos, int ypos, int tx, int ty, int nselfedges, int type,
+		      (int num, int level, int pos, int xpos, int ypos, int tx, int ty, int nselfedges, int type,
 		       int indegree, int outdegree, int ly0, int ly1))
 {
 	struct gml_nlist *nl = NULL;
@@ -1131,7 +1272,7 @@ int sfg_node_foreach(int (*getnodedata)
 		/* todo set type of node here */
 		type = 0;
 		status =
-		    (*getnodedata) (n->nr, n->rely, n->relx, n->data, n->finx, n->finy, n->tx, n->ty, n->nselfedges, type,
+		    (*getnodedata) (n->nr, n->rely, n->relx, n->finx, n->finy, n->tx, n->ty, n->nselfedges, type,
 				    n->indegree, n->outdegree, n->ly0, n->ly1);
 		if (status != 0) {
 			break;
@@ -1191,32 +1332,6 @@ int sfg_edgeto(int num)
 		return (-4);
 	}
 	return (e->to_node->nr);
-}
-
-/* get optional data pointer of edge
- * returns data pointer if oke
- * returns NULL if not inited
- * returns NULL if layout not done
- * returns NULL if nodenumber is < 1
- * returns NULL if node not found
- */
-void *sfg_edgedata(int num)
-{
-	struct gml_edge *e = NULL;
-	if (maingraph == NULL) {
-		return (NULL);
-	}
-	if (maingraph->layouted == 0) {
-		return (NULL);
-	}
-	if (num < 1) {
-		return (NULL);
-	}
-	e = findedge(num);
-	if (e == NULL) {
-		return (NULL);
-	}
-	return (e->data);
 }
 
 /* get edge type
@@ -1296,7 +1411,7 @@ int sfg_edgerev(int num)
  * returns -2 if no layout is done
  * returns -3 if no callback routine
  */
-int sfg_edge_foreach(int (*getedgedata)(int num, int from, int to, void *data, int type, int rev))
+int sfg_edge_foreach(int (*getedgedata)(int num, int from, int to, int type, int rev))
 {
 	struct gml_elist *el = NULL;
 	struct gml_edge *e = NULL;
@@ -1322,7 +1437,7 @@ int sfg_edge_foreach(int (*getedgedata)(int num, int from, int to, void *data, i
 		} else {
 			type = 1;
 		}
-		status = (*getedgedata) (e->nr, e->from_node->nr, e->to_node->nr, e->data, type, e->reversed);
+		status = (*getedgedata) (e->nr, e->from_node->nr, e->to_node->nr, type, e->reversed);
 		if (status != 0) {
 			break;
 		}
@@ -5466,6 +5581,57 @@ static struct gml_edge *findedge(int num)
 		el = el->next;
 	}
 	return (e);
+}
+
+/* update node min/max and edge min/max */
+static void setminmax(struct gml_graph *g)
+{
+	struct gml_nlist *nl = NULL;
+	struct gml_elist *el = NULL;
+	int count = 0;
+
+	g->nodemin = 0;
+	g->nodemax = 0;
+	g->edgemin = 0;
+	g->edgemax = 0;
+
+	nl = g->nodelist;
+	count = 0;
+	while (nl) {
+		if (count == 0) {
+			g->nodemin = nl->node->nr;
+			g->nodemax = nl->node->nr;
+		} else {
+			if (nl->node->nr < g->nodemin) {
+				g->nodemin = nl->node->nr;
+			}
+			if (nl->node->nr > g->nodemax) {
+				g->nodemax = nl->node->nr;
+			}
+		}
+		count++;
+		nl = nl->next;
+	}
+
+	el = g->edgelist;
+	count = 0;
+	while (el) {
+		if (count == 0) {
+			g->edgemin = el->edge->nr;
+			g->edgemax = el->edge->nr;
+		} else {
+			if (el->edge->nr < g->edgemin) {
+				g->edgemin = el->edge->nr;
+			}
+			if (el->edge->nr > g->edgemax) {
+				g->edgemax = el->edge->nr;
+			}
+		}
+		count++;
+		el = el->next;
+	}
+
+	return;
 }
 
 /* end zzzz */

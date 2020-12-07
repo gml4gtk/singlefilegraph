@@ -33,4 +33,6 @@ Using llvm compiler run scan-build-8 make
 
 It compiles to javascript using emscripten emcc compiler
 
+The python script sfgdemo.py runs graph layout using sfg.c
+
 ![screenshot](./screenshot.png)

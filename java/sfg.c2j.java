@@ -23,13 +23,13 @@ class sfg extends c2jrt
    public static int csfg_deinit;
    static Class pcsfg_addnode[]=
    {
-   java.lang.Integer.TYPE,java.lang.Integer.TYPE,java.lang.Integer.TYPE,java.lang.Integer.TYPE
+   java.lang.Integer.TYPE,java.lang.Integer.TYPE,java.lang.Integer.TYPE
    }
    ;
    public static int csfg_addnode;
    static Class pcsfg_addedge[]=
    {
-   java.lang.Integer.TYPE,java.lang.Integer.TYPE,java.lang.Integer.TYPE,java.lang.Integer.TYPE,java.lang.Integer.TYPE,java.lang.Integer.TYPE
+   java.lang.Integer.TYPE,java.lang.Integer.TYPE,java.lang.Integer.TYPE,java.lang.Integer.TYPE,java.lang.Integer.TYPE
    }
    ;
    public static int csfg_addedge;
@@ -129,6 +129,30 @@ class sfg extends c2jrt
    }
    ;
    public static int csfg_maxy;
+   static Class pcsfg_nodemin[]=
+   {
+   
+   }
+   ;
+   public static int csfg_nodemin;
+   static Class pcsfg_nodemax[]=
+   {
+   
+   }
+   ;
+   public static int csfg_nodemax;
+   static Class pcsfg_edgemin[]=
+   {
+   
+   }
+   ;
+   public static int csfg_edgemin;
+   static Class pcsfg_edgemax[]=
+   {
+   
+   }
+   ;
+   public static int csfg_edgemax;
    static Class pcsfg_nlevels[]=
    {
    
@@ -171,12 +195,24 @@ class sfg extends c2jrt
    }
    ;
    public static int csfg_nodeoutdegree;
+   static Class pcsfg_nodeenum[]=
+   {
+   java.lang.Integer.TYPE
+   }
+   ;
+   public static int csfg_nodeenum;
    static Class pcsfg_nodedata[]=
    {
    java.lang.Integer.TYPE
    }
    ;
    public static int csfg_nodedata;
+   static Class pcsfg_setnodedata[]=
+   {
+   java.lang.Integer.TYPE,java.lang.Integer.TYPE
+   }
+   ;
+   public static int csfg_setnodedata;
    static Class pcsfg_node_foreach[]=
    {
    java.lang.Integer.TYPE
@@ -195,12 +231,6 @@ class sfg extends c2jrt
    }
    ;
    public static int csfg_edgeto;
-   static Class pcsfg_edgedata[]=
-   {
-   java.lang.Integer.TYPE
-   }
-   ;
-   public static int csfg_edgedata;
    static Class pcsfg_edgetype[]=
    {
    java.lang.Integer.TYPE
@@ -783,6 +813,12 @@ class sfg extends c2jrt
    }
    ;
    public static int cfindedge;
+   static Class pcsetminmax[]=
+   {
+   java.lang.Integer.TYPE
+   }
+   ;
+   public static int csetminmax;
 
    static
    {
@@ -809,6 +845,10 @@ class sfg extends c2jrt
       csfg_yspacing=getMethod(Class.forName(class_name),"csfg_yspacing",pcsfg_yspacing);
       csfg_maxx=getMethod(Class.forName(class_name),"csfg_maxx",pcsfg_maxx);
       csfg_maxy=getMethod(Class.forName(class_name),"csfg_maxy",pcsfg_maxy);
+      csfg_nodemin=getMethod(Class.forName(class_name),"csfg_nodemin",pcsfg_nodemin);
+      csfg_nodemax=getMethod(Class.forName(class_name),"csfg_nodemax",pcsfg_nodemax);
+      csfg_edgemin=getMethod(Class.forName(class_name),"csfg_edgemin",pcsfg_edgemin);
+      csfg_edgemax=getMethod(Class.forName(class_name),"csfg_edgemax",pcsfg_edgemax);
       csfg_nlevels=getMethod(Class.forName(class_name),"csfg_nlevels",pcsfg_nlevels);
       csfg_nnodes=getMethod(Class.forName(class_name),"csfg_nnodes",pcsfg_nnodes);
       csfg_nedges=getMethod(Class.forName(class_name),"csfg_nedges",pcsfg_nedges);
@@ -816,11 +856,12 @@ class sfg extends c2jrt
       csfg_nodeselfedges=getMethod(Class.forName(class_name),"csfg_nodeselfedges",pcsfg_nodeselfedges);
       csfg_nodeindegree=getMethod(Class.forName(class_name),"csfg_nodeindegree",pcsfg_nodeindegree);
       csfg_nodeoutdegree=getMethod(Class.forName(class_name),"csfg_nodeoutdegree",pcsfg_nodeoutdegree);
+      csfg_nodeenum=getMethod(Class.forName(class_name),"csfg_nodeenum",pcsfg_nodeenum);
       csfg_nodedata=getMethod(Class.forName(class_name),"csfg_nodedata",pcsfg_nodedata);
+      csfg_setnodedata=getMethod(Class.forName(class_name),"csfg_setnodedata",pcsfg_setnodedata);
       csfg_node_foreach=getMethod(Class.forName(class_name),"csfg_node_foreach",pcsfg_node_foreach);
       csfg_edgefrom=getMethod(Class.forName(class_name),"csfg_edgefrom",pcsfg_edgefrom);
       csfg_edgeto=getMethod(Class.forName(class_name),"csfg_edgeto",pcsfg_edgeto);
-      csfg_edgedata=getMethod(Class.forName(class_name),"csfg_edgedata",pcsfg_edgedata);
       csfg_edgetype=getMethod(Class.forName(class_name),"csfg_edgetype",pcsfg_edgetype);
       csfg_edgerev=getMethod(Class.forName(class_name),"csfg_edgerev",pcsfg_edgerev);
       csfg_edge_foreach=getMethod(Class.forName(class_name),"csfg_edge_foreach",pcsfg_edge_foreach);
@@ -918,6 +959,7 @@ class sfg extends c2jrt
       cimprove_positions=getMethod(Class.forName(class_name),"cimprove_positions",pcimprove_positions);
       cfinalxy=getMethod(Class.forName(class_name),"cfinalxy",pcfinalxy);
       cfindedge=getMethod(Class.forName(class_name),"cfindedge",pcfindedge);
+      csetminmax=getMethod(Class.forName(class_name),"csetminmax",pcsetminmax);
    }catch(Exception ex){
     ex.printStackTrace();
    }
@@ -925,7 +967,7 @@ class sfg extends c2jrt
 public static 	int  cmaingraph_1= (int)(0);
 public static 	int  cuniqnode_splaytree_2= (int)(0);
    
-   /* file sfg.c line 267*/
+   /* file sfg.c line 271*/
    
    public static int csfg_version()
    {
@@ -936,7 +978,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
       int retval= 0;
          
          {
-         retval= 10;
+         retval= 20;
          if(true)
          {
          prevlevel();
@@ -949,7 +991,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
       return 0;
    }
    
-   /* file sfg.c line 277*/
+   /* file sfg.c line 281*/
    
    public static int csfg_init()
    {
@@ -961,7 +1003,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          {
          
-         /* file sfg.c line 278*/
+         /* file sfg.c line 282*/
          if( cmaingraph_1!=0)
          {
          	   
@@ -977,10 +1019,10 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          };
          cmaingraph_1=
-         /* file sfg.c line 281*/
-         ccalloc(1,124);
+         /* file sfg.c line 285*/
+         ccalloc(1,140);
          
-         /* file sfg.c line 282*/
+         /* file sfg.c line 286*/
          if( (((cmaingraph_1)==((int)(0)))?1:0)!=0)
          {
          	   
@@ -996,10 +1038,10 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          };
          cuniqnode_splaytree_2=
-         /* file sfg.c line 285*/
+         /* file sfg.c line 289*/
          csplay_tree_new((int)(csplay_tree_compare_ints),(int)(0),(int)(0));
          
-         /* file sfg.c line 286*/
+         /* file sfg.c line 290*/
          if( (((cuniqnode_splaytree_2)==((int)(0)))?1:0)!=0)
          {
          	   
@@ -1030,7 +1072,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
       return 0;
    }
    
-   /* file sfg.c line 301*/
+   /* file sfg.c line 305*/
    
    public static int csfg_deinit()
    {
@@ -1042,7 +1084,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          {
          
-         /* file sfg.c line 302*/
+         /* file sfg.c line 306*/
          if( (((cmaingraph_1)==((int)(0)))?1:0)!=0)
          {
          	   
@@ -1058,13 +1100,13 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          };
          
-         /* file sfg.c line 305*/
+         /* file sfg.c line 309*/
          if( getMEMINT((int)((cmaingraph_1 + 108)))!=0)
          {
          	   
             {
             
-            /* file sfg.c line 306*/
+            /* file sfg.c line 310*/
             cfree(getMEMINT((int)((cmaingraph_1 + 108))));
             setMEMINT((int)((cmaingraph_1 + 108)),(int)((int)(0)));
             
@@ -1072,13 +1114,13 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          };
          
-         /* file sfg.c line 309*/
+         /* file sfg.c line 313*/
          if( getMEMINT((int)((cmaingraph_1 + 84)))!=0)
          {
          	   
             {
             
-            /* file sfg.c line 310*/
+            /* file sfg.c line 314*/
             cfree(getMEMINT((int)((cmaingraph_1 + 84))));
             setMEMINT((int)((cmaingraph_1 + 84)),(int)((int)(0)));
             
@@ -1086,13 +1128,13 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          };
          
-         /* file sfg.c line 313*/
+         /* file sfg.c line 317*/
          if( getMEMINT((int)((cmaingraph_1 + 48)))!=0)
          {
          	   
             {
             
-            /* file sfg.c line 314*/
+            /* file sfg.c line 318*/
             cfree(getMEMINT((int)((cmaingraph_1 + 48))));
             setMEMINT((int)((cmaingraph_1 + 48)),(int)((int)(0)));
             
@@ -1100,19 +1142,19 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          };
          
-         /* file sfg.c line 317*/
+         /* file sfg.c line 321*/
          cclear_stlist_all(cmaingraph_1);
          
-         /* file sfg.c line 318*/
+         /* file sfg.c line 322*/
          cclear_edgelist(cmaingraph_1);
          
-         /* file sfg.c line 319*/
+         /* file sfg.c line 323*/
          cclear_nodelist(cmaingraph_1);
          cuniqnode_splaytree_2=
-         /* file sfg.c line 320*/
+         /* file sfg.c line 324*/
          csplay_tree_delete(cuniqnode_splaytree_2);
          
-         /* file sfg.c line 321*/
+         /* file sfg.c line 325*/
          cfree(cmaingraph_1);
          cmaingraph_1=(int)(0);
          retval= 0;
@@ -1128,23 +1170,23 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
       return 0;
    }
    
-   /* file sfg.c line 340*/
+   /* file sfg.c line 343*/
    
-   public static int csfg_addnode(int  cnumber,int  ctx,int  cty,int  cdata)
+   public static int csfg_addnode(int  cnumber,int  ctx,int  cty)
    {
       nextlevel();
       if(true)
       {
       int label= 0;
       int retval= 0;
-      int  cnn_7= 0;
-      int  cnl_8= 0;
+      int  cnn_6= 0;
+      int  cnl_7= 0;
          
          {
-         cnn_7= (int)(0);
-         cnl_8= (int)(0);
+         cnn_6= (int)(0);
+         cnl_7= (int)(0);
          
-         /* file sfg.c line 343*/
+         /* file sfg.c line 346*/
          if( (((cmaingraph_1)==((int)(0)))?1:0)!=0)
          {
          	   
@@ -1160,7 +1202,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          };
          
-         /* file sfg.c line 346*/
+         /* file sfg.c line 349*/
          if( (((cnumber)<(1))?1:0)!=0)
          {
          	   
@@ -1176,7 +1218,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          };
          
-         /* file sfg.c line 349*/
+         /* file sfg.c line 352*/
          if( (((ctx)<(0))?1:0)!=0)
          {
          	   
@@ -1192,7 +1234,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          };
          
-         /* file sfg.c line 352*/
+         /* file sfg.c line 355*/
          if( (((cty)<(0))?1:0)!=0)
          {
          	   
@@ -1208,7 +1250,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          };
          
-         /* file sfg.c line 355*/
+         /* file sfg.c line 358*/
          if( getMEMINT((int)((cmaingraph_1 + 0)))!=0)
          {
          	   
@@ -1224,9 +1266,9 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          };
          
-         /* file sfg.c line 359*/
+         /* file sfg.c line 362*/
          if( 
-         /* file sfg.c line 359*/
+         /* file sfg.c line 362*/
          cuniqnode(cmaingraph_1,cnumber)!=0)
          {
          	   
@@ -1241,12 +1283,12 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
             }
          
          };
-         cnn_7=
-         /* file sfg.c line 363*/
+         cnn_6=
+         /* file sfg.c line 366*/
          ccalloc(1,128);
          
-         /* file sfg.c line 364*/
-         if( (((cnn_7)==((int)(0)))?1:0)!=0)
+         /* file sfg.c line 367*/
+         if( (((cnn_6)==((int)(0)))?1:0)!=0)
          {
          	   
             {
@@ -1260,18 +1302,18 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
             }
          
          };
-         cnl_8=
-         /* file sfg.c line 367*/
+         cnl_7=
+         /* file sfg.c line 370*/
          ccalloc(1,8);
          
-         /* file sfg.c line 368*/
-         if( (((cnl_8)==((int)(0)))?1:0)!=0)
+         /* file sfg.c line 371*/
+         if( (((cnl_7)==((int)(0)))?1:0)!=0)
          {
          	   
             {
             
-            /* file sfg.c line 369*/
-            cfree(cnn_7);
+            /* file sfg.c line 372*/
+            cfree(cnn_6);
             retval= (-(7));
             if(true)
             {
@@ -1282,19 +1324,18 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
             }
          
          };
-         setMEMINT((int)((cnn_7 + 0)),(int)(cnumber));
-         setMEMINT((int)((cnn_7 + 4)),(int)(ctx));
-         setMEMINT((int)((cnn_7 + 8)),(int)(cty));
-         setMEMINT((int)((cnn_7 + 56)),(int)(cdata));
-         setMEMINT((int)((cnl_8 + 0)),(int)(cnn_7));
+         setMEMINT((int)((cnn_6 + 0)),(int)(cnumber));
+         setMEMINT((int)((cnn_6 + 4)),(int)(ctx));
+         setMEMINT((int)((cnn_6 + 8)),(int)(cty));
+         setMEMINT((int)((cnl_7 + 0)),(int)(cnn_6));
          
-         /* file sfg.c line 377*/
+         /* file sfg.c line 380*/
          if( (((getMEMINT((int)((cmaingraph_1 + 60))))==((int)(0)))?1:0)!=0)
          {
          	   
             {
-            setMEMINT((int)((cmaingraph_1 + 60)),(int)(cnl_8));
-            setMEMINT((int)((cmaingraph_1 + 64)),(int)(cnl_8));
+            setMEMINT((int)((cmaingraph_1 + 60)),(int)(cnl_7));
+            setMEMINT((int)((cmaingraph_1 + 64)),(int)(cnl_7));
             
             }
          
@@ -1303,14 +1344,14 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          {
          	   
             {
-            setMEMINT((int)((getMEMINT((int)((cmaingraph_1 + 64))) + 4)),(int)(cnl_8));
-            setMEMINT((int)((cmaingraph_1 + 64)),(int)(cnl_8));
+            setMEMINT((int)((getMEMINT((int)((cmaingraph_1 + 64))) + 4)),(int)(cnl_7));
+            setMEMINT((int)((cmaingraph_1 + 64)),(int)(cnl_7));
             
             }
          
          };
          
-         /* file sfg.c line 384*/
+         /* file sfg.c line 387*/
          if( (((cnumber)>(getMEMINT((int)((cmaingraph_1 + 4)))))?1:0)!=0)
          {
          	   
@@ -1321,8 +1362,8 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          };
          
-         /* file sfg.c line 388*/
-         cuniqnode_add(cmaingraph_1,cnn_7);
+         /* file sfg.c line 391*/
+         cuniqnode_add(cmaingraph_1,cnn_6);
          sincMEMINT((int)((cmaingraph_1 + 8)),+1);
          retval= 0;
          if(true)
@@ -1337,27 +1378,27 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
       return 0;
    }
    
-   /* file sfg.c line 411*/
+   /* file sfg.c line 413*/
    
-   public static int csfg_addedge(int  cnumber,int  cfrom,int  cto,int  ctx,int  cty,int  cdata)
+   public static int csfg_addedge(int  cnumber,int  cfrom,int  cto,int  ctx,int  cty)
    {
       nextlevel();
       if(true)
       {
       int label= 0;
       int retval= 0;
-      int  cfn_9= 0;
-      int  ctn_10= 0;
-      int  ce_11= 0;
-      int  cel_12= 0;
+      int  cfn_8= 0;
+      int  ctn_9= 0;
+      int  ce_10= 0;
+      int  cel_11= 0;
          
          {
-         cfn_9= (int)(0);
-         ctn_10= (int)(0);
-         ce_11= (int)(0);
-         cel_12= (int)(0);
+         cfn_8= (int)(0);
+         ctn_9= (int)(0);
+         ce_10= (int)(0);
+         cel_11= (int)(0);
          
-         /* file sfg.c line 416*/
+         /* file sfg.c line 418*/
          if( (((cmaingraph_1)==((int)(0)))?1:0)!=0)
          {
          	   
@@ -1373,7 +1414,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          };
          
-         /* file sfg.c line 419*/
+         /* file sfg.c line 421*/
          if( (((cnumber)<(1))?1:0)!=0)
          {
          	   
@@ -1389,7 +1430,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          };
          
-         /* file sfg.c line 422*/
+         /* file sfg.c line 424*/
          if( (((ctx)<(0))?1:0)!=0)
          {
          	   
@@ -1405,7 +1446,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          };
          
-         /* file sfg.c line 425*/
+         /* file sfg.c line 427*/
          if( (((cty)<(0))?1:0)!=0)
          {
          	   
@@ -1421,7 +1462,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          };
          
-         /* file sfg.c line 428*/
+         /* file sfg.c line 430*/
          if( (((cfrom)<(1))?1:0)!=0)
          {
          	   
@@ -1437,7 +1478,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          };
          
-         /* file sfg.c line 431*/
+         /* file sfg.c line 433*/
          if( (((cto)<(1))?1:0)!=0)
          {
          	   
@@ -1453,13 +1494,13 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          };
          
-         /* file sfg.c line 434*/
+         /* file sfg.c line 436*/
          if( (((cfrom)==(cto))?1:0)!=0)
          {
          	   
             {
             
-            /* file sfg.c line 435*/
+            /* file sfg.c line 437*/
             if( (((ctx)!=0)?1: (cty))!=0)
             {
             	   
@@ -1479,7 +1520,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          };
          
-         /* file sfg.c line 439*/
+         /* file sfg.c line 441*/
          if( getMEMINT((int)((cmaingraph_1 + 0)))!=0)
          {
          	   
@@ -1494,12 +1535,12 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
             }
          
          };
-         cfn_9=
-         /* file sfg.c line 442*/
+         cfn_8=
+         /* file sfg.c line 444*/
          cuniqnode(cmaingraph_1,cfrom);
          
-         /* file sfg.c line 443*/
-         if( (((cfn_9)==((int)(0)))?1:0)!=0)
+         /* file sfg.c line 445*/
+         if( (((cfn_8)==((int)(0)))?1:0)!=0)
          {
          	   
             {
@@ -1513,12 +1554,12 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
             }
          
          };
-         ctn_10=
-         /* file sfg.c line 446*/
+         ctn_9=
+         /* file sfg.c line 448*/
          cuniqnode(cmaingraph_1,cto);
          
-         /* file sfg.c line 447*/
-         if( (((ctn_10)==((int)(0)))?1:0)!=0)
+         /* file sfg.c line 449*/
+         if( (((ctn_9)==((int)(0)))?1:0)!=0)
          {
          	   
             {
@@ -1533,7 +1574,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          };
          
-         /* file sfg.c line 450*/
+         /* file sfg.c line 452*/
          if( (((cnumber)>(getMEMINT((int)((cmaingraph_1 + 12)))))?1:0)!=0)
          {
          	   
@@ -1545,12 +1586,12 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          };
          sincMEMINT((int)((cmaingraph_1 + 16)),+1);
          
-         /* file sfg.c line 454*/
-         if( (((cfn_9)==(ctn_10))?1:0)!=0)
+         /* file sfg.c line 456*/
+         if( (((cfn_8)==(ctn_9))?1:0)!=0)
          {
          	   
             {
-            sincMEMINT((int)((cfn_9 + 32)),+1);
+            sincMEMINT((int)((cfn_8 + 32)),+1);
             
             }
          
@@ -1559,12 +1600,12 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          {
          	   
             {
-            ce_11=
-            /* file sfg.c line 459*/
-            ccalloc(1,36);
+            ce_10=
+            /* file sfg.c line 461*/
+            ccalloc(1,32);
             
-            /* file sfg.c line 460*/
-            if( (((ce_11)==((int)(0)))?1:0)!=0)
+            /* file sfg.c line 462*/
+            if( (((ce_10)==((int)(0)))?1:0)!=0)
             {
             	   
                {
@@ -1578,18 +1619,18 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
                }
             
             };
-            cel_12=
-            /* file sfg.c line 463*/
+            cel_11=
+            /* file sfg.c line 465*/
             ccalloc(1,8);
             
-            /* file sfg.c line 464*/
-            if( (((cel_12)==((int)(0)))?1:0)!=0)
+            /* file sfg.c line 466*/
+            if( (((cel_11)==((int)(0)))?1:0)!=0)
             {
             	   
                {
                
-               /* file sfg.c line 465*/
-               cfree(ce_11);
+               /* file sfg.c line 467*/
+               cfree(ce_10);
                retval= (-(9));
                if(true)
                {
@@ -1600,33 +1641,32 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
                }
             
             };
-            setMEMINT((int)((ce_11 + 0)),(int)(cnumber));
-            setMEMINT((int)((ce_11 + 4)),(int)(cfn_9));
-            setMEMINT((int)((ce_11 + 8)),(int)(ctn_10));
-            setMEMINT((int)((ce_11 + 12)),(int)(ctx));
-            setMEMINT((int)((ce_11 + 16)),(int)(cty));
+            setMEMINT((int)((ce_10 + 0)),(int)(cnumber));
+            setMEMINT((int)((ce_10 + 4)),(int)(cfn_8));
+            setMEMINT((int)((ce_10 + 8)),(int)(ctn_9));
+            setMEMINT((int)((ce_10 + 12)),(int)(ctx));
+            setMEMINT((int)((ce_10 + 16)),(int)(cty));
             
-            /* file sfg.c line 473*/
+            /* file sfg.c line 475*/
             if( (((ctx)!=0)?1: (cty))!=0)
             {
             	   
                {
-               setMEMINT((int)((ce_11 + 20)),(int)(1));
+               setMEMINT((int)((ce_10 + 20)),(int)(1));
                sincMEMINT((int)((cmaingraph_1 + 24)),+1);
                
                }
             
             };
-            setMEMINT((int)((ce_11 + 24)),(int)(cdata));
-            setMEMINT((int)((cel_12 + 0)),(int)(ce_11));
+            setMEMINT((int)((cel_11 + 0)),(int)(ce_10));
             
-            /* file sfg.c line 481*/
+            /* file sfg.c line 482*/
             if( (((getMEMINT((int)((cmaingraph_1 + 76))))==((int)(0)))?1:0)!=0)
             {
             	   
                {
-               setMEMINT((int)((cmaingraph_1 + 76)),(int)(cel_12));
-               setMEMINT((int)((cmaingraph_1 + 80)),(int)(cel_12));
+               setMEMINT((int)((cmaingraph_1 + 76)),(int)(cel_11));
+               setMEMINT((int)((cmaingraph_1 + 80)),(int)(cel_11));
                
                }
             
@@ -1635,8 +1675,8 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
             {
             	   
                {
-               setMEMINT((int)((getMEMINT((int)((cmaingraph_1 + 80))) + 4)),(int)(cel_12));
-               setMEMINT((int)((cmaingraph_1 + 80)),(int)(cel_12));
+               setMEMINT((int)((getMEMINT((int)((cmaingraph_1 + 80))) + 4)),(int)(cel_11));
+               setMEMINT((int)((cmaingraph_1 + 80)),(int)(cel_11));
                
                }
             
@@ -1658,7 +1698,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
       return 0;
    }
    
-   /* file sfg.c line 499*/
+   /* file sfg.c line 500*/
    
    public static int csfg_layout()
    {
@@ -1670,7 +1710,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          {
          
-         /* file sfg.c line 500*/
+         /* file sfg.c line 501*/
          if( (((cmaingraph_1)==((int)(0)))?1:0)!=0)
          {
          	   
@@ -1686,7 +1726,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          };
          
-         /* file sfg.c line 503*/
+         /* file sfg.c line 504*/
          if( getMEMINT((int)((cmaingraph_1 + 0)))!=0)
          {
          	   
@@ -1702,7 +1742,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          };
          
-         /* file sfg.c line 506*/
+         /* file sfg.c line 507*/
          if( (((getMEMINT((int)((cmaingraph_1 + 60))))==((int)(0)))?1:0)!=0)
          {
          	   
@@ -1718,50 +1758,53 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          };
          
-         /* file sfg.c line 511*/
+         /* file sfg.c line 512*/
          cprep(cmaingraph_1);
          
-         /* file sfg.c line 514*/
+         /* file sfg.c line 515*/
          creorg(cmaingraph_1);
          
-         /* file sfg.c line 517*/
+         /* file sfg.c line 518*/
          cuncycle(cmaingraph_1);
          
-         /* file sfg.c line 520*/
+         /* file sfg.c line 521*/
          creorg(cmaingraph_1);
          
-         /* file sfg.c line 523*/
+         /* file sfg.c line 524*/
          cylevels(cmaingraph_1);
          
-         /* file sfg.c line 526*/
+         /* file sfg.c line 527*/
          cshorteredges(cmaingraph_1);
          
-         /* file sfg.c line 529*/
+         /* file sfg.c line 530*/
          cedgesdownwards(cmaingraph_1);
          
-         /* file sfg.c line 532*/
+         /* file sfg.c line 533*/
          cedgelen(cmaingraph_1);
          
-         /* file sfg.c line 535*/
+         /* file sfg.c line 536*/
          cdoublespacey(cmaingraph_1);
          
-         /* file sfg.c line 538*/
+         /* file sfg.c line 539*/
          cedgelabels(cmaingraph_1);
          
-         /* file sfg.c line 541*/
+         /* file sfg.c line 542*/
          csplitedges(cmaingraph_1);
          
-         /* file sfg.c line 544*/
+         /* file sfg.c line 545*/
          cnodecounts(cmaingraph_1);
          
-         /* file sfg.c line 547*/
+         /* file sfg.c line 548*/
          cbarycenter(cmaingraph_1,100,100);
          
-         /* file sfg.c line 550*/
+         /* file sfg.c line 551*/
          cimprove_positions(cmaingraph_1);
          
-         /* file sfg.c line 553*/
+         /* file sfg.c line 554*/
          cfinalxy(cmaingraph_1);
+         
+         /* file sfg.c line 557*/
+         csetminmax(cmaingraph_1);
          setMEMINT((int)((cmaingraph_1 + 0)),(int)(1));
          retval= 0;
          if(true)
@@ -1776,7 +1819,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
       return 0;
    }
    
-   /* file sfg.c line 567*/
+   /* file sfg.c line 571*/
    
    public static int csfg_crossings()
    {
@@ -1788,7 +1831,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          {
          
-         /* file sfg.c line 568*/
+         /* file sfg.c line 572*/
          if( (((cmaingraph_1)==((int)(0)))?1:0)!=0)
          {
          	   
@@ -1804,7 +1847,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          };
          
-         /* file sfg.c line 571*/
+         /* file sfg.c line 575*/
          if( (((getMEMINT((int)((cmaingraph_1 + 0))))==(0))?1:0)!=0)
          {
          	   
@@ -1832,7 +1875,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
       return 0;
    }
    
-   /* file sfg.c line 583*/
+   /* file sfg.c line 587*/
    
    public static int csfg_initialcrossings()
    {
@@ -1844,7 +1887,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          {
          
-         /* file sfg.c line 584*/
+         /* file sfg.c line 588*/
          if( (((cmaingraph_1)==((int)(0)))?1:0)!=0)
          {
          	   
@@ -1860,7 +1903,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          };
          
-         /* file sfg.c line 587*/
+         /* file sfg.c line 591*/
          if( (((getMEMINT((int)((cmaingraph_1 + 0))))==(0))?1:0)!=0)
          {
          	   
@@ -1888,7 +1931,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
       return 0;
    }
    
-   /* file sfg.c line 599*/
+   /* file sfg.c line 603*/
    
    public static int csfg_edgelabels(int  cstatus)
    {
@@ -1900,7 +1943,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          {
          
-         /* file sfg.c line 600*/
+         /* file sfg.c line 604*/
          if( (((cmaingraph_1)==((int)(0)))?1:0)!=0)
          {
          	   
@@ -1916,7 +1959,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          };
          
-         /* file sfg.c line 603*/
+         /* file sfg.c line 607*/
          if( getMEMINT((int)((cmaingraph_1 + 0)))!=0)
          {
          	   
@@ -1932,7 +1975,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          };
          
-         /* file sfg.c line 606*/
+         /* file sfg.c line 610*/
          if( cstatus!=0)
          {
          	   
@@ -1964,7 +2007,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
       return 0;
    }
    
-   /* file sfg.c line 622*/
+   /* file sfg.c line 626*/
    
    public static int csfg_nodexpos(int  cnum)
    {
@@ -1978,7 +2021,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          {
          cn_4= (int)(0);
          
-         /* file sfg.c line 624*/
+         /* file sfg.c line 628*/
          if( (((cmaingraph_1)==((int)(0)))?1:0)!=0)
          {
          	   
@@ -1994,7 +2037,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          };
          
-         /* file sfg.c line 627*/
+         /* file sfg.c line 631*/
          if( (((getMEMINT((int)((cmaingraph_1 + 0))))==(0))?1:0)!=0)
          {
          	   
@@ -2010,7 +2053,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          };
          
-         /* file sfg.c line 630*/
+         /* file sfg.c line 634*/
          if( (((cnum)<(1))?1:0)!=0)
          {
          	   
@@ -2026,10 +2069,10 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          };
          cn_4=
-         /* file sfg.c line 633*/
+         /* file sfg.c line 637*/
          cuniqnode(cmaingraph_1,cnum);
          
-         /* file sfg.c line 634*/
+         /* file sfg.c line 638*/
          if( (((cn_4)==((int)(0)))?1:0)!=0)
          {
          	   
@@ -2057,7 +2100,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
       return 0;
    }
    
-   /* file sfg.c line 648*/
+   /* file sfg.c line 652*/
    
    public static int csfg_nodeypos(int  cnum)
    {
@@ -2071,7 +2114,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          {
          cn_4= (int)(0);
          
-         /* file sfg.c line 650*/
+         /* file sfg.c line 654*/
          if( (((cmaingraph_1)==((int)(0)))?1:0)!=0)
          {
          	   
@@ -2087,7 +2130,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          };
          
-         /* file sfg.c line 653*/
+         /* file sfg.c line 657*/
          if( (((getMEMINT((int)((cmaingraph_1 + 0))))==(0))?1:0)!=0)
          {
          	   
@@ -2103,7 +2146,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          };
          
-         /* file sfg.c line 656*/
+         /* file sfg.c line 660*/
          if( (((cnum)<(1))?1:0)!=0)
          {
          	   
@@ -2119,10 +2162,10 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          };
          cn_4=
-         /* file sfg.c line 659*/
+         /* file sfg.c line 663*/
          cuniqnode(cmaingraph_1,cnum);
          
-         /* file sfg.c line 660*/
+         /* file sfg.c line 664*/
          if( (((cn_4)==((int)(0)))?1:0)!=0)
          {
          	   
@@ -2150,7 +2193,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
       return 0;
    }
    
-   /* file sfg.c line 674*/
+   /* file sfg.c line 678*/
    
    public static int csfg_noderelxpos(int  cnum)
    {
@@ -2164,7 +2207,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          {
          cn_4= (int)(0);
          
-         /* file sfg.c line 676*/
+         /* file sfg.c line 680*/
          if( (((cmaingraph_1)==((int)(0)))?1:0)!=0)
          {
          	   
@@ -2180,7 +2223,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          };
          
-         /* file sfg.c line 679*/
+         /* file sfg.c line 683*/
          if( (((getMEMINT((int)((cmaingraph_1 + 0))))==(0))?1:0)!=0)
          {
          	   
@@ -2196,7 +2239,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          };
          
-         /* file sfg.c line 682*/
+         /* file sfg.c line 686*/
          if( (((cnum)<(1))?1:0)!=0)
          {
          	   
@@ -2212,10 +2255,10 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          };
          cn_4=
-         /* file sfg.c line 685*/
+         /* file sfg.c line 689*/
          cuniqnode(cmaingraph_1,cnum);
          
-         /* file sfg.c line 686*/
+         /* file sfg.c line 690*/
          if( (((cn_4)==((int)(0)))?1:0)!=0)
          {
          	   
@@ -2243,7 +2286,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
       return 0;
    }
    
-   /* file sfg.c line 700*/
+   /* file sfg.c line 704*/
    
    public static int csfg_noderelypos(int  cnum)
    {
@@ -2257,7 +2300,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          {
          cn_4= (int)(0);
          
-         /* file sfg.c line 702*/
+         /* file sfg.c line 706*/
          if( (((cmaingraph_1)==((int)(0)))?1:0)!=0)
          {
          	   
@@ -2273,7 +2316,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          };
          
-         /* file sfg.c line 705*/
+         /* file sfg.c line 709*/
          if( (((getMEMINT((int)((cmaingraph_1 + 0))))==(0))?1:0)!=0)
          {
          	   
@@ -2289,7 +2332,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          };
          
-         /* file sfg.c line 708*/
+         /* file sfg.c line 712*/
          if( (((cnum)<(1))?1:0)!=0)
          {
          	   
@@ -2305,10 +2348,10 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          };
          cn_4=
-         /* file sfg.c line 711*/
+         /* file sfg.c line 715*/
          cuniqnode(cmaingraph_1,cnum);
          
-         /* file sfg.c line 712*/
+         /* file sfg.c line 716*/
          if( (((cn_4)==((int)(0)))?1:0)!=0)
          {
          	   
@@ -2336,7 +2379,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
       return 0;
    }
    
-   /* file sfg.c line 726*/
+   /* file sfg.c line 730*/
    
    public static int csfg_nodely0(int  cnum)
    {
@@ -2350,7 +2393,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          {
          cn_4= (int)(0);
          
-         /* file sfg.c line 728*/
+         /* file sfg.c line 732*/
          if( (((cmaingraph_1)==((int)(0)))?1:0)!=0)
          {
          	   
@@ -2366,7 +2409,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          };
          
-         /* file sfg.c line 731*/
+         /* file sfg.c line 735*/
          if( (((getMEMINT((int)((cmaingraph_1 + 0))))==(0))?1:0)!=0)
          {
          	   
@@ -2382,7 +2425,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          };
          
-         /* file sfg.c line 734*/
+         /* file sfg.c line 738*/
          if( (((cnum)<(1))?1:0)!=0)
          {
          	   
@@ -2398,10 +2441,10 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          };
          cn_4=
-         /* file sfg.c line 737*/
+         /* file sfg.c line 741*/
          cuniqnode(cmaingraph_1,cnum);
          
-         /* file sfg.c line 738*/
+         /* file sfg.c line 742*/
          if( (((cn_4)==((int)(0)))?1:0)!=0)
          {
          	   
@@ -2429,7 +2472,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
       return 0;
    }
    
-   /* file sfg.c line 752*/
+   /* file sfg.c line 756*/
    
    public static int csfg_nodely1(int  cnum)
    {
@@ -2443,7 +2486,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          {
          cn_4= (int)(0);
          
-         /* file sfg.c line 754*/
+         /* file sfg.c line 758*/
          if( (((cmaingraph_1)==((int)(0)))?1:0)!=0)
          {
          	   
@@ -2459,7 +2502,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          };
          
-         /* file sfg.c line 757*/
+         /* file sfg.c line 761*/
          if( (((getMEMINT((int)((cmaingraph_1 + 0))))==(0))?1:0)!=0)
          {
          	   
@@ -2475,7 +2518,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          };
          
-         /* file sfg.c line 760*/
+         /* file sfg.c line 764*/
          if( (((cnum)<(1))?1:0)!=0)
          {
          	   
@@ -2491,10 +2534,10 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          };
          cn_4=
-         /* file sfg.c line 763*/
+         /* file sfg.c line 767*/
          cuniqnode(cmaingraph_1,cnum);
          
-         /* file sfg.c line 764*/
+         /* file sfg.c line 768*/
          if( (((cn_4)==((int)(0)))?1:0)!=0)
          {
          	   
@@ -2522,7 +2565,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
       return 0;
    }
    
-   /* file sfg.c line 778*/
+   /* file sfg.c line 782*/
    
    public static int csfg_nodexsize(int  cnum)
    {
@@ -2536,7 +2579,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          {
          cn_4= (int)(0);
          
-         /* file sfg.c line 780*/
+         /* file sfg.c line 784*/
          if( (((cmaingraph_1)==((int)(0)))?1:0)!=0)
          {
          	   
@@ -2552,7 +2595,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          };
          
-         /* file sfg.c line 783*/
+         /* file sfg.c line 787*/
          if( (((getMEMINT((int)((cmaingraph_1 + 0))))==(0))?1:0)!=0)
          {
          	   
@@ -2568,7 +2611,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          };
          
-         /* file sfg.c line 786*/
+         /* file sfg.c line 790*/
          if( (((cnum)<(1))?1:0)!=0)
          {
          	   
@@ -2584,10 +2627,10 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          };
          cn_4=
-         /* file sfg.c line 789*/
+         /* file sfg.c line 793*/
          cuniqnode(cmaingraph_1,cnum);
          
-         /* file sfg.c line 790*/
+         /* file sfg.c line 794*/
          if( (((cn_4)==((int)(0)))?1:0)!=0)
          {
          	   
@@ -2615,7 +2658,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
       return 0;
    }
    
-   /* file sfg.c line 804*/
+   /* file sfg.c line 808*/
    
    public static int csfg_nodeysize(int  cnum)
    {
@@ -2629,7 +2672,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          {
          cn_4= (int)(0);
          
-         /* file sfg.c line 806*/
+         /* file sfg.c line 810*/
          if( (((cmaingraph_1)==((int)(0)))?1:0)!=0)
          {
          	   
@@ -2645,7 +2688,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          };
          
-         /* file sfg.c line 809*/
+         /* file sfg.c line 813*/
          if( (((getMEMINT((int)((cmaingraph_1 + 0))))==(0))?1:0)!=0)
          {
          	   
@@ -2661,7 +2704,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          };
          
-         /* file sfg.c line 812*/
+         /* file sfg.c line 816*/
          if( (((cnum)<(1))?1:0)!=0)
          {
          	   
@@ -2677,10 +2720,10 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          };
          cn_4=
-         /* file sfg.c line 815*/
+         /* file sfg.c line 819*/
          cuniqnode(cmaingraph_1,cnum);
          
-         /* file sfg.c line 816*/
+         /* file sfg.c line 820*/
          if( (((cn_4)==((int)(0)))?1:0)!=0)
          {
          	   
@@ -2708,7 +2751,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
       return 0;
    }
    
-   /* file sfg.c line 829*/
+   /* file sfg.c line 833*/
    
    public static int csfg_xspacing(int  cnum)
    {
@@ -2720,7 +2763,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          {
          
-         /* file sfg.c line 830*/
+         /* file sfg.c line 834*/
          if( (((cmaingraph_1)==((int)(0)))?1:0)!=0)
          {
          	   
@@ -2736,7 +2779,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          };
          
-         /* file sfg.c line 833*/
+         /* file sfg.c line 837*/
          if( (((cnum)<(1))?1:0)!=0)
          {
          	   
@@ -2752,7 +2795,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          };
          
-         /* file sfg.c line 836*/
+         /* file sfg.c line 840*/
          if( getMEMINT((int)((cmaingraph_1 + 0)))!=0)
          {
          	   
@@ -2781,7 +2824,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
       return 0;
    }
    
-   /* file sfg.c line 850*/
+   /* file sfg.c line 854*/
    
    public static int csfg_yspacing(int  cnum)
    {
@@ -2793,7 +2836,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          {
          
-         /* file sfg.c line 851*/
+         /* file sfg.c line 855*/
          if( (((cmaingraph_1)==((int)(0)))?1:0)!=0)
          {
          	   
@@ -2809,7 +2852,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          };
          
-         /* file sfg.c line 854*/
+         /* file sfg.c line 858*/
          if( (((cnum)<(1))?1:0)!=0)
          {
          	   
@@ -2825,7 +2868,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          };
          
-         /* file sfg.c line 857*/
+         /* file sfg.c line 861*/
          if( getMEMINT((int)((cmaingraph_1 + 0)))!=0)
          {
          	   
@@ -2854,7 +2897,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
       return 0;
    }
    
-   /* file sfg.c line 870*/
+   /* file sfg.c line 874*/
    
    public static int csfg_maxx()
    {
@@ -2866,7 +2909,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          {
          
-         /* file sfg.c line 871*/
+         /* file sfg.c line 875*/
          if( (((cmaingraph_1)==((int)(0)))?1:0)!=0)
          {
          	   
@@ -2882,7 +2925,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          };
          
-         /* file sfg.c line 874*/
+         /* file sfg.c line 878*/
          if( (((getMEMINT((int)((cmaingraph_1 + 0))))==(0))?1:0)!=0)
          {
          	   
@@ -2910,7 +2953,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
       return 0;
    }
    
-   /* file sfg.c line 886*/
+   /* file sfg.c line 890*/
    
    public static int csfg_maxy()
    {
@@ -2922,7 +2965,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          {
          
-         /* file sfg.c line 887*/
+         /* file sfg.c line 891*/
          if( (((cmaingraph_1)==((int)(0)))?1:0)!=0)
          {
          	   
@@ -2938,7 +2981,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          };
          
-         /* file sfg.c line 890*/
+         /* file sfg.c line 894*/
          if( (((getMEMINT((int)((cmaingraph_1 + 0))))==(0))?1:0)!=0)
          {
          	   
@@ -2966,9 +3009,9 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
       return 0;
    }
    
-   /* file sfg.c line 902*/
+   /* file sfg.c line 907*/
    
-   public static int csfg_nlevels()
+   public static int csfg_nodemin()
    {
       nextlevel();
       if(true)
@@ -2978,7 +3021,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          {
          
-         /* file sfg.c line 903*/
+         /* file sfg.c line 908*/
          if( (((cmaingraph_1)==((int)(0)))?1:0)!=0)
          {
          	   
@@ -2994,7 +3037,295 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          };
          
-         /* file sfg.c line 906*/
+         /* file sfg.c line 911*/
+         if( (((getMEMINT((int)((cmaingraph_1 + 0))))==(0))?1:0)!=0)
+         {
+         	   
+            {
+            retval= (-(2));
+            if(true)
+            {
+            prevlevel();
+            return retval;
+            };
+            
+            }
+         
+         };
+         
+         /* file sfg.c line 914*/
+         if( (((getMEMINT((int)((cmaingraph_1 + 60))))==((int)(0)))?1:0)!=0)
+         {
+         	   
+            {
+            retval= (-(3));
+            if(true)
+            {
+            prevlevel();
+            return retval;
+            };
+            
+            }
+         
+         };
+         retval= getMEMINT((int)((cmaingraph_1 + 124)));
+         if(true)
+         {
+         prevlevel();
+         return retval;
+         };
+         
+         }
+      };
+      prevlevel();
+      return 0;
+   }
+   
+   /* file sfg.c line 927*/
+   
+   public static int csfg_nodemax()
+   {
+      nextlevel();
+      if(true)
+      {
+      int label= 0;
+      int retval= 0;
+         
+         {
+         
+         /* file sfg.c line 928*/
+         if( (((cmaingraph_1)==((int)(0)))?1:0)!=0)
+         {
+         	   
+            {
+            retval= (-(1));
+            if(true)
+            {
+            prevlevel();
+            return retval;
+            };
+            
+            }
+         
+         };
+         
+         /* file sfg.c line 931*/
+         if( (((getMEMINT((int)((cmaingraph_1 + 0))))==(0))?1:0)!=0)
+         {
+         	   
+            {
+            retval= (-(2));
+            if(true)
+            {
+            prevlevel();
+            return retval;
+            };
+            
+            }
+         
+         };
+         
+         /* file sfg.c line 934*/
+         if( (((getMEMINT((int)((cmaingraph_1 + 60))))==((int)(0)))?1:0)!=0)
+         {
+         	   
+            {
+            retval= (-(3));
+            if(true)
+            {
+            prevlevel();
+            return retval;
+            };
+            
+            }
+         
+         };
+         retval= getMEMINT((int)((cmaingraph_1 + 128)));
+         if(true)
+         {
+         prevlevel();
+         return retval;
+         };
+         
+         }
+      };
+      prevlevel();
+      return 0;
+   }
+   
+   /* file sfg.c line 947*/
+   
+   public static int csfg_edgemin()
+   {
+      nextlevel();
+      if(true)
+      {
+      int label= 0;
+      int retval= 0;
+         
+         {
+         
+         /* file sfg.c line 948*/
+         if( (((cmaingraph_1)==((int)(0)))?1:0)!=0)
+         {
+         	   
+            {
+            retval= (-(1));
+            if(true)
+            {
+            prevlevel();
+            return retval;
+            };
+            
+            }
+         
+         };
+         
+         /* file sfg.c line 951*/
+         if( (((getMEMINT((int)((cmaingraph_1 + 0))))==(0))?1:0)!=0)
+         {
+         	   
+            {
+            retval= (-(2));
+            if(true)
+            {
+            prevlevel();
+            return retval;
+            };
+            
+            }
+         
+         };
+         
+         /* file sfg.c line 954*/
+         if( (((getMEMINT((int)((cmaingraph_1 + 76))))==((int)(0)))?1:0)!=0)
+         {
+         	   
+            {
+            retval= (-(3));
+            if(true)
+            {
+            prevlevel();
+            return retval;
+            };
+            
+            }
+         
+         };
+         retval= getMEMINT((int)((cmaingraph_1 + 132)));
+         if(true)
+         {
+         prevlevel();
+         return retval;
+         };
+         
+         }
+      };
+      prevlevel();
+      return 0;
+   }
+   
+   /* file sfg.c line 967*/
+   
+   public static int csfg_edgemax()
+   {
+      nextlevel();
+      if(true)
+      {
+      int label= 0;
+      int retval= 0;
+         
+         {
+         
+         /* file sfg.c line 968*/
+         if( (((cmaingraph_1)==((int)(0)))?1:0)!=0)
+         {
+         	   
+            {
+            retval= (-(1));
+            if(true)
+            {
+            prevlevel();
+            return retval;
+            };
+            
+            }
+         
+         };
+         
+         /* file sfg.c line 971*/
+         if( (((getMEMINT((int)((cmaingraph_1 + 0))))==(0))?1:0)!=0)
+         {
+         	   
+            {
+            retval= (-(2));
+            if(true)
+            {
+            prevlevel();
+            return retval;
+            };
+            
+            }
+         
+         };
+         
+         /* file sfg.c line 974*/
+         if( (((getMEMINT((int)((cmaingraph_1 + 76))))==((int)(0)))?1:0)!=0)
+         {
+         	   
+            {
+            retval= (-(3));
+            if(true)
+            {
+            prevlevel();
+            return retval;
+            };
+            
+            }
+         
+         };
+         retval= getMEMINT((int)((cmaingraph_1 + 136)));
+         if(true)
+         {
+         prevlevel();
+         return retval;
+         };
+         
+         }
+      };
+      prevlevel();
+      return 0;
+   }
+   
+   /* file sfg.c line 986*/
+   
+   public static int csfg_nlevels()
+   {
+      nextlevel();
+      if(true)
+      {
+      int label= 0;
+      int retval= 0;
+         
+         {
+         
+         /* file sfg.c line 987*/
+         if( (((cmaingraph_1)==((int)(0)))?1:0)!=0)
+         {
+         	   
+            {
+            retval= (-(1));
+            if(true)
+            {
+            prevlevel();
+            return retval;
+            };
+            
+            }
+         
+         };
+         
+         /* file sfg.c line 990*/
          if( (((getMEMINT((int)((cmaingraph_1 + 0))))==(0))?1:0)!=0)
          {
          	   
@@ -3022,7 +3353,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
       return 0;
    }
    
-   /* file sfg.c line 918*/
+   /* file sfg.c line 1002*/
    
    public static int csfg_nnodes()
    {
@@ -3034,7 +3365,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          {
          
-         /* file sfg.c line 919*/
+         /* file sfg.c line 1003*/
          if( (((cmaingraph_1)==((int)(0)))?1:0)!=0)
          {
          	   
@@ -3050,7 +3381,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          };
          
-         /* file sfg.c line 922*/
+         /* file sfg.c line 1006*/
          if( (((getMEMINT((int)((cmaingraph_1 + 0))))==(0))?1:0)!=0)
          {
          	   
@@ -3078,7 +3409,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
       return 0;
    }
    
-   /* file sfg.c line 934*/
+   /* file sfg.c line 1018*/
    
    public static int csfg_nedges()
    {
@@ -3090,7 +3421,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          {
          
-         /* file sfg.c line 935*/
+         /* file sfg.c line 1019*/
          if( (((cmaingraph_1)==((int)(0)))?1:0)!=0)
          {
          	   
@@ -3106,7 +3437,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          };
          
-         /* file sfg.c line 938*/
+         /* file sfg.c line 1022*/
          if( (((getMEMINT((int)((cmaingraph_1 + 0))))==(0))?1:0)!=0)
          {
          	   
@@ -3134,7 +3465,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
       return 0;
    }
    
-   /* file sfg.c line 952*/
+   /* file sfg.c line 1036*/
    
    public static int csfg_nodetype(int  cnum)
    {
@@ -3150,7 +3481,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          cn_4= (int)(0);
          ctype_5= 0;
          
-         /* file sfg.c line 955*/
+         /* file sfg.c line 1039*/
          if( (((cmaingraph_1)==((int)(0)))?1:0)!=0)
          {
          	   
@@ -3166,7 +3497,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          };
          
-         /* file sfg.c line 958*/
+         /* file sfg.c line 1042*/
          if( (((getMEMINT((int)((cmaingraph_1 + 0))))==(0))?1:0)!=0)
          {
          	   
@@ -3182,7 +3513,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          };
          
-         /* file sfg.c line 961*/
+         /* file sfg.c line 1045*/
          if( (((cnum)<(1))?1:0)!=0)
          {
          	   
@@ -3198,10 +3529,10 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          };
          cn_4=
-         /* file sfg.c line 964*/
+         /* file sfg.c line 1048*/
          cuniqnode(cmaingraph_1,cnum);
          
-         /* file sfg.c line 965*/
+         /* file sfg.c line 1049*/
          if( (((cn_4)==((int)(0)))?1:0)!=0)
          {
          	   
@@ -3217,7 +3548,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          };
          
-         /* file sfg.c line 968*/
+         /* file sfg.c line 1052*/
          if( getMEMINT((int)((cn_4 + 20)))!=0)
          {
          	   
@@ -3230,7 +3561,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          else
          {
          	
-         /* file sfg.c line 970*/
+         /* file sfg.c line 1054*/
          if( getMEMINT((int)((cn_4 + 24)))!=0)
          {
          	   
@@ -3264,7 +3595,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
       return 0;
    }
    
-   /* file sfg.c line 986*/
+   /* file sfg.c line 1070*/
    
    public static int csfg_nodeselfedges(int  cnum)
    {
@@ -3278,7 +3609,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          {
          cn_4= (int)(0);
          
-         /* file sfg.c line 988*/
+         /* file sfg.c line 1072*/
          if( (((cmaingraph_1)==((int)(0)))?1:0)!=0)
          {
          	   
@@ -3294,7 +3625,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          };
          
-         /* file sfg.c line 991*/
+         /* file sfg.c line 1075*/
          if( (((getMEMINT((int)((cmaingraph_1 + 0))))==(0))?1:0)!=0)
          {
          	   
@@ -3310,7 +3641,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          };
          
-         /* file sfg.c line 994*/
+         /* file sfg.c line 1078*/
          if( (((cnum)<(1))?1:0)!=0)
          {
          	   
@@ -3326,10 +3657,10 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          };
          cn_4=
-         /* file sfg.c line 997*/
+         /* file sfg.c line 1081*/
          cuniqnode(cmaingraph_1,cnum);
          
-         /* file sfg.c line 998*/
+         /* file sfg.c line 1082*/
          if( (((cn_4)==((int)(0)))?1:0)!=0)
          {
          	   
@@ -3357,7 +3688,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
       return 0;
    }
    
-   /* file sfg.c line 1012*/
+   /* file sfg.c line 1096*/
    
    public static int csfg_nodeindegree(int  cnum)
    {
@@ -3371,7 +3702,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          {
          cn_4= (int)(0);
          
-         /* file sfg.c line 1014*/
+         /* file sfg.c line 1098*/
          if( (((cmaingraph_1)==((int)(0)))?1:0)!=0)
          {
          	   
@@ -3387,7 +3718,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          };
          
-         /* file sfg.c line 1017*/
+         /* file sfg.c line 1101*/
          if( (((getMEMINT((int)((cmaingraph_1 + 0))))==(0))?1:0)!=0)
          {
          	   
@@ -3403,7 +3734,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          };
          
-         /* file sfg.c line 1020*/
+         /* file sfg.c line 1104*/
          if( (((cnum)<(1))?1:0)!=0)
          {
          	   
@@ -3419,10 +3750,10 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          };
          cn_4=
-         /* file sfg.c line 1023*/
+         /* file sfg.c line 1107*/
          cuniqnode(cmaingraph_1,cnum);
          
-         /* file sfg.c line 1024*/
+         /* file sfg.c line 1108*/
          if( (((cn_4)==((int)(0)))?1:0)!=0)
          {
          	   
@@ -3450,7 +3781,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
       return 0;
    }
    
-   /* file sfg.c line 1038*/
+   /* file sfg.c line 1122*/
    
    public static int csfg_nodeoutdegree(int  cnum)
    {
@@ -3464,7 +3795,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          {
          cn_4= (int)(0);
          
-         /* file sfg.c line 1040*/
+         /* file sfg.c line 1124*/
          if( (((cmaingraph_1)==((int)(0)))?1:0)!=0)
          {
          	   
@@ -3480,7 +3811,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          };
          
-         /* file sfg.c line 1043*/
+         /* file sfg.c line 1127*/
          if( (((getMEMINT((int)((cmaingraph_1 + 0))))==(0))?1:0)!=0)
          {
          	   
@@ -3496,7 +3827,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          };
          
-         /* file sfg.c line 1046*/
+         /* file sfg.c line 1130*/
          if( (((cnum)<(1))?1:0)!=0)
          {
          	   
@@ -3512,10 +3843,10 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          };
          cn_4=
-         /* file sfg.c line 1049*/
+         /* file sfg.c line 1133*/
          cuniqnode(cmaingraph_1,cnum);
          
-         /* file sfg.c line 1050*/
+         /* file sfg.c line 1134*/
          if( (((cn_4)==((int)(0)))?1:0)!=0)
          {
          	   
@@ -3543,7 +3874,116 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
       return 0;
    }
    
-   /* file sfg.c line 1064*/
+   /* file sfg.c line 1149*/
+   
+   public static int csfg_nodeenum(int  cnum)
+   {
+      nextlevel();
+      if(true)
+      {
+      int label= 0;
+      int retval= 0;
+      int  cn_4= 0;
+         
+         {
+         cn_4= (int)(0);
+         
+         /* file sfg.c line 1151*/
+         if( (((cmaingraph_1)==((int)(0)))?1:0)!=0)
+         {
+         	   
+            {
+            retval= (-(1));
+            if(true)
+            {
+            prevlevel();
+            return retval;
+            };
+            
+            }
+         
+         };
+         
+         /* file sfg.c line 1154*/
+         if( (((getMEMINT((int)((cmaingraph_1 + 0))))==(0))?1:0)!=0)
+         {
+         	   
+            {
+            retval= (-(2));
+            if(true)
+            {
+            prevlevel();
+            return retval;
+            };
+            
+            }
+         
+         };
+         
+         /* file sfg.c line 1157*/
+         if( (((cnum)<(1))?1:0)!=0)
+         {
+         	   
+            {
+            retval= (-(3));
+            if(true)
+            {
+            prevlevel();
+            return retval;
+            };
+            
+            }
+         
+         };
+         cn_4=
+         /* file sfg.c line 1160*/
+         cuniqnode(cmaingraph_1,cnum);
+         
+         /* file sfg.c line 1161*/
+         if( (((cn_4)==((int)(0)))?1:0)!=0)
+         {
+         	   
+            {
+            retval= (-(4));
+            if(true)
+            {
+            prevlevel();
+            return retval;
+            };
+            
+            }
+         
+         };
+         
+         /* file sfg.c line 1164*/
+         if( (((getMEMINT((int)((cn_4 + 24))))==(0))?1:0)!=0)
+         {
+         	   
+            {
+            retval= (-(5));
+            if(true)
+            {
+            prevlevel();
+            return retval;
+            };
+            
+            }
+         
+         };
+         retval= getMEMINT((int)((cn_4 + 28)));
+         if(true)
+         {
+         prevlevel();
+         return retval;
+         };
+         
+         }
+      };
+      prevlevel();
+      return 0;
+   }
+   
+   /* file sfg.c line 1178*/
    
    public static int csfg_nodedata(int  cnum)
    {
@@ -3557,7 +3997,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          {
          cn_4= (int)(0);
          
-         /* file sfg.c line 1066*/
+         /* file sfg.c line 1180*/
          if( (((cmaingraph_1)==((int)(0)))?1:0)!=0)
          {
          	   
@@ -3573,7 +4013,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          };
          
-         /* file sfg.c line 1069*/
+         /* file sfg.c line 1183*/
          if( (((getMEMINT((int)((cmaingraph_1 + 0))))==(0))?1:0)!=0)
          {
          	   
@@ -3589,7 +4029,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          };
          
-         /* file sfg.c line 1072*/
+         /* file sfg.c line 1186*/
          if( (((cnum)<(1))?1:0)!=0)
          {
          	   
@@ -3605,10 +4045,10 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          };
          cn_4=
-         /* file sfg.c line 1075*/
+         /* file sfg.c line 1189*/
          cuniqnode(cmaingraph_1,cnum);
          
-         /* file sfg.c line 1076*/
+         /* file sfg.c line 1190*/
          if( (((cn_4)==((int)(0)))?1:0)!=0)
          {
          	   
@@ -3636,7 +4076,101 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
       return 0;
    }
    
-   /* file sfg.c line 1114*/
+   /* file sfg.c line 1204*/
+   
+   public static int csfg_setnodedata(int  cnum,int  cdata)
+   {
+      nextlevel();
+      if(true)
+      {
+      int label= 0;
+      int retval= 0;
+      int  cn_5= 0;
+         
+         {
+         cn_5= (int)(0);
+         
+         /* file sfg.c line 1206*/
+         if( (((cmaingraph_1)==((int)(0)))?1:0)!=0)
+         {
+         	   
+            {
+            retval= (-(1));
+            if(true)
+            {
+            prevlevel();
+            return retval;
+            };
+            
+            }
+         
+         };
+         
+         /* file sfg.c line 1209*/
+         if( (((getMEMINT((int)((cmaingraph_1 + 0))))==(0))?1:0)!=0)
+         {
+         	   
+            {
+            retval= (-(2));
+            if(true)
+            {
+            prevlevel();
+            return retval;
+            };
+            
+            }
+         
+         };
+         
+         /* file sfg.c line 1212*/
+         if( (((cnum)<(1))?1:0)!=0)
+         {
+         	   
+            {
+            retval= (-(3));
+            if(true)
+            {
+            prevlevel();
+            return retval;
+            };
+            
+            }
+         
+         };
+         cn_5=
+         /* file sfg.c line 1215*/
+         cuniqnode(cmaingraph_1,cnum);
+         
+         /* file sfg.c line 1216*/
+         if( (((cn_5)==((int)(0)))?1:0)!=0)
+         {
+         	   
+            {
+            retval= (-(4));
+            if(true)
+            {
+            prevlevel();
+            return retval;
+            };
+            
+            }
+         
+         };
+         setMEMINT((int)((cn_5 + 56)),(int)(cdata));
+         retval= 0;
+         if(true)
+         {
+         prevlevel();
+         return retval;
+         };
+         
+         }
+      };
+      prevlevel();
+      return 0;
+   }
+   
+   /* file sfg.c line 1255*/
    
    public static int csfg_node_foreach(int  cgetnodedata)
    {
@@ -3656,7 +4190,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          cstatus_6= 0;
          ctype_7= 0;
          
-         /* file sfg.c line 1119*/
+         /* file sfg.c line 1260*/
          if( (((cmaingraph_1)==((int)(0)))?1:0)!=0)
          {
          	   
@@ -3672,7 +4206,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          };
          
-         /* file sfg.c line 1122*/
+         /* file sfg.c line 1263*/
          if( (((getMEMINT((int)((cmaingraph_1 + 0))))==(0))?1:0)!=0)
          {
          	   
@@ -3688,7 +4222,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          };
          
-         /* file sfg.c line 1125*/
+         /* file sfg.c line 1266*/
          if( (((cgetnodedata)==((int)(0)))?1:0)!=0)
          {
          	   
@@ -3712,14 +4246,14 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
             ctype_7=0;
             Object[] y1= 
             {
-            new java.lang.Integer((int)(getMEMINT((int)((cn_5 + 0))))),new java.lang.Integer((int)(getMEMINT((int)((cn_5 + 64))))),new java.lang.Integer((int)(getMEMINT((int)((cn_5 + 60))))),new java.lang.Integer((int)(getMEMINT((int)((cn_5 + 56))))),new java.lang.Integer((int)(getMEMINT((int)((cn_5 + 92))))),new java.lang.Integer((int)(getMEMINT((int)((cn_5 + 96))))),new java.lang.Integer((int)(getMEMINT((int)((cn_5 + 4))))),new java.lang.Integer((int)(getMEMINT((int)((cn_5 + 8))))),new java.lang.Integer((int)(getMEMINT((int)((cn_5 + 32))))),new java.lang.Integer((int)(ctype_7)),new java.lang.Integer((int)(getMEMINT((int)((cn_5 + 44))))),new java.lang.Integer((int)(getMEMINT((int)((cn_5 + 48))))),new java.lang.Integer((int)(getMEMINT((int)((cn_5 + 80))))),new java.lang.Integer((int)(getMEMINT((int)((cn_5 + 88)))))
+            new java.lang.Integer((int)(getMEMINT((int)((cn_5 + 0))))),new java.lang.Integer((int)(getMEMINT((int)((cn_5 + 64))))),new java.lang.Integer((int)(getMEMINT((int)((cn_5 + 60))))),new java.lang.Integer((int)(getMEMINT((int)((cn_5 + 92))))),new java.lang.Integer((int)(getMEMINT((int)((cn_5 + 96))))),new java.lang.Integer((int)(getMEMINT((int)((cn_5 + 4))))),new java.lang.Integer((int)(getMEMINT((int)((cn_5 + 8))))),new java.lang.Integer((int)(getMEMINT((int)((cn_5 + 32))))),new java.lang.Integer((int)(ctype_7)),new java.lang.Integer((int)(getMEMINT((int)((cn_5 + 44))))),new java.lang.Integer((int)(getMEMINT((int)((cn_5 + 48))))),new java.lang.Integer((int)(getMEMINT((int)((cn_5 + 80))))),new java.lang.Integer((int)(getMEMINT((int)((cn_5 + 88)))))
             }
             ;
             cstatus_6=
-            /* file sfg.c line 1135*/
+            /* file sfg.c line 1276*/
             funcall(cgetnodedata,y1);
             
-            /* file sfg.c line 1136*/
+            /* file sfg.c line 1277*/
             if( (((cstatus_6)!=(0))?1:0)!=0)
             {
             	   
@@ -3750,7 +4284,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
       return 0;
    }
    
-   /* file sfg.c line 1152*/
+   /* file sfg.c line 1293*/
    
    public static int csfg_edgefrom(int  cnum)
    {
@@ -3764,7 +4298,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          {
          ce_4= (int)(0);
          
-         /* file sfg.c line 1154*/
+         /* file sfg.c line 1295*/
          if( (((cmaingraph_1)==((int)(0)))?1:0)!=0)
          {
          	   
@@ -3780,7 +4314,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          };
          
-         /* file sfg.c line 1157*/
+         /* file sfg.c line 1298*/
          if( (((getMEMINT((int)((cmaingraph_1 + 0))))==(0))?1:0)!=0)
          {
          	   
@@ -3796,7 +4330,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          };
          
-         /* file sfg.c line 1160*/
+         /* file sfg.c line 1301*/
          if( (((cnum)<(1))?1:0)!=0)
          {
          	   
@@ -3812,10 +4346,10 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          };
          ce_4=
-         /* file sfg.c line 1163*/
+         /* file sfg.c line 1304*/
          cfindedge(cnum);
          
-         /* file sfg.c line 1164*/
+         /* file sfg.c line 1305*/
          if( (((ce_4)==((int)(0)))?1:0)!=0)
          {
          	   
@@ -3843,7 +4377,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
       return 0;
    }
    
-   /* file sfg.c line 1178*/
+   /* file sfg.c line 1319*/
    
    public static int csfg_edgeto(int  cnum)
    {
@@ -3857,7 +4391,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          {
          ce_4= (int)(0);
          
-         /* file sfg.c line 1180*/
+         /* file sfg.c line 1321*/
          if( (((cmaingraph_1)==((int)(0)))?1:0)!=0)
          {
          	   
@@ -3873,7 +4407,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          };
          
-         /* file sfg.c line 1183*/
+         /* file sfg.c line 1324*/
          if( (((getMEMINT((int)((cmaingraph_1 + 0))))==(0))?1:0)!=0)
          {
          	   
@@ -3889,7 +4423,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          };
          
-         /* file sfg.c line 1186*/
+         /* file sfg.c line 1327*/
          if( (((cnum)<(1))?1:0)!=0)
          {
          	   
@@ -3905,10 +4439,10 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          };
          ce_4=
-         /* file sfg.c line 1189*/
+         /* file sfg.c line 1330*/
          cfindedge(cnum);
          
-         /* file sfg.c line 1190*/
+         /* file sfg.c line 1331*/
          if( (((ce_4)==((int)(0)))?1:0)!=0)
          {
          	   
@@ -3936,100 +4470,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
       return 0;
    }
    
-   /* file sfg.c line 1204*/
-   
-   public static int csfg_edgedata(int  cnum)
-   {
-      nextlevel();
-      if(true)
-      {
-      int label= 0;
-      int retval= 0;
-      int  ce_4= 0;
-         
-         {
-         ce_4= (int)(0);
-         
-         /* file sfg.c line 1206*/
-         if( (((cmaingraph_1)==((int)(0)))?1:0)!=0)
-         {
-         	   
-            {
-            retval= (int)(0);
-            if(true)
-            {
-            prevlevel();
-            return retval;
-            };
-            
-            }
-         
-         };
-         
-         /* file sfg.c line 1209*/
-         if( (((getMEMINT((int)((cmaingraph_1 + 0))))==(0))?1:0)!=0)
-         {
-         	   
-            {
-            retval= (int)(0);
-            if(true)
-            {
-            prevlevel();
-            return retval;
-            };
-            
-            }
-         
-         };
-         
-         /* file sfg.c line 1212*/
-         if( (((cnum)<(1))?1:0)!=0)
-         {
-         	   
-            {
-            retval= (int)(0);
-            if(true)
-            {
-            prevlevel();
-            return retval;
-            };
-            
-            }
-         
-         };
-         ce_4=
-         /* file sfg.c line 1215*/
-         cfindedge(cnum);
-         
-         /* file sfg.c line 1216*/
-         if( (((ce_4)==((int)(0)))?1:0)!=0)
-         {
-         	   
-            {
-            retval= (int)(0);
-            if(true)
-            {
-            prevlevel();
-            return retval;
-            };
-            
-            }
-         
-         };
-         retval= getMEMINT((int)((ce_4 + 24)));
-         if(true)
-         {
-         prevlevel();
-         return retval;
-         };
-         
-         }
-      };
-      prevlevel();
-      return 0;
-   }
-   
-   /* file sfg.c line 1230*/
+   /* file sfg.c line 1345*/
    
    public static int csfg_edgetype(int  cnum)
    {
@@ -4045,7 +4486,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          ce_4= (int)(0);
          ctype_5= 0;
          
-         /* file sfg.c line 1233*/
+         /* file sfg.c line 1348*/
          if( (((cmaingraph_1)==((int)(0)))?1:0)!=0)
          {
          	   
@@ -4061,7 +4502,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          };
          
-         /* file sfg.c line 1236*/
+         /* file sfg.c line 1351*/
          if( (((getMEMINT((int)((cmaingraph_1 + 0))))==(0))?1:0)!=0)
          {
          	   
@@ -4077,7 +4518,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          };
          
-         /* file sfg.c line 1239*/
+         /* file sfg.c line 1354*/
          if( (((cnum)<(1))?1:0)!=0)
          {
          	   
@@ -4093,10 +4534,10 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          };
          ce_4=
-         /* file sfg.c line 1242*/
+         /* file sfg.c line 1357*/
          cfindedge(cnum);
          
-         /* file sfg.c line 1243*/
+         /* file sfg.c line 1358*/
          if( (((ce_4)==((int)(0)))?1:0)!=0)
          {
          	   
@@ -4112,7 +4553,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          };
          
-         /* file sfg.c line 1246*/
+         /* file sfg.c line 1361*/
          if( (((getMEMINT((int)((getMEMINT((int)((ce_4 + 4))) + 0))))==(getMEMINT((int)((getMEMINT((int)((ce_4 + 8))) + 0)))))?1:0)!=0)
          {
          	   
@@ -4125,8 +4566,8 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          else
          {
          	
-         /* file sfg.c line 1248*/
-         if( getMEMINT((int)((ce_4 + 32)))!=0)
+         /* file sfg.c line 1363*/
+         if( getMEMINT((int)((ce_4 + 28)))!=0)
          {
          	   
             {
@@ -4159,7 +4600,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
       return 0;
    }
    
-   /* file sfg.c line 1264*/
+   /* file sfg.c line 1379*/
    
    public static int csfg_edgerev(int  cnum)
    {
@@ -4173,7 +4614,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          {
          ce_4= (int)(0);
          
-         /* file sfg.c line 1266*/
+         /* file sfg.c line 1381*/
          if( (((cmaingraph_1)==((int)(0)))?1:0)!=0)
          {
          	   
@@ -4189,7 +4630,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          };
          
-         /* file sfg.c line 1269*/
+         /* file sfg.c line 1384*/
          if( (((getMEMINT((int)((cmaingraph_1 + 0))))==(0))?1:0)!=0)
          {
          	   
@@ -4205,7 +4646,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          };
          
-         /* file sfg.c line 1272*/
+         /* file sfg.c line 1387*/
          if( (((cnum)<(1))?1:0)!=0)
          {
          	   
@@ -4221,10 +4662,10 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          };
          ce_4=
-         /* file sfg.c line 1275*/
+         /* file sfg.c line 1390*/
          cfindedge(cnum);
          
-         /* file sfg.c line 1276*/
+         /* file sfg.c line 1391*/
          if( (((ce_4)==((int)(0)))?1:0)!=0)
          {
          	   
@@ -4239,7 +4680,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
             }
          
          };
-         retval= getMEMINT((int)((ce_4 + 28)));
+         retval= getMEMINT((int)((ce_4 + 24)));
          if(true)
          {
          prevlevel();
@@ -4252,7 +4693,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
       return 0;
    }
    
-   /* file sfg.c line 1300*/
+   /* file sfg.c line 1415*/
    
    public static int csfg_edge_foreach(int  cgetedgedata)
    {
@@ -4272,7 +4713,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          cstatus_6= 0;
          ctype_7= 0;
          
-         /* file sfg.c line 1305*/
+         /* file sfg.c line 1420*/
          if( (((cmaingraph_1)==((int)(0)))?1:0)!=0)
          {
          	   
@@ -4288,7 +4729,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          };
          
-         /* file sfg.c line 1308*/
+         /* file sfg.c line 1423*/
          if( (((getMEMINT((int)((cmaingraph_1 + 0))))==(0))?1:0)!=0)
          {
          	   
@@ -4304,7 +4745,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          };
          
-         /* file sfg.c line 1311*/
+         /* file sfg.c line 1426*/
          if( (((cgetedgedata)==((int)(0)))?1:0)!=0)
          {
          	   
@@ -4326,7 +4767,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
             {
             ce_5=getMEMINT((int)((cel_4 + 0)));
             
-            /* file sfg.c line 1318*/
+            /* file sfg.c line 1433*/
             if( (((getMEMINT((int)((getMEMINT((int)((ce_5 + 4))) + 0))))==(getMEMINT((int)((getMEMINT((int)((ce_5 + 8))) + 0)))))?1:0)!=0)
             {
             	   
@@ -4339,8 +4780,8 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
             else
             {
             	
-            /* file sfg.c line 1320*/
-            if( getMEMINT((int)((ce_5 + 32)))!=0)
+            /* file sfg.c line 1435*/
+            if( getMEMINT((int)((ce_5 + 28)))!=0)
             {
             	   
                {
@@ -4362,14 +4803,14 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
             };
             Object[] y2= 
             {
-            new java.lang.Integer((int)(getMEMINT((int)((ce_5 + 0))))),new java.lang.Integer((int)(getMEMINT((int)((getMEMINT((int)((ce_5 + 4))) + 0))))),new java.lang.Integer((int)(getMEMINT((int)((getMEMINT((int)((ce_5 + 8))) + 0))))),new java.lang.Integer((int)(getMEMINT((int)((ce_5 + 24))))),new java.lang.Integer((int)(ctype_7)),new java.lang.Integer((int)(getMEMINT((int)((ce_5 + 28)))))
+            new java.lang.Integer((int)(getMEMINT((int)((ce_5 + 0))))),new java.lang.Integer((int)(getMEMINT((int)((getMEMINT((int)((ce_5 + 4))) + 0))))),new java.lang.Integer((int)(getMEMINT((int)((getMEMINT((int)((ce_5 + 8))) + 0))))),new java.lang.Integer((int)(ctype_7)),new java.lang.Integer((int)(getMEMINT((int)((ce_5 + 24)))))
             }
             ;
             cstatus_6=
-            /* file sfg.c line 1325*/
+            /* file sfg.c line 1440*/
             funcall(cgetedgedata,y2);
             
-            /* file sfg.c line 1326*/
+            /* file sfg.c line 1441*/
             if( (((cstatus_6)!=(0))?1:0)!=0)
             {
             	   
@@ -4400,7 +4841,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
       return 0;
    }
    
-   /* file sfg.c line 1362*/
+   /* file sfg.c line 1477*/
    
    public static void csplay_tree_delete_helper(int  csp,int  cnode)
    {
@@ -4411,7 +4852,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          {
          
-         /* file sfg.c line 1364*/
+         /* file sfg.c line 1479*/
          if( (((cnode)==((int)(0)))?1:0)!=0)
          {
          	   
@@ -4426,13 +4867,13 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          };
          
-         /* file sfg.c line 1369*/
+         /* file sfg.c line 1484*/
          csplay_tree_delete_helper(csp,getMEMINT((int)((cnode + 8))));
          
-         /* file sfg.c line 1370*/
+         /* file sfg.c line 1485*/
          csplay_tree_delete_helper(csp,getMEMINT((int)((cnode + 12))));
          
-         /* file sfg.c line 1373*/
+         /* file sfg.c line 1488*/
          if( getMEMINT((int)((csp + 8)))!=0)
          {
          	   
@@ -4443,7 +4884,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
             }
             ;
             
-            /* file sfg.c line 1374*/
+            /* file sfg.c line 1489*/
             funcall(getMEMINT((int)((csp + 8))),y3);
             setMEMINT((int)((cnode + 0)),(int)(0));
             
@@ -4451,7 +4892,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          };
          
-         /* file sfg.c line 1379*/
+         /* file sfg.c line 1494*/
          if( getMEMINT((int)((csp + 12)))!=0)
          {
          	   
@@ -4462,7 +4903,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
             }
             ;
             
-            /* file sfg.c line 1380*/
+            /* file sfg.c line 1495*/
             funcall(getMEMINT((int)((csp + 12))),y4);
             setMEMINT((int)((cnode + 4)),(int)(0));
             
@@ -4470,7 +4911,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          };
          
-         /* file sfg.c line 1384*/
+         /* file sfg.c line 1499*/
          cfree((int)(cnode));
          if(true)
          {
@@ -4483,7 +4924,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
       prevlevel();
    }
    
-   /* file sfg.c line 1391*/
+   /* file sfg.c line 1506*/
    
    public static int csplay_tree_delete(int  csp)
    {
@@ -4495,16 +4936,16 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          {
          
-         /* file sfg.c line 1392*/
+         /* file sfg.c line 1507*/
          if( csp!=0)
          {
          	   
             {
             
-            /* file sfg.c line 1393*/
+            /* file sfg.c line 1508*/
             csplay_tree_delete_helper(csp,getMEMINT((int)((csp + 0))));
             
-            /* file sfg.c line 1394*/
+            /* file sfg.c line 1509*/
             cfree((int)(csp));
             
             }
@@ -4523,7 +4964,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
       return 0;
    }
    
-   /* file sfg.c line 1405*/
+   /* file sfg.c line 1520*/
    
    public static int csplay_tree_new(int  ccompare_fn,int  cdelete_key_fn,int  cdelete_value_fn)
    {
@@ -4537,7 +4978,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          {
          csp_6= 0;
          
-         /* file sfg.c line 1409*/
+         /* file sfg.c line 1524*/
          if( (((ccompare_fn)==(0))?1:0)!=0)
          {
          	   
@@ -4553,10 +4994,10 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          };
          csp_6=
-         /* file sfg.c line 1413*/
+         /* file sfg.c line 1528*/
          ccalloc(1,16);
          
-         /* file sfg.c line 1415*/
+         /* file sfg.c line 1530*/
          if( (((csp_6)==(0))?1:0)!=0)
          {
          	   
@@ -4588,7 +5029,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
       return 0;
    }
    
-   /* file sfg.c line 1433*/
+   /* file sfg.c line 1548*/
    
    public static void csplay_tree_insert(int  csp,int  ckey,int  cvalue)
    {
@@ -4603,7 +5044,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          cspn_5= 0;
          ccomparison_6= 0;
          
-         /* file sfg.c line 1437*/
+         /* file sfg.c line 1552*/
          if( (((csp)==(0))?1:0)!=0)
          {
          	   
@@ -4618,10 +5059,10 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          };
          cspn_5=
-         /* file sfg.c line 1442*/
+         /* file sfg.c line 1557*/
          csplay_tree_lookup(csp,ckey);
          
-         /* file sfg.c line 1444*/
+         /* file sfg.c line 1559*/
          if( (((cspn_5)!=(0))?1:0)!=0)
          {
          	   
@@ -4636,10 +5077,10 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          };
          cspn_5=
-         /* file sfg.c line 1450*/
+         /* file sfg.c line 1565*/
          ccalloc(1,16);
          
-         /* file sfg.c line 1452*/
+         /* file sfg.c line 1567*/
          if( (((cspn_5)==(0))?1:0)!=0)
          {
          	   
@@ -4656,7 +5097,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          setMEMINT((int)((cspn_5 + 0)),(int)(ckey));
          setMEMINT((int)((cspn_5 + 4)),(int)(cvalue));
          
-         /* file sfg.c line 1461*/
+         /* file sfg.c line 1576*/
          if( (((getMEMINT((int)((csp + 0))))==(0))?1:0)!=0)
          {
          	   
@@ -4677,10 +5118,10 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          }
          ;
          ccomparison_6=
-         /* file sfg.c line 1468*/
+         /* file sfg.c line 1583*/
          funcall(getMEMINT((int)((csp + 4))),y5);
          
-         /* file sfg.c line 1470*/
+         /* file sfg.c line 1585*/
          if( (((ccomparison_6)<(0))?1:0)!=0)
          {
          	   
@@ -4715,7 +5156,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
       prevlevel();
    }
    
-   /* file sfg.c line 1489*/
+   /* file sfg.c line 1604*/
    
    public static int csplay_tree_lookup(int  csp,int  ckey)
    {
@@ -4729,7 +5170,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          {
          cspn_5= 0;
          
-         /* file sfg.c line 1492*/
+         /* file sfg.c line 1607*/
          if( (((csp)==(0))?1:0)!=0)
          {
          	   
@@ -4745,7 +5186,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          };
          
-         /* file sfg.c line 1497*/
+         /* file sfg.c line 1612*/
          if( (((getMEMINT((int)((csp + 0))))==(0))?1:0)!=0)
          {
          	   
@@ -4761,14 +5202,14 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          };
          
-         /* file sfg.c line 1502*/
+         /* file sfg.c line 1617*/
          Object[] y6= 
          {
          new java.lang.Integer((int)(getMEMINT((int)((getMEMINT((int)((csp + 0))) + 0))))),new java.lang.Integer((int)(ckey))
          }
          ;
          if( (((
-         /* file sfg.c line 1502*/
+         /* file sfg.c line 1617*/
          funcall(getMEMINT((int)((csp + 4))),y6))==(0))?1:0)!=0)
          {
          	   
@@ -4784,23 +5225,23 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          };
          cspn_5=
-         /* file sfg.c line 1507*/
+         /* file sfg.c line 1622*/
          csplay(csp,ckey);
          
-         /* file sfg.c line 1509*/
+         /* file sfg.c line 1624*/
          if( cspn_5!=0)
          {
          	   
             {
             
-            /* file sfg.c line 1511*/
+            /* file sfg.c line 1626*/
             Object[] y7= 
             {
             new java.lang.Integer((int)(getMEMINT((int)((getMEMINT((int)((csp + 0))) + 0))))),new java.lang.Integer((int)(ckey))
             }
             ;
             if( (((
-            /* file sfg.c line 1511*/
+            /* file sfg.c line 1626*/
             funcall(getMEMINT((int)((csp + 4))),y7))==(0))?1:0)!=0)
             {
             	   
@@ -4832,7 +5273,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
       return 0;
    }
    
-   /* file sfg.c line 1524*/
+   /* file sfg.c line 1639*/
    
    public static int csplay_tree_compare_ints(int  ck1,int  ck2)
    {
@@ -4844,7 +5285,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          {
          
-         /* file sfg.c line 1525*/
+         /* file sfg.c line 1640*/
          if( ((((int)(ck1))<((int)(ck2)))?1:0)!=0)
          {
          	   
@@ -4862,7 +5303,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          else
          {
          	
-         /* file sfg.c line 1527*/
+         /* file sfg.c line 1642*/
          if( ((((int)(ck1))>((int)(ck2)))?1:0)!=0)
          {
          	   
@@ -4909,7 +5350,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
    return initptr ;
    }
    
-   /* file sfg.c line 1536*/
+   /* file sfg.c line 1651*/
    
    public static int csplay(int  csp,int  ckey)
    {
@@ -4940,7 +5381,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          ctmp_11= calloca(16);
          cmemcpy((int)ctmp_11,(int)((int)(sfginit3(16))),16);
          
-         /* file sfg.c line 1554*/
+         /* file sfg.c line 1669*/
          if( (((csp)==(0))?1:0)!=0)
          {
          	   
@@ -4956,7 +5397,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          };
          
-         /* file sfg.c line 1559*/
+         /* file sfg.c line 1674*/
          if( (((getMEMINT((int)((csp + 0))))==((int)(0)))?1:0)!=0)
          {
          	   
@@ -4983,16 +5424,16 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          }
          ;
          ccomparevalue_9=
-         /* file sfg.c line 1575*/
+         /* file sfg.c line 1690*/
          funcall(getMEMINT((int)((csp + 4))),y8);
          
-         /* file sfg.c line 1577*/
+         /* file sfg.c line 1692*/
          if( (((ccomparevalue_9)<(0))?1:0)!=0)
          {
          	   
             {
             
-            /* file sfg.c line 1579*/
+            /* file sfg.c line 1694*/
             if( (((getMEMINT((int)((ct_5 + 8))))==((int)(0)))?1:0)!=0)
             {
             	   
@@ -5012,10 +5453,10 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
             }
             ;
             ccomparevalue2_10=
-            /* file sfg.c line 1584*/
+            /* file sfg.c line 1699*/
             funcall(getMEMINT((int)((csp + 4))),y9);
             
-            /* file sfg.c line 1586*/
+            /* file sfg.c line 1701*/
             if( (((ccomparevalue2_10)<(0))?1:0)!=0)
             {
             	   
@@ -5025,7 +5466,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
                setMEMINT((int)((cy_8 + 12)),(int)(ct_5));
                ct_5=cy_8;
                
-               /* file sfg.c line 1593*/
+               /* file sfg.c line 1708*/
                if( (((getMEMINT((int)((ct_5 + 8))))==((int)(0)))?1:0)!=0)
                {
                	   
@@ -5053,13 +5494,13 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          else
          {
          	
-         /* file sfg.c line 1603*/
+         /* file sfg.c line 1718*/
          if( (((ccomparevalue_9)>(0))?1:0)!=0)
          {
          	   
             {
             
-            /* file sfg.c line 1605*/
+            /* file sfg.c line 1720*/
             if( (((getMEMINT((int)((ct_5 + 12))))==((int)(0)))?1:0)!=0)
             {
             	   
@@ -5079,10 +5520,10 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
             }
             ;
             ccomparevalue2_10=
-            /* file sfg.c line 1610*/
+            /* file sfg.c line 1725*/
             funcall(getMEMINT((int)((csp + 4))),y10);
             
-            /* file sfg.c line 1612*/
+            /* file sfg.c line 1727*/
             if( (((ccomparevalue2_10)>(0))?1:0)!=0)
             {
             	   
@@ -5092,7 +5533,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
                setMEMINT((int)((cy_8 + 8)),(int)(ct_5));
                ct_5=cy_8;
                
-               /* file sfg.c line 1620*/
+               /* file sfg.c line 1735*/
                if( (((getMEMINT((int)((ct_5 + 12))))==((int)(0)))?1:0)!=0)
                {
                	   
@@ -5157,7 +5598,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
       return 0;
    }
    
-   /* file sfg.c line 1650*/
+   /* file sfg.c line 1765*/
    
    public static int cuniqnode(int  cg,int  cnr)
    {
@@ -5171,13 +5612,13 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          {
          cspn_5= (int)(0);
          
-         /* file sfg.c line 1652*/
+         /* file sfg.c line 1767*/
          if( cg!=0)
          {
          	
          };
          
-         /* file sfg.c line 1654*/
+         /* file sfg.c line 1769*/
          if( (((cuniqnode_splaytree_2)==((int)(0)))?1:0)!=0)
          {
          	   
@@ -5193,10 +5634,10 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          };
          cspn_5=
-         /* file sfg.c line 1657*/
+         /* file sfg.c line 1772*/
          csplay_tree_lookup(cuniqnode_splaytree_2,cnr);
          
-         /* file sfg.c line 1658*/
+         /* file sfg.c line 1773*/
          if( cspn_5!=0)
          {
          	   
@@ -5232,7 +5673,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
       return 0;
    }
    
-   /* file sfg.c line 1667*/
+   /* file sfg.c line 1782*/
    
    public static void cuniqnode_add(int  cg,int  cnode)
    {
@@ -5245,13 +5686,13 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          {
          cspn_4= (int)(0);
          
-         /* file sfg.c line 1669*/
+         /* file sfg.c line 1784*/
          if( cg!=0)
          {
          	
          };
          
-         /* file sfg.c line 1671*/
+         /* file sfg.c line 1786*/
          if( (((cnode)==((int)(0)))?1:0)!=0)
          {
          	   
@@ -5266,23 +5707,23 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          };
          
-         /* file sfg.c line 1675*/
+         /* file sfg.c line 1790*/
          if( (((cuniqnode_splaytree_2)==((int)(0)))?1:0)!=0)
          {
          	   
             {
             cuniqnode_splaytree_2=
-            /* file sfg.c line 1676*/
+            /* file sfg.c line 1791*/
             csplay_tree_new((int)(csplay_tree_compare_ints),0,0);
             
             }
          
          };
          cspn_4=
-         /* file sfg.c line 1678*/
+         /* file sfg.c line 1793*/
          csplay_tree_lookup(cuniqnode_splaytree_2,getMEMINT((int)((cnode + 0))));
          
-         /* file sfg.c line 1679*/
+         /* file sfg.c line 1794*/
          if( cspn_4!=0)
          {
          	   
@@ -5301,7 +5742,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          	   
             {
             
-            /* file sfg.c line 1683*/
+            /* file sfg.c line 1798*/
             csplay_tree_insert(cuniqnode_splaytree_2,getMEMINT((int)((cnode + 0))),cnode);
             
             }
@@ -5318,7 +5759,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
       prevlevel();
    }
    
-   /* file sfg.c line 1690*/
+   /* file sfg.c line 1805*/
    
    public static void cclear_nodelist(int  cg)
    {
@@ -5339,11 +5780,11 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
             {
             cnlnext_4=getMEMINT((int)((clnll_3 + 4)));
             
-            /* file sfg.c line 1696*/
+            /* file sfg.c line 1811*/
             cfree(getMEMINT((int)((clnll_3 + 0))));
             setMEMINT((int)((clnll_3 + 0)),(int)((int)(0)));
             
-            /* file sfg.c line 1698*/
+            /* file sfg.c line 1813*/
             cfree(clnll_3);
             clnll_3=(int)(0);
             clnll_3=cnlnext_4;
@@ -5366,7 +5807,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
       prevlevel();
    }
    
-   /* file sfg.c line 1711*/
+   /* file sfg.c line 1826*/
    
    public static void cclear_edgelist(int  cg)
    {
@@ -5387,11 +5828,11 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
             {
             celnext_4=getMEMINT((int)((cel_3 + 4)));
             
-            /* file sfg.c line 1717*/
+            /* file sfg.c line 1832*/
             cfree(getMEMINT((int)((cel_3 + 0))));
             setMEMINT((int)((cel_3 + 0)),(int)((int)(0)));
             
-            /* file sfg.c line 1719*/
+            /* file sfg.c line 1834*/
             cfree(cel_3);
             cel_3=(int)(0);
             cel_3=celnext_4;
@@ -5414,7 +5855,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
       prevlevel();
    }
    
-   /* file sfg.c line 1732*/
+   /* file sfg.c line 1847*/
    
    public static void cprep(int  cg)
    {
@@ -5449,7 +5890,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
       prevlevel();
    }
    
-   /* file sfg.c line 1747*/
+   /* file sfg.c line 1862*/
    
    public static void creorg(int  cg)
    {
@@ -5477,7 +5918,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          cnnlend_10= (int)(0);
          cnl_3=getMEMINT((int)((cg + 60)));
          
-         /* file sfg.c line 1757*/
+         /* file sfg.c line 1872*/
          if( (((cnl_3)==((int)(0)))?1:0)!=0)
          {
          	   
@@ -5496,23 +5937,23 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          	   
             {
             
-            /* file sfg.c line 1763*/
+            /* file sfg.c line 1878*/
             if( ((((((getMEMINT((int)((getMEMINT((int)((cnl_3 + 0))) + 44))))==(0))?1:0))!=0)? ((((getMEMINT((int)((getMEMINT((int)((cnl_3 + 0))) + 48))))==(0))?1:0)):0)!=0)
             {
             	   
                {
                cnn1_5=
-               /* file sfg.c line 1764*/
+               /* file sfg.c line 1879*/
                ccalloc(1,8);
                
-               /* file sfg.c line 1765*/
+               /* file sfg.c line 1880*/
                if( cnn1_5!=0)
                {
                	   
                   {
                   setMEMINT((int)((cnn1_5 + 0)),(int)(getMEMINT((int)((cnl_3 + 0)))));
                   
-                  /* file sfg.c line 1767*/
+                  /* file sfg.c line 1882*/
                   if( (((cnnl_9)==((int)(0)))?1:0)!=0)
                   {
                   	   
@@ -5552,23 +5993,23 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          	   
             {
             
-            /* file sfg.c line 1782*/
+            /* file sfg.c line 1897*/
             if( ((((((getMEMINT((int)((getMEMINT((int)((cnl_3 + 0))) + 44))))==(0))?1:0))!=0)? ((((getMEMINT((int)((getMEMINT((int)((cnl_3 + 0))) + 48))))!=(0))?1:0)):0)!=0)
             {
             	   
                {
                cnn2_6=
-               /* file sfg.c line 1783*/
+               /* file sfg.c line 1898*/
                ccalloc(1,8);
                
-               /* file sfg.c line 1784*/
+               /* file sfg.c line 1899*/
                if( cnn2_6!=0)
                {
                	   
                   {
                   setMEMINT((int)((cnn2_6 + 0)),(int)(getMEMINT((int)((cnl_3 + 0)))));
                   
-                  /* file sfg.c line 1786*/
+                  /* file sfg.c line 1901*/
                   if( (((cnnl_9)==((int)(0)))?1:0)!=0)
                   {
                   	   
@@ -5608,23 +6049,23 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          	   
             {
             
-            /* file sfg.c line 1801*/
+            /* file sfg.c line 1916*/
             if( ((((((getMEMINT((int)((getMEMINT((int)((cnl_3 + 0))) + 44))))!=(0))?1:0))!=0)? ((((getMEMINT((int)((getMEMINT((int)((cnl_3 + 0))) + 48))))!=(0))?1:0)):0)!=0)
             {
             	   
                {
                cnn3_7=
-               /* file sfg.c line 1802*/
+               /* file sfg.c line 1917*/
                ccalloc(1,8);
                
-               /* file sfg.c line 1803*/
+               /* file sfg.c line 1918*/
                if( cnn3_7!=0)
                {
                	   
                   {
                   setMEMINT((int)((cnn3_7 + 0)),(int)(getMEMINT((int)((cnl_3 + 0)))));
                   
-                  /* file sfg.c line 1805*/
+                  /* file sfg.c line 1920*/
                   if( (((cnnl_9)==((int)(0)))?1:0)!=0)
                   {
                   	   
@@ -5664,23 +6105,23 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          	   
             {
             
-            /* file sfg.c line 1820*/
+            /* file sfg.c line 1935*/
             if( ((((((getMEMINT((int)((getMEMINT((int)((cnl_3 + 0))) + 44))))!=(0))?1:0))!=0)? ((((getMEMINT((int)((getMEMINT((int)((cnl_3 + 0))) + 48))))==(0))?1:0)):0)!=0)
             {
             	   
                {
                cnn4_8=
-               /* file sfg.c line 1821*/
+               /* file sfg.c line 1936*/
                ccalloc(1,8);
                
-               /* file sfg.c line 1822*/
+               /* file sfg.c line 1937*/
                if( cnn4_8!=0)
                {
                	   
                   {
                   setMEMINT((int)((cnn4_8 + 0)),(int)(getMEMINT((int)((cnl_3 + 0)))));
                   
-                  /* file sfg.c line 1824*/
+                  /* file sfg.c line 1939*/
                   if( (((cnnl_9)==((int)(0)))?1:0)!=0)
                   {
                   	   
@@ -5721,7 +6162,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
             {
             cnlnext_4=getMEMINT((int)((cnl_3 + 4)));
             
-            /* file sfg.c line 1840*/
+            /* file sfg.c line 1955*/
             cfree(cnl_3);
             cnl_3=(int)(0);
             cnl_3=cnlnext_4;
@@ -5742,7 +6183,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
       prevlevel();
    }
    
-   /* file sfg.c line 1854*/
+   /* file sfg.c line 1969*/
    
    public static int cdecycle3(int  cg,int  cn,int  clevel,int  ce)
    {
@@ -5766,19 +6207,19 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          cedge_11= (int)(0);
          cchanged_12= 0;
          
-         /* file sfg.c line 1861*/
+         /* file sfg.c line 1976*/
          if( ce!=0)
          {
          	
          };
          
-         /* file sfg.c line 1864*/
+         /* file sfg.c line 1979*/
          if( getMEMINT((int)((cn + 36)))!=0)
          {
          	   
             {
             
-            /* file sfg.c line 1865*/
+            /* file sfg.c line 1980*/
             if( (((clevel)>(getMEMINT((int)((cn + 64)))))?1:0)!=0)
             {
             	   
@@ -5810,7 +6251,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
             cedge_11=getMEMINT((int)((cel_10 + 0)));
             ctarget_9=getMEMINT((int)((cedge_11 + 8)));
             
-            /* file sfg.c line 1882*/
+            /* file sfg.c line 1997*/
             if( getMEMINT((int)((ctarget_9 + 40)))!=0)
             {
             	   
@@ -5820,12 +6261,12 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
                setMEMINT((int)((cedge_11 + 8)),(int)(getMEMINT((int)((cedge_11 + 4)))));
                setMEMINT((int)((cedge_11 + 4)),(int)(ctmpnode_7));
                
-               /* file sfg.c line 1888*/
-               if( getMEMINT((int)((cedge_11 + 28)))!=0)
+               /* file sfg.c line 2003*/
+               if( getMEMINT((int)((cedge_11 + 24)))!=0)
                {
                	   
                   {
-                  setMEMINT((int)((cedge_11 + 28)),(int)(0));
+                  setMEMINT((int)((cedge_11 + 24)),(int)(0));
                   
                   }
                
@@ -5834,7 +6275,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
                {
                	   
                   {
-                  setMEMINT((int)((cedge_11 + 28)),(int)(1));
+                  setMEMINT((int)((cedge_11 + 24)),(int)(1));
                   
                   }
                
@@ -5848,13 +6289,13 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
             	   
                {
                
-               /* file sfg.c line 1894*/
+               /* file sfg.c line 2009*/
                if( (((getMEMINT((int)((ctarget_9 + 36))))==(0))?1:0)!=0)
                {
                	   
                   {
                   cchanged_12+=
-                  /* file sfg.c line 1895*/
+                  /* file sfg.c line 2010*/
                   cdecycle3(cg,ctarget_9,(clevel + 1),ce);
                   
                   }
@@ -5883,7 +6324,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
       return 0;
    }
    
-   /* file sfg.c line 1908*/
+   /* file sfg.c line 2023*/
    
    public static void cuncycle(int  cg)
    {
@@ -5898,10 +6339,10 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          clnll_3= (int)(0);
          cchanged_4= 0;
          
-         /* file sfg.c line 1912*/
+         /* file sfg.c line 2027*/
          cclear_stlist_all(cg);
          
-         /* file sfg.c line 1913*/
+         /* file sfg.c line 2028*/
          cmake_stlist(cg);
          setMEMINT((int)((cg + 20)),(int)(0));
          clnll_3=getMEMINT((int)((cg + 60)));
@@ -5924,19 +6365,19 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          	   
             {
             
-            /* file sfg.c line 1929*/
+            /* file sfg.c line 2044*/
             if( ((((((getMEMINT((int)((getMEMINT((int)((clnll_3 + 0))) + 44))))==(0))?1:0))!=0)? ((((getMEMINT((int)((getMEMINT((int)((clnll_3 + 0))) + 48))))!=(0))?1:0)):0)!=0)
             {
             	   
                {
                
-               /* file sfg.c line 1930*/
+               /* file sfg.c line 2045*/
                if( (((getMEMINT((int)((getMEMINT((int)((clnll_3 + 0))) + 36))))==(0))?1:0)!=0)
                {
                	   
                   {
                   cchanged_4+=
-                  /* file sfg.c line 1932*/
+                  /* file sfg.c line 2047*/
                   cdecycle3(cg,getMEMINT((int)((clnll_3 + 0))),0,(int)(0));
                   
                   }
@@ -5957,13 +6398,13 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          	   
             {
             
-            /* file sfg.c line 1942*/
+            /* file sfg.c line 2057*/
             if( (((getMEMINT((int)((getMEMINT((int)((clnll_3 + 0))) + 64))))==((-(1))))?1:0)!=0)
             {
             	   
                {
                cchanged_4+=
-               /* file sfg.c line 1944*/
+               /* file sfg.c line 2059*/
                cdecycle3(cg,getMEMINT((int)((clnll_3 + 0))),0,(int)(0));
                
                }
@@ -5975,16 +6416,16 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          }
          
-         /* file sfg.c line 1948*/
+         /* file sfg.c line 2063*/
          if( cchanged_4!=0)
          {
          	   
             {
             
-            /* file sfg.c line 1950*/
+            /* file sfg.c line 2065*/
             cclear_stlist_all(cg);
             
-            /* file sfg.c line 1951*/
+            /* file sfg.c line 2066*/
             cmake_stlist(cg);
             
             }
@@ -6001,7 +6442,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
       prevlevel();
    }
    
-   /* file sfg.c line 1959*/
+   /* file sfg.c line 2074*/
    
    public static void cmake_stlist(int  cg)
    {
@@ -6048,10 +6489,10 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
             csn_5=getMEMINT((int)((cedge_4 + 4)));
             ctn_6=getMEMINT((int)((cedge_4 + 8)));
             cne_7=
-            /* file sfg.c line 1985*/
+            /* file sfg.c line 2100*/
             ccalloc(1,8);
             
-            /* file sfg.c line 1986*/
+            /* file sfg.c line 2101*/
             if( (((cne_7)==((int)(0)))?1:0)!=0)
             {
             	   
@@ -6067,7 +6508,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
             };
             setMEMINT((int)((cne_7 + 0)),(int)(cedge_4));
             
-            /* file sfg.c line 1992*/
+            /* file sfg.c line 2107*/
             if( (((getMEMINT((int)((csn_5 + 100))))==((int)(0)))?1:0)!=0)
             {
             	   
@@ -6090,10 +6531,10 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
             };
             sincMEMINT((int)((csn_5 + 48)),+1);
             cne_7=
-            /* file sfg.c line 2001*/
+            /* file sfg.c line 2116*/
             ccalloc(1,8);
             
-            /* file sfg.c line 2002*/
+            /* file sfg.c line 2117*/
             if( (((cne_7)==((int)(0)))?1:0)!=0)
             {
             	   
@@ -6109,7 +6550,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
             };
             setMEMINT((int)((cne_7 + 0)),(int)(cedge_4));
             
-            /* file sfg.c line 2008*/
+            /* file sfg.c line 2123*/
             if( (((getMEMINT((int)((ctn_6 + 108))))==((int)(0)))?1:0)!=0)
             {
             	   
@@ -6147,7 +6588,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
       prevlevel();
    }
    
-   /* file sfg.c line 2025*/
+   /* file sfg.c line 2140*/
    
    public static void cclear_stlist(int  cnode)
    {
@@ -6168,7 +6609,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
             {
             cellnext_4=getMEMINT((int)((cell_3 + 4)));
             
-            /* file sfg.c line 2032*/
+            /* file sfg.c line 2147*/
             cfree(cell_3);
             cell_3=(int)(0);
             cell_3=cellnext_4;
@@ -6186,7 +6627,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
             {
             cellnext_4=getMEMINT((int)((cell_3 + 4)));
             
-            /* file sfg.c line 2044*/
+            /* file sfg.c line 2159*/
             cfree(cell_3);
             cell_3=(int)(0);
             cell_3=cellnext_4;
@@ -6208,7 +6649,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
       prevlevel();
    }
    
-   /* file sfg.c line 2057*/
+   /* file sfg.c line 2172*/
    
    public static void cclear_stlist_all(int  cg)
    {
@@ -6226,7 +6667,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          	   
             {
             
-            /* file sfg.c line 2061*/
+            /* file sfg.c line 2176*/
             cclear_stlist(getMEMINT((int)((clnll_3 + 0))));
             clnll_3=getMEMINT((int)((clnll_3 + 4)));
             
@@ -6244,7 +6685,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
       prevlevel();
    }
    
-   /* file sfg.c line 2069*/
+   /* file sfg.c line 2184*/
    
    public static void cadd_singlenode(int  cg,int  cnode)
    {
@@ -6257,17 +6698,17 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          {
          clnll_4= (int)(0);
          clnll_4=(int)(
-         /* file sfg.c line 2071*/
+         /* file sfg.c line 2186*/
          ccalloc(1,8));
          
-         /* file sfg.c line 2072*/
+         /* file sfg.c line 2187*/
          if( clnll_4!=0)
          {
          	   
             {
             setMEMINT((int)((clnll_4 + 0)),(int)(cnode));
             
-            /* file sfg.c line 2074*/
+            /* file sfg.c line 2189*/
             if( (((getMEMINT((int)((cg + 68))))==((int)(0)))?1:0)!=0)
             {
             	   
@@ -6303,7 +6744,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
       prevlevel();
    }
    
-   /* file sfg.c line 2087*/
+   /* file sfg.c line 2202*/
    
    public static void cylevels(int  cg)
    {
@@ -6324,7 +6765,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          cspecial_6= 0;
          cnnodes_7= 0;
          
-         /* file sfg.c line 2093*/
+         /* file sfg.c line 2208*/
          if( (((getMEMINT((int)((cg + 60))))==((int)(0)))?1:0)!=0)
          {
          	   
@@ -6351,7 +6792,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
             setMEMINT((int)((getMEMINT((int)((clnll_3 + 0))) + 40)),(int)(0));
             setMEMINT((int)((getMEMINT((int)((clnll_3 + 0))) + 116)),(int)((-(1))));
             
-            /* file sfg.c line 2111*/
+            /* file sfg.c line 2226*/
             if( ((((((getMEMINT((int)((getMEMINT((int)((clnll_3 + 0))) + 100))))==((int)(0)))?1:0))!=0)? ((((getMEMINT((int)((getMEMINT((int)((clnll_3 + 0))) + 108))))==((int)(0)))?1:0)):0)!=0)
             {
             	   
@@ -6361,7 +6802,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
                setMEMINT((int)((getMEMINT((int)((clnll_3 + 0))) + 116)),(int)(0));
                setMEMINT((int)((cg + 32)),(int)((getMEMINT((int)((cg + 32))) + 1)));
                
-               /* file sfg.c line 2118*/
+               /* file sfg.c line 2233*/
                cadd_singlenode(cg,getMEMINT((int)((clnll_3 + 0))));
                
                }
@@ -6373,7 +6814,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          }
          
-         /* file sfg.c line 2124*/
+         /* file sfg.c line 2239*/
          if( getMEMINT((int)((cg + 32)))!=0)
          {
          	   
@@ -6401,20 +6842,20 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          	   
             {
             
-            /* file sfg.c line 2138*/
+            /* file sfg.c line 2253*/
             if( (((getMEMINT((int)((getMEMINT((int)((clnll_3 + 0))) + 64))))==((-(1))))?1:0)!=0)
             {
             	   
                {
                
-               /* file sfg.c line 2140*/
+               /* file sfg.c line 2255*/
                if( ((((((getMEMINT((int)((getMEMINT((int)((clnll_3 + 0))) + 44))))==(0))?1:0))!=0)? ((((getMEMINT((int)((getMEMINT((int)((clnll_3 + 0))) + 48))))!=(0))?1:0)):0)!=0)
                {
                	   
                   {
                   sincMEMINT((int)((cg + 44)),+1);
                   
-                  /* file sfg.c line 2142*/
+                  /* file sfg.c line 2257*/
                   cset_level2(cg,getMEMINT((int)((clnll_3 + 0))),cstart2_5,getMEMINT((int)((getMEMINT((int)((clnll_3 + 0))) + 0))));
                   
                   }
@@ -6435,13 +6876,13 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          	   
             {
             
-            /* file sfg.c line 2151*/
+            /* file sfg.c line 2266*/
             if( (((getMEMINT((int)((getMEMINT((int)((clnll_3 + 0))) + 64))))==((-(1))))?1:0)!=0)
             {
             	   
                {
                
-               /* file sfg.c line 2152*/
+               /* file sfg.c line 2267*/
                cset_level2(cg,getMEMINT((int)((clnll_3 + 0))),cstart2_5,getMEMINT((int)((getMEMINT((int)((clnll_3 + 0))) + 0))));
                
                }
@@ -6453,20 +6894,20 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          }
          
-         /* file sfg.c line 2160*/
+         /* file sfg.c line 2275*/
          if( (((getMEMINT((int)((cg + 44))))==(0))?1:0)!=0)
          {
          	   
             {
             sincMEMINT((int)((cg + 44)),+1);
             
-            /* file sfg.c line 2162*/
+            /* file sfg.c line 2277*/
             if( getMEMINT((int)((cg + 60)))!=0)
             {
             	   
                {
                
-               /* file sfg.c line 2163*/
+               /* file sfg.c line 2278*/
                cset_level2(cg,getMEMINT((int)((getMEMINT((int)((cg + 60))) + 0))),cstart2_5,getMEMINT((int)((getMEMINT((int)((getMEMINT((int)((cg + 60))) + 0))) + 0))));
                
                }
@@ -6478,10 +6919,10 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          };
          setMEMINT((int)((cg + 48)),(int)(
-         /* file sfg.c line 2169*/
+         /* file sfg.c line 2284*/
          ccalloc(1,(getMEMINT((int)((cg + 44)))*4))));
          
-         /* file sfg.c line 2170*/
+         /* file sfg.c line 2285*/
          if( (((getMEMINT((int)((cg + 48))))==((int)(0)))?1:0)!=0)
          {
          	   
@@ -6496,13 +6937,13 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          };
          
-         /* file sfg.c line 2175*/
+         /* file sfg.c line 2290*/
          if( cspecial_6!=0)
          {
          	   
             {
             
-            /* file sfg.c line 2177*/
+            /* file sfg.c line 2292*/
             if( getMEMINT((int)((cg + 60)))!=0)
             {
             	   
@@ -6527,7 +6968,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
             	   
                {
                
-               /* file sfg.c line 2186*/
+               /* file sfg.c line 2301*/
                if( ((((((getMEMINT((int)((getMEMINT((int)((clnll_3 + 0))) + 44))))==(0))?1:0))!=0)? ((((getMEMINT((int)((getMEMINT((int)((clnll_3 + 0))) + 48))))!=(0))?1:0)):0)!=0)
                {
                	   
@@ -6558,7 +6999,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
       prevlevel();
    }
    
-   /* file sfg.c line 2200*/
+   /* file sfg.c line 2315*/
    
    public static void cset_level2(int  cg,int  cn,int  ci,int  cstartnode)
    {
@@ -6575,20 +7016,20 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          cedge_7= (int)(0);
          cel_8= (int)(0);
          
-         /* file sfg.c line 2204*/
+         /* file sfg.c line 2319*/
          if( getMEMINT((int)((cn + 36)))!=0)
          {
          	   
             {
             
-            /* file sfg.c line 2205*/
+            /* file sfg.c line 2320*/
             if( ((((((ci)>(getMEMINT((int)((cn + 64)))))?1:0))!=0)? ((((getMEMINT((int)((cn + 40))))==(0))?1:0)):0)!=0)
             {
             	   
                {
                setMEMINT((int)((cn + 64)),(int)(ci));
                
-               /* file sfg.c line 2207*/
+               /* file sfg.c line 2322*/
                if( (((ci)>(getMEMINT((int)((cg + 20)))))?1:0)!=0)
                {
                	   
@@ -6603,7 +7044,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
             
             };
             
-            /* file sfg.c line 2211*/
+            /* file sfg.c line 2326*/
             if( getMEMINT((int)((cn + 40)))!=0)
             {
             	   
@@ -6618,7 +7059,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
             
             };
             
-            /* file sfg.c line 2214*/
+            /* file sfg.c line 2329*/
             if( (((getMEMINT((int)((cn + 36))))>(1))?1:0)!=0)
             {
             	   
@@ -6641,7 +7082,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          setMEMINT((int)((cn + 64)),(int)(ci));
          setMEMINT((int)((cn + 116)),(int)(cstartnode));
          
-         /* file sfg.c line 2224*/
+         /* file sfg.c line 2339*/
          if( (((ci)>(getMEMINT((int)((cg + 20)))))?1:0)!=0)
          {
          	   
@@ -6659,7 +7100,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
             cedge_7=getMEMINT((int)((cel_8 + 0)));
             ctarget_6=getMEMINT((int)((cedge_7 + 8)));
             
-            /* file sfg.c line 2233*/
+            /* file sfg.c line 2348*/
             cset_level2(cg,ctarget_6,(ci + 1),cstartnode);
             cel_8=getMEMINT((int)((cel_8 + 4)));
             
@@ -6678,7 +7119,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
       prevlevel();
    }
    
-   /* file sfg.c line 2242*/
+   /* file sfg.c line 2357*/
    
    public static void cunrev(int  cg)
    {
@@ -6707,8 +7148,8 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
             {
             cedge_7=getMEMINT((int)((cel_3 + 0)));
             
-            /* file sfg.c line 2252*/
-            if( getMEMINT((int)((getMEMINT((int)((cel_3 + 0))) + 28)))!=0)
+            /* file sfg.c line 2367*/
+            if( getMEMINT((int)((getMEMINT((int)((cel_3 + 0))) + 24)))!=0)
             {
             	   
                {
@@ -6718,7 +7159,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
                ctmpnode_4=ctn_6;
                setMEMINT((int)((getMEMINT((int)((cel_3 + 0))) + 8)),(int)(csn_5));
                setMEMINT((int)((getMEMINT((int)((cel_3 + 0))) + 4)),(int)(ctmpnode_4));
-               setMEMINT((int)((getMEMINT((int)((cel_3 + 0))) + 28)),(int)(0));
+               setMEMINT((int)((getMEMINT((int)((cel_3 + 0))) + 24)),(int)(0));
                
                }
             
@@ -6729,17 +7170,17 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          }
          
-         /* file sfg.c line 2264*/
+         /* file sfg.c line 2379*/
          if( cchanged_8!=0)
          {
          	   
             {
             setMEMINT((int)((cg + 20)),(int)(0));
             
-            /* file sfg.c line 2269*/
+            /* file sfg.c line 2384*/
             cclear_stlist_all(cg);
             
-            /* file sfg.c line 2270*/
+            /* file sfg.c line 2385*/
             cmake_stlist(cg);
             
             }
@@ -6756,7 +7197,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
       prevlevel();
    }
    
-   /* file sfg.c line 2277*/
+   /* file sfg.c line 2392*/
    
    public static void cshorteredges(int  cg)
    {
@@ -6781,7 +7222,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          cntop_8= (int)(0);
          cnbot_9= (int)(0);
          
-         /* file sfg.c line 2286*/
+         /* file sfg.c line 2401*/
          cunrev(cg);
          clnll_3=getMEMINT((int)((cg + 60)));
          lab_sfg25 : while( (clnll_3) !=0 )
@@ -6789,7 +7230,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          	   
             {
             
-            /* file sfg.c line 2290*/
+            /* file sfg.c line 2405*/
             if( ((((((getMEMINT((int)((getMEMINT((int)((clnll_3 + 0))) + 44))))==(1))?1:0))!=0)? ((((getMEMINT((int)((getMEMINT((int)((clnll_3 + 0))) + 48))))==(1))?1:0)):0)!=0)
             {
             	   
@@ -6801,11 +7242,11 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
                cntop_8=getMEMINT((int)((cetop_6 + 4)));
                cnbot_9=getMEMINT((int)((cebot_7 + 8)));
                
-               /* file sfg.c line 2298*/
+               /* file sfg.c line 2413*/
                if( ((((((
-               /* file sfg.c line 2297*/
+               /* file sfg.c line 2412*/
                cabs((getMEMINT((int)((cntop_8 + 64))) - getMEMINT((int)((getMEMINT((int)((clnll_3 + 0))) + 64))))))>(1))?1:0))!=0)?1: ((((
-               /* file sfg.c line 2298*/
+               /* file sfg.c line 2413*/
                cabs((getMEMINT((int)((cnbot_9 + 64))) - getMEMINT((int)((getMEMINT((int)((clnll_3 + 0))) + 64))))))>(1))?1:0)))!=0)
                {
                	   
@@ -6835,7 +7276,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
       prevlevel();
    }
    
-   /* file sfg.c line 2311*/
+   /* file sfg.c line 2426*/
    
    public static void cedgesdownwards(int  cg)
    {
@@ -6866,7 +7307,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
             csn_5=getMEMINT((int)((cedge_7 + 4)));
             ctn_6=getMEMINT((int)((cedge_7 + 8)));
             
-            /* file sfg.c line 2324*/
+            /* file sfg.c line 2439*/
             if( ((((getMEMINT((int)((ctn_6 + 64))) - getMEMINT((int)((csn_5 + 64)))))<(0))?1:0)!=0)
             {
             	   
@@ -6875,12 +7316,12 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
                setMEMINT((int)((getMEMINT((int)((cel_3 + 0))) + 8)),(int)(getMEMINT((int)((getMEMINT((int)((cel_3 + 0))) + 4)))));
                setMEMINT((int)((getMEMINT((int)((cel_3 + 0))) + 4)),(int)(ctmpnode_4));
                
-               /* file sfg.c line 2330*/
-               if( getMEMINT((int)((getMEMINT((int)((cel_3 + 0))) + 28)))!=0)
+               /* file sfg.c line 2445*/
+               if( getMEMINT((int)((getMEMINT((int)((cel_3 + 0))) + 24)))!=0)
                {
                	   
                   {
-                  setMEMINT((int)((getMEMINT((int)((cel_3 + 0))) + 28)),(int)(0));
+                  setMEMINT((int)((getMEMINT((int)((cel_3 + 0))) + 24)),(int)(0));
                   
                   }
                
@@ -6889,7 +7330,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
                {
                	   
                   {
-                  setMEMINT((int)((getMEMINT((int)((cel_3 + 0))) + 28)),(int)(1));
+                  setMEMINT((int)((getMEMINT((int)((cel_3 + 0))) + 24)),(int)(1));
                   
                   }
                
@@ -6905,17 +7346,17 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          }
          
-         /* file sfg.c line 2340*/
+         /* file sfg.c line 2455*/
          if( cchanged1_8!=0)
          {
          	   
             {
             setMEMINT((int)((cg + 20)),(int)(0));
             
-            /* file sfg.c line 2344*/
+            /* file sfg.c line 2459*/
             cclear_stlist_all(cg);
             
-            /* file sfg.c line 2345*/
+            /* file sfg.c line 2460*/
             cmake_stlist(cg);
             
             }
@@ -6932,7 +7373,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
       prevlevel();
    }
    
-   /* file sfg.c line 2353*/
+   /* file sfg.c line 2468*/
    
    public static void cedgelen(int  cg)
    {
@@ -6963,7 +7404,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
             csn_5=getMEMINT((int)((cedge_4 + 4)));
             ctn_6=getMEMINT((int)((cedge_4 + 8)));
             
-            /* file sfg.c line 2365*/
+            /* file sfg.c line 2480*/
             if( ((((getMEMINT((int)((ctn_6 + 64))) - getMEMINT((int)((csn_5 + 64)))))<(0))?1:0)!=0)
             {
             	   
@@ -6982,16 +7423,16 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          }
          
-         /* file sfg.c line 2375*/
+         /* file sfg.c line 2490*/
          if( cchanged_8!=0)
          {
          	   
             {
             
-            /* file sfg.c line 2377*/
+            /* file sfg.c line 2492*/
             cclear_stlist_all(cg);
             
-            /* file sfg.c line 2378*/
+            /* file sfg.c line 2493*/
             cmake_stlist(cg);
             
             }
@@ -7008,7 +7449,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
       prevlevel();
    }
    
-   /* file sfg.c line 2386*/
+   /* file sfg.c line 2501*/
    
    public static void cdoublespacey(int  cg)
    {
@@ -7028,7 +7469,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
             {
             setMEMINT((int)((getMEMINT((int)((clnll_3 + 0))) + 64)),(int)((2*getMEMINT((int)((getMEMINT((int)((clnll_3 + 0))) + 64))))));
             
-            /* file sfg.c line 2394*/
+            /* file sfg.c line 2509*/
             if( (((getMEMINT((int)((getMEMINT((int)((clnll_3 + 0))) + 64))))>(getMEMINT((int)((cg + 20)))))?1:0)!=0)
             {
             	   
@@ -7054,7 +7495,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
       prevlevel();
    }
    
-   /* file sfg.c line 2405*/
+   /* file sfg.c line 2520*/
    
    public static void cadd_new_dummynode(int  cg,int  cfoundid)
    {
@@ -7069,9 +7510,9 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          cnode_4= (int)(0);
          clnll_5= (int)(0);
          
-         /* file sfg.c line 2408*/
+         /* file sfg.c line 2523*/
          if( 
-         /* file sfg.c line 2408*/
+         /* file sfg.c line 2523*/
          cuniqnode(cmaingraph_1,cfoundid)!=0)
          {
          	   
@@ -7086,10 +7527,10 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          };
          cnode_4=
-         /* file sfg.c line 2412*/
+         /* file sfg.c line 2527*/
          ccalloc(1,128);
          
-         /* file sfg.c line 2413*/
+         /* file sfg.c line 2528*/
          if( (((cnode_4)==((int)(0)))?1:0)!=0)
          {
          	   
@@ -7105,19 +7546,19 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          };
          setMEMINT((int)((cnode_4 + 0)),(int)(cfoundid));
          
-         /* file sfg.c line 2417*/
+         /* file sfg.c line 2532*/
          cuniqnode_add(cmaingraph_1,cnode_4);
          clnll_5=
-         /* file sfg.c line 2418*/
+         /* file sfg.c line 2533*/
          ccalloc(1,8);
          
-         /* file sfg.c line 2419*/
+         /* file sfg.c line 2534*/
          if( (((clnll_5)==((int)(0)))?1:0)!=0)
          {
          	   
             {
             
-            /* file sfg.c line 2420*/
+            /* file sfg.c line 2535*/
             cfree(cnode_4);
             if(true)
             {
@@ -7130,7 +7571,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          };
          setMEMINT((int)((clnll_5 + 0)),(int)(cnode_4));
          
-         /* file sfg.c line 2425*/
+         /* file sfg.c line 2540*/
          if( (((getMEMINT((int)((cg + 60))))==((int)(0)))?1:0)!=0)
          {
          	   
@@ -7162,7 +7603,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
       prevlevel();
    }
    
-   /* file sfg.c line 2438*/
+   /* file sfg.c line 2553*/
    
    public static void cadd_new_dummyedge(int  cg,int  cfoundsource,int  cfoundtarget,int  creversed)
    {
@@ -7181,10 +7622,10 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          cedge_8= (int)(0);
          cel_9= (int)(0);
          csnode_6=
-         /* file sfg.c line 2443*/
+         /* file sfg.c line 2558*/
          cuniqnode(cmaingraph_1,cfoundsource);
          
-         /* file sfg.c line 2444*/
+         /* file sfg.c line 2559*/
          if( (((csnode_6)==((int)(0)))?1:0)!=0)
          {
          	   
@@ -7199,10 +7640,10 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          };
          ctnode_7=
-         /* file sfg.c line 2448*/
+         /* file sfg.c line 2563*/
          cuniqnode(cmaingraph_1,cfoundtarget);
          
-         /* file sfg.c line 2449*/
+         /* file sfg.c line 2564*/
          if( (((ctnode_7)==((int)(0)))?1:0)!=0)
          {
          	   
@@ -7217,10 +7658,10 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          };
          cedge_8=
-         /* file sfg.c line 2453*/
-         ccalloc(1,36);
+         /* file sfg.c line 2568*/
+         ccalloc(1,32);
          
-         /* file sfg.c line 2454*/
+         /* file sfg.c line 2569*/
          if( (((cedge_8)==((int)(0)))?1:0)!=0)
          {
          	   
@@ -7238,18 +7679,18 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          setMEMINT((int)((cedge_8 + 0)),(int)(getMEMINT((int)((cg + 12)))));
          setMEMINT((int)((cedge_8 + 4)),(int)(csnode_6));
          setMEMINT((int)((cedge_8 + 8)),(int)(ctnode_7));
-         setMEMINT((int)((cedge_8 + 28)),(int)(creversed));
+         setMEMINT((int)((cedge_8 + 24)),(int)(creversed));
          cel_9=
-         /* file sfg.c line 2462*/
+         /* file sfg.c line 2577*/
          ccalloc(1,8);
          
-         /* file sfg.c line 2463*/
+         /* file sfg.c line 2578*/
          if( (((cel_9)==((int)(0)))?1:0)!=0)
          {
          	   
             {
             
-            /* file sfg.c line 2464*/
+            /* file sfg.c line 2579*/
             cfree(cedge_8);
             if(true)
             {
@@ -7262,7 +7703,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          };
          setMEMINT((int)((cel_9 + 0)),(int)(cedge_8));
          
-         /* file sfg.c line 2469*/
+         /* file sfg.c line 2584*/
          if( (((getMEMINT((int)((cg + 76))))==((int)(0)))?1:0)!=0)
          {
          	   
@@ -7294,7 +7735,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
       prevlevel();
    }
    
-   /* file sfg.c line 2482*/
+   /* file sfg.c line 2597*/
    
    public static void cdel_edge(int  cg,int  cedgeel)
    {
@@ -7311,7 +7752,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          cel_5= (int)(0);
          celto_6= (int)(0);
          
-         /* file sfg.c line 2486*/
+         /* file sfg.c line 2601*/
          if( (((getMEMINT((int)((cg + 76))))==((int)(0)))?1:0)!=0)
          {
          	   
@@ -7326,14 +7767,14 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          };
          
-         /* file sfg.c line 2490*/
+         /* file sfg.c line 2605*/
          if( (((cedgeel)==(getMEMINT((int)((cg + 76)))))?1:0)!=0)
          {
          	   
             {
             setMEMINT((int)((cg + 76)),(int)(getMEMINT((int)((getMEMINT((int)((cg + 76))) + 4)))));
             
-            /* file sfg.c line 2492*/
+            /* file sfg.c line 2607*/
             if( (((getMEMINT((int)((cg + 80))))==(cedgeel))?1:0)!=0)
             {
             	   
@@ -7355,7 +7796,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
                   {
                   celprev_4=cel_5;
                   
-                  /* file sfg.c line 2499*/
+                  /* file sfg.c line 2614*/
                   if( (((getMEMINT((int)((cel_5 + 4))))==(cedgeel))?1:0)!=0)
                   {
                   	   
@@ -7379,11 +7820,11 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
             
             };
             
-            /* file sfg.c line 2507*/
+            /* file sfg.c line 2622*/
             cfree(getMEMINT((int)((cedgeel + 0))));
             setMEMINT((int)((cedgeel + 0)),(int)((int)(0)));
             
-            /* file sfg.c line 2509*/
+            /* file sfg.c line 2624*/
             cfree(cedgeel);
             
             }
@@ -7402,7 +7843,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
                {
                celprev_4=cel_5;
                
-               /* file sfg.c line 2517*/
+               /* file sfg.c line 2632*/
                if( (((getMEMINT((int)((cel_5 + 4))))==(cedgeel))?1:0)!=0)
                {
                	   
@@ -7422,7 +7863,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
             }
             setMEMINT((int)((celprev_4 + 4)),(int)(celto_6));
             
-            /* file sfg.c line 2524*/
+            /* file sfg.c line 2639*/
             if( (((getMEMINT((int)((cg + 80))))==(cedgeel))?1:0)!=0)
             {
             	   
@@ -7433,11 +7874,11 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
             
             };
             
-            /* file sfg.c line 2528*/
+            /* file sfg.c line 2643*/
             cfree(getMEMINT((int)((cedgeel + 0))));
             setMEMINT((int)((cedgeel + 0)),(int)((int)(0)));
             
-            /* file sfg.c line 2530*/
+            /* file sfg.c line 2645*/
             cfree(cedgeel);
             
             }
@@ -7454,7 +7895,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
       prevlevel();
    }
    
-   /* file sfg.c line 2538*/
+   /* file sfg.c line 2653*/
    
    public static void cedgelabels(int  cg)
    {
@@ -7477,7 +7918,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          cydiff_7= 0;
          cenumber_8= 0;
          
-         /* file sfg.c line 2546*/
+         /* file sfg.c line 2661*/
          if( (((getMEMINT((int)((cg + 24))))==(0))?1:0)!=0)
          {
          	   
@@ -7492,7 +7933,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          };
          
-         /* file sfg.c line 2550*/
+         /* file sfg.c line 2665*/
          if( (((getMEMINT((int)((cg + 28))))==(0))?1:0)!=0)
          {
          	   
@@ -7512,7 +7953,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          	   
             {
             
-            /* file sfg.c line 2559*/
+            /* file sfg.c line 2674*/
             if( (((getMEMINT((int)((getMEMINT((int)((getMEMINT((int)((cel_3 + 0))) + 4))) + 64))))>(getMEMINT((int)((getMEMINT((int)((getMEMINT((int)((cel_3 + 0))) + 8))) + 64)))))?1:0)!=0)
             {
             	   
@@ -7521,12 +7962,12 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
                setMEMINT((int)((getMEMINT((int)((cel_3 + 0))) + 4)),(int)(getMEMINT((int)((getMEMINT((int)((cel_3 + 0))) + 8)))));
                setMEMINT((int)((getMEMINT((int)((cel_3 + 0))) + 8)),(int)(cln_5));
                
-               /* file sfg.c line 2564*/
-               if( getMEMINT((int)((getMEMINT((int)((cel_3 + 0))) + 28)))!=0)
+               /* file sfg.c line 2679*/
+               if( getMEMINT((int)((getMEMINT((int)((cel_3 + 0))) + 24)))!=0)
                {
                	   
                   {
-                  setMEMINT((int)((getMEMINT((int)((cel_3 + 0))) + 28)),(int)(0));
+                  setMEMINT((int)((getMEMINT((int)((cel_3 + 0))) + 24)),(int)(0));
                   
                   }
                
@@ -7535,7 +7976,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
                {
                	   
                   {
-                  setMEMINT((int)((getMEMINT((int)((cel_3 + 0))) + 28)),(int)(1));
+                  setMEMINT((int)((getMEMINT((int)((cel_3 + 0))) + 24)),(int)(1));
                   
                   }
                
@@ -7556,19 +7997,19 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
             {
             celnext_4=getMEMINT((int)((cel_3 + 4)));
             
-            /* file sfg.c line 2578*/
+            /* file sfg.c line 2693*/
             if( getMEMINT((int)((getMEMINT((int)((cel_3 + 0))) + 20)))!=0)
             {
             	   
                {
                cenumber_8=getMEMINT((int)((getMEMINT((int)((cel_3 + 0))) + 0)));
-               crev_6=(byte)(getMEMINT((int)((getMEMINT((int)((cel_3 + 0))) + 28))));
+               crev_6=(byte)(getMEMINT((int)((getMEMINT((int)((cel_3 + 0))) + 24))));
                sincMEMINT((int)((cmaingraph_1 + 4)),+1);
                
-               /* file sfg.c line 2585*/
+               /* file sfg.c line 2700*/
                cadd_new_dummynode(cg,getMEMINT((int)((cmaingraph_1 + 4))));
                cln_5=
-               /* file sfg.c line 2587*/
+               /* file sfg.c line 2702*/
                cuniqnode(cmaingraph_1,getMEMINT((int)((cmaingraph_1 + 4))));
                setMEMINT((int)((cln_5 + 120)),(int)(getMEMINT((int)((getMEMINT((int)((cel_3 + 0))) + 4)))));
                setMEMINT((int)((cln_5 + 124)),(int)(getMEMINT((int)((getMEMINT((int)((cel_3 + 0))) + 8)))));
@@ -7581,13 +8022,13 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
                setMEMINT((int)((cln_5 + 8)),(int)(getMEMINT((int)((getMEMINT((int)((cel_3 + 0))) + 16)))));
                setMEMINT((int)((cln_5 + 116)),(int)(getMEMINT((int)((getMEMINT((int)((getMEMINT((int)((cel_3 + 0))) + 4))) + 116)))));
                
-               /* file sfg.c line 2605*/
+               /* file sfg.c line 2720*/
                cadd_new_dummyedge(cg,getMEMINT((int)((getMEMINT((int)((getMEMINT((int)((cel_3 + 0))) + 4))) + 0))),getMEMINT((int)((cmaingraph_1 + 4))),crev_6);
                
-               /* file sfg.c line 2606*/
+               /* file sfg.c line 2721*/
                cadd_new_dummyedge(cg,getMEMINT((int)((cmaingraph_1 + 4))),getMEMINT((int)((getMEMINT((int)((getMEMINT((int)((cel_3 + 0))) + 8))) + 0))),crev_6);
                
-               /* file sfg.c line 2608*/
+               /* file sfg.c line 2723*/
                cdel_edge(cg,cel_3);
                
                }
@@ -7599,10 +8040,10 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          }
          
-         /* file sfg.c line 2615*/
+         /* file sfg.c line 2730*/
          cclear_stlist_all(cg);
          
-         /* file sfg.c line 2616*/
+         /* file sfg.c line 2731*/
          cmake_stlist(cg);
          if(true)
          {
@@ -7615,7 +8056,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
       prevlevel();
    }
    
-   /* file sfg.c line 2623*/
+   /* file sfg.c line 2738*/
    
    public static void csplitedges(int  cg)
    {
@@ -7658,15 +8099,15 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
             cedge_5=getMEMINT((int)((cel_3 + 0)));
             csn_6=getMEMINT((int)((cedge_5 + 4)));
             ctn_7=getMEMINT((int)((cedge_5 + 8)));
-            crev_14=(byte)(getMEMINT((int)((cedge_5 + 28))));
+            crev_14=(byte)(getMEMINT((int)((cedge_5 + 24))));
             cedgelen_9=(getMEMINT((int)((ctn_7 + 64))) - getMEMINT((int)((csn_6 + 64))));
             
-            /* file sfg.c line 2645*/
+            /* file sfg.c line 2760*/
             if( (((cedgelen_9)==(0))?1:0)!=0)
             {
             	   
                {
-               setMEMINT((int)((cedge_5 + 32)),(int)(1));
+               setMEMINT((int)((cedge_5 + 28)),(int)(1));
                sincMEMINT((int)((cg + 36)),+1);
                setMEMINT((int)((csn_6 + 52)),(int)(1));
                setMEMINT((int)((ctn_7 + 52)),(int)(1));
@@ -7677,7 +8118,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
             else
             {
             	
-            /* file sfg.c line 2652*/
+            /* file sfg.c line 2767*/
             if( (((cedgelen_9)>(1))?1:0)!=0)
             {
             	   
@@ -7685,7 +8126,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
                cprevnodeid_10=getMEMINT((int)((csn_6 + 0)));
                csny_13=getMEMINT((int)((csn_6 + 64)));
                
-               /* file sfg.c line 2668*/
+               /* file sfg.c line 2783*/
                ci_12=1;
                lab_sfg34 : for( ; (((ci_12)<(cedgelen_9))?1:0)!=0 ; )
                {
@@ -7694,17 +8135,17 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
                   sincMEMINT((int)((cmaingraph_1 + 4)),+1);
                   cnewid_11=getMEMINT((int)((cmaingraph_1 + 4)));
                   
-                  /* file sfg.c line 2660*/
+                  /* file sfg.c line 2775*/
                   cadd_new_dummynode(cmaingraph_1,cnewid_11);
                   cnlnode_8=
-                  /* file sfg.c line 2661*/
+                  /* file sfg.c line 2776*/
                   cuniqnode(cmaingraph_1,cnewid_11);
                   setMEMINT((int)((cnlnode_8 + 20)),(int)(1));
                   setMEMINT((int)((cnlnode_8 + 24)),(int)(0));
                   setMEMINT((int)((cnlnode_8 + 64)),(int)((csny_13 + ci_12)));
                   setMEMINT((int)((cnlnode_8 + 116)),(int)(getMEMINT((int)((csn_6 + 116)))));
                   
-                  /* file sfg.c line 2666*/
+                  /* file sfg.c line 2781*/
                   cadd_new_dummyedge(cg,cprevnodeid_10,cnewid_11,crev_14);
                   cprevnodeid_10=cnewid_11;
                   
@@ -7713,10 +8154,10 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
                
                }
                
-               /* file sfg.c line 2670*/
+               /* file sfg.c line 2785*/
                cadd_new_dummyedge(cg,cprevnodeid_10,getMEMINT((int)((ctn_7 + 0))),crev_14);
                
-               /* file sfg.c line 2671*/
+               /* file sfg.c line 2786*/
                cdel_edge(cg,cel_3);
                
                }
@@ -7725,7 +8166,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
             else
             {
             	
-            /* file sfg.c line 2672*/
+            /* file sfg.c line 2787*/
             if( (((cedgelen_9)==(1))?1:0)!=0)
             {
             	
@@ -7754,7 +8195,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
       prevlevel();
    }
    
-   /* file sfg.c line 2686*/
+   /* file sfg.c line 2801*/
    
    public static void cnodecounts(int  cg)
    {
@@ -7767,16 +8208,16 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          {
          clnll_3= (int)(0);
          
-         /* file sfg.c line 2689*/
+         /* file sfg.c line 2804*/
          cclear_stlist_all(cg);
          
-         /* file sfg.c line 2690*/
+         /* file sfg.c line 2805*/
          cmake_stlist(cg);
          setMEMINT((int)((cg + 84)),(int)(
-         /* file sfg.c line 2692*/
+         /* file sfg.c line 2807*/
          ccalloc((getMEMINT((int)((cg + 20))) + 1),4)));
          
-         /* file sfg.c line 2693*/
+         /* file sfg.c line 2808*/
          if( (((getMEMINT((int)((cg + 84))))==((int)(0)))?1:0)!=0)
          {
          	   
@@ -7800,7 +8241,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
             setMEMINT((int)((getMEMINT((int)((cg + 84))) + (getMEMINT((int)((getMEMINT((int)((clnll_3 + 0))) + 64)))*4))),(int)((getMEMINT((int)((getMEMINT((int)((cg + 84))) + (getMEMINT((int)((getMEMINT((int)((clnll_3 + 0))) + 64)))*4)))) + 1)));
             setMEMINT((int)((getMEMINT((int)((clnll_3 + 0))) + 60)),(int)(getMEMINT((int)((getMEMINT((int)((cg + 84))) + (getMEMINT((int)((getMEMINT((int)((clnll_3 + 0))) + 64)))*4))))));
             
-            /* file sfg.c line 2706*/
+            /* file sfg.c line 2821*/
             if( (((getMEMINT((int)((getMEMINT((int)((cg + 84))) + (getMEMINT((int)((getMEMINT((int)((clnll_3 + 0))) + 64)))*4)))))>=(getMEMINT((int)((cg + 88)))))?1:0)!=0)
             {
             	   
@@ -7827,7 +8268,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
       prevlevel();
    }
    
-   /* file sfg.c line 2731*/
+   /* file sfg.c line 2846*/
    
    public static void csetbit(int  ca,int  ck)
    {
@@ -7839,7 +8280,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          {
          
-         /* file sfg.c line 2732*/
+         /* file sfg.c line 2847*/
          if( (((ck)==(0))?1:0)!=0)
          {
          	
@@ -7865,7 +8306,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
       prevlevel();
    }
    
-   /* file sfg.c line 2740*/
+   /* file sfg.c line 2855*/
    
    public static void cclearbit(int  ca,int  ck)
    {
@@ -7877,7 +8318,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          {
          
-         /* file sfg.c line 2741*/
+         /* file sfg.c line 2856*/
          if( (((ck)==(0))?1:0)!=0)
          {
          	
@@ -7903,7 +8344,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
       prevlevel();
    }
    
-   /* file sfg.c line 2749*/
+   /* file sfg.c line 2864*/
    
    public static int ctestbit(int  cm,int  ca,int  ck)
    {
@@ -7923,13 +8364,13 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          cmask2_8= 0;
          ci_9= 0;
          
-         /* file sfg.c line 2755*/
+         /* file sfg.c line 2870*/
          if( (((ck)==(0))?1:0)!=0)
          {
          	
          };
          
-         /* file sfg.c line 2759*/
+         /* file sfg.c line 2874*/
          if( (((ck)>(((getMEMINT((int)((cm + 8))) + 1)*(getMEMINT((int)((cm + 4))) + 1))))?1:0)!=0)
          {
          	
@@ -7937,7 +8378,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          cmask_7=(ck%8);
          cmask2_8=1;
          
-         /* file sfg.c line 2770*/
+         /* file sfg.c line 2885*/
          ci_9=0;
          lab_sfg36 : for( ; (((ci_9)<(cmask_7))?1:0)!=0 ; )
          {
@@ -7963,7 +8404,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
       return 0;
    }
    
-   /* file sfg.c line 2778*/
+   /* file sfg.c line 2893*/
    
    public static int cmget(int  cm,int  ci,int  cj)
    {
@@ -7975,7 +8416,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          {
          retval= 
-         /* file sfg.c line 2779*/
+         /* file sfg.c line 2894*/
          ctestbit(cm,(int)(getMEMINT((int)((cm + 40)))),((ci*(getMEMINT((int)((cm + 8))) + 0)) + cj));
          if(true)
          {
@@ -7989,7 +8430,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
       return 0;
    }
    
-   /* file sfg.c line 2784*/
+   /* file sfg.c line 2899*/
    
    public static void cmget_set(int  cm,int  ci,int  cj,int  cvalue)
    {
@@ -8000,13 +8441,13 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          {
          
-         /* file sfg.c line 2785*/
+         /* file sfg.c line 2900*/
          if( cvalue!=0)
          {
          	   
             {
             
-            /* file sfg.c line 2786*/
+            /* file sfg.c line 2901*/
             csetbit((int)(getMEMINT((int)((cm + 40)))),((ci*(getMEMINT((int)((cm + 8))) + 0)) + cj));
             
             }
@@ -8017,7 +8458,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          	   
             {
             
-            /* file sfg.c line 2788*/
+            /* file sfg.c line 2903*/
             cclearbit((int)(getMEMINT((int)((cm + 40)))),((ci*(getMEMINT((int)((cm + 8))) + 0)) + cj));
             
             }
@@ -8034,7 +8475,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
       prevlevel();
    }
    
-   /* file sfg.c line 2794*/
+   /* file sfg.c line 2909*/
    
    public static int cnumber_of_crossings2(int  cm,int  cr,int  cc)
    {
@@ -8056,37 +8497,37 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          cbeta_9= 1;
          cresult_10= 0;
          
-         /* file sfg.c line 2810*/
+         /* file sfg.c line 2925*/
          cj_6=1;
          lab_sfg37 : for( ; (((cj_6)<=((cr - 1)))?1:0)!=0 ; )
          {
             
             {
             
-            /* file sfg.c line 2809*/
+            /* file sfg.c line 2924*/
             ck_7=(cj_6 + 1);
             lab_sfg38 : for( ; (((ck_7)<=(cr))?1:0)!=0 ; )
             {
                
                {
                
-               /* file sfg.c line 2808*/
+               /* file sfg.c line 2923*/
                calpha_8=1;
                lab_sfg39 : for( ; (((calpha_8)<=((cc - 1)))?1:0)!=0 ; )
                {
                   
                   {
                   
-                  /* file sfg.c line 2807*/
+                  /* file sfg.c line 2922*/
                   cbeta_9=(calpha_8 + 1);
                   lab_sfg40 : for( ; (((cbeta_9)<=(cc))?1:0)!=0 ; )
                   {
                      
                      {
                      cresult_10=(cresult_10 + (
-                     /* file sfg.c line 2806*/
+                     /* file sfg.c line 2921*/
                      cmget(cm,cj_6,cbeta_9)*
-                     /* file sfg.c line 2806*/
+                     /* file sfg.c line 2921*/
                      cmget(cm,ck_7,calpha_8)));
                      
                      }
@@ -8121,7 +8562,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
       return 0;
    }
    
-   /* file sfg.c line 2815*/
+   /* file sfg.c line 2930*/
    
    public static int cnumber_of_crossings3(int  cm,int  cr,int  cc)
    {
@@ -8143,58 +8584,58 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          cbeta_9= 1;
          cresult2_10= 0;
          
-         /* file sfg.c line 2822*/
+         /* file sfg.c line 2937*/
          if( 0!=0)
          {
          	   
             {
             cresult2_10=
-            /* file sfg.c line 2823*/
+            /* file sfg.c line 2938*/
             cnumber_of_crossings2(cm,cr,cc);
             
             }
          
          };
          
-         /* file sfg.c line 2843*/
+         /* file sfg.c line 2958*/
          cj_6=1;
          lab_sfg41 : for( ; (((cj_6)<=((cr - 1)))?1:0)!=0 ; )
          {
             
             {
             
-            /* file sfg.c line 2842*/
+            /* file sfg.c line 2957*/
             ck_7=(cj_6 + 1);
             lab_sfg42 : for( ; (((ck_7)<=(cr))?1:0)!=0 ; )
             {
                
                {
                
-               /* file sfg.c line 2841*/
+               /* file sfg.c line 2956*/
                calpha_8=1;
                lab_sfg43 : for( ; (((calpha_8)<=((cc - 1)))?1:0)!=0 ; )
                {
                   
                   {
                   
-                  /* file sfg.c line 2831*/
+                  /* file sfg.c line 2946*/
                   if( 
-                  /* file sfg.c line 2831*/
+                  /* file sfg.c line 2946*/
                   cmget(cm,ck_7,calpha_8)!=0)
                   {
                   	   
                      {
                      
-                     /* file sfg.c line 2837*/
+                     /* file sfg.c line 2952*/
                      cbeta_9=(calpha_8 + 1);
                      lab_sfg44 : for( ; (((cbeta_9)<=(cc))?1:0)!=0 ; )
                      {
                         
                         {
                         
-                        /* file sfg.c line 2834*/
+                        /* file sfg.c line 2949*/
                         if( 
-                        /* file sfg.c line 2834*/
+                        /* file sfg.c line 2949*/
                         cmget(cm,cj_6,cbeta_9)!=0)
                         {
                         	   
@@ -8241,7 +8682,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
       return 0;
    }
    
-   /* file sfg.c line 2850*/
+   /* file sfg.c line 2965*/
    
    public static int cnumber_of_crossings_a(int  cg,int  cmm)
    {
@@ -8259,20 +8700,20 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          ck_6= 0;
          ci_7= 0;
          
-         /* file sfg.c line 2862*/
+         /* file sfg.c line 2977*/
          ci_7=0;
          lab_sfg45 : for( ; (((ci_7)<(getMEMINT((int)((cg + 20)))))?1:0)!=0 ; )
          {
             
             {
             
-            /* file sfg.c line 2856*/
+            /* file sfg.c line 2971*/
             if( getMEMINT((int)((cmm + (ci_7*4))))!=0)
             {
             	   
                {
                ck_6=
-               /* file sfg.c line 2857*/
+               /* file sfg.c line 2972*/
                cnumber_of_crossings3(getMEMINT((int)((cmm + (ci_7*4)))),getMEMINT((int)((getMEMINT((int)((cmm + (ci_7*4)))) + 4))),getMEMINT((int)((getMEMINT((int)((cmm + (ci_7*4)))) + 8))));
                setMEMINT((int)((getMEMINT((int)((cg + 108))) + (ci_7*4))),(int)(ck_6));
                cktot_5=(cktot_5 + ck_6);
@@ -8298,7 +8739,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
       return 0;
    }
    
-   /* file sfg.c line 2869*/
+   /* file sfg.c line 2984*/
    
    public static void cmake_matrix(int  cg,int  cl,int  cm)
    {
@@ -8326,7 +8767,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          	   
             {
             
-            /* file sfg.c line 2883*/
+            /* file sfg.c line 2998*/
             if( (((getMEMINT((int)((getMEMINT((int)((cnl_5 + 0))) + 64))))==(cl))?1:0)!=0)
             {
             	   
@@ -8340,7 +8781,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
             else
             {
             	
-            /* file sfg.c line 2887*/
+            /* file sfg.c line 3002*/
             if( (((getMEMINT((int)((getMEMINT((int)((cnl_5 + 0))) + 64))))==((cl + 1)))?1:0)!=0)
             {
             	   
@@ -8361,21 +8802,21 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          cr_10=getMEMINT((int)((cm + 4)));
          cc_9=getMEMINT((int)((cm + 8)));
          
-         /* file sfg.c line 2903*/
+         /* file sfg.c line 3018*/
          ci_7=1;
          lab_sfg47 : for( ; (((ci_7)<=(cr_10))?1:0)!=0 ; )
          {
             
             {
             
-            /* file sfg.c line 2902*/
+            /* file sfg.c line 3017*/
             cj_8=1;
             lab_sfg48 : for( ; (((cj_8)<=(cc_9))?1:0)!=0 ; )
             {
                
                {
                
-               /* file sfg.c line 2901*/
+               /* file sfg.c line 3016*/
                cmget_set(cm,ci_7,cj_8,0);
                
                }
@@ -8393,7 +8834,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          	   
             {
             
-            /* file sfg.c line 2909*/
+            /* file sfg.c line 3024*/
             if( (((getMEMINT((int)((getMEMINT((int)((cnl_5 + 0))) + 64))))==(cl))?1:0)!=0)
             {
             	   
@@ -8404,15 +8845,15 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
                	   
                   {
                   
-                  /* file sfg.c line 2914*/
-                  if( (((getMEMINT((int)((getMEMINT((int)((cel_6 + 0))) + 32))))==(0))?1:0)!=0)
+                  /* file sfg.c line 3029*/
+                  if( (((getMEMINT((int)((getMEMINT((int)((cel_6 + 0))) + 28))))==(0))?1:0)!=0)
                   {
                   	   
                      {
                      ci_7=getMEMINT((int)((getMEMINT((int)((cnl_5 + 0))) + 60)));
                      cj_8=getMEMINT((int)((getMEMINT((int)((getMEMINT((int)((cel_6 + 0))) + 8))) + 60)));
                      
-                     /* file sfg.c line 2920*/
+                     /* file sfg.c line 3035*/
                      cmget_set(cm,ci_7,cj_8,1);
                      
                      }
@@ -8443,7 +8884,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
       prevlevel();
    }
    
-   /* file sfg.c line 2933*/
+   /* file sfg.c line 3048*/
    
    public static int csu_find_node_with_number(int  cg,int  cnr)
    {
@@ -8455,7 +8896,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          {
          retval= 
-         /* file sfg.c line 2934*/
+         /* file sfg.c line 3049*/
          cuniqnode(cg,cnr);
          if(true)
          {
@@ -8469,7 +8910,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
       return 0;
    }
    
-   /* file sfg.c line 2938*/
+   /* file sfg.c line 3053*/
    
    public static void cstore_new_positions(int  cg,int  cm,int  clevel)
    {
@@ -8484,13 +8925,13 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          cn_5= (int)(0);
          ci_6= 0;
          
-         /* file sfg.c line 2942*/
+         /* file sfg.c line 3057*/
          if( clevel!=0)
          {
          	
          };
          
-         /* file sfg.c line 2945*/
+         /* file sfg.c line 3060*/
          if( (((cm)==((int)(0)))?1:0)!=0)
          {
          	   
@@ -8505,17 +8946,17 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          };
          
-         /* file sfg.c line 2957*/
+         /* file sfg.c line 3072*/
          ci_6=1;
          lab_sfg51 : for( ; (((ci_6)<=(getMEMINT((int)((cm + 4)))))?1:0)!=0 ; )
          {
             
             {
             cn_5=
-            /* file sfg.c line 2951*/
+            /* file sfg.c line 3066*/
             csu_find_node_with_number(cg,getMEMINT((int)((getMEMINT((int)((cm + 16))) + (ci_6*4)))));
             
-            /* file sfg.c line 2952*/
+            /* file sfg.c line 3067*/
             if( cn_5!=0)
             {
             	   
@@ -8535,17 +8976,17 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          }
          
-         /* file sfg.c line 2967*/
+         /* file sfg.c line 3082*/
          ci_6=1;
          lab_sfg52 : for( ; (((ci_6)<=(getMEMINT((int)((cm + 8)))))?1:0)!=0 ; )
          {
             
             {
             cn_5=
-            /* file sfg.c line 2961*/
+            /* file sfg.c line 3076*/
             csu_find_node_with_number(cg,getMEMINT((int)((getMEMINT((int)((cm + 24))) + (ci_6*4)))));
             
-            /* file sfg.c line 2962*/
+            /* file sfg.c line 3077*/
             if( cn_5!=0)
             {
             	   
@@ -8575,7 +9016,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
       prevlevel();
    }
    
-   /* file sfg.c line 2974*/
+   /* file sfg.c line 3089*/
    
    public static int cdo_memmove(int  cdst,int  csrc,int  ccount)
    {
@@ -8591,13 +9032,13 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          ca_6= cdst;
          cb_7= csrc;
          
-         /* file sfg.c line 2977*/
+         /* file sfg.c line 3092*/
          if( (((csrc)!=(cdst))?1:0)!=0)
          {
          	   
             {
             
-            /* file sfg.c line 2978*/
+            /* file sfg.c line 3093*/
             if( (((csrc)>(cdst))?1:0)!=0)
             {
             	   
@@ -8643,7 +9084,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
       return 0;
    }
    
-   /* file sfg.c line 2993*/
+   /* file sfg.c line 3108*/
    
    public static void ccopy_m(int  cm1,int  cm2)
    {
@@ -8654,7 +9095,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          {
          
-         /* file sfg.c line 2994*/
+         /* file sfg.c line 3109*/
          if( (((cm1)!=0)? (cm2):0)!=0)
          {
          	   
@@ -8664,19 +9105,19 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
             setMEMINT((int)((cm2 + 8)),(int)(getMEMINT((int)((cm1 + 8)))));
             setMEMINT((int)((cm2 + 12)),(int)(getMEMINT((int)((cm1 + 12)))));
             
-            /* file sfg.c line 2999*/
+            /* file sfg.c line 3114*/
             cdo_memmove(getMEMINT((int)((cm2 + 40))),getMEMINT((int)((cm1 + 40))),getMEMINT((int)((cm1 + 12))));
             
-            /* file sfg.c line 3000*/
+            /* file sfg.c line 3115*/
             cdo_memmove(getMEMINT((int)((cm2 + 16))),getMEMINT((int)((cm1 + 16))),getMEMINT((int)((cm1 + 20))));
             setMEMINT((int)((cm2 + 20)),(int)(getMEMINT((int)((cm1 + 20)))));
             
-            /* file sfg.c line 3002*/
+            /* file sfg.c line 3117*/
             cdo_memmove(getMEMINT((int)((cm2 + 24))),getMEMINT((int)((cm1 + 24))),getMEMINT((int)((cm1 + 28))));
             setMEMINT((int)((cm2 + 28)),(int)(getMEMINT((int)((cm1 + 28)))));
             setMEMINT((int)((cm2 + 32)),(int)(getMEMINT((int)((cm1 + 32)))));
             
-            /* file sfg.c line 3005*/
+            /* file sfg.c line 3120*/
             cdo_memmove(getMEMINT((int)((cm2 + 36))),getMEMINT((int)((cm1 + 36))),getMEMINT((int)((cm1 + 32))));
             
             }
@@ -8693,7 +9134,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
       prevlevel();
    }
    
-   /* file sfg.c line 3012*/
+   /* file sfg.c line 3127*/
    
    public static int cequal_m(int  cm1,int  cm2,int  cr,int  cc)
    {
@@ -8709,25 +9150,25 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          ci_7= 0;
          cj_8= 0;
          
-         /* file sfg.c line 3022*/
+         /* file sfg.c line 3137*/
          ci_7=1;
          lab_sfg55 : for( ; (((ci_7)<=(cr))?1:0)!=0 ; )
          {
             
             {
             
-            /* file sfg.c line 3021*/
+            /* file sfg.c line 3136*/
             cj_8=1;
             lab_sfg56 : for( ; (((cj_8)<=(cc))?1:0)!=0 ; )
             {
                
                {
                
-               /* file sfg.c line 3018*/
+               /* file sfg.c line 3133*/
                if( (((
-               /* file sfg.c line 3018*/
+               /* file sfg.c line 3133*/
                cmget(cm1,ci_7,cj_8))!=(
-               /* file sfg.c line 3018*/
+               /* file sfg.c line 3133*/
                cmget(cm2,ci_7,cj_8)))?1:0)!=0)
                {
                	   
@@ -8765,7 +9206,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
       return 0;
    }
    
-   /* file sfg.c line 3029*/
+   /* file sfg.c line 3144*/
    
    public static int cequal_a(int  cg,int  cmm1,int  cmm2)
    {
@@ -8779,7 +9220,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          {
          cl_6= 0;
          
-         /* file sfg.c line 3032*/
+         /* file sfg.c line 3147*/
          if( ((((((cmm1)==((int)(0)))?1:0))!=0)?1: ((((cmm2)==((int)(0)))?1:0)))!=0)
          {
          	   
@@ -8795,16 +9236,16 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          };
          
-         /* file sfg.c line 3042*/
+         /* file sfg.c line 3157*/
          cl_6=0;
          lab_sfg57 : for( ; (((cl_6)<(getMEMINT((int)((cg + 20)))))?1:0)!=0 ; )
          {
             
             {
             
-            /* file sfg.c line 3039*/
+            /* file sfg.c line 3154*/
             if( (((
-            /* file sfg.c line 3038*/
+            /* file sfg.c line 3153*/
             cequal_m(getMEMINT((int)((cmm1 + (cl_6*4)))),getMEMINT((int)((cmm2 + (cl_6*4)))),getMEMINT((int)((getMEMINT((int)((cmm1 + (cl_6*4)))) + 4))),getMEMINT((int)((getMEMINT((int)((cmm1 + (cl_6*4)))) + 8)))))==(0))?1:0)!=0)
             {
             	   
@@ -8837,7 +9278,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
       return 0;
    }
    
-   /* file sfg.c line 3049*/
+   /* file sfg.c line 3164*/
    
    public static void ccopy_a(int  cg,int  cmm1,int  cmm2)
    {
@@ -8850,14 +9291,14 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          {
          ci_5= 0;
          
-         /* file sfg.c line 3054*/
+         /* file sfg.c line 3169*/
          ci_5=0;
          lab_sfg58 : for( ; (((ci_5)<(getMEMINT((int)((cg + 20)))))?1:0)!=0 ; )
          {
             
             {
             
-            /* file sfg.c line 3053*/
+            /* file sfg.c line 3168*/
             ccopy_m(getMEMINT((int)((cmm1 + (ci_5*4)))),getMEMINT((int)((cmm2 + (ci_5*4)))));
             
             }
@@ -8875,7 +9316,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
       prevlevel();
    }
    
-   /* file sfg.c line 3060*/
+   /* file sfg.c line 3175*/
    
    public static void cexch_rows(int  cm,int  cr1,int  cr2)
    {
@@ -8900,23 +9341,23 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          setMEMINT((int)((getMEMINT((int)((cm + 16))) + (cr1*4))),(int)(cid2_7));
          setMEMINT((int)((getMEMINT((int)((cm + 16))) + (cr2*4))),(int)(cid1_6));
          
-         /* file sfg.c line 3085*/
+         /* file sfg.c line 3200*/
          cj_5=1;
          lab_sfg59 : for( ; (((cj_5)<=(getMEMINT((int)((cm + 8)))))?1:0)!=0 ; )
          {
             
             {
             cbit1_8=
-            /* file sfg.c line 3081*/
+            /* file sfg.c line 3196*/
             cmget(cm,cr1,cj_5);
             cbit2_9=
-            /* file sfg.c line 3082*/
+            /* file sfg.c line 3197*/
             cmget(cm,cr2,cj_5);
             
-            /* file sfg.c line 3083*/
+            /* file sfg.c line 3198*/
             cmget_set(cm,cr1,cj_5,cbit2_9);
             
-            /* file sfg.c line 3084*/
+            /* file sfg.c line 3199*/
             cmget_set(cm,cr2,cj_5,cbit1_8);
             
             }
@@ -8934,7 +9375,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
       prevlevel();
    }
    
-   /* file sfg.c line 3091*/
+   /* file sfg.c line 3206*/
    
    public static void cexch_columns(int  cm,int  cc1,int  cc2)
    {
@@ -8959,23 +9400,23 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          setMEMINT((int)((getMEMINT((int)((cm + 24))) + (cc1*4))),(int)(cid2_7));
          setMEMINT((int)((getMEMINT((int)((cm + 24))) + (cc2*4))),(int)(cid1_6));
          
-         /* file sfg.c line 3116*/
+         /* file sfg.c line 3231*/
          ci_5=1;
          lab_sfg60 : for( ; (((ci_5)<=(getMEMINT((int)((cm + 4)))))?1:0)!=0 ; )
          {
             
             {
             cbit1_8=
-            /* file sfg.c line 3112*/
+            /* file sfg.c line 3227*/
             cmget(cm,ci_5,cc1);
             cbit2_9=
-            /* file sfg.c line 3113*/
+            /* file sfg.c line 3228*/
             cmget(cm,ci_5,cc2);
             
-            /* file sfg.c line 3114*/
+            /* file sfg.c line 3229*/
             cmget_set(cm,ci_5,cc1,cbit2_9);
             
-            /* file sfg.c line 3115*/
+            /* file sfg.c line 3230*/
             cmget_set(cm,ci_5,cc2,cbit1_8);
             
             }
@@ -8993,7 +9434,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
       prevlevel();
    }
    
-   /* file sfg.c line 3122*/
+   /* file sfg.c line 3237*/
    
    public static int creverse_r(int  cm,int  cr1,int  cr2)
    {
@@ -9011,7 +9452,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          cj_7= 0;
          cch_8= 0;
          
-         /* file sfg.c line 3130*/
+         /* file sfg.c line 3245*/
          ci_6=cr1;
          cj_7=cr2;
          lab_sfg61 : for( ; (((ci_6)<(cj_7))?1:0)!=0 ; )
@@ -9020,7 +9461,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
             {
             cch_8++;
             
-            /* file sfg.c line 3129*/
+            /* file sfg.c line 3244*/
             cexch_rows(cm,ci_6,cj_7);
             
             }
@@ -9041,7 +9482,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
       return 0;
    }
    
-   /* file sfg.c line 3136*/
+   /* file sfg.c line 3251*/
    
    public static int creverse_c(int  cm,int  cc1,int  cc2)
    {
@@ -9059,7 +9500,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          cj_7= 0;
          cch_8= 0;
          
-         /* file sfg.c line 3144*/
+         /* file sfg.c line 3259*/
          ci_6=cc1;
          cj_7=cc2;
          lab_sfg62 : for( ; (((ci_6)<(cj_7))?1:0)!=0 ; )
@@ -9068,7 +9509,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
             {
             cch_8++;
             
-            /* file sfg.c line 3143*/
+            /* file sfg.c line 3258*/
             cexch_columns(cm,ci_6,cj_7);
             
             }
@@ -9089,7 +9530,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
       return 0;
    }
    
-   /* file sfg.c line 3150*/
+   /* file sfg.c line 3265*/
    
    public static double crow_barycenter(int  cm,int  ci,int  cmaxval)
    {
@@ -9107,16 +9548,16 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          cr1_7= 0;
          cr2_8= 0;
          
-         /* file sfg.c line 3160*/
+         /* file sfg.c line 3275*/
          cj_6=1;
          lab_sfg63 : for( ; (((cj_6)<=(cmaxval))?1:0)!=0 ; )
          {
             
             {
             
-            /* file sfg.c line 3156*/
+            /* file sfg.c line 3271*/
             if( 
-            /* file sfg.c line 3156*/
+            /* file sfg.c line 3271*/
             cmget(cm,ci,cj_6)!=0)
             {
             	   
@@ -9133,7 +9574,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          }
          
-         /* file sfg.c line 3162*/
+         /* file sfg.c line 3277*/
          if( (((cr2_8)==(0))?1:0)!=0)
          {
          	   
@@ -9169,7 +9610,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
       return 0;
    }
    
-   /* file sfg.c line 3170*/
+   /* file sfg.c line 3285*/
    
    public static double ccolumn_barycenter(int  cm,int  cj,int  cmaxval)
    {
@@ -9187,16 +9628,16 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          cr1_7= 0;
          cr2_8= 0;
          
-         /* file sfg.c line 3180*/
+         /* file sfg.c line 3295*/
          ci_6=1;
          lab_sfg64 : for( ; (((ci_6)<=(cmaxval))?1:0)!=0 ; )
          {
             
             {
             
-            /* file sfg.c line 3176*/
+            /* file sfg.c line 3291*/
             if( 
-            /* file sfg.c line 3176*/
+            /* file sfg.c line 3291*/
             cmget(cm,ci_6,cj)!=0)
             {
             	   
@@ -9213,7 +9654,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          }
          
-         /* file sfg.c line 3182*/
+         /* file sfg.c line 3297*/
          if( (((cr2_8)==(0))?1:0)!=0)
          {
          	   
@@ -9249,7 +9690,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
       return 0;
    }
    
-   /* file sfg.c line 3191*/
+   /* file sfg.c line 3306*/
    
    public static int cr_r(int  cm1,int  cm2,int  cmax_r,int  cmax_c)
    {
@@ -9267,14 +9708,14 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          cj_8= 0;
          cch_9= 0;
          
-         /* file sfg.c line 3198*/
+         /* file sfg.c line 3313*/
          ci_7=1;
          lab_sfg65 : for( ; (((ci_7)<=(cmax_r))?1:0)!=0 ; )
          {
             
             {
             setMEMDOUBLE((int)((getMEMINT((int)((cm1 + 36))) + (ci_7*8))),(double)(
-            /* file sfg.c line 3197*/
+            /* file sfg.c line 3312*/
             crow_barycenter(cm1,ci_7,cmax_c)));
             
             }
@@ -9282,7 +9723,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          }
          
-         /* file sfg.c line 3217*/
+         /* file sfg.c line 3332*/
          ci_7=1;
          lab_sfg66 : for( ; (((ci_7)<(cmax_r))?1:0)!=0 ; )
          {
@@ -9299,22 +9740,22 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
             
             }
             
-            /* file sfg.c line 3207*/
+            /* file sfg.c line 3322*/
             if( (((cj_8)>(ci_7))?1:0)!=0)
             {
             	   
                {
                cch_9+=
-               /* file sfg.c line 3208*/
+               /* file sfg.c line 3323*/
                creverse_r(cm1,ci_7,cj_8);
                
-               /* file sfg.c line 3210*/
+               /* file sfg.c line 3325*/
                if( (((cm2)!=((int)(0)))?1:0)!=0)
                {
                	   
                   {
                   cch_9+=
-                  /* file sfg.c line 3211*/
+                  /* file sfg.c line 3326*/
                   creverse_c(cm2,ci_7,cj_8);
                   
                   }
@@ -9343,7 +9784,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
       return 0;
    }
    
-   /* file sfg.c line 3224*/
+   /* file sfg.c line 3339*/
    
    public static int cr_c(int  cm1,int  cm2,int  cmax_r,int  cmax_c)
    {
@@ -9361,14 +9802,14 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          cj_8= 0;
          cch_9= 0;
          
-         /* file sfg.c line 3231*/
+         /* file sfg.c line 3346*/
          ci_7=1;
          lab_sfg68 : for( ; (((ci_7)<=(cmax_c))?1:0)!=0 ; )
          {
             
             {
             setMEMDOUBLE((int)((getMEMINT((int)((cm1 + 36))) + (ci_7*8))),(double)(
-            /* file sfg.c line 3230*/
+            /* file sfg.c line 3345*/
             ccolumn_barycenter(cm1,ci_7,cmax_r)));
             
             }
@@ -9376,7 +9817,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          }
          
-         /* file sfg.c line 3250*/
+         /* file sfg.c line 3365*/
          ci_7=1;
          lab_sfg69 : for( ; (((ci_7)<(cmax_c))?1:0)!=0 ; )
          {
@@ -9393,22 +9834,22 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
             
             }
             
-            /* file sfg.c line 3240*/
+            /* file sfg.c line 3355*/
             if( (((cj_8)>(ci_7))?1:0)!=0)
             {
             	   
                {
                cch_9+=
-               /* file sfg.c line 3241*/
+               /* file sfg.c line 3356*/
                creverse_c(cm1,ci_7,cj_8);
                
-               /* file sfg.c line 3243*/
+               /* file sfg.c line 3358*/
                if( (((cm2)!=((int)(0)))?1:0)!=0)
                {
                	   
                   {
                   cch_9+=
-                  /* file sfg.c line 3244*/
+                  /* file sfg.c line 3359*/
                   creverse_r(cm2,ci_7,cj_8);
                   
                   }
@@ -9437,7 +9878,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
       return 0;
    }
    
-   /* file sfg.c line 3257*/
+   /* file sfg.c line 3372*/
    
    public static int cb_r(int  cm1,int  cm2,int  cmax_r,int  cmax_c)
    {
@@ -9459,14 +9900,14 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          ck_10= 0;
          cch_11= 0;
          
-         /* file sfg.c line 3266*/
+         /* file sfg.c line 3381*/
          ci_8=1;
          lab_sfg71 : for( ; (((ci_8)<=(cmax_r))?1:0)!=0 ; )
          {
             
             {
             setMEMDOUBLE((int)((getMEMINT((int)((cm1 + 36))) + (ci_8*8))),(double)(
-            /* file sfg.c line 3265*/
+            /* file sfg.c line 3380*/
             crow_barycenter(cm1,ci_8,cmax_c)));
             
             }
@@ -9474,27 +9915,27 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          }
          
-         /* file sfg.c line 3292*/
+         /* file sfg.c line 3407*/
          cj_9=cmax_r;
          lab_sfg72 : for( ; (((cj_9)>(1))?1:0)!=0 ; )
          {
             
             {
             
-            /* file sfg.c line 3269*/
+            /* file sfg.c line 3384*/
             if( (((getMEMDOUBLE((int)((getMEMINT((int)((cm1 + 36))) + (cj_9*8)))))!=(0.0))?1:0)!=0)
             {
             	   
                {
                
-               /* file sfg.c line 3290*/
+               /* file sfg.c line 3405*/
                ci_8=1;
                lab_sfg73 : for( ; (((ci_8)<(cj_9))?1:0)!=0 ; )
                {
                   
                   {
                   
-                  /* file sfg.c line 3271*/
+                  /* file sfg.c line 3386*/
                   if( (((getMEMDOUBLE((int)((getMEMINT((int)((cm1 + 36))) + (ci_8*8)))))!=(0.0))?1:0)!=0)
                   {
                   	   
@@ -9510,7 +9951,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
                      
                      }
                      
-                     /* file sfg.c line 3276*/
+                     /* file sfg.c line 3391*/
                      if( (((getMEMDOUBLE((int)((getMEMINT((int)((cm1 + 36))) + (ci_8*8)))))>(getMEMDOUBLE((int)((getMEMINT((int)((cm1 + 36))) + (ck_10*8))))))?1:0)!=0)
                      {
                      	   
@@ -9520,17 +9961,17 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
                         setMEMDOUBLE((int)((getMEMINT((int)((cm1 + 36))) + (ck_10*8))),(double)(getMEMDOUBLE((int)((getMEMINT((int)((cm1 + 36))) + (ci_8*8))))));
                         setMEMDOUBLE((int)((getMEMINT((int)((cm1 + 36))) + (ci_8*8))),(double)(ctmpb_7));
                         
-                        /* file sfg.c line 3282*/
+                        /* file sfg.c line 3397*/
                         cexch_rows(cm1,ci_8,ck_10);
                         
-                        /* file sfg.c line 3283*/
+                        /* file sfg.c line 3398*/
                         if( (((cm2)!=((int)(0)))?1:0)!=0)
                         {
                         	   
                            {
                            cch_11++;
                            
-                           /* file sfg.c line 3286*/
+                           /* file sfg.c line 3401*/
                            cexch_columns(cm2,ci_8,ck_10);
                            
                            }
@@ -9571,7 +10012,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
       return 0;
    }
    
-   /* file sfg.c line 3299*/
+   /* file sfg.c line 3414*/
    
    public static int cb_c(int  cm1,int  cm2,int  cmax_r,int  cmax_c)
    {
@@ -9593,14 +10034,14 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          ck_10= 0;
          cch_11= 0;
          
-         /* file sfg.c line 3308*/
+         /* file sfg.c line 3423*/
          ci_8=1;
          lab_sfg75 : for( ; (((ci_8)<=(cmax_c))?1:0)!=0 ; )
          {
             
             {
             setMEMDOUBLE((int)((getMEMINT((int)((cm1 + 36))) + (ci_8*8))),(double)(
-            /* file sfg.c line 3307*/
+            /* file sfg.c line 3422*/
             ccolumn_barycenter(cm1,ci_8,cmax_r)));
             
             }
@@ -9608,27 +10049,27 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          }
          
-         /* file sfg.c line 3336*/
+         /* file sfg.c line 3451*/
          cj_9=cmax_c;
          lab_sfg76 : for( ; (((cj_9)>(1))?1:0)!=0 ; )
          {
             
             {
             
-            /* file sfg.c line 3311*/
+            /* file sfg.c line 3426*/
             if( (((getMEMDOUBLE((int)((getMEMINT((int)((cm1 + 36))) + (cj_9*8)))))!=(0.0))?1:0)!=0)
             {
             	   
                {
                
-               /* file sfg.c line 3334*/
+               /* file sfg.c line 3449*/
                ci_8=1;
                lab_sfg77 : for( ; (((ci_8)<(cj_9))?1:0)!=0 ; )
                {
                   
                   {
                   
-                  /* file sfg.c line 3313*/
+                  /* file sfg.c line 3428*/
                   if( (((getMEMDOUBLE((int)((getMEMINT((int)((cm1 + 36))) + (ci_8*8)))))!=(0.0))?1:0)!=0)
                   {
                   	   
@@ -9644,7 +10085,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
                      
                      }
                      
-                     /* file sfg.c line 3320*/
+                     /* file sfg.c line 3435*/
                      if( (((getMEMDOUBLE((int)((getMEMINT((int)((cm1 + 36))) + (ci_8*8)))))>(getMEMDOUBLE((int)((getMEMINT((int)((cm1 + 36))) + (ck_10*8))))))?1:0)!=0)
                      {
                      	   
@@ -9654,17 +10095,17 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
                         setMEMDOUBLE((int)((getMEMINT((int)((cm1 + 36))) + (ck_10*8))),(double)(getMEMDOUBLE((int)((getMEMINT((int)((cm1 + 36))) + (ci_8*8))))));
                         setMEMDOUBLE((int)((getMEMINT((int)((cm1 + 36))) + (ci_8*8))),(double)(ctmpb_7));
                         
-                        /* file sfg.c line 3327*/
+                        /* file sfg.c line 3442*/
                         cexch_columns(cm1,ci_8,ck_10);
                         
-                        /* file sfg.c line 3328*/
+                        /* file sfg.c line 3443*/
                         if( (((cm2)!=((int)(0)))?1:0)!=0)
                         {
                         	   
                            {
                            cch_11++;
                            
-                           /* file sfg.c line 3330*/
+                           /* file sfg.c line 3445*/
                            cexch_rows(cm2,ci_8,ck_10);
                            
                            }
@@ -9705,7 +10146,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
       return 0;
    }
    
-   /* file sfg.c line 3343*/
+   /* file sfg.c line 3458*/
    
    public static int csorted(int  cvector,int  cmaxval)
    {
@@ -9719,14 +10160,14 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          {
          ci_5= 0;
          
-         /* file sfg.c line 3351*/
+         /* file sfg.c line 3466*/
          ci_5=1;
          lab_sfg79 : for( ; (((ci_5)<(cmaxval))?1:0)!=0 ; )
          {
             
             {
             
-            /* file sfg.c line 3348*/
+            /* file sfg.c line 3463*/
             if( ((((((getMEMDOUBLE((int)((cvector + (ci_5*8)))))>(getMEMDOUBLE((int)((cvector + ((ci_5 + 1)*8))))))?1:0))!=0)? ((((getMEMDOUBLE((int)((cvector + ((ci_5 + 1)*8)))))!=(0.0))?1:0)):0)!=0)
             {
             	   
@@ -9759,7 +10200,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
       return 0;
    }
    
-   /* file sfg.c line 3357*/
+   /* file sfg.c line 3472*/
    
    public static int cphase1_down(int  cg,int  cmm)
    {
@@ -9775,14 +10216,14 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          ci_5= 0;
          cch_6= 0;
          
-         /* file sfg.c line 3364*/
+         /* file sfg.c line 3479*/
          ci_5=0;
          lab_sfg80 : for( ; (((ci_5)<((getMEMINT((int)((cg + 20))) - 1)))?1:0)!=0 ; )
          {
             
             {
             cch_6+=
-            /* file sfg.c line 3363*/
+            /* file sfg.c line 3478*/
             cb_c(getMEMINT((int)((cmm + (ci_5*4)))),getMEMINT((int)((cmm + ((ci_5 + 1)*4)))),getMEMINT((int)((getMEMINT((int)((cmm + (ci_5*4)))) + 4))),getMEMINT((int)((getMEMINT((int)((cmm + (ci_5*4)))) + 8))));
             
             }
@@ -9790,7 +10231,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          }
          cch_6+=
-         /* file sfg.c line 3366*/
+         /* file sfg.c line 3481*/
          cb_c(getMEMINT((int)((cmm + ((getMEMINT((int)((cg + 20))) - 1)*4)))),(int)(0),getMEMINT((int)((getMEMINT((int)((cmm + ((getMEMINT((int)((cg + 20))) - 1)*4)))) + 4))),getMEMINT((int)((getMEMINT((int)((cmm + ((getMEMINT((int)((cg + 20))) - 1)*4)))) + 8))));
          retval= cch_6;
          if(true)
@@ -9805,7 +10246,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
       return 0;
    }
    
-   /* file sfg.c line 3372*/
+   /* file sfg.c line 3487*/
    
    public static int cphase1_up(int  cg,int  cmm)
    {
@@ -9821,7 +10262,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          ci_5= 0;
          cch_6= 0;
          
-         /* file sfg.c line 3376*/
+         /* file sfg.c line 3491*/
          if( (((cmm)==((int)(0)))?1:0)!=0)
          {
          	   
@@ -9837,14 +10278,14 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          };
          
-         /* file sfg.c line 3384*/
+         /* file sfg.c line 3499*/
          ci_5=(getMEMINT((int)((cg + 20))) - 1);
          lab_sfg81 : for( ; (((ci_5)>(0))?1:0)!=0 ; )
          {
             
             {
             cch_6+=
-            /* file sfg.c line 3383*/
+            /* file sfg.c line 3498*/
             cb_r(getMEMINT((int)((cmm + (ci_5*4)))),getMEMINT((int)((cmm + ((ci_5 - 1)*4)))),getMEMINT((int)((getMEMINT((int)((cmm + (ci_5*4)))) + 4))),getMEMINT((int)((getMEMINT((int)((cmm + (ci_5*4)))) + 8))));
             
             }
@@ -9852,7 +10293,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          }
          cch_6+=
-         /* file sfg.c line 3387*/
+         /* file sfg.c line 3502*/
          cb_r(getMEMINT((int)((cmm + (0*4)))),(int)(0),getMEMINT((int)((getMEMINT((int)((cmm + (0*4)))) + 4))),getMEMINT((int)((getMEMINT((int)((cmm + (0*4)))) + 8))));
          retval= cch_6;
          if(true)
@@ -9867,7 +10308,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
       return 0;
    }
    
-   /* file sfg.c line 3394*/
+   /* file sfg.c line 3509*/
    
    public static int cphase2_down(int  cg,int  cmm)
    {
@@ -9885,21 +10326,21 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          ci_6= 0;
          cch_7= 0;
          
-         /* file sfg.c line 3414*/
+         /* file sfg.c line 3529*/
          cl_5=0;
          lab_sfg82 : for( ; (((cl_5)<((getMEMINT((int)((cg + 20))) - 1)))?1:0)!=0 ; )
          {
             
             {
             
-            /* file sfg.c line 3403*/
+            /* file sfg.c line 3518*/
             ci_6=1;
             lab_sfg83 : for( ; (((ci_6)<=(getMEMINT((int)((getMEMINT((int)((cmm + (cl_5*4)))) + 8)))))?1:0)!=0 ; )
             {
                
                {
                setMEMDOUBLE((int)((getMEMINT((int)((getMEMINT((int)((cmm + (cl_5*4)))) + 36))) + (ci_6*8))),(double)(
-               /* file sfg.c line 3402*/
+               /* file sfg.c line 3517*/
                ccolumn_barycenter(getMEMINT((int)((cmm + (cl_5*4)))),ci_6,getMEMINT((int)((getMEMINT((int)((cmm + (cl_5*4)))) + 4))))));
                
                }
@@ -9907,15 +10348,15 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
             
             }
             
-            /* file sfg.c line 3406*/
+            /* file sfg.c line 3521*/
             if( (((
-            /* file sfg.c line 3405*/
+            /* file sfg.c line 3520*/
             csorted(getMEMINT((int)((getMEMINT((int)((cmm + (cl_5*4)))) + 36))),getMEMINT((int)((getMEMINT((int)((cmm + (cl_5*4)))) + 8)))))==(1))?1:0)!=0)
             {
             	   
                {
                cch_7+=
-               /* file sfg.c line 3409*/
+               /* file sfg.c line 3524*/
                cr_c(getMEMINT((int)((cmm + (cl_5*4)))),getMEMINT((int)((cmm + ((cl_5 + 1)*4)))),getMEMINT((int)((getMEMINT((int)((cmm + (cl_5*4)))) + 4))),getMEMINT((int)((getMEMINT((int)((cmm + (cl_5*4)))) + 8))));
                
                }
@@ -9941,14 +10382,14 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          }
          
-         /* file sfg.c line 3419*/
+         /* file sfg.c line 3534*/
          ci_6=1;
          lab_sfg84 : for( ; (((ci_6)<=(getMEMINT((int)((getMEMINT((int)((cg + 84))) + (getMEMINT((int)((cg + 20)))*4))))))?1:0)!=0 ; )
          {
             
             {
             setMEMDOUBLE((int)((getMEMINT((int)((getMEMINT((int)((cmm + ((getMEMINT((int)((cg + 20))) - 1)*4)))) + 36))) + (ci_6*8))),(double)(
-            /* file sfg.c line 3418*/
+            /* file sfg.c line 3533*/
             ccolumn_barycenter(getMEMINT((int)((cmm + ((getMEMINT((int)((cg + 20))) - 1)*4)))),ci_6,getMEMINT((int)((getMEMINT((int)((cmm + ((getMEMINT((int)((cg + 20))) - 1)*4)))) + 4))))));
             
             }
@@ -9956,15 +10397,15 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          }
          
-         /* file sfg.c line 3422*/
+         /* file sfg.c line 3537*/
          if( (((
-         /* file sfg.c line 3421*/
+         /* file sfg.c line 3536*/
          csorted(getMEMINT((int)((getMEMINT((int)((cmm + ((getMEMINT((int)((cg + 20))) - 1)*4)))) + 36))),getMEMINT((int)((getMEMINT((int)((cmm + ((getMEMINT((int)((cg + 20))) - 1)*4)))) + 8)))))==(1))?1:0)!=0)
          {
          	   
             {
             cch_7+=
-            /* file sfg.c line 3425*/
+            /* file sfg.c line 3540*/
             cr_c(getMEMINT((int)((cmm + ((getMEMINT((int)((cg + 20))) - 1)*4)))),(int)(0),getMEMINT((int)((getMEMINT((int)((cmm + ((getMEMINT((int)((cg + 20))) - 1)*4)))) + 4))),getMEMINT((int)((getMEMINT((int)((cmm + ((getMEMINT((int)((cg + 20))) - 1)*4)))) + 8))));
             
             }
@@ -9983,7 +10424,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
       return 0;
    }
    
-   /* file sfg.c line 3433*/
+   /* file sfg.c line 3548*/
    
    public static int cphase2_up(int  cg,int  cmm)
    {
@@ -10001,27 +10442,27 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          ci_6= 0;
          cch_7= 0;
          
-         /* file sfg.c line 3438*/
+         /* file sfg.c line 3553*/
          if( cg!=0)
          {
          	
          };
          
-         /* file sfg.c line 3457*/
+         /* file sfg.c line 3572*/
          cl_5=(getMEMINT((int)((cg + 20))) - 1);
          lab_sfg85 : for( ; (((cl_5)>(0))?1:0)!=0 ; )
          {
             
             {
             
-            /* file sfg.c line 3446*/
+            /* file sfg.c line 3561*/
             ci_6=1;
             lab_sfg86 : for( ; (((ci_6)<=(getMEMINT((int)((getMEMINT((int)((cmm + (cl_5*4)))) + 4)))))?1:0)!=0 ; )
             {
                
                {
                setMEMDOUBLE((int)((getMEMINT((int)((getMEMINT((int)((cmm + (cl_5*4)))) + 36))) + (ci_6*8))),(double)(
-               /* file sfg.c line 3445*/
+               /* file sfg.c line 3560*/
                crow_barycenter(getMEMINT((int)((cmm + (cl_5*4)))),ci_6,getMEMINT((int)((getMEMINT((int)((cmm + (cl_5*4)))) + 8))))));
                
                }
@@ -10029,15 +10470,15 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
             
             }
             
-            /* file sfg.c line 3449*/
+            /* file sfg.c line 3564*/
             if( (((
-            /* file sfg.c line 3448*/
+            /* file sfg.c line 3563*/
             csorted(getMEMINT((int)((getMEMINT((int)((cmm + (cl_5*4)))) + 36))),getMEMINT((int)((getMEMINT((int)((cmm + (cl_5*4)))) + 4)))))==(1))?1:0)!=0)
             {
             	   
                {
                cch_7+=
-               /* file sfg.c line 3452*/
+               /* file sfg.c line 3567*/
                cr_r(getMEMINT((int)((cmm + (cl_5*4)))),getMEMINT((int)((cmm + ((cl_5 - 1)*4)))),getMEMINT((int)((getMEMINT((int)((cmm + (cl_5*4)))) + 4))),getMEMINT((int)((getMEMINT((int)((cmm + (cl_5*4)))) + 8))));
                
                }
@@ -10063,14 +10504,14 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          }
          
-         /* file sfg.c line 3461*/
+         /* file sfg.c line 3576*/
          ci_6=1;
          lab_sfg87 : for( ; (((ci_6)<=(getMEMINT((int)((getMEMINT((int)((cmm + (0*4)))) + 4)))))?1:0)!=0 ; )
          {
             
             {
             setMEMDOUBLE((int)((getMEMINT((int)((getMEMINT((int)((cmm + (0*4)))) + 36))) + (ci_6*8))),(double)(
-            /* file sfg.c line 3460*/
+            /* file sfg.c line 3575*/
             crow_barycenter(getMEMINT((int)((cmm + (0*4)))),ci_6,getMEMINT((int)((getMEMINT((int)((cmm + (0*4)))) + 8))))));
             
             }
@@ -10078,15 +10519,15 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          }
          
-         /* file sfg.c line 3465*/
+         /* file sfg.c line 3580*/
          if( (((
-         /* file sfg.c line 3464*/
+         /* file sfg.c line 3579*/
          csorted(getMEMINT((int)((getMEMINT((int)((cmm + (0*4)))) + 36))),getMEMINT((int)((getMEMINT((int)((cmm + (0*4)))) + 4)))))==(1))?1:0)!=0)
          {
          	   
             {
             cch_7+=
-            /* file sfg.c line 3468*/
+            /* file sfg.c line 3583*/
             cr_r(getMEMINT((int)((cmm + (0*4)))),(int)(0),getMEMINT((int)((getMEMINT((int)((cmm + (0*4)))) + 4))),getMEMINT((int)((getMEMINT((int)((cmm + (0*4)))) + 8))));
             
             }
@@ -10105,7 +10546,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
       return 0;
    }
    
-   /* file sfg.c line 3476*/
+   /* file sfg.c line 3591*/
    
    public static void cbc_n(int  cg,int  cit1value,int  cit2value)
    {
@@ -10156,7 +10597,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          cit1_23= 20;
          cit2_24= 40;
          
-         /* file sfg.c line 3498*/
+         /* file sfg.c line 3613*/
          if( (((cit1value)==(0))?1:0)!=0)
          {
          	   
@@ -10176,7 +10617,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          };
          
-         /* file sfg.c line 3504*/
+         /* file sfg.c line 3619*/
          if( (((cit2value)==(0))?1:0)!=0)
          {
          	   
@@ -10196,35 +10637,35 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          };
          ca_5=
-         /* file sfg.c line 3511*/
+         /* file sfg.c line 3626*/
          ccalloc(1,(getMEMINT((int)((cg + 20)))*4));
          ca1_6=
-         /* file sfg.c line 3512*/
+         /* file sfg.c line 3627*/
          ccalloc(1,(getMEMINT((int)((cg + 20)))*4));
          ca2_7=
-         /* file sfg.c line 3513*/
+         /* file sfg.c line 3628*/
          ccalloc(1,(getMEMINT((int)((cg + 20)))*4));
          cas_8=
-         /* file sfg.c line 3514*/
+         /* file sfg.c line 3629*/
          ccalloc(1,(getMEMINT((int)((cg + 20)))*4));
          
-         /* file sfg.c line 3522*/
+         /* file sfg.c line 3637*/
          ci_9=0;
          lab_sfg88 : for( ; (((ci_9)<(getMEMINT((int)((cg + 20)))))?1:0)!=0 ; )
          {
             
             {
             setMEMINT((int)((ca_5 + (ci_9*4))),(int)(
-            /* file sfg.c line 3518*/
+            /* file sfg.c line 3633*/
             ccalloc(1,44)));
             setMEMINT((int)((ca1_6 + (ci_9*4))),(int)(
-            /* file sfg.c line 3519*/
+            /* file sfg.c line 3634*/
             ccalloc(1,44)));
             setMEMINT((int)((ca2_7 + (ci_9*4))),(int)(
-            /* file sfg.c line 3520*/
+            /* file sfg.c line 3635*/
             ccalloc(1,44)));
             setMEMINT((int)((cas_8 + (ci_9*4))),(int)(
-            /* file sfg.c line 3521*/
+            /* file sfg.c line 3636*/
             ccalloc(1,44)));
             
             }
@@ -10232,7 +10673,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          }
          
-         /* file sfg.c line 3596*/
+         /* file sfg.c line 3711*/
          ci_9=0;
          lab_sfg89 : for( ; (((ci_9)<(getMEMINT((int)((cg + 20)))))?1:0)!=0 ; )
          {
@@ -10251,7 +10692,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
             setMEMINT((int)((getMEMINT((int)((ca2_7 + (ci_9*4)))) + 8)),(int)(getMEMINT((int)((getMEMINT((int)((cg + 84))) + ((ci_9 + 1)*4))))));
             setMEMINT((int)((getMEMINT((int)((cas_8 + (ci_9*4)))) + 8)),(int)(getMEMINT((int)((getMEMINT((int)((cg + 84))) + ((ci_9 + 1)*4))))));
             
-            /* file sfg.c line 3545*/
+            /* file sfg.c line 3660*/
             if( (((getMEMINT((int)((getMEMINT((int)((ca_5 + (ci_9*4)))) + 4))))>(getMEMINT((int)((getMEMINT((int)((ca_5 + (ci_9*4)))) + 8)))))?1:0)!=0)
             {
             	   
@@ -10277,64 +10718,64 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
             
             };
             setMEMINT((int)((getMEMINT((int)((ca_5 + (ci_9*4)))) + 36)),(int)(
-            /* file sfg.c line 3557*/
+            /* file sfg.c line 3672*/
             ccalloc(1,getMEMINT((int)((getMEMINT((int)((ca_5 + (ci_9*4)))) + 32))))));
             setMEMINT((int)((getMEMINT((int)((ca1_6 + (ci_9*4)))) + 36)),(int)(
-            /* file sfg.c line 3558*/
+            /* file sfg.c line 3673*/
             ccalloc(1,getMEMINT((int)((getMEMINT((int)((ca1_6 + (ci_9*4)))) + 32))))));
             setMEMINT((int)((getMEMINT((int)((ca2_7 + (ci_9*4)))) + 36)),(int)(
-            /* file sfg.c line 3559*/
+            /* file sfg.c line 3674*/
             ccalloc(1,getMEMINT((int)((getMEMINT((int)((ca2_7 + (ci_9*4)))) + 32))))));
             setMEMINT((int)((getMEMINT((int)((cas_8 + (ci_9*4)))) + 36)),(int)(
-            /* file sfg.c line 3560*/
+            /* file sfg.c line 3675*/
             ccalloc(1,getMEMINT((int)((getMEMINT((int)((cas_8 + (ci_9*4)))) + 32))))));
             setMEMINT((int)((getMEMINT((int)((ca_5 + (ci_9*4)))) + 20)),(int)(((getMEMINT((int)((getMEMINT((int)((ca_5 + (ci_9*4)))) + 4))) + 1)*4)));
             setMEMINT((int)((getMEMINT((int)((ca1_6 + (ci_9*4)))) + 20)),(int)(((getMEMINT((int)((getMEMINT((int)((ca_5 + (ci_9*4)))) + 4))) + 1)*4)));
             setMEMINT((int)((getMEMINT((int)((ca2_7 + (ci_9*4)))) + 20)),(int)(((getMEMINT((int)((getMEMINT((int)((ca_5 + (ci_9*4)))) + 4))) + 1)*4)));
             setMEMINT((int)((getMEMINT((int)((cas_8 + (ci_9*4)))) + 20)),(int)(((getMEMINT((int)((getMEMINT((int)((ca_5 + (ci_9*4)))) + 4))) + 1)*4)));
             setMEMINT((int)((getMEMINT((int)((ca_5 + (ci_9*4)))) + 16)),(int)(
-            /* file sfg.c line 3569*/
+            /* file sfg.c line 3684*/
             ccalloc(1,getMEMINT((int)((getMEMINT((int)((ca_5 + (ci_9*4)))) + 20))))));
             setMEMINT((int)((getMEMINT((int)((ca1_6 + (ci_9*4)))) + 16)),(int)(
-            /* file sfg.c line 3570*/
+            /* file sfg.c line 3685*/
             ccalloc(1,getMEMINT((int)((getMEMINT((int)((ca1_6 + (ci_9*4)))) + 20))))));
             setMEMINT((int)((getMEMINT((int)((ca2_7 + (ci_9*4)))) + 16)),(int)(
-            /* file sfg.c line 3571*/
+            /* file sfg.c line 3686*/
             ccalloc(1,getMEMINT((int)((getMEMINT((int)((ca2_7 + (ci_9*4)))) + 20))))));
             setMEMINT((int)((getMEMINT((int)((cas_8 + (ci_9*4)))) + 16)),(int)(
-            /* file sfg.c line 3572*/
+            /* file sfg.c line 3687*/
             ccalloc(1,getMEMINT((int)((getMEMINT((int)((cas_8 + (ci_9*4)))) + 20))))));
             setMEMINT((int)((getMEMINT((int)((ca_5 + (ci_9*4)))) + 28)),(int)(((getMEMINT((int)((getMEMINT((int)((ca_5 + (ci_9*4)))) + 8))) + 1)*4)));
             setMEMINT((int)((getMEMINT((int)((ca1_6 + (ci_9*4)))) + 28)),(int)(((getMEMINT((int)((getMEMINT((int)((ca_5 + (ci_9*4)))) + 8))) + 1)*4)));
             setMEMINT((int)((getMEMINT((int)((ca2_7 + (ci_9*4)))) + 28)),(int)(((getMEMINT((int)((getMEMINT((int)((ca_5 + (ci_9*4)))) + 8))) + 1)*4)));
             setMEMINT((int)((getMEMINT((int)((cas_8 + (ci_9*4)))) + 28)),(int)(((getMEMINT((int)((getMEMINT((int)((ca_5 + (ci_9*4)))) + 8))) + 1)*4)));
             setMEMINT((int)((getMEMINT((int)((ca_5 + (ci_9*4)))) + 24)),(int)(
-            /* file sfg.c line 3581*/
+            /* file sfg.c line 3696*/
             ccalloc(1,getMEMINT((int)((getMEMINT((int)((ca_5 + (ci_9*4)))) + 28))))));
             setMEMINT((int)((getMEMINT((int)((ca1_6 + (ci_9*4)))) + 24)),(int)(
-            /* file sfg.c line 3582*/
+            /* file sfg.c line 3697*/
             ccalloc(1,getMEMINT((int)((getMEMINT((int)((ca1_6 + (ci_9*4)))) + 28))))));
             setMEMINT((int)((getMEMINT((int)((ca2_7 + (ci_9*4)))) + 24)),(int)(
-            /* file sfg.c line 3583*/
+            /* file sfg.c line 3698*/
             ccalloc(1,getMEMINT((int)((getMEMINT((int)((ca2_7 + (ci_9*4)))) + 28))))));
             setMEMINT((int)((getMEMINT((int)((cas_8 + (ci_9*4)))) + 24)),(int)(
-            /* file sfg.c line 3584*/
+            /* file sfg.c line 3699*/
             ccalloc(1,getMEMINT((int)((getMEMINT((int)((cas_8 + (ci_9*4)))) + 28))))));
             setMEMINT((int)((getMEMINT((int)((ca_5 + (ci_9*4)))) + 12)),(int)((1 + ((((getMEMINT((int)((getMEMINT((int)((ca_5 + (ci_9*4)))) + 4))) + 1)*(getMEMINT((int)((getMEMINT((int)((ca_5 + (ci_9*4)))) + 8))) + 1)) + 8)/8))));
             setMEMINT((int)((getMEMINT((int)((ca1_6 + (ci_9*4)))) + 12)),(int)((1 + ((((getMEMINT((int)((getMEMINT((int)((ca1_6 + (ci_9*4)))) + 4))) + 1)*(getMEMINT((int)((getMEMINT((int)((ca1_6 + (ci_9*4)))) + 8))) + 1)) + 8)/8))));
             setMEMINT((int)((getMEMINT((int)((ca2_7 + (ci_9*4)))) + 12)),(int)((1 + ((((getMEMINT((int)((getMEMINT((int)((ca2_7 + (ci_9*4)))) + 4))) + 1)*(getMEMINT((int)((getMEMINT((int)((ca2_7 + (ci_9*4)))) + 8))) + 1)) + 8)/8))));
             setMEMINT((int)((getMEMINT((int)((cas_8 + (ci_9*4)))) + 12)),(int)((1 + ((((getMEMINT((int)((getMEMINT((int)((cas_8 + (ci_9*4)))) + 4))) + 1)*(getMEMINT((int)((getMEMINT((int)((cas_8 + (ci_9*4)))) + 8))) + 1)) + 8)/8))));
             setMEMINT((int)((getMEMINT((int)((ca_5 + (ci_9*4)))) + 40)),(int)(
-            /* file sfg.c line 3592*/
+            /* file sfg.c line 3707*/
             ccalloc(1,getMEMINT((int)((getMEMINT((int)((ca_5 + (ci_9*4)))) + 12))))));
             setMEMINT((int)((getMEMINT((int)((ca1_6 + (ci_9*4)))) + 40)),(int)(
-            /* file sfg.c line 3593*/
+            /* file sfg.c line 3708*/
             ccalloc(1,getMEMINT((int)((getMEMINT((int)((ca1_6 + (ci_9*4)))) + 12))))));
             setMEMINT((int)((getMEMINT((int)((ca2_7 + (ci_9*4)))) + 40)),(int)(
-            /* file sfg.c line 3594*/
+            /* file sfg.c line 3709*/
             ccalloc(1,getMEMINT((int)((getMEMINT((int)((ca2_7 + (ci_9*4)))) + 12))))));
             setMEMINT((int)((getMEMINT((int)((cas_8 + (ci_9*4)))) + 40)),(int)(
-            /* file sfg.c line 3595*/
+            /* file sfg.c line 3710*/
             ccalloc(1,getMEMINT((int)((getMEMINT((int)((cas_8 + (ci_9*4)))) + 12))))));
             
             }
@@ -10342,14 +10783,14 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          }
          
-         /* file sfg.c line 3601*/
+         /* file sfg.c line 3716*/
          ci_9=0;
          lab_sfg90 : for( ; (((ci_9)<(getMEMINT((int)((cg + 20)))))?1:0)!=0 ; )
          {
             
             {
             
-            /* file sfg.c line 3600*/
+            /* file sfg.c line 3715*/
             cmake_matrix(cg,ci_9,getMEMINT((int)((ca_5 + (ci_9*4)))));
             
             }
@@ -10357,30 +10798,30 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          }
          
-         /* file sfg.c line 3603*/
+         /* file sfg.c line 3718*/
          ccopy_a(cg,ca_5,cas_8);
          cks_10=
-         /* file sfg.c line 3604*/
+         /* file sfg.c line 3719*/
          cnumber_of_crossings_a(cg,cas_8);
          setMEMINT((int)((cg + 96)),(int)(cks_10));
          
-         /* file sfg.c line 3608*/
+         /* file sfg.c line 3723*/
          if( (((cks_10)>(0))?1:0)!=0)
          {
          	   
             {
             cch1_15=0;
             cch1_15+=
-            /* file sfg.c line 3614*/
+            /* file sfg.c line 3729*/
             cphase1_down(cg,ca_5);
             
-            /* file sfg.c line 3615*/
+            /* file sfg.c line 3730*/
             ccopy_a(cg,ca_5,cas_8);
             cch1_15+=
-            /* file sfg.c line 3616*/
+            /* file sfg.c line 3731*/
             cphase1_up(cg,ca_5);
             
-            /* file sfg.c line 3617*/
+            /* file sfg.c line 3732*/
             ccopy_a(cg,ca_5,cas_8);
             cn1_12=0;
             
@@ -10388,43 +10829,43 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
                
                {
                
-               /* file sfg.c line 3623*/
+               /* file sfg.c line 3738*/
                ccopy_a(cg,ca_5,ca1_6);
                cch1_15+=
-               /* file sfg.c line 3625*/
+               /* file sfg.c line 3740*/
                cphase1_down(cg,ca_5);
                ck_11=
-               /* file sfg.c line 3626*/
+               /* file sfg.c line 3741*/
                cnumber_of_crossings_a(cg,ca_5);
                
-               /* file sfg.c line 3628*/
+               /* file sfg.c line 3743*/
                if( (((ck_11)<(cks_10))?1:0)!=0)
                {
                	   
                   {
                   cks_10=ck_11;
                   
-                  /* file sfg.c line 3631*/
+                  /* file sfg.c line 3746*/
                   ccopy_a(cg,ca_5,cas_8);
                   
                   }
                
                };
                cch1_15+=
-               /* file sfg.c line 3634*/
+               /* file sfg.c line 3749*/
                cphase1_up(cg,ca_5);
                ck_11=
-               /* file sfg.c line 3636*/
+               /* file sfg.c line 3751*/
                cnumber_of_crossings_a(cg,ca_5);
                
-               /* file sfg.c line 3638*/
+               /* file sfg.c line 3753*/
                if( (((ck_11)<(cks_10))?1:0)!=0)
                {
                	   
                   {
                   cks_10=ck_11;
                   
-                  /* file sfg.c line 3640*/
+                  /* file sfg.c line 3755*/
                   ccopy_a(cg,ca_5,cas_8);
                   
                   }
@@ -10432,7 +10873,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
                };
                ccht_14+=cch1_15;
                
-               /* file sfg.c line 3645*/
+               /* file sfg.c line 3760*/
                if( (((cks_10)==(0))?1:0)!=0)
                {
                	   
@@ -10449,13 +10890,13 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
                cr2_18=cr3_19;
                cr3_19=cks_10;
                
-               /* file sfg.c line 3653*/
+               /* file sfg.c line 3768*/
                if( (((cr1_17)==(cr2_18))?1:0)!=0)
                {
                	   
                   {
                   
-                  /* file sfg.c line 3654*/
+                  /* file sfg.c line 3769*/
                   if( (((cr2_18)==(cr3_19))?1:0)!=0)
                   {
                   	   
@@ -10476,25 +10917,25 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
                }
             
             }while ((((((((++cn1_12))<(cit1_23))?1:0))!=0)? ((((
-            /* file sfg.c line 3660*/
+            /* file sfg.c line 3775*/
             cequal_a(cg,ca_5,ca1_6))==(0))?1:0)):0)!=0);
             
-            /* file sfg.c line 3663*/
+            /* file sfg.c line 3778*/
             if( (((
-            /* file sfg.c line 3663*/
+            /* file sfg.c line 3778*/
             cequal_a(cg,ca_5,cas_8))==(0))?1:0)!=0)
             {
             	   
                {
                
-               /* file sfg.c line 3664*/
+               /* file sfg.c line 3779*/
                ccopy_a(cg,cas_8,ca_5);
                
                }
             
             };
             
-            /* file sfg.c line 3667*/
+            /* file sfg.c line 3782*/
             if( (((cks_10)>(0))?1:0)!=0)
             {
             	   
@@ -10507,10 +10948,10 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
                   {
                   cch2_16=0;
                   
-                  /* file sfg.c line 3675*/
+                  /* file sfg.c line 3790*/
                   ccopy_a(cg,ca_5,ca2_7);
                   cch2_16+=
-                  /* file sfg.c line 3676*/
+                  /* file sfg.c line 3791*/
                   cphase2_down(cg,ca_5);
                   cn1_12=0;
                   
@@ -10519,50 +10960,50 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
                      {
                      cch1_15=0;
                      
-                     /* file sfg.c line 3681*/
+                     /* file sfg.c line 3796*/
                      ccopy_a(cg,ca_5,ca1_6);
                      cch1_15+=
-                     /* file sfg.c line 3682*/
+                     /* file sfg.c line 3797*/
                      cphase1_down(cg,ca_5);
                      ck_11=
-                     /* file sfg.c line 3683*/
+                     /* file sfg.c line 3798*/
                      cnumber_of_crossings_a(cg,ca_5);
                      
-                     /* file sfg.c line 3684*/
+                     /* file sfg.c line 3799*/
                      if( (((ck_11)<(cks_10))?1:0)!=0)
                      {
                      	   
                         {
                         cks_10=ck_11;
                         
-                        /* file sfg.c line 3686*/
+                        /* file sfg.c line 3801*/
                         ccopy_a(cg,ca_5,cas_8);
                         
                         }
                      
                      };
                      cch1_15+=
-                     /* file sfg.c line 3689*/
+                     /* file sfg.c line 3804*/
                      cphase1_up(cg,ca_5);
                      ck_11=
-                     /* file sfg.c line 3690*/
+                     /* file sfg.c line 3805*/
                      cnumber_of_crossings_a(cg,ca_5);
                      
-                     /* file sfg.c line 3691*/
+                     /* file sfg.c line 3806*/
                      if( (((ck_11)<(cks_10))?1:0)!=0)
                      {
                      	   
                         {
                         cks_10=ck_11;
                         
-                        /* file sfg.c line 3693*/
+                        /* file sfg.c line 3808*/
                         ccopy_a(cg,ca_5,cas_8);
                         
                         }
                      
                      };
                      
-                     /* file sfg.c line 3696*/
+                     /* file sfg.c line 3811*/
                      if( (((cks_10)==(0))?1:0)!=0)
                      {
                      	   
@@ -10579,13 +11020,13 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
                      crr2_21=crr3_22;
                      crr3_22=cks_10;
                      
-                     /* file sfg.c line 3704*/
+                     /* file sfg.c line 3819*/
                      if( (((crr1_20)==(crr2_21))?1:0)!=0)
                      {
                      	   
                         {
                         
-                        /* file sfg.c line 3705*/
+                        /* file sfg.c line 3820*/
                         if( (((crr2_21)==(crr3_22))?1:0)!=0)
                         {
                         	   
@@ -10606,10 +11047,10 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
                      }
                   
                   }while ((((((((++cn1_12))<(cit1_23))?1:0))!=0)? ((((
-                  /* file sfg.c line 3711*/
+                  /* file sfg.c line 3826*/
                   cequal_a(cg,ca_5,ca1_6))==(0))?1:0)):0)!=0);
                   cch2_16+=
-                  /* file sfg.c line 3713*/
+                  /* file sfg.c line 3828*/
                   cphase2_up(cg,ca_5);
                   cn1_12=0;
                   
@@ -10617,43 +11058,43 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
                      
                      {
                      
-                     /* file sfg.c line 3717*/
+                     /* file sfg.c line 3832*/
                      ccopy_a(cg,ca_5,ca1_6);
                      cch1_15+=
-                     /* file sfg.c line 3718*/
+                     /* file sfg.c line 3833*/
                      cphase1_up(cg,ca_5);
                      ck_11=
-                     /* file sfg.c line 3719*/
+                     /* file sfg.c line 3834*/
                      cnumber_of_crossings_a(cg,ca_5);
                      
-                     /* file sfg.c line 3720*/
+                     /* file sfg.c line 3835*/
                      if( (((ck_11)<(cks_10))?1:0)!=0)
                      {
                      	   
                         {
                         cks_10=ck_11;
                         
-                        /* file sfg.c line 3722*/
+                        /* file sfg.c line 3837*/
                         ccopy_a(cg,ca_5,cas_8);
                         
                         }
                      
                      };
                      cch1_15+=
-                     /* file sfg.c line 3725*/
+                     /* file sfg.c line 3840*/
                      cphase1_down(cg,ca_5);
                      ck_11=
-                     /* file sfg.c line 3726*/
+                     /* file sfg.c line 3841*/
                      cnumber_of_crossings_a(cg,ca_5);
                      
-                     /* file sfg.c line 3727*/
+                     /* file sfg.c line 3842*/
                      if( (((ck_11)<(cks_10))?1:0)!=0)
                      {
                      	   
                         {
                         cks_10=ck_11;
                         
-                        /* file sfg.c line 3729*/
+                        /* file sfg.c line 3844*/
                         ccopy_a(cg,ca_5,cas_8);
                         
                         }
@@ -10661,7 +11102,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
                      };
                      ccht_14+=cch1_15;
                      
-                     /* file sfg.c line 3734*/
+                     /* file sfg.c line 3849*/
                      if( (((cks_10)==(0))?1:0)!=0)
                      {
                      	   
@@ -10678,13 +11119,13 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
                      crr2_21=crr3_22;
                      crr3_22=cks_10;
                      
-                     /* file sfg.c line 3742*/
+                     /* file sfg.c line 3857*/
                      if( (((crr1_20)==(crr2_21))?1:0)!=0)
                      {
                      	   
                         {
                         
-                        /* file sfg.c line 3743*/
+                        /* file sfg.c line 3858*/
                         if( (((crr2_21)==(crr3_22))?1:0)!=0)
                         {
                         	   
@@ -10705,12 +11146,12 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
                      }
                   
                   }while ((((((((++cn1_12))<(cit1_23))?1:0))!=0)? ((((
-                  /* file sfg.c line 3749*/
+                  /* file sfg.c line 3864*/
                   cequal_a(cg,ca_5,ca1_6))==(0))?1:0)):0)!=0);
                   ccht_14+=cch1_15;
                   ccht_14+=cch2_16;
                   
-                  /* file sfg.c line 3754*/
+                  /* file sfg.c line 3869*/
                   if( (((cks_10)==(0))?1:0)!=0)
                   {
                   	   
@@ -10727,13 +11168,13 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
                   cr2_18=cr3_19;
                   cr3_19=cks_10;
                   
-                  /* file sfg.c line 3762*/
+                  /* file sfg.c line 3877*/
                   if( (((cr1_17)==(cr2_18))?1:0)!=0)
                   {
                   	   
                      {
                      
-                     /* file sfg.c line 3763*/
+                     /* file sfg.c line 3878*/
                      if( (((cr2_18)==(cr3_19))?1:0)!=0)
                      {
                      	   
@@ -10754,7 +11195,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
                   }
                
                }while ((((((((++cn2_13))<(cit2_24))?1:0))!=0)? ((((
-               /* file sfg.c line 3769*/
+               /* file sfg.c line 3884*/
                cequal_a(cg,ca_5,ca2_7))==(0))?1:0)):0)!=0);
                
                }
@@ -10767,14 +11208,14 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          setMEMINT((int)((cg + 100)),(int)(cks_10));
          setMEMINT((int)((cg + 104)),(int)(ccht_14));
          
-         /* file sfg.c line 3782*/
+         /* file sfg.c line 3897*/
          ci_9=0;
          lab_sfg95 : for( ; (((ci_9)<(getMEMINT((int)((cg + 20)))))?1:0)!=0 ; )
          {
             
             {
             
-            /* file sfg.c line 3781*/
+            /* file sfg.c line 3896*/
             cstore_new_positions(cg,getMEMINT((int)((cas_8 + (ci_9*4)))),ci_9);
             
             }
@@ -10782,108 +11223,108 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          }
          
-         /* file sfg.c line 3784*/
+         /* file sfg.c line 3899*/
          if( (((ci_9)==(getMEMINT((int)((cg + 20)))))?1:0)!=0)
          {
          	   
             {
             
-            /* file sfg.c line 3785*/
+            /* file sfg.c line 3900*/
             cstore_new_positions(cg,getMEMINT((int)((cas_8 + ((getMEMINT((int)((cg + 20))) - 1)*4)))),(getMEMINT((int)((cg + 20))) - 1));
             
             }
          
          };
          
-         /* file sfg.c line 3816*/
+         /* file sfg.c line 3931*/
          ci_9=0;
          lab_sfg96 : for( ; (((ci_9)<(getMEMINT((int)((cg + 20)))))?1:0)!=0 ; )
          {
             
             {
             
-            /* file sfg.c line 3789*/
+            /* file sfg.c line 3904*/
             if( getMEMINT((int)((ca_5 + (ci_9*4))))!=0)
             {
             	   
                {
                
-               /* file sfg.c line 3790*/
+               /* file sfg.c line 3905*/
                cfree(getMEMINT((int)((getMEMINT((int)((ca_5 + (ci_9*4)))) + 36))));
                
-               /* file sfg.c line 3791*/
+               /* file sfg.c line 3906*/
                cfree(getMEMINT((int)((getMEMINT((int)((ca_5 + (ci_9*4)))) + 16))));
                
-               /* file sfg.c line 3792*/
+               /* file sfg.c line 3907*/
                cfree(getMEMINT((int)((getMEMINT((int)((ca_5 + (ci_9*4)))) + 24))));
                
-               /* file sfg.c line 3793*/
+               /* file sfg.c line 3908*/
                cfree(getMEMINT((int)((getMEMINT((int)((ca_5 + (ci_9*4)))) + 40))));
                
                }
             
             };
             
-            /* file sfg.c line 3795*/
+            /* file sfg.c line 3910*/
             if( getMEMINT((int)((ca1_6 + (ci_9*4))))!=0)
             {
             	   
                {
                
-               /* file sfg.c line 3796*/
+               /* file sfg.c line 3911*/
                cfree(getMEMINT((int)((getMEMINT((int)((ca1_6 + (ci_9*4)))) + 36))));
                
-               /* file sfg.c line 3797*/
+               /* file sfg.c line 3912*/
                cfree(getMEMINT((int)((getMEMINT((int)((ca1_6 + (ci_9*4)))) + 16))));
                
-               /* file sfg.c line 3798*/
+               /* file sfg.c line 3913*/
                cfree(getMEMINT((int)((getMEMINT((int)((ca1_6 + (ci_9*4)))) + 24))));
                
-               /* file sfg.c line 3799*/
+               /* file sfg.c line 3914*/
                cfree(getMEMINT((int)((getMEMINT((int)((ca1_6 + (ci_9*4)))) + 40))));
                
                }
             
             };
             
-            /* file sfg.c line 3801*/
+            /* file sfg.c line 3916*/
             if( getMEMINT((int)((ca2_7 + (ci_9*4))))!=0)
             {
             	   
                {
                
-               /* file sfg.c line 3802*/
+               /* file sfg.c line 3917*/
                cfree(getMEMINT((int)((getMEMINT((int)((ca2_7 + (ci_9*4)))) + 36))));
                
-               /* file sfg.c line 3803*/
+               /* file sfg.c line 3918*/
                cfree(getMEMINT((int)((getMEMINT((int)((ca2_7 + (ci_9*4)))) + 16))));
                
-               /* file sfg.c line 3804*/
+               /* file sfg.c line 3919*/
                cfree(getMEMINT((int)((getMEMINT((int)((ca2_7 + (ci_9*4)))) + 24))));
                
-               /* file sfg.c line 3805*/
+               /* file sfg.c line 3920*/
                cfree(getMEMINT((int)((getMEMINT((int)((ca2_7 + (ci_9*4)))) + 40))));
                
                }
             
             };
             
-            /* file sfg.c line 3807*/
+            /* file sfg.c line 3922*/
             if( getMEMINT((int)((cas_8 + (ci_9*4))))!=0)
             {
             	   
                {
                
-               /* file sfg.c line 3808*/
+               /* file sfg.c line 3923*/
                cfree(getMEMINT((int)((getMEMINT((int)((cas_8 + (ci_9*4)))) + 36))));
                
-               /* file sfg.c line 3810*/
+               /* file sfg.c line 3925*/
                cfree(getMEMINT((int)((getMEMINT((int)((cas_8 + (ci_9*4)))) + 16))));
                
-               /* file sfg.c line 3812*/
+               /* file sfg.c line 3927*/
                cfree(getMEMINT((int)((getMEMINT((int)((cas_8 + (ci_9*4)))) + 24))));
                
-               /* file sfg.c line 3814*/
+               /* file sfg.c line 3929*/
                cfree(getMEMINT((int)((getMEMINT((int)((cas_8 + (ci_9*4)))) + 40))));
                
                }
@@ -10895,23 +11336,23 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          }
          
-         /* file sfg.c line 3823*/
+         /* file sfg.c line 3938*/
          ci_9=0;
          lab_sfg97 : for( ; (((ci_9)<(getMEMINT((int)((cg + 20)))))?1:0)!=0 ; )
          {
             
             {
             
-            /* file sfg.c line 3819*/
+            /* file sfg.c line 3934*/
             cfree(getMEMINT((int)((ca_5 + (ci_9*4)))));
             
-            /* file sfg.c line 3820*/
+            /* file sfg.c line 3935*/
             cfree(getMEMINT((int)((ca1_6 + (ci_9*4)))));
             
-            /* file sfg.c line 3821*/
+            /* file sfg.c line 3936*/
             cfree(getMEMINT((int)((ca2_7 + (ci_9*4)))));
             
-            /* file sfg.c line 3822*/
+            /* file sfg.c line 3937*/
             cfree(getMEMINT((int)((cas_8 + (ci_9*4)))));
             
             }
@@ -10919,16 +11360,16 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          }
          
-         /* file sfg.c line 3825*/
+         /* file sfg.c line 3940*/
          cfree(ca_5);
          
-         /* file sfg.c line 3826*/
+         /* file sfg.c line 3941*/
          cfree(ca1_6);
          
-         /* file sfg.c line 3827*/
+         /* file sfg.c line 3942*/
          cfree(ca2_7);
          
-         /* file sfg.c line 3828*/
+         /* file sfg.c line 3943*/
          cfree(cas_8);
          if(true)
          {
@@ -10941,7 +11382,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
       prevlevel();
    }
    
-   /* file sfg.c line 4095*/
+   /* file sfg.c line 4210*/
    
    public static void cbarycenter(int  cg,int  cit1v,int  cit2v)
    {
@@ -10952,20 +11393,20 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          {
          
-         /* file sfg.c line 4098*/
+         /* file sfg.c line 4213*/
          if( (((getMEMINT((int)((cg + 108))))==((int)(0)))?1:0)!=0)
          {
          	   
             {
             setMEMINT((int)((cg + 108)),(int)((int)(
-            /* file sfg.c line 4099*/
+            /* file sfg.c line 4214*/
             ccalloc(1,((getMEMINT((int)((cg + 20))) + 1)*4)))));
             
             }
          
          };
          
-         /* file sfg.c line 4102*/
+         /* file sfg.c line 4217*/
          if( (((getMEMINT((int)((cg + 20))))==(0))?1:0)!=0)
          {
          	   
@@ -10980,7 +11421,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          };
          
-         /* file sfg.c line 4107*/
+         /* file sfg.c line 4222*/
          if( (((getMEMINT((int)((cg + 8))))<(2))?1:0)!=0)
          {
          	   
@@ -10995,7 +11436,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          };
          
-         /* file sfg.c line 4111*/
+         /* file sfg.c line 4226*/
          if( (((getMEMINT((int)((cg + 16))))<(2))?1:0)!=0)
          {
          	   
@@ -11010,7 +11451,7 @@ public static 	int  cuniqnode_splaytree_2= (int)(0);
          
          };
          
-         /* file sfg.c line 4115*/
+         /* file sfg.c line 4230*/
          cbc_n(cg,cit1v,cit2v);
          if(true)
          {
@@ -11038,7 +11479,7 @@ public static 	int  cxspacing_16= 0;
 public static 	int  cyspacing_17= 0;
 public static 	int  cnl_18= (int)(0);
    
-   /* file sfg.c line 4167*/
+   /* file sfg.c line 4282*/
    
    public static int cis_dummy(int  cnode)
    {
@@ -11050,7 +11491,7 @@ public static 	int  cnl_18= (int)(0);
          
          {
          
-         /* file sfg.c line 4168*/
+         /* file sfg.c line 4283*/
          if( getMEMINT((int)((cnode + 20)))!=0)
          {
          	   
@@ -11086,7 +11527,7 @@ public static 	int  cnl_18= (int)(0);
       return 0;
    }
    
-   /* file sfg.c line 4177*/
+   /* file sfg.c line 4292*/
    
    public static int cupper_connectivity(int  cnode)
    {
@@ -11103,7 +11544,7 @@ public static 	int  cnl_18= (int)(0);
          cresult_5= 0;
          cresult_5=0;
          
-         /* file sfg.c line 4183*/
+         /* file sfg.c line 4298*/
          if( (((cnode)==((int)(0)))?1:0)!=0)
          {
          	   
@@ -11124,13 +11565,13 @@ public static 	int  cnl_18= (int)(0);
          	   
             {
             
-            /* file sfg.c line 4193*/
-            if( (((getMEMINT((int)((getMEMINT((int)((cel_4 + 0))) + 32))))==(0))?1:0)!=0)
+            /* file sfg.c line 4308*/
+            if( (((getMEMINT((int)((getMEMINT((int)((cel_4 + 0))) + 28))))==(0))?1:0)!=0)
             {
             	   
                {
                
-               /* file sfg.c line 4195*/
+               /* file sfg.c line 4310*/
                if( (((getMEMINT((int)((getMEMINT((int)((getMEMINT((int)((cel_4 + 0))) + 4))) + 116))))==(ccsn_5))?1:0)!=0)
                {
                	   
@@ -11162,7 +11603,7 @@ public static 	int  cnl_18= (int)(0);
       return 0;
    }
    
-   /* file sfg.c line 4207*/
+   /* file sfg.c line 4322*/
    
    public static int clower_connectivity(int  cnode)
    {
@@ -11179,7 +11620,7 @@ public static 	int  cnl_18= (int)(0);
          cresult_5= 0;
          cresult_5=0;
          
-         /* file sfg.c line 4213*/
+         /* file sfg.c line 4328*/
          if( (((cnode)==((int)(0)))?1:0)!=0)
          {
          	   
@@ -11200,13 +11641,13 @@ public static 	int  cnl_18= (int)(0);
          	   
             {
             
-            /* file sfg.c line 4223*/
-            if( (((getMEMINT((int)((getMEMINT((int)((cel_4 + 0))) + 32))))==(0))?1:0)!=0)
+            /* file sfg.c line 4338*/
+            if( (((getMEMINT((int)((getMEMINT((int)((cel_4 + 0))) + 28))))==(0))?1:0)!=0)
             {
             	   
                {
                
-               /* file sfg.c line 4225*/
+               /* file sfg.c line 4340*/
                if( (((getMEMINT((int)((getMEMINT((int)((getMEMINT((int)((cel_4 + 0))) + 8))) + 116))))==(ccsn_5))?1:0)!=0)
                {
                	   
@@ -11238,7 +11679,7 @@ public static 	int  cnl_18= (int)(0);
       return 0;
    }
    
-   /* file sfg.c line 4237*/
+   /* file sfg.c line 4352*/
    
    public static double cdo_floor(double  cnum)
    {
@@ -11252,7 +11693,7 @@ public static 	int  cnl_18= (int)(0);
          {
          cret_4= 0.0;
          
-         /* file sfg.c line 4239*/
+         /* file sfg.c line 4354*/
          if( (((cnum)<(0))?1:0)!=0)
          {
          	   
@@ -11284,7 +11725,7 @@ public static 	int  cnl_18= (int)(0);
       return 0;
    }
    
-   /* file sfg.c line 4249*/
+   /* file sfg.c line 4364*/
    
    public static int cupper_barycenter(int  cnode)
    {
@@ -11302,7 +11743,7 @@ public static 	int  cnl_18= (int)(0);
          cresult_5= 0;
          cr_6= 0.0;
          
-         /* file sfg.c line 4254*/
+         /* file sfg.c line 4369*/
          if( (((cnode)==((int)(0)))?1:0)!=0)
          {
          	   
@@ -11323,13 +11764,13 @@ public static 	int  cnl_18= (int)(0);
          	   
             {
             
-            /* file sfg.c line 4264*/
-            if( (((getMEMINT((int)((getMEMINT((int)((cel_4 + 0))) + 32))))==(0))?1:0)!=0)
+            /* file sfg.c line 4379*/
+            if( (((getMEMINT((int)((getMEMINT((int)((cel_4 + 0))) + 28))))==(0))?1:0)!=0)
             {
             	   
                {
                
-               /* file sfg.c line 4266*/
+               /* file sfg.c line 4381*/
                if( (((getMEMINT((int)((getMEMINT((int)((getMEMINT((int)((cel_4 + 0))) + 4))) + 116))))==(ccsn_5))?1:0)!=0)
                {
                	   
@@ -11349,7 +11790,7 @@ public static 	int  cnl_18= (int)(0);
          
          }
          
-         /* file sfg.c line 4273*/
+         /* file sfg.c line 4388*/
          if( (((cresult_5)==(0))?1:0)!=0)
          {
          	   
@@ -11364,9 +11805,9 @@ public static 	int  cnl_18= (int)(0);
          	   
             {
             
-            /* file sfg.c line 4276*/
+            /* file sfg.c line 4391*/
             if( (((
-            /* file sfg.c line 4276*/
+            /* file sfg.c line 4391*/
             cupper_connectivity(cnode))==(0))?1:0)!=0)
             {
             	   
@@ -11381,7 +11822,7 @@ public static 	int  cnl_18= (int)(0);
             	   
                {
                cr_6=(cresult_5/
-               /* file sfg.c line 4279*/
+               /* file sfg.c line 4394*/
                cupper_connectivity(cnode));
                
                }
@@ -11392,7 +11833,7 @@ public static 	int  cnl_18= (int)(0);
          
          };
          cr_6=
-         /* file sfg.c line 4283*/
+         /* file sfg.c line 4398*/
          cdo_floor((cr_6 + 0.5));
          retval= (int)(cr_6);
          if(true)
@@ -11407,7 +11848,7 @@ public static 	int  cnl_18= (int)(0);
       return 0;
    }
    
-   /* file sfg.c line 4290*/
+   /* file sfg.c line 4405*/
    
    public static int clower_barycenter(int  cnode)
    {
@@ -11425,7 +11866,7 @@ public static 	int  cnl_18= (int)(0);
          cresult_5= 0;
          cr_6= 0.0;
          
-         /* file sfg.c line 4295*/
+         /* file sfg.c line 4410*/
          if( (((cnode)==((int)(0)))?1:0)!=0)
          {
          	   
@@ -11446,13 +11887,13 @@ public static 	int  cnl_18= (int)(0);
          	   
             {
             
-            /* file sfg.c line 4305*/
-            if( (((getMEMINT((int)((getMEMINT((int)((cel_4 + 0))) + 32))))==(0))?1:0)!=0)
+            /* file sfg.c line 4420*/
+            if( (((getMEMINT((int)((getMEMINT((int)((cel_4 + 0))) + 28))))==(0))?1:0)!=0)
             {
             	   
                {
                
-               /* file sfg.c line 4307*/
+               /* file sfg.c line 4422*/
                if( (((getMEMINT((int)((getMEMINT((int)((getMEMINT((int)((cel_4 + 0))) + 8))) + 116))))==(ccsn_5))?1:0)!=0)
                {
                	   
@@ -11472,7 +11913,7 @@ public static 	int  cnl_18= (int)(0);
          
          }
          
-         /* file sfg.c line 4314*/
+         /* file sfg.c line 4429*/
          if( (((cresult_5)==(0))?1:0)!=0)
          {
          	   
@@ -11487,9 +11928,9 @@ public static 	int  cnl_18= (int)(0);
          	   
             {
             
-            /* file sfg.c line 4317*/
+            /* file sfg.c line 4432*/
             if( (((
-            /* file sfg.c line 4317*/
+            /* file sfg.c line 4432*/
             clower_connectivity(cnode))==(0))?1:0)!=0)
             {
             	   
@@ -11504,7 +11945,7 @@ public static 	int  cnl_18= (int)(0);
             	   
                {
                cr_6=(cresult_5/
-               /* file sfg.c line 4320*/
+               /* file sfg.c line 4435*/
                clower_connectivity(cnode));
                
                }
@@ -11515,7 +11956,7 @@ public static 	int  cnl_18= (int)(0);
          
          };
          cr_6=
-         /* file sfg.c line 4324*/
+         /* file sfg.c line 4439*/
          cdo_floor((cr_6 + 0.5));
          retval= (int)(cr_6);
          if(true)
@@ -11530,7 +11971,7 @@ public static 	int  cnl_18= (int)(0);
       return 0;
    }
    
-   /* file sfg.c line 4330*/
+   /* file sfg.c line 4445*/
    
    public static void csort(int  cn)
    {
@@ -11547,27 +11988,27 @@ public static 	int  cnl_18= (int)(0);
          cj_4= 0;
          ch_5= calloca(12);
          
-         /* file sfg.c line 4347*/
+         /* file sfg.c line 4462*/
          cj_4=(cn - 1);
          lab_sfg102 : for( ; (((cj_4)>(0))?1:0)!=0 ; )
          {
             
             {
             
-            /* file sfg.c line 4346*/
+            /* file sfg.c line 4461*/
             ci_3=0;
             lab_sfg103 : for( ; (((ci_3)<(cj_4))?1:0)!=0 ; )
             {
                
                {
                
-               /* file sfg.c line 4338*/
+               /* file sfg.c line 4453*/
                if( (((getMEMINT((int)(((cnl_18 + (ci_3*12)) + 0))))!=0)? (getMEMINT((int)(((cnl_18 + ((ci_3 + 1)*12)) + 0)))):0)!=0)
                {
                	   
                   {
                   
-                  /* file sfg.c line 4339*/
+                  /* file sfg.c line 4454*/
                   if( (((getMEMINT((int)((getMEMINT((int)(((cnl_18 + (ci_3*12)) + 0))) + 60))))>(getMEMINT((int)((getMEMINT((int)(((cnl_18 + ((ci_3 + 1)*12)) + 0))) + 60)))))?1:0)!=0)
                   {
                   	   
@@ -11604,7 +12045,7 @@ public static 	int  cnl_18= (int)(0);
       prevlevel();
    }
    
-   /* file sfg.c line 4354*/
+   /* file sfg.c line 4469*/
    
    public static void cmake_node_list_up(int  cl)
    {
@@ -11628,7 +12069,7 @@ public static 	int  cnl_18= (int)(0);
             {
             cn_4=getMEMINT((int)((cgnl_3 + 0)));
             
-            /* file sfg.c line 4366*/
+            /* file sfg.c line 4481*/
             if( (((getMEMINT((int)((cn_4 + 72))))==(cl))?1:0)!=0)
             {
             	   
@@ -11636,9 +12077,9 @@ public static 	int  cnl_18= (int)(0);
                setMEMINT((int)(((cnl_18 + (ci_5*12)) + 0)),(int)(cn_4));
                setMEMINT((int)(((cnl_18 + (ci_5*12)) + 8)),(int)(0));
                
-               /* file sfg.c line 4369*/
+               /* file sfg.c line 4484*/
                if( (((
-               /* file sfg.c line 4369*/
+               /* file sfg.c line 4484*/
                cis_dummy(cn_4))==(1))?1:0)!=0)
                {
                	   
@@ -11653,7 +12094,7 @@ public static 	int  cnl_18= (int)(0);
                	   
                   {
                   setMEMINT((int)(((cnl_18 + (ci_5*12)) + 4)),(int)(
-                  /* file sfg.c line 4374*/
+                  /* file sfg.c line 4489*/
                   clower_connectivity(cn_4)));
                   
                   }
@@ -11670,7 +12111,7 @@ public static 	int  cnl_18= (int)(0);
          
          }
          
-         /* file sfg.c line 4381*/
+         /* file sfg.c line 4496*/
          csort(getMEMINT((int)((ccnnodes_of_level_8 + (cl*4)))));
          if(true)
          {
@@ -11683,7 +12124,7 @@ public static 	int  cnl_18= (int)(0);
       prevlevel();
    }
    
-   /* file sfg.c line 4388*/
+   /* file sfg.c line 4503*/
    
    public static void cmake_node_list_down(int  cl)
    {
@@ -11706,7 +12147,7 @@ public static 	int  cnl_18= (int)(0);
             {
             cn_4=getMEMINT((int)((cgnl_3 + 0)));
             
-            /* file sfg.c line 4398*/
+            /* file sfg.c line 4513*/
             if( (((getMEMINT((int)((cn_4 + 72))))==(cl))?1:0)!=0)
             {
             	   
@@ -11714,9 +12155,9 @@ public static 	int  cnl_18= (int)(0);
                setMEMINT((int)(((cnl_18 + (ci_5*12)) + 0)),(int)(cn_4));
                setMEMINT((int)(((cnl_18 + (ci_5*12)) + 8)),(int)(0));
                
-               /* file sfg.c line 4401*/
+               /* file sfg.c line 4516*/
                if( (((
-               /* file sfg.c line 4401*/
+               /* file sfg.c line 4516*/
                cis_dummy(cn_4))==(1))?1:0)!=0)
                {
                	   
@@ -11731,7 +12172,7 @@ public static 	int  cnl_18= (int)(0);
                	   
                   {
                   setMEMINT((int)(((cnl_18 + (ci_5*12)) + 4)),(int)(
-                  /* file sfg.c line 4406*/
+                  /* file sfg.c line 4521*/
                   cupper_connectivity(cn_4)));
                   
                   }
@@ -11748,7 +12189,7 @@ public static 	int  cnl_18= (int)(0);
          
          }
          
-         /* file sfg.c line 4413*/
+         /* file sfg.c line 4528*/
          csort(getMEMINT((int)((ccnnodes_of_level_8 + (cl*4)))));
          if(true)
          {
@@ -11761,7 +12202,7 @@ public static 	int  cnl_18= (int)(0);
       prevlevel();
    }
    
-   /* file sfg.c line 4420*/
+   /* file sfg.c line 4535*/
    
    public static int cfind_next(int  cn)
    {
@@ -11779,14 +12220,14 @@ public static 	int  cnl_18= (int)(0);
          ci_5= 0;
          chighest_priority_6= 0;
          
-         /* file sfg.c line 4431*/
+         /* file sfg.c line 4546*/
          ci_5=0;
          lab_sfg106 : for( ; (((ci_5)<(cn))?1:0)!=0 ; )
          {
             
             {
             
-            /* file sfg.c line 4427*/
+            /* file sfg.c line 4542*/
             if( ((((((getMEMINT((int)(((cnl_18 + (ci_5*12)) + 4))))>=(chighest_priority_6))?1:0))!=0)? ((((getMEMINT((int)(((cnl_18 + (ci_5*12)) + 8))))==(0))?1:0)):0)!=0)
             {
             	   
@@ -11815,7 +12256,7 @@ public static 	int  cnl_18= (int)(0);
       return 0;
    }
    
-   /* file sfg.c line 4437*/
+   /* file sfg.c line 4552*/
    
    public static void cdo_down(int  cl)
    {
@@ -11844,26 +12285,26 @@ public static 	int  cnl_18= (int)(0);
          cdistance_7= 0;
          cpossible_distance_8= 0;
          
-         /* file sfg.c line 4545*/
+         /* file sfg.c line 4660*/
          ci_3=0;
          lab_sfg107 : for( ; (((ci_3)<(getMEMINT((int)((ccnnodes_of_level_8 + (cl*4))))))?1:0)!=0 ; )
          {
             
             {
             cindex_4=
-            /* file sfg.c line 4446*/
+            /* file sfg.c line 4561*/
             cfind_next(getMEMINT((int)((ccnnodes_of_level_8 + (cl*4)))));
             
-            /* file sfg.c line 4448*/
+            /* file sfg.c line 4563*/
             if( getMEMINT((int)(((cnl_18 + (cindex_4*12)) + 0)))!=0)
             {
             	   
                {
                coptimal_position_6=
-               /* file sfg.c line 4450*/
+               /* file sfg.c line 4565*/
                cupper_barycenter(getMEMINT((int)(((cnl_18 + (cindex_4*12)) + 0))));
                
-               /* file sfg.c line 4452*/
+               /* file sfg.c line 4567*/
                if( (((coptimal_position_6)==(0))?1:0)!=0)
                {
                	   
@@ -11874,7 +12315,7 @@ public static 	int  cnl_18= (int)(0);
                
                };
                
-               /* file sfg.c line 4456*/
+               /* file sfg.c line 4571*/
                if( (((coptimal_position_6)<(getMEMINT((int)((getMEMINT((int)(((cnl_18 + (cindex_4*12)) + 0))) + 68)))))?1:0)!=0)
                {
                	   
@@ -11887,7 +12328,7 @@ public static 	int  cnl_18= (int)(0);
                      
                      {
                      
-                     /* file sfg.c line 4463*/
+                     /* file sfg.c line 4578*/
                      if( (((cj_5)>(0))?1:0)!=0)
                      {
                      	   
@@ -11912,7 +12353,7 @@ public static 	int  cnl_18= (int)(0);
                   
                   }while (((((((cj_5)>=(0))?1:0))!=0)? (((getMEMINT((int)(((cnl_18 + (cj_5*12)) + 8)))==0)?1:0)):0)!=0);
                   
-                  /* file sfg.c line 4473*/
+                  /* file sfg.c line 4588*/
                   if( (((cpossible_distance_8)<(cdistance_7))?1:0)!=0)
                   {
                   	   
@@ -11930,7 +12371,7 @@ public static 	int  cnl_18= (int)(0);
                      cd_9= 0;
                      ck_10= 0;
                      
-                     /* file sfg.c line 4482*/
+                     /* file sfg.c line 4597*/
                      if( (((cj_5)==(0))?1:0)!=0)
                      {
                      	   
@@ -11945,7 +12386,7 @@ public static 	int  cnl_18= (int)(0);
                      	   
                         {
                         
-                        /* file sfg.c line 4485*/
+                        /* file sfg.c line 4600*/
                         if( (((((getMEMINT((int)((getMEMINT((int)(((cnl_18 + (cj_5*12)) + 0))) + 68))) - getMEMINT((int)((getMEMINT((int)(((cnl_18 + ((cj_5 - 1)*12)) + 0))) + 68)))) - cmindist_4))<(cdistance_7))?1:0)!=0)
                         {
                         	   
@@ -11969,7 +12410,7 @@ public static 	int  cnl_18= (int)(0);
                      
                      };
                      
-                     /* file sfg.c line 4494*/
+                     /* file sfg.c line 4609*/
                      ck_10=cj_5;
                      lab_sfg110 : for( ; (((ck_10)<=(cindex_4))?1:0)!=0 ; )
                      {
@@ -12004,7 +12445,7 @@ public static 	int  cnl_18= (int)(0);
                      
                      {
                      
-                     /* file sfg.c line 4506*/
+                     /* file sfg.c line 4621*/
                      if( (((cj_5)<((getMEMINT((int)((ccnnodes_of_level_8 + (cl*4)))) - 1)))?1:0)!=0)
                      {
                      	   
@@ -12029,7 +12470,7 @@ public static 	int  cnl_18= (int)(0);
                   
                   }while (((((((cj_5)<(getMEMINT((int)((ccnnodes_of_level_8 + (cl*4))))))?1:0))!=0)? (((getMEMINT((int)(((cnl_18 + (cj_5*12)) + 8)))==0)?1:0)):0)!=0);
                   
-                  /* file sfg.c line 4516*/
+                  /* file sfg.c line 4631*/
                   if( (((cpossible_distance_8)<(cdistance_7))?1:0)!=0)
                   {
                   	   
@@ -12047,7 +12488,7 @@ public static 	int  cnl_18= (int)(0);
                      cd_11= 0;
                      ck_12= 0;
                      
-                     /* file sfg.c line 4525*/
+                     /* file sfg.c line 4640*/
                      if( (((cj_5)==((getMEMINT((int)((ccnnodes_of_level_8 + (cl*4)))) - 1)))?1:0)!=0)
                      {
                      	   
@@ -12062,7 +12503,7 @@ public static 	int  cnl_18= (int)(0);
                      	   
                         {
                         
-                        /* file sfg.c line 4528*/
+                        /* file sfg.c line 4643*/
                         if( (((((getMEMINT((int)((getMEMINT((int)(((cnl_18 + ((cj_5 + 1)*12)) + 0))) + 68))) - getMEMINT((int)((getMEMINT((int)(((cnl_18 + (cj_5*12)) + 0))) + 68)))) - cmindist_4))<(cdistance_7))?1:0)!=0)
                         {
                         	   
@@ -12086,7 +12527,7 @@ public static 	int  cnl_18= (int)(0);
                      
                      };
                      
-                     /* file sfg.c line 4537*/
+                     /* file sfg.c line 4652*/
                      ck_12=cindex_4;
                      lab_sfg113 : for( ; (((ck_12)<=(cj_5))?1:0)!=0 ; )
                      {
@@ -12130,7 +12571,7 @@ public static 	int  cnl_18= (int)(0);
       prevlevel();
    }
    
-   /* file sfg.c line 4551*/
+   /* file sfg.c line 4666*/
    
    public static void cdo_up(int  cl)
    {
@@ -12159,26 +12600,26 @@ public static 	int  cnl_18= (int)(0);
          cdistance_7= 0;
          cpossible_distance_8= 0;
          
-         /* file sfg.c line 4657*/
+         /* file sfg.c line 4772*/
          ci_3=0;
          lab_sfg114 : for( ; (((ci_3)<(getMEMINT((int)((ccnnodes_of_level_8 + (cl*4))))))?1:0)!=0 ; )
          {
             
             {
             cindex_4=
-            /* file sfg.c line 4560*/
+            /* file sfg.c line 4675*/
             cfind_next(getMEMINT((int)((ccnnodes_of_level_8 + (cl*4)))));
             
-            /* file sfg.c line 4562*/
+            /* file sfg.c line 4677*/
             if( getMEMINT((int)(((cnl_18 + (cindex_4*12)) + 0)))!=0)
             {
             	   
                {
                coptimal_position_6=
-               /* file sfg.c line 4563*/
+               /* file sfg.c line 4678*/
                clower_barycenter(getMEMINT((int)(((cnl_18 + (cindex_4*12)) + 0))));
                
-               /* file sfg.c line 4565*/
+               /* file sfg.c line 4680*/
                if( (((coptimal_position_6)==(0))?1:0)!=0)
                {
                	   
@@ -12189,7 +12630,7 @@ public static 	int  cnl_18= (int)(0);
                
                };
                
-               /* file sfg.c line 4569*/
+               /* file sfg.c line 4684*/
                if( (((coptimal_position_6)<(getMEMINT((int)((getMEMINT((int)(((cnl_18 + (cindex_4*12)) + 0))) + 68)))))?1:0)!=0)
                {
                	   
@@ -12202,7 +12643,7 @@ public static 	int  cnl_18= (int)(0);
                      
                      {
                      
-                     /* file sfg.c line 4575*/
+                     /* file sfg.c line 4690*/
                      if( (((cj_5)>(0))?1:0)!=0)
                      {
                      	   
@@ -12227,7 +12668,7 @@ public static 	int  cnl_18= (int)(0);
                   
                   }while (((((((cj_5)>=(0))?1:0))!=0)? (((getMEMINT((int)(((cnl_18 + (cj_5*12)) + 8)))==0)?1:0)):0)!=0);
                   
-                  /* file sfg.c line 4585*/
+                  /* file sfg.c line 4700*/
                   if( (((cpossible_distance_8)<(cdistance_7))?1:0)!=0)
                   {
                   	   
@@ -12245,7 +12686,7 @@ public static 	int  cnl_18= (int)(0);
                      cd_9= 0;
                      ck_10= 0;
                      
-                     /* file sfg.c line 4594*/
+                     /* file sfg.c line 4709*/
                      if( (((cj_5)==(0))?1:0)!=0)
                      {
                      	   
@@ -12260,7 +12701,7 @@ public static 	int  cnl_18= (int)(0);
                      	   
                         {
                         
-                        /* file sfg.c line 4597*/
+                        /* file sfg.c line 4712*/
                         if( (((((getMEMINT((int)((getMEMINT((int)(((cnl_18 + (cj_5*12)) + 0))) + 68))) - getMEMINT((int)((getMEMINT((int)(((cnl_18 + ((cj_5 - 1)*12)) + 0))) + 68)))) - cmindist_4))<(cdistance_7))?1:0)!=0)
                         {
                         	   
@@ -12284,7 +12725,7 @@ public static 	int  cnl_18= (int)(0);
                      
                      };
                      
-                     /* file sfg.c line 4606*/
+                     /* file sfg.c line 4721*/
                      ck_10=cj_5;
                      lab_sfg117 : for( ; (((ck_10)<=(cindex_4))?1:0)!=0 ; )
                      {
@@ -12319,7 +12760,7 @@ public static 	int  cnl_18= (int)(0);
                      
                      {
                      
-                     /* file sfg.c line 4618*/
+                     /* file sfg.c line 4733*/
                      if( (((cj_5)<((getMEMINT((int)((ccnnodes_of_level_8 + (cl*4)))) - 1)))?1:0)!=0)
                      {
                      	   
@@ -12344,7 +12785,7 @@ public static 	int  cnl_18= (int)(0);
                   
                   }while (((((((cj_5)<(getMEMINT((int)((ccnnodes_of_level_8 + (cl*4))))))?1:0))!=0)? (((getMEMINT((int)(((cnl_18 + (cj_5*12)) + 8)))==0)?1:0)):0)!=0);
                   
-                  /* file sfg.c line 4628*/
+                  /* file sfg.c line 4743*/
                   if( (((cpossible_distance_8)<(cdistance_7))?1:0)!=0)
                   {
                   	   
@@ -12362,7 +12803,7 @@ public static 	int  cnl_18= (int)(0);
                      cd_11= 0;
                      ck_12= 0;
                      
-                     /* file sfg.c line 4637*/
+                     /* file sfg.c line 4752*/
                      if( (((cj_5)==((getMEMINT((int)((ccnnodes_of_level_8 + (cl*4)))) - 1)))?1:0)!=0)
                      {
                      	   
@@ -12377,7 +12818,7 @@ public static 	int  cnl_18= (int)(0);
                      	   
                         {
                         
-                        /* file sfg.c line 4640*/
+                        /* file sfg.c line 4755*/
                         if( (((((getMEMINT((int)((getMEMINT((int)(((cnl_18 + ((cj_5 + 1)*12)) + 0))) + 68))) - getMEMINT((int)((getMEMINT((int)(((cnl_18 + (cj_5*12)) + 0))) + 68)))) - cmindist_4))<(cdistance_7))?1:0)!=0)
                         {
                         	   
@@ -12401,7 +12842,7 @@ public static 	int  cnl_18= (int)(0);
                      
                      };
                      
-                     /* file sfg.c line 4649*/
+                     /* file sfg.c line 4764*/
                      ck_12=cindex_4;
                      lab_sfg120 : for( ; (((ck_12)<=(cj_5))?1:0)!=0 ; )
                      {
@@ -12445,7 +12886,7 @@ public static 	int  cnl_18= (int)(0);
       prevlevel();
    }
    
-   /* file sfg.c line 4664*/
+   /* file sfg.c line 4779*/
    
    public static void cimprove_positions2local(int  cg)
    {
@@ -12467,36 +12908,36 @@ public static 	int  cnl_18= (int)(0);
          cmindist_4=1;
          ccount_4=1;
          
-         /* file sfg.c line 4703*/
+         /* file sfg.c line 4818*/
          cii_5=0;
          lab_sfg121 : for( ; (((cii_5)<(ccount_4))?1:0)!=0 ; )
          {
             
             {
             
-            /* file sfg.c line 4690*/
+            /* file sfg.c line 4805*/
             ci_3=csl_6;
             lab_sfg122 : for( ; (((ci_3)<(getMEMINT((int)((cg + 20)))))?1:0)!=0 ; )
             {
                
                {
                
-               /* file sfg.c line 4683*/
+               /* file sfg.c line 4798*/
                if( getMEMINT((int)((ccnnodes_of_level_8 + (ci_3*4))))!=0)
                {
                	   
                   {
                   cnl_18=(int)(
-                  /* file sfg.c line 4684*/
+                  /* file sfg.c line 4799*/
                   ccalloc(1,(getMEMINT((int)((ccnnodes_of_level_8 + (ci_3*4))))*12)));
                   
-                  /* file sfg.c line 4685*/
+                  /* file sfg.c line 4800*/
                   cmake_node_list_down(ci_3);
                   
-                  /* file sfg.c line 4686*/
+                  /* file sfg.c line 4801*/
                   cdo_down(ci_3);
                   
-                  /* file sfg.c line 4687*/
+                  /* file sfg.c line 4802*/
                   cfree(cnl_18);
                   cnl_18=(int)(0);
                   
@@ -12509,29 +12950,29 @@ public static 	int  cnl_18= (int)(0);
             
             }
             
-            /* file sfg.c line 4701*/
+            /* file sfg.c line 4816*/
             ci_3=(getMEMINT((int)((cg + 20))) - 1);
             lab_sfg123 : for( ; (((ci_3)>=(csl_6))?1:0)!=0 ; )
             {
                
                {
                
-               /* file sfg.c line 4694*/
+               /* file sfg.c line 4809*/
                if( getMEMINT((int)((ccnnodes_of_level_8 + (ci_3*4))))!=0)
                {
                	   
                   {
                   cnl_18=(int)(
-                  /* file sfg.c line 4695*/
+                  /* file sfg.c line 4810*/
                   ccalloc(1,(getMEMINT((int)((ccnnodes_of_level_8 + (ci_3*4))))*12)));
                   
-                  /* file sfg.c line 4696*/
+                  /* file sfg.c line 4811*/
                   cmake_node_list_up(ci_3);
                   
-                  /* file sfg.c line 4697*/
+                  /* file sfg.c line 4812*/
                   cdo_up(ci_3);
                   
-                  /* file sfg.c line 4698*/
+                  /* file sfg.c line 4813*/
                   cfree(cnl_18);
                   cnl_18=(int)(0);
                   
@@ -12549,35 +12990,35 @@ public static 	int  cnl_18= (int)(0);
          
          }
          
-         /* file sfg.c line 4706*/
+         /* file sfg.c line 4821*/
          if( ((((csl_6 + 2))<(getMEMINT((int)((cg + 20)))))?1:0)!=0)
          {
          	   
             {
             
-            /* file sfg.c line 4716*/
+            /* file sfg.c line 4831*/
             ci_3=(csl_6 + 2);
             lab_sfg124 : for( ; (((ci_3)>=(csl_6))?1:0)!=0 ; )
             {
                
                {
                
-               /* file sfg.c line 4709*/
+               /* file sfg.c line 4824*/
                if( getMEMINT((int)((ccnnodes_of_level_8 + (ci_3*4))))!=0)
                {
                	   
                   {
                   cnl_18=(int)(
-                  /* file sfg.c line 4710*/
+                  /* file sfg.c line 4825*/
                   ccalloc(1,(getMEMINT((int)((ccnnodes_of_level_8 + (ci_3*4))))*12)));
                   
-                  /* file sfg.c line 4711*/
+                  /* file sfg.c line 4826*/
                   cmake_node_list_up(ci_3);
                   
-                  /* file sfg.c line 4712*/
+                  /* file sfg.c line 4827*/
                   cdo_up(ci_3);
                   
-                  /* file sfg.c line 4713*/
+                  /* file sfg.c line 4828*/
                   cfree(cnl_18);
                   cnl_18=(int)(0);
                   
@@ -12594,35 +13035,35 @@ public static 	int  cnl_18= (int)(0);
          
          };
          
-         /* file sfg.c line 4729*/
+         /* file sfg.c line 4844*/
          ci_3=(getMEMINT((int)((cg + 20))) - 2);
          lab_sfg125 : for( ; (((ci_3)<=(getMEMINT((int)((cg + 20)))))?1:0)!=0 ; )
          {
             
             {
             
-            /* file sfg.c line 4720*/
+            /* file sfg.c line 4835*/
             if( (((ci_3)>=(0))?1:0)!=0)
             {
             	   
                {
                
-               /* file sfg.c line 4721*/
+               /* file sfg.c line 4836*/
                if( getMEMINT((int)((ccnnodes_of_level_8 + (ci_3*4))))!=0)
                {
                	   
                   {
                   cnl_18=(int)(
-                  /* file sfg.c line 4722*/
+                  /* file sfg.c line 4837*/
                   ccalloc(1,(getMEMINT((int)((ccnnodes_of_level_8 + (ci_3*4))))*12)));
                   
-                  /* file sfg.c line 4723*/
+                  /* file sfg.c line 4838*/
                   cmake_node_list_down(ci_3);
                   
-                  /* file sfg.c line 4724*/
+                  /* file sfg.c line 4839*/
                   cdo_down(ci_3);
                   
-                  /* file sfg.c line 4725*/
+                  /* file sfg.c line 4840*/
                   cfree(cnl_18);
                   cnl_18=(int)(0);
                   
@@ -12649,7 +13090,7 @@ public static 	int  cnl_18= (int)(0);
       prevlevel();
    }
    
-   /* file sfg.c line 4736*/
+   /* file sfg.c line 4851*/
    
    public static void cmake_cnnodes_at_level(int  cg)
    {
@@ -12662,7 +13103,7 @@ public static 	int  cnl_18= (int)(0);
          {
          cgnl_3= (int)(0);
          ccnnodes_of_level_8=(int)(
-         /* file sfg.c line 4739*/
+         /* file sfg.c line 4854*/
          ccalloc(1,((getMEMINT((int)((cg + 20))) + 1)*4)));
          cgnl_3=ccnodelist_6;
          lab_sfg126 : while( (cgnl_3) !=0 )
@@ -12686,7 +13127,7 @@ public static 	int  cnl_18= (int)(0);
       prevlevel();
    }
    
-   /* file sfg.c line 4753*/
+   /* file sfg.c line 4868*/
    
    public static void cclear_cnnodes_at_level()
    {
@@ -12697,13 +13138,13 @@ public static 	int  cnl_18= (int)(0);
          
          {
          
-         /* file sfg.c line 4756*/
+         /* file sfg.c line 4871*/
          if( ccnnodes_of_level_8!=0)
          {
          	   
             {
             
-            /* file sfg.c line 4757*/
+            /* file sfg.c line 4872*/
             cfree(ccnnodes_of_level_8);
             
             }
@@ -12721,7 +13162,7 @@ public static 	int  cnl_18= (int)(0);
       prevlevel();
    }
    
-   /* file sfg.c line 4768*/
+   /* file sfg.c line 4883*/
    
    public static void cmake_cnodelist(int  cg)
    {
@@ -12741,17 +13182,17 @@ public static 	int  cnl_18= (int)(0);
          	   
             {
             
-            /* file sfg.c line 4777*/
+            /* file sfg.c line 4892*/
             if( (((getMEMINT((int)((getMEMINT((int)((cgnl_3 + 0))) + 116))))==(ccsn_5))?1:0)!=0)
             {
             	   
                {
                cnewnl_4=(int)(
-               /* file sfg.c line 4779*/
+               /* file sfg.c line 4894*/
                ccalloc(1,8));
                setMEMINT((int)((cnewnl_4 + 0)),(int)(getMEMINT((int)((cgnl_3 + 0)))));
                
-               /* file sfg.c line 4781*/
+               /* file sfg.c line 4896*/
                if( (((ccnodelist_6)==((int)(0)))?1:0)!=0)
                {
                	   
@@ -12792,7 +13233,7 @@ public static 	int  cnl_18= (int)(0);
       prevlevel();
    }
    
-   /* file sfg.c line 4798*/
+   /* file sfg.c line 4913*/
    
    public static void cclear_cnodelist()
    {
@@ -12813,7 +13254,7 @@ public static 	int  cnl_18= (int)(0);
             {
             cgnlnext_3=getMEMINT((int)((cgnl_2 + 4)));
             
-            /* file sfg.c line 4806*/
+            /* file sfg.c line 4921*/
             cfree(cgnl_2);
             cgnl_2=cgnlnext_3;
             
@@ -12833,7 +13274,7 @@ public static 	int  cnl_18= (int)(0);
       prevlevel();
    }
    
-   /* file sfg.c line 4819*/
+   /* file sfg.c line 4934*/
    
    public static void cmove0()
    {
@@ -12854,7 +13295,7 @@ public static 	int  cnl_18= (int)(0);
          	   
             {
             
-            /* file sfg.c line 4829*/
+            /* file sfg.c line 4944*/
             if( (((getMEMINT((int)((getMEMINT((int)((cgnl_2 + 0))) + 68))))<(cmx_3))?1:0)!=0)
             {
             	   
@@ -12891,7 +13332,7 @@ public static 	int  cnl_18= (int)(0);
       prevlevel();
    }
    
-   /* file sfg.c line 4848*/
+   /* file sfg.c line 4963*/
    
    public static void cmake_cposnodes()
    {
@@ -12920,7 +13361,7 @@ public static 	int  cnl_18= (int)(0);
          	   
             {
             
-            /* file sfg.c line 4868*/
+            /* file sfg.c line 4983*/
             if( (((getMEMINT((int)((getMEMINT((int)((clnl_2 + 0))) + 68))))>(cmaxrx_6))?1:0)!=0)
             {
             	   
@@ -12937,10 +13378,10 @@ public static 	int  cnl_18= (int)(0);
          }
          ccwidestnnodes_11=cmaxrx_6;
          ccwpos_12=(int)(
-         /* file sfg.c line 4878*/
+         /* file sfg.c line 4993*/
          ccalloc(1,((ccwidestnnodes_11 + 1)*4)));
          
-         /* file sfg.c line 4880*/
+         /* file sfg.c line 4995*/
          if( (((ccwpos_12)==((int)(0)))?1:0)!=0)
          {
          	   
@@ -12955,10 +13396,10 @@ public static 	int  cnl_18= (int)(0);
          
          };
          ccposnodes_13=(int)(
-         /* file sfg.c line 4885*/
+         /* file sfg.c line 5000*/
          ccalloc(1,((ccwidestnnodes_11 + 1)*4)));
          
-         /* file sfg.c line 4887*/
+         /* file sfg.c line 5002*/
          if( (((ccposnodes_13)==((int)(0)))?1:0)!=0)
          {
          	   
@@ -12979,10 +13420,10 @@ public static 	int  cnl_18= (int)(0);
             {
             ci_4=getMEMINT((int)((getMEMINT((int)((clnl_2 + 0))) + 68)));
             cnewl_3=(int)(
-            /* file sfg.c line 4897*/
+            /* file sfg.c line 5012*/
             ccalloc(1,8));
             
-            /* file sfg.c line 4899*/
+            /* file sfg.c line 5014*/
             if( (((cnewl_3)==((int)(0)))?1:0)!=0)
             {
             	   
@@ -12998,7 +13439,7 @@ public static 	int  cnl_18= (int)(0);
             };
             setMEMINT((int)((cnewl_3 + 0)),(int)(getMEMINT((int)((clnl_2 + 0)))));
             
-            /* file sfg.c line 4905*/
+            /* file sfg.c line 5020*/
             if( (((getMEMINT((int)((ccposnodes_13 + (ci_4*4)))))==((int)(0)))?1:0)!=0)
             {
             	   
@@ -13025,7 +13466,7 @@ public static 	int  cnl_18= (int)(0);
          
          }
          
-         /* file sfg.c line 4931*/
+         /* file sfg.c line 5046*/
          ci_4=0;
          lab_sfg133 : for( ; (((ci_4)<((ccwidestnnodes_11 + 1)))?1:0)!=0 ; )
          {
@@ -13038,7 +13479,7 @@ public static 	int  cnl_18= (int)(0);
             	   
                {
                
-               /* file sfg.c line 4924*/
+               /* file sfg.c line 5039*/
                if( (((getMEMINT((int)((getMEMINT((int)((clnl_2 + 0))) + 12))))>(clmaxw_5))?1:0)!=0)
                {
                	   
@@ -13070,7 +13511,7 @@ public static 	int  cnl_18= (int)(0);
       prevlevel();
    }
    
-   /* file sfg.c line 4938*/
+   /* file sfg.c line 5053*/
    
    public static void cclear_cposnodes()
    {
@@ -13087,13 +13528,13 @@ public static 	int  cnl_18= (int)(0);
          clnl_3= (int)(0);
          cnlnext_4= (int)(0);
          
-         /* file sfg.c line 4944*/
+         /* file sfg.c line 5059*/
          if( ccwpos_12!=0)
          {
          	   
             {
             
-            /* file sfg.c line 4945*/
+            /* file sfg.c line 5060*/
             cfree(ccwpos_12);
             ccwpos_12=(int)(0);
             
@@ -13101,7 +13542,7 @@ public static 	int  cnl_18= (int)(0);
          
          };
          
-         /* file sfg.c line 4960*/
+         /* file sfg.c line 5075*/
          ci_2=0;
          lab_sfg135 : for( ; (((ci_2)<((ccwidestnnodes_11 + 1)))?1:0)!=0 ; )
          {
@@ -13114,7 +13555,7 @@ public static 	int  cnl_18= (int)(0);
                {
                cnlnext_4=getMEMINT((int)((clnl_3 + 4)));
                
-               /* file sfg.c line 4955*/
+               /* file sfg.c line 5070*/
                cfree(clnl_3);
                clnl_3=cnlnext_4;
                
@@ -13128,7 +13569,7 @@ public static 	int  cnl_18= (int)(0);
          
          }
          
-         /* file sfg.c line 4962*/
+         /* file sfg.c line 5077*/
          cfree(ccposnodes_13);
          ccposnodes_13=(int)(0);
          if(true)
@@ -13142,7 +13583,7 @@ public static 	int  cnl_18= (int)(0);
       prevlevel();
    }
    
-   /* file sfg.c line 4970*/
+   /* file sfg.c line 5085*/
    
    public static void cmake_clevelnodes(int  cg)
    {
@@ -13161,10 +13602,10 @@ public static 	int  cnl_18= (int)(0);
          ci_5= 0;
          clmaxh_6= 0;
          cchpos_14=(int)(
-         /* file sfg.c line 4976*/
+         /* file sfg.c line 5091*/
          ccalloc(1,((getMEMINT((int)((cg + 20))) + 1)*4)));
          
-         /* file sfg.c line 4978*/
+         /* file sfg.c line 5093*/
          if( (((cchpos_14)==((int)(0)))?1:0)!=0)
          {
          	   
@@ -13179,10 +13620,10 @@ public static 	int  cnl_18= (int)(0);
          
          };
          cclevelnodes_15=
-         /* file sfg.c line 4982*/
+         /* file sfg.c line 5097*/
          ccalloc(1,((getMEMINT((int)((cg + 20))) + 1)*4));
          
-         /* file sfg.c line 4984*/
+         /* file sfg.c line 5099*/
          if( (((cclevelnodes_15)==((int)(0)))?1:0)!=0)
          {
          	   
@@ -13203,10 +13644,10 @@ public static 	int  cnl_18= (int)(0);
             {
             ci_5=getMEMINT((int)((getMEMINT((int)((clnl_3 + 0))) + 72)));
             cnewl_4=
-            /* file sfg.c line 4993*/
+            /* file sfg.c line 5108*/
             ccalloc(1,8);
             
-            /* file sfg.c line 4995*/
+            /* file sfg.c line 5110*/
             if( (((cnewl_4)==((int)(0)))?1:0)!=0)
             {
             	   
@@ -13222,7 +13663,7 @@ public static 	int  cnl_18= (int)(0);
             };
             setMEMINT((int)((cnewl_4 + 0)),(int)(getMEMINT((int)((clnl_3 + 0)))));
             
-            /* file sfg.c line 5001*/
+            /* file sfg.c line 5116*/
             if( (((getMEMINT((int)((cclevelnodes_15 + (ci_5*4)))))==((int)(0)))?1:0)!=0)
             {
             	   
@@ -13249,7 +13690,7 @@ public static 	int  cnl_18= (int)(0);
          
          }
          
-         /* file sfg.c line 5028*/
+         /* file sfg.c line 5143*/
          ci_5=0;
          lab_sfg138 : for( ; (((ci_5)<((getMEMINT((int)((cg + 20))) + 1)))?1:0)!=0 ; )
          {
@@ -13262,7 +13703,7 @@ public static 	int  cnl_18= (int)(0);
             	   
                {
                
-               /* file sfg.c line 5021*/
+               /* file sfg.c line 5136*/
                if( (((getMEMINT((int)((getMEMINT((int)((clnl_3 + 0))) + 16))))>(clmaxh_6))?1:0)!=0)
                {
                	   
@@ -13294,7 +13735,7 @@ public static 	int  cnl_18= (int)(0);
       prevlevel();
    }
    
-   /* file sfg.c line 5034*/
+   /* file sfg.c line 5149*/
    
    public static void cclear_clevelnodes(int  cg)
    {
@@ -13311,13 +13752,13 @@ public static 	int  cnl_18= (int)(0);
          clnl_4= (int)(0);
          cnlnext_5= (int)(0);
          
-         /* file sfg.c line 5040*/
+         /* file sfg.c line 5155*/
          if( cchpos_14!=0)
          {
          	   
             {
             
-            /* file sfg.c line 5041*/
+            /* file sfg.c line 5156*/
             cfree(cchpos_14);
             cchpos_14=(int)(0);
             
@@ -13325,7 +13766,7 @@ public static 	int  cnl_18= (int)(0);
          
          };
          
-         /* file sfg.c line 5056*/
+         /* file sfg.c line 5171*/
          ci_3=0;
          lab_sfg140 : for( ; (((ci_3)<((getMEMINT((int)((cg + 20))) + 1)))?1:0)!=0 ; )
          {
@@ -13338,7 +13779,7 @@ public static 	int  cnl_18= (int)(0);
                {
                cnlnext_5=getMEMINT((int)((clnl_4 + 4)));
                
-               /* file sfg.c line 5051*/
+               /* file sfg.c line 5166*/
                cfree(clnl_4);
                clnl_4=cnlnext_5;
                
@@ -13352,7 +13793,7 @@ public static 	int  cnl_18= (int)(0);
          
          }
          
-         /* file sfg.c line 5058*/
+         /* file sfg.c line 5173*/
          cfree(cclevelnodes_15);
          cclevelnodes_15=(int)(0);
          if(true)
@@ -13366,7 +13807,7 @@ public static 	int  cnl_18= (int)(0);
       prevlevel();
    }
    
-   /* file sfg.c line 5066*/
+   /* file sfg.c line 5181*/
    
    public static void ccfinalxy(int  cg)
    {
@@ -13389,19 +13830,19 @@ public static 	int  cnl_18= (int)(0);
          ci_7= 0;
          cecount_8= 0;
          
-         /* file sfg.c line 5075*/
+         /* file sfg.c line 5190*/
          cmake_cposnodes();
          ccmaxx_9=0;
          cxoff_5=0;
          
-         /* file sfg.c line 5128*/
+         /* file sfg.c line 5243*/
          ci_7=0;
          lab_sfg142 : for( ; (((ci_7)<((ccwidestnnodes_11 + 1)))?1:0)!=0 ; )
          {
             
             {
             
-            /* file sfg.c line 5083*/
+            /* file sfg.c line 5198*/
             if( 0!=0)
             {
             	   
@@ -13412,7 +13853,7 @@ public static 	int  cnl_18= (int)(0);
             
             };
             
-            /* file sfg.c line 5088*/
+            /* file sfg.c line 5203*/
             if( (((getMEMINT((int)((ccwpos_12 + (ci_7*4)))))==(0))?1:0)!=0)
             {
             	   
@@ -13439,7 +13880,7 @@ public static 	int  cnl_18= (int)(0);
                {
                setMEMINT((int)((getMEMINT((int)((clnl_3 + 0))) + 92)),(int)((chw_4 - (getMEMINT((int)((getMEMINT((int)((clnl_3 + 0))) + 12)))/2))));
                
-               /* file sfg.c line 5105*/
+               /* file sfg.c line 5220*/
                if( ((((getMEMINT((int)((getMEMINT((int)((clnl_3 + 0))) + 92))) + getMEMINT((int)((getMEMINT((int)((clnl_3 + 0))) + 12)))))>(ccmaxx_9))?1:0)!=0)
                {
                	   
@@ -13474,25 +13915,25 @@ public static 	int  cnl_18= (int)(0);
          
          }
          
-         /* file sfg.c line 5131*/
+         /* file sfg.c line 5246*/
          cclear_cposnodes();
          
-         /* file sfg.c line 5134*/
+         /* file sfg.c line 5249*/
          cmake_clevelnodes(cg);
          ccmaxy_10=0;
          cyoff_6=0;
          setMEMINT((int)((cg + 112)),(int)((int)(
-         /* file sfg.c line 5140*/
+         /* file sfg.c line 5255*/
          ccalloc(1,((getMEMINT((int)((cg + 20))) + 1)*4)))));
          
-         /* file sfg.c line 5209*/
+         /* file sfg.c line 5324*/
          ci_7=0;
          lab_sfg145 : for( ; (((ci_7)<((getMEMINT((int)((cg + 20))) + 1)))?1:0)!=0 ; )
          {
             
             {
             
-            /* file sfg.c line 5145*/
+            /* file sfg.c line 5260*/
             if( 0!=0)
             {
             	   
@@ -13503,7 +13944,7 @@ public static 	int  cnl_18= (int)(0);
             
             };
             
-            /* file sfg.c line 5150*/
+            /* file sfg.c line 5265*/
             if( (((getMEMINT((int)((cchpos_14 + (ci_7*4)))))==(0))?1:0)!=0)
             {
             	   
@@ -13533,7 +13974,7 @@ public static 	int  cnl_18= (int)(0);
                setMEMINT((int)((getMEMINT((int)((clnl_3 + 0))) + 88)),(int)((cyoff_6 + getMEMINT((int)((cchpos_14 + (ci_7*4)))))));
                setMEMINT((int)((getMEMINT((int)((clnl_3 + 0))) + 96)),(int)((chw_4 - (getMEMINT((int)((getMEMINT((int)((clnl_3 + 0))) + 16)))/2))));
                
-               /* file sfg.c line 5174*/
+               /* file sfg.c line 5289*/
                if( ((((getMEMINT((int)((getMEMINT((int)((clnl_3 + 0))) + 96))) + getMEMINT((int)((getMEMINT((int)((clnl_3 + 0))) + 16)))))>(ccmaxy_10))?1:0)!=0)
                {
                	   
@@ -13544,14 +13985,14 @@ public static 	int  cnl_18= (int)(0);
                
                };
                
-               /* file sfg.c line 5179*/
+               /* file sfg.c line 5294*/
                if( getMEMINT((int)((getMEMINT((int)((clnl_3 + 0))) + 20)))!=0)
                {
                	   
                   {
                   setMEMINT((int)((getMEMINT((int)((clnl_3 + 0))) + 16)),(int)(getMEMINT((int)((cchpos_14 + (ci_7*4))))));
                   
-                  /* file sfg.c line 5182*/
+                  /* file sfg.c line 5297*/
                   if( (((getMEMINT((int)((cchpos_14 + (ci_7*4)))))==(0))?1:0)!=0)
                   {
                   	   
@@ -13581,16 +14022,16 @@ public static 	int  cnl_18= (int)(0);
          
          }
          
-         /* file sfg.c line 5211*/
+         /* file sfg.c line 5326*/
          cclear_clevelnodes(cg);
          
-         /* file sfg.c line 5214*/
+         /* file sfg.c line 5329*/
          if( getMEMINT((int)((cg + 112)))!=0)
          {
          	   
             {
             
-            /* file sfg.c line 5215*/
+            /* file sfg.c line 5330*/
             cfree(getMEMINT((int)((cg + 112))));
             setMEMINT((int)((cg + 112)),(int)((int)(0)));
             
@@ -13608,7 +14049,7 @@ public static 	int  cnl_18= (int)(0);
       prevlevel();
    }
    
-   /* file sfg.c line 5223*/
+   /* file sfg.c line 5338*/
    
    public static void cmovefinal(int  cxoffset)
    {
@@ -13644,7 +14085,7 @@ public static 	int  cnl_18= (int)(0);
       prevlevel();
    }
    
-   /* file sfg.c line 5240*/
+   /* file sfg.c line 5355*/
    
    public static void ctunedummy(int  cg)
    {
@@ -13668,7 +14109,7 @@ public static 	int  cnl_18= (int)(0);
          	   
             {
             
-            /* file sfg.c line 5249*/
+            /* file sfg.c line 5364*/
             if( getMEMINT((int)((getMEMINT((int)((cgnl_3 + 0))) + 20)))!=0)
             {
             	   
@@ -13677,7 +14118,7 @@ public static 	int  cnl_18= (int)(0);
                cx2_5=(getMEMINT((int)((getMEMINT((int)((getMEMINT((int)((getMEMINT((int)((getMEMINT((int)((cgnl_3 + 0))) + 108))) + 0))) + 4))) + 92))) + (getMEMINT((int)((getMEMINT((int)((getMEMINT((int)((getMEMINT((int)((getMEMINT((int)((cgnl_3 + 0))) + 108))) + 0))) + 4))) + 12)))/2));
                cx3_6=(getMEMINT((int)((getMEMINT((int)((getMEMINT((int)((getMEMINT((int)((getMEMINT((int)((cgnl_3 + 0))) + 100))) + 0))) + 8))) + 92))) + (getMEMINT((int)((getMEMINT((int)((getMEMINT((int)((getMEMINT((int)((getMEMINT((int)((cgnl_3 + 0))) + 100))) + 0))) + 8))) + 12)))/2));
                
-               /* file sfg.c line 5253*/
+               /* file sfg.c line 5368*/
                if( ((((((cx1_4)==(cx2_5))?1:0))!=0)? ((((cx1_4)==(cx3_6))?1:0)):0)!=0)
                {
                	
@@ -13687,7 +14128,7 @@ public static 	int  cnl_18= (int)(0);
                	   
                   {
                   
-                  /* file sfg.c line 5256*/
+                  /* file sfg.c line 5371*/
                   if( ((((((cx2_5)<(cx1_4))?1:0))!=0)? ((((cx3_6)<(cx1_4))?1:0)):0)!=0)
                   {
                   	   
@@ -13698,7 +14139,7 @@ public static 	int  cnl_18= (int)(0);
                   
                   };
                   
-                  /* file sfg.c line 5260*/
+                  /* file sfg.c line 5375*/
                   if( ((((((cx2_5)>(cx1_4))?1:0))!=0)? ((((cx3_6)>(cx1_4))?1:0)):0)!=0)
                   {
                   	   
@@ -13732,7 +14173,7 @@ public static 	int  cnl_18= (int)(0);
       prevlevel();
    }
    
-   /* file sfg.c line 5274*/
+   /* file sfg.c line 5389*/
    
    public static void ctunenodes(int  cg)
    {
@@ -13750,13 +14191,13 @@ public static 	int  cnl_18= (int)(0);
          	   
             {
             
-            /* file sfg.c line 5281*/
+            /* file sfg.c line 5396*/
             if( (((getMEMINT((int)((getMEMINT((int)((cgnl_3 + 0))) + 20))))==(0))?1:0)!=0)
             {
             	   
                {
                
-               /* file sfg.c line 5282*/
+               /* file sfg.c line 5397*/
                if( getMEMINT((int)((getMEMINT((int)((cgnl_3 + 0))) + 52)))!=0)
                {
                	
@@ -13766,7 +14207,7 @@ public static 	int  cnl_18= (int)(0);
                	   
                   {
                   
-                  /* file sfg.c line 5285*/
+                  /* file sfg.c line 5400*/
                   if( ((((((getMEMINT((int)((getMEMINT((int)((cgnl_3 + 0))) + 44))))>(0))?1:0))!=0)? ((((getMEMINT((int)((getMEMINT((int)((cgnl_3 + 0))) + 48))))==(0))?1:0)):0)!=0)
                   {
                   	   
@@ -13777,7 +14218,7 @@ public static 	int  cnl_18= (int)(0);
                   
                   };
                   
-                  /* file sfg.c line 5289*/
+                  /* file sfg.c line 5404*/
                   if( ((((((getMEMINT((int)((getMEMINT((int)((cgnl_3 + 0))) + 44))))==(0))?1:0))!=0)? ((((getMEMINT((int)((getMEMINT((int)((cgnl_3 + 0))) + 48))))>(0))?1:0)):0)!=0)
                   {
                   	   
@@ -13788,13 +14229,13 @@ public static 	int  cnl_18= (int)(0);
                   
                   };
                   
-                  /* file sfg.c line 5293*/
+                  /* file sfg.c line 5408*/
                   if( ((((((getMEMINT((int)((getMEMINT((int)((cgnl_3 + 0))) + 44))))>(0))?1:0))!=0)? ((((getMEMINT((int)((getMEMINT((int)((cgnl_3 + 0))) + 48))))>(0))?1:0)):0)!=0)
                   {
                   	   
                      {
                      
-                     /* file sfg.c line 5294*/
+                     /* file sfg.c line 5409*/
                      if( (((getMEMINT((int)((getMEMINT((int)((cgnl_3 + 0))) + 44))))==(getMEMINT((int)((getMEMINT((int)((cgnl_3 + 0))) + 48)))))?1:0)!=0)
                      {
                      	
@@ -13804,7 +14245,7 @@ public static 	int  cnl_18= (int)(0);
                      	   
                         {
                         
-                        /* file sfg.c line 5299*/
+                        /* file sfg.c line 5414*/
                         if( (((getMEMINT((int)((getMEMINT((int)((cgnl_3 + 0))) + 44))))>(getMEMINT((int)((getMEMINT((int)((cgnl_3 + 0))) + 48)))))?1:0)!=0)
                         {
                         	   
@@ -13815,7 +14256,7 @@ public static 	int  cnl_18= (int)(0);
                         
                         };
                         
-                        /* file sfg.c line 5303*/
+                        /* file sfg.c line 5418*/
                         if( (((getMEMINT((int)((getMEMINT((int)((cgnl_3 + 0))) + 48))))>(getMEMINT((int)((getMEMINT((int)((cgnl_3 + 0))) + 44)))))?1:0)!=0)
                         {
                         	   
@@ -13857,7 +14298,7 @@ public static 	int  cnl_18= (int)(0);
       prevlevel();
    }
    
-   /* file sfg.c line 5319*/
+   /* file sfg.c line 5434*/
    
    public static void cimprove_positions(int  cg)
    {
@@ -13893,7 +14334,7 @@ public static 	int  cnl_18= (int)(0);
          }
          cxoffset_5=0;
          
-         /* file sfg.c line 5386*/
+         /* file sfg.c line 5501*/
          ci_4=0;
          lab_sfg151 : for( ; (((ci_4)<(getMEMINT((int)((cg + 44)))))?1:0)!=0 ; )
          {
@@ -13901,42 +14342,42 @@ public static 	int  cnl_18= (int)(0);
             {
             ccsn_5=getMEMINT((int)((getMEMINT((int)((cg + 48))) + (ci_4*4))));
             
-            /* file sfg.c line 5348*/
+            /* file sfg.c line 5463*/
             if( (((((((((ci_4)==(0))?1:0))!=0)?1: ((((ci_4)==((getMEMINT((int)((cg + 44)))/2)))?1:0))))!=0)?1: ((((ci_4)==((getMEMINT((int)((cg + 44))) - 1)))?1:0)))!=0)
             {
             	
             };
             ccmaxx_9=0;
             
-            /* file sfg.c line 5355*/
+            /* file sfg.c line 5470*/
             cmake_cnodelist(cg);
             
-            /* file sfg.c line 5358*/
+            /* file sfg.c line 5473*/
             cmake_cnnodes_at_level(cg);
             
-            /* file sfg.c line 5361*/
+            /* file sfg.c line 5476*/
             cimprove_positions2local(cg);
             
-            /* file sfg.c line 5364*/
+            /* file sfg.c line 5479*/
             cmove0();
             
-            /* file sfg.c line 5367*/
+            /* file sfg.c line 5482*/
             ccfinalxy(cg);
             
-            /* file sfg.c line 5370*/
+            /* file sfg.c line 5485*/
             ctunedummy(cg);
             
-            /* file sfg.c line 5373*/
+            /* file sfg.c line 5488*/
             ctunenodes(cg);
             
-            /* file sfg.c line 5376*/
+            /* file sfg.c line 5491*/
             cmovefinal(cxoffset_5);
             cxoffset_5=((cxoffset_5 + ccmaxx_9) + cxspacing_16);
             
-            /* file sfg.c line 5382*/
+            /* file sfg.c line 5497*/
             cclear_cnnodes_at_level();
             
-            /* file sfg.c line 5385*/
+            /* file sfg.c line 5500*/
             cclear_cnodelist();
             
             }
@@ -13944,7 +14385,7 @@ public static 	int  cnl_18= (int)(0);
          
          }
          
-         /* file sfg.c line 5389*/
+         /* file sfg.c line 5504*/
          if( getMEMINT((int)((cg + 32)))!=0)
          {
          	
@@ -13960,7 +14401,7 @@ public static 	int  cnl_18= (int)(0);
       prevlevel();
    }
    
-   /* file sfg.c line 5398*/
+   /* file sfg.c line 5513*/
    
    public static void cfinalxy(int  cg)
    {
@@ -13981,7 +14422,7 @@ public static 	int  cnl_18= (int)(0);
          ccurx_6= 0;
          cmy_7= 0;
          
-         /* file sfg.c line 5406*/
+         /* file sfg.c line 5521*/
          if( getMEMINT((int)((cg + 32)))!=0)
          {
          	   
@@ -13994,7 +14435,7 @@ public static 	int  cnl_18= (int)(0);
                setMEMINT((int)((getMEMINT((int)((clnl_3 + 0))) + 92)),(int)(ccurx_6));
                ccurx_6=((ccurx_6 + getMEMINT((int)((cg + 52)))) + getMEMINT((int)((getMEMINT((int)((clnl_3 + 0))) + 12))));
                
-               /* file sfg.c line 5411*/
+               /* file sfg.c line 5526*/
                if( (((getMEMINT((int)((getMEMINT((int)((clnl_3 + 0))) + 16))))>(cmy_7))?1:0)!=0)
                {
                	   
@@ -14032,7 +14473,7 @@ public static 	int  cnl_18= (int)(0);
          	   
             {
             
-            /* file sfg.c line 5430*/
+            /* file sfg.c line 5545*/
             if( ((((getMEMINT((int)((getMEMINT((int)((clnl_3 + 0))) + 92))) + getMEMINT((int)((getMEMINT((int)((clnl_3 + 0))) + 12)))))>(cmaxx_4))?1:0)!=0)
             {
             	   
@@ -14043,7 +14484,7 @@ public static 	int  cnl_18= (int)(0);
             
             };
             
-            /* file sfg.c line 5435*/
+            /* file sfg.c line 5550*/
             if( (((getMEMINT((int)((getMEMINT((int)((clnl_3 + 0))) + 44))))!=0)?1: (getMEMINT((int)((getMEMINT((int)((clnl_3 + 0))) + 48)))))!=0)
             {
             	   
@@ -14054,7 +14495,7 @@ public static 	int  cnl_18= (int)(0);
             
             };
             
-            /* file sfg.c line 5440*/
+            /* file sfg.c line 5555*/
             if( ((((getMEMINT((int)((getMEMINT((int)((clnl_3 + 0))) + 96))) + getMEMINT((int)((getMEMINT((int)((clnl_3 + 0))) + 16)))))>(cmaxy_5))?1:0)!=0)
             {
             	   
@@ -14082,7 +14523,7 @@ public static 	int  cnl_18= (int)(0);
       prevlevel();
    }
    
-   /* file sfg.c line 5454*/
+   /* file sfg.c line 5569*/
    
    public static int cfindedge(int  cnum)
    {
@@ -14098,7 +14539,7 @@ public static 	int  cnl_18= (int)(0);
          cel_4= (int)(0);
          ce_5= (int)(0);
          
-         /* file sfg.c line 5457*/
+         /* file sfg.c line 5572*/
          if( (((cmaingraph_1)==((int)(0)))?1:0)!=0)
          {
          	   
@@ -14120,7 +14561,7 @@ public static 	int  cnl_18= (int)(0);
             {
             ce_5=getMEMINT((int)((cel_4 + 0)));
             
-            /* file sfg.c line 5463*/
+            /* file sfg.c line 5578*/
             if( (((getMEMINT((int)((ce_5 + 0))))==(cnum))?1:0)!=0)
             {
             	   
@@ -14149,6 +14590,145 @@ public static 	int  cnl_18= (int)(0);
       };
       prevlevel();
       return 0;
+   }
+   
+   /* file sfg.c line 5588*/
+   
+   public static void csetminmax(int  cg)
+   {
+      nextlevel();
+      if(true)
+      {
+      int label= 0;
+      int  cnl_3= 0;
+      int  cel_4= 0;
+      int  ccount_5= 0;
+         
+         {
+         cnl_3= (int)(0);
+         cel_4= (int)(0);
+         ccount_5= 0;
+         setMEMINT((int)((cg + 124)),(int)(0));
+         setMEMINT((int)((cg + 128)),(int)(0));
+         setMEMINT((int)((cg + 132)),(int)(0));
+         setMEMINT((int)((cg + 136)),(int)(0));
+         cnl_3=getMEMINT((int)((cg + 60)));
+         ccount_5=0;
+         lab_sfg156 : while( (cnl_3) !=0 )
+         {
+         	   
+            {
+            
+            /* file sfg.c line 5601*/
+            if( (((ccount_5)==(0))?1:0)!=0)
+            {
+            	   
+               {
+               setMEMINT((int)((cg + 124)),(int)(getMEMINT((int)((getMEMINT((int)((cnl_3 + 0))) + 0)))));
+               setMEMINT((int)((cg + 128)),(int)(getMEMINT((int)((getMEMINT((int)((cnl_3 + 0))) + 0)))));
+               
+               }
+            
+            }
+            else
+            {
+            	   
+               {
+               
+               /* file sfg.c line 5605*/
+               if( (((getMEMINT((int)((getMEMINT((int)((cnl_3 + 0))) + 0))))<(getMEMINT((int)((cg + 124)))))?1:0)!=0)
+               {
+               	   
+                  {
+                  setMEMINT((int)((cg + 124)),(int)(getMEMINT((int)((getMEMINT((int)((cnl_3 + 0))) + 0)))));
+                  
+                  }
+               
+               };
+               
+               /* file sfg.c line 5608*/
+               if( (((getMEMINT((int)((getMEMINT((int)((cnl_3 + 0))) + 0))))>(getMEMINT((int)((cg + 128)))))?1:0)!=0)
+               {
+               	   
+                  {
+                  setMEMINT((int)((cg + 128)),(int)(getMEMINT((int)((getMEMINT((int)((cnl_3 + 0))) + 0)))));
+                  
+                  }
+               
+               };
+               
+               }
+            
+            };
+            ccount_5++;
+            cnl_3=getMEMINT((int)((cnl_3 + 4)));
+            
+            }
+         
+         }
+         cel_4=getMEMINT((int)((cg + 76)));
+         ccount_5=0;
+         lab_sfg157 : while( (cel_4) !=0 )
+         {
+         	   
+            {
+            
+            /* file sfg.c line 5619*/
+            if( (((ccount_5)==(0))?1:0)!=0)
+            {
+            	   
+               {
+               setMEMINT((int)((cg + 132)),(int)(getMEMINT((int)((getMEMINT((int)((cel_4 + 0))) + 0)))));
+               setMEMINT((int)((cg + 136)),(int)(getMEMINT((int)((getMEMINT((int)((cel_4 + 0))) + 0)))));
+               
+               }
+            
+            }
+            else
+            {
+            	   
+               {
+               
+               /* file sfg.c line 5623*/
+               if( (((getMEMINT((int)((getMEMINT((int)((cel_4 + 0))) + 0))))<(getMEMINT((int)((cg + 132)))))?1:0)!=0)
+               {
+               	   
+                  {
+                  setMEMINT((int)((cg + 132)),(int)(getMEMINT((int)((getMEMINT((int)((cel_4 + 0))) + 0)))));
+                  
+                  }
+               
+               };
+               
+               /* file sfg.c line 5626*/
+               if( (((getMEMINT((int)((getMEMINT((int)((cel_4 + 0))) + 0))))>(getMEMINT((int)((cg + 136)))))?1:0)!=0)
+               {
+               	   
+                  {
+                  setMEMINT((int)((cg + 136)),(int)(getMEMINT((int)((getMEMINT((int)((cel_4 + 0))) + 0)))));
+                  
+                  }
+               
+               };
+               
+               }
+            
+            };
+            ccount_5++;
+            cel_4=getMEMINT((int)((cel_4 + 4)));
+            
+            }
+         
+         }
+         if(true)
+         {
+         prevlevel();
+         return ;
+         };
+         
+         }
+      };
+      prevlevel();
    }
 
 }
