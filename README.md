@@ -35,4 +35,8 @@ It compiles to javascript using emscripten emcc compiler
 
 The python script sfgdemo.py runs graph layout using sfg.c
 
+In the java directory is the Java source and a jar file
+
+To run the Java version of sfg use: java -jar sfg.jar
+
 ![screenshot](./screenshot.png)

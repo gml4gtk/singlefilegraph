@@ -98,6 +98,10 @@ http://www.swig.org/Doc3.0/Contents.html#Contents
 Because this single-file library is a mini version of gml4gtk
 it is possible to use gml4gtk and take a look at it's source.
 
+In the java directory is the Java source and a jar file
+
+To run the Java version of sfg use: java -jar sfg.jar
+
 /*
  *  Copyright t lefering
  *  parts are (C) Universitaet Passau 1986-1991
