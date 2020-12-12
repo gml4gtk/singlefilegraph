@@ -11,6 +11,10 @@
 
 - done: changed the api in verion 2 to avoid c (void *) for easier python interface
 
+- done: the python interface works and generates a example layout
+
+- done: the java version of sfg.c works and runs as native java
+
 - gml4gtk has stand-alone dot or gml parser and can add that as single file with python swig interface
 
 - todo make few drawings and text how to draw the edge lines

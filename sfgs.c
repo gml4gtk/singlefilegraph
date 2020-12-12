@@ -1,3 +1,4 @@
+/* simpified version not using splay() */
 
 /*
  *  Copyright t lefering
@@ -61,78 +62,6 @@ struct gml_node;
 struct gml_edge;
 struct gml_nlist;
 struct gml_elist;
-
-/* how many bytes can a splay key to index on have max.
- * this data type must be large enough for a pointer.
- * The size of `void *', as computed by sizeof.
- * #define SIZEOF_VOID_P 8
- * in configure.ac is:
- * AC_CHECK_SIZEOF([void *])
- * The size of `uintptr_t', as computed by sizeof.
- * #define SIZEOF_UINTPTR_T 8
- *
- * #include <stdint.h>	// for uintptr_t definition
- * typedef unsigned long long int splay_tree_key;
- * typedef uintptr_t splay_tree_key;
- * in this situation it can be:
- */
-typedef int splay_tree_key;
-
-/* how many bytes can a splay value have max
- * typedef unsigned long long int splay_tree_value;
- * typedef uintptr_t splay_tree_value;
- * int this situation it can be:
- */
-typedef struct gml_node *splay_tree_value;
-
-/* Forward declaration for a tree.  */
-typedef struct splay_tree_t *splay_tree;
-
-/* The nodes in the splay tree.  */
-struct splay_tree_node_n {
-	/* The key.  */
-	splay_tree_key key;
-
-	/* The value.  */
-	splay_tree_value value;
-
-	/* The left and right children, respectively.  */
-	struct splay_tree_node_n *left;
-	struct splay_tree_node_n *right;
-};
-
-/* Forward declaration for a node in the tree.  */
-typedef struct splay_tree_node_n *splay_tree_node;
-
-/* The type of a function which compares two splay-tree keys.  The
-   function should return values as for qsort.  */
-typedef int (*splay_tree_compare_fn)(splay_tree_key, splay_tree_key);
-
-/* The type of a function used to deallocate any resources associated
-   with the key.  */
-typedef void (*splay_tree_delete_key_fn)(splay_tree_key);
-
-/* The type of a function used to deallocate any resources associated
-   with the value.  */
-typedef void (*splay_tree_delete_value_fn)(splay_tree_value);
-
-/* The type of a function used to iterate over the tree.  */
-typedef int (*splay_tree_foreach_fn)(splay_tree_node, void *);
-
-/* The splay tree itself.  */
-struct splay_tree_t {
-	/* The root of the tree.  */
-	struct splay_tree_node_n *root;
-
-	/* The comparision function.  */
-	splay_tree_compare_fn comp;
-
-	/* The deallocate-key function.  NULL if no cleanup is necessary.  */
-	splay_tree_delete_key_fn delete_key;
-
-	/* The deallocate-value function.  NULL if no cleanup is necessary.  */
-	splay_tree_delete_value_fn delete_value;
-};
 
 struct gml_graph {
 	int layouted;		/* set if layout is done */
@@ -231,16 +160,6 @@ struct gml_elist {
 /* local vars */
 static struct gml_graph *maingraph = NULL;
 
-/* by uniq number of node */
-static splay_tree uniqnode_splaytree = NULL;
-
-/* forward declarations zz */
-static struct splay_tree_node_n *splay(splay_tree sp, splay_tree_key key);
-static splay_tree_node splay_tree_lookup(splay_tree sp, splay_tree_key key);
-static splay_tree splay_tree_delete(splay_tree sp);
-static splay_tree splay_tree_new(splay_tree_compare_fn compare_fn, splay_tree_delete_key_fn delete_key_fn,
-				 splay_tree_delete_value_fn delete_value_fn);
-static int splay_tree_compare_ints(splay_tree_key k1, splay_tree_key k2);
 static struct gml_node *uniqnode(struct gml_graph *g, int nr);
 static void uniqnode_add(struct gml_graph *g, struct gml_node *node);
 static void clear_nodelist(struct gml_graph *g);
@@ -286,10 +205,6 @@ int sfg_init(void)
 	if (maingraph == NULL) {
 		return (-2);
 	}
-	uniqnode_splaytree = splay_tree_new(splay_tree_compare_ints, NULL, NULL);
-	if (uniqnode_splaytree == NULL) {
-		return (-2);
-	}
 	/* min (x,y) spacing between nodes */
 	maingraph->xspacing = NXSPACING;
 	maingraph->yspacing = NYSPACING;
@@ -321,7 +236,6 @@ int sfg_deinit(void)
 	clear_stlist_all(maingraph);
 	clear_edgelist(maingraph);
 	clear_nodelist(maingraph);
-	uniqnode_splaytree = splay_tree_delete(uniqnode_splaytree);
 	free(maingraph);
 	maingraph = NULL;
 	return (0);
@@ -1446,356 +1360,31 @@ int sfg_edge_foreach(int (*getedgedata)(int num, int from, int to, int type, int
 	return (0);
 }
 
-/* A splay-tree datatype.
-   Copyright (C) 1998-2021 Free Software Foundation, Inc.
-   Contributed by Mark Mitchell (mark@markmitchell.com).
-
-This file is part of GNU CC.
-
-GNU CC is free software; you can redistribute it and/or modify it
-under the terms of the GNU General Public License as published by
-the Free Software Foundation; either version 2, or (at your option)
-any later version.
-
-GNU CC is distributed in the hope that it will be useful, but
-WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with GNU CC; see the file COPYING.  If not, write to
-the Free Software Foundation, 51 Franklin Street - Fifth Floor,
-Boston, MA 02110-1301, USA.  */
-
-/* For an easily readable description of splay-trees, see:
-
-     Lewis, Harry R. and Denenberg, Larry.  Data Structures and Their
-     Algorithms.  Harper-Collins, Inc.  1991.  */
-
-/* Deallocate NODE (a member of SP), and all its sub-trees.  */
-static void splay_tree_delete_helper(splay_tree sp, splay_tree_node node)
-{
-
-	if (node == NULL) {
-		return;
-	}
-
-	/* recurse */
-	splay_tree_delete_helper(sp, node->left);
-	splay_tree_delete_helper(sp, node->right);
-
-	/* free() key if needed */
-	if (sp->delete_key) {
-		(*sp->delete_key) (node->key);
-		node->key = (splay_tree_key) 0;
-	}
-
-	/* free() value if needed */
-	if (sp->delete_value) {
-		(*sp->delete_value) (node->value);
-		node->value = (splay_tree_value) 0;
-	}
-
-	free((void *)node);
-
-	return;
-}
-
-/* delete whole sp tree */
-static splay_tree splay_tree_delete(splay_tree sp)
-{
-	if (sp) {
-		splay_tree_delete_helper(sp, sp->root);
-		free((void *)sp);
-	}
-	return ((splay_tree) 0);
-}
-
-/* Allocate a new splay tree, using COMPARE_FN to compare nodes,
-   DELETE_KEY_FN to deallocate keys, and DELETE_VALUE_FN to deallocate
-   values.  */
-
-static splay_tree
-splay_tree_new(splay_tree_compare_fn compare_fn, splay_tree_delete_key_fn delete_key_fn, splay_tree_delete_value_fn delete_value_fn)
-{
-	splay_tree sp = (splay_tree) 0;
-
-	/* there must be a compare function, the free() functions are optional */
-	if (compare_fn == (splay_tree_compare_fn) 0) {
-		return ((splay_tree) 0);
-	}
-
-	sp = (splay_tree) calloc(1, sizeof(struct splay_tree_t));
-
-	if (sp == (splay_tree) 0) {
-		return ((splay_tree) 0);
-	}
-
-	/* set root node to use and the functions */
-	sp->root = (splay_tree_node) 0;
-	sp->comp = compare_fn;
-	sp->delete_key = delete_key_fn;
-	sp->delete_value = delete_value_fn;
-
-	return ((splay_tree) sp);
-}
-
-/* Insert a new node (associating KEY with DATA) into SP.  If a
-   previous node with the indicated KEY exists, its data is not replaced
-   with the new value.  */
-
-static void splay_tree_insert(splay_tree sp, splay_tree_key key, splay_tree_value value)
-{
-	splay_tree_node spn = (splay_tree_node) 0;
-	int comparison = 0;
-
-	if (sp == (splay_tree) 0) {
-		/* no tree */
-		return;
-	}
-
-	spn = splay_tree_lookup(sp, key);
-
-	if (spn != (splay_tree_node) 0) {
-		/* did already exist */
-		return;
-	}
-
-	/* Create a new node, and insert it at the root.  */
-	spn = (splay_tree_node) calloc(1, sizeof(struct splay_tree_node_n));
-
-	if (spn == (splay_tree_node) 0) {
-		/* shouldnothappen */
-		return;
-	}
-
-	/* set node data */
-	spn->key = key;
-	spn->value = value;
-
-	if (sp->root == (splay_tree_node) 0) {
-		/* first entry */
-		sp->root = spn;
-		return;
-	}
-
-	/* add in tree */
-	comparison = (*sp->comp) (sp->root->key, key);
-
-	if (comparison < 0) {
-		spn->left = sp->root;
-		spn->right = spn->left->right;
-		spn->left->right = (splay_tree_node) 0;
-	} else {
-		/* > or == */
-		spn->right = sp->root;
-		spn->left = spn->right->left;
-		spn->right->left = (splay_tree_node) 0;
-	}
-
-	sp->root = spn;
-
-	return;
-}
-
-/* Lookup KEY in SP, returning VALUE if present, and NULL
-   otherwise.  */
-static splay_tree_node splay_tree_lookup(splay_tree sp, splay_tree_key key)
-{
-	splay_tree_node spn = (splay_tree_node) 0;
-
-	if (sp == (splay_tree) 0) {
-		/* no tree */
-		return ((splay_tree_node) 0);
-	}
-
-	if (sp->root == (splay_tree_node) 0) {
-		/* no data */
-		return ((splay_tree_node) 0);
-	}
-
-	if ((*sp->comp) (sp->root->key, key) == 0) {
-		/* found */
-		return ((splay_tree_node) sp->root);
-	}
-
-	spn = splay(sp, key);
-
-	if (spn) {
-
-		if ((*sp->comp) (sp->root->key, key) == 0) {
-			/* found */
-			return ((splay_tree_node) sp->root);
-		}
-	}
-
-	/* not found */
-	return ((splay_tree_node) 0);
-}
-
-/* Splay-tree comparison function, treating the keys as ints.  */
-
-static int splay_tree_compare_ints(splay_tree_key k1, splay_tree_key k2)
-{
-	if ((int)k1 < (int)k2) {
-		return ((int)-1);
-	} else if ((int)k1 > (int)k2) {
-		return (1);
-	} else {
-		return (0);
-	}
-}
-
-/* */
-static struct splay_tree_node_n *splay(splay_tree sp, splay_tree_key key)
-{
-	struct splay_tree_node_n *t = (struct splay_tree_node_n *)0;
-	struct splay_tree_node_n *l = (struct splay_tree_node_n *)0;
-	struct splay_tree_node_n *r = (struct splay_tree_node_n *)0;
-	struct splay_tree_node_n *y = (struct splay_tree_node_n *)0;
-	int comparevalue = 0;
-	int comparevalue2 = 0;
-	struct splay_tree_node_n tmp = {
-		/* The key.  */
-		(splay_tree_key) 0,
-		/* The value.  */
-		(splay_tree_value) 0,
-		/* The left and right children, respectively.  */
-		(struct splay_tree_node_n *)0,	/* left */
-		(struct splay_tree_node_n *)0	/* right */
-	};
-
-	/* no tree */
-	if (sp == (splay_tree) 0) {
-		return ((struct splay_tree_node_n *)0);
-	}
-
-	/* no data in root. return 0 */
-	if (sp->root == (struct splay_tree_node_n *)0) {
-		return ((struct splay_tree_node_n *)0);
-	}
-
-	/* current root */
-	t = sp->root;
-
-	tmp.left = (struct splay_tree_node_n *)0;
-	tmp.right = (struct splay_tree_node_n *)0;
-
-	l = &tmp;
-	r = &tmp;
-
-labelstart:
-
-	/* */
-	comparevalue = (*sp->comp) (key, t->key);
-
-	if (comparevalue < 0) {
-
-		if (t->left == (struct splay_tree_node_n *)0) {
-			goto labelend;
-		}
-
-		/* */
-		comparevalue2 = (*sp->comp) (key, t->left->key);
-
-		if (comparevalue2 < 0) {
-
-			y = t->left;
-			t->left = y->right;
-			y->right = t;
-			t = y;
-
-			if (t->left == (struct splay_tree_node_n *)0) {
-				goto labelend;
-			}
-		}
-
-		/* */
-		r->left = t;
-		r = t;
-		t = t->left;
-
-	} else if (comparevalue > 0) {
-
-		if (t->right == (struct splay_tree_node_n *)0) {
-			goto labelend;
-		}
-
-		/* */
-		comparevalue2 = (*sp->comp) (key, t->right->key);
-
-		if (comparevalue2 > 0) {
-
-			/* */
-			y = t->right;
-			t->right = y->left;
-			y->left = t;
-			t = y;
-
-			if (t->right == (struct splay_tree_node_n *)0) {
-				goto labelend;
-			}
-		}
-
-		/* */
-		l->right = t;
-		l = t;
-		t = t->right;
-	} else {
-		/* here if (comparevalue == 0) */
-		goto labelend;
-	}
-
-	goto labelstart;
-
-labelend:
-
-	l->right = t->left;
-	r->left = t->right;
-	t->left = tmp.right;
-	t->right = tmp.left;
-
-	sp->root = t;
-
-	return ((struct splay_tree_node_n *)t);
-}
-
 /* get node with this number */
 static struct gml_node *uniqnode(struct gml_graph *g, int nr)
 {
-	splay_tree_node spn = NULL;
-	if (g) {
-	}
-	if (uniqnode_splaytree == NULL) {
+	struct gml_node *ret = NULL;
+	struct gml_nlist *nl = NULL;
+	if (g->nodelist == NULL) {
 		return (NULL);
 	}
-	spn = splay_tree_lookup(uniqnode_splaytree, (splay_tree_key) nr);
-	if (spn) {
-		return ((struct gml_node *)spn->value);
-	} else {
-		return (NULL);
+	nl = g->nodelist;
+	while (nl) {
+		if (nl->node->nr == nr) {
+			ret = nl->node;
+			break;
+		}
+		nl = nl->next;
 	}
+	return (ret);
 }
 
 /* add node to db */
 static void uniqnode_add(struct gml_graph *g, struct gml_node *node)
 {
-	splay_tree_node spn = NULL;
 	if (g) {
 	}
-	if (node == NULL) {
-		/* shouldnothappen */
-		return;
-	}
-	if (uniqnode_splaytree == NULL) {
-		uniqnode_splaytree = splay_tree_new(splay_tree_compare_ints, NULL, NULL);
-	}
-	spn = splay_tree_lookup(uniqnode_splaytree, (splay_tree_key) node->nr);
-	if (spn) {
-		/* shouldnothappen */
-		return;
-	} else {
-		splay_tree_insert(uniqnode_splaytree, (splay_tree_key) node->nr, (splay_tree_value) node);
+	if (node) {
 	}
 	return;
 }
