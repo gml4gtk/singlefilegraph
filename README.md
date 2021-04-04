@@ -1,8 +1,11 @@
 # sfgraph
 
-a Single File Graph layout library in c and Java
+a Single File Graph layout library in c and Java <https://graphviewer.nl>
 
 See sfgdemo.c or sfg.h and the README1 file for details
+
+The directory wasm is about compiling sfg.c to wasm and run sugiyama graph layout in the browser see [this test version](https://graphviewer.nl/misc/projects/sfg/test02/index.html)
+
 
 To make the demo program sfgdemo type make
 
@@ -40,3 +43,6 @@ In the java directory is the Java source and a jar file
 To run the Java version of sfg use: java -jar sfg.jar
 
 ![screenshot](./screenshot.png)
+
+Because sfg.c only needs calloc()/free() it is usable for embedded software
+

@@ -3,7 +3,11 @@ which can be compiled-in or used as .a/.so library
 
 The api programming interface is detailed in sfg.h
 
+The only clib functions needed are calloc() and free()
+
 The example program is sfgdemo.c and program ./sfgdemo
+
+See also the wasm directory running sfg.c in the browser
 
 To make the demo program sfgdemo type make
 To cleanup use make clean
@@ -52,6 +56,7 @@ The sfg.c is usable for embedded software but it may
 have high cpu+memory usage. sfg.c size is 120 Kb
 
 The java version is in sfg.java size 336 Kb
+There is a java dot language parser at http://www.alexander-merz.com/graphviz/
 
 Using sfgdemo the sfgdemo.txt file is a graph which
 can be edited and data directory has some more data.
@@ -80,6 +85,8 @@ print sfg::sfg_version(),"\n";
 <ctrl-d>
 10
 
+There is a perl graphviz dot parser at https://metacpan.org/source/RSAVAGE/GraphViz2-Marpa-2.10
+
 When using swig software is can generate tcl interface
 with make swigtcl and specify include directory
 Then tested:
@@ -101,6 +108,14 @@ it is possible to use gml4gtk and take a look at it's source.
 In the java directory is the Java source and a jar file
 
 To run the Java version of sfg use: java -jar sfg.jar
+
+For php the ffi functions can be used with a sfg.so file
+or it can be done using swig wrappers.
+
+Because the sfg library can give the results of the relative
+(x,y) coordinates of a node it is possible to create own
+different way for absolyte (x,y) placement of the nodes.
+The graphviz dot tool cannot do this.
 
 /*
  *  Copyright t lefering

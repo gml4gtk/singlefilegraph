@@ -1,5 +1,5 @@
 
-- python interface and a python parse-gml to add to have a demo using python for a easy gml graph file as input
+- done: python interface and a python parse-gml to add to have a demo using python for a easy gml graph file as input
 
 - some javascript to run the javascript version of this and a script or html to show it
 
@@ -20,3 +20,7 @@
 - todo make few drawings and text how to draw the edge lines
 
 - libspiro can draw nice curves usable for spline edge line drawing
+
+- todo using lljvm create a runnable jar file out of sfg.c
+
+- wasm compiling and running it in the browser
