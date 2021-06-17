@@ -1,0 +1,73 @@
+#!/bin/sh -x
+# helper script to run make using GNU AWK with colorizing in development.
+# 
+# /*
+#  *
+#  *  This program is free software: you can redistribute it and/or modify
+#  *  it under the terms of the GNU General Public License as published by
+#  *  the Free Software Foundation, either version 3 of the License, or
+#  *  (at your option) any later version.
+#  *
+#  *  This program is distributed in the hope that it will be useful,
+#  *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+#  *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#  *  GNU General Public License for more details.
+#  *
+#  *  You should have received a copy of the GNU General Public License
+#  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#  *
+#  *  The four essential freedoms with GNU GPL software:
+#  *  The freedom to run the program, for any purpose
+#  *  The freedom to study how the program works, and change it to make it do what you wish
+#  *  The freedom to redistribute copies so you can help others
+#  *  The freedom to distribute copies of your modified versions to others
+#  */
+# 
+# GNU / Linux is user-friendly. It's just particular who its friends are :)
+# 
+# Only for GNU LINUX console:
+#
+#    \033          ascii ESCape
+#    \033[<NUM>G   move to column <NUM> (linux console, xterm, not vt100)
+#    \033[<NUM>C   move <NUM> columns forward but only upto last column
+#    \033[<NUM>D   move <NUM> columns backward but only upto first column
+#    \033[<NUM>A   move <NUM> rows up
+#    \033[<NUM>B   move <NUM> rows down
+#    \033[1m       switch on bold
+#    \033[31m      switch on red
+#    \033[32m      switch on green
+#    \033[33m      switch on yellow
+#    \033[m        switch off color/bold
+#    \017          exit alternate mode (xterm, vt100, linux console)
+#    \033[10m      exit alternate mode (linux console)
+#    \015          carriage return (without newline)
+#    Black       0;30     Dark Gray     1;30
+#    Blue        0;34     Light Blue    1;34
+#    Green       0;32     Light Green   1;32
+#    Cyan        0;36     Light Cyan    1;36
+#    Red         0;31     Light Red     1;31
+#    Purple      0;35     Light Purple  1;35
+#    Brown       0;33     Yellow        1;33
+#    Light Gray  0;37     White         1;37
+#
+# normally 4 args to make should be oke. otherwise argv() to do.
+# add colors for enter/leave dir
+# if errors then run script to mailto or otherwise
+# if errors then run script to start emacs on the file
+rm -v -f dsmake.output
+rm -v -f dsmake.errors
+rm -v -f dsmake.warnings
+make $1 $2 $3 $4 2>&1 |
+gawk '
+function toul() { print "\033[4m"; }
+function tobold() { print "\033[36m"; }
+function isentermakedir(thetext) { n = match(thetext, /[ ]Entering/); return n; }
+function isleavemakedir(thetext) { n = match(thetext, /[ ]Leaving/); return n; }
+function isgccerr(thetext) { n = match(thetext, /[ ]error:/); return n; }
+function isgccwarning(thetext) { n = match(thetext, /[ ]warning:/); return n; }
+BEGIN { tobold(); print "\033[34m"; > "dsmake.output" }
+/^/ { print $0 > "dsmake.output"; print "\033[34m"; if(isgccerr($0)) { print "\033[31m"; print $0 > "dsmake.errors"; } ; if(isgccwarning($0)) { print "\033[35m"; print $0 > "dsmake.warnings" } ; print $0; next; }
+END { print "end of make" > "dsmake.output"; print "\033[37m"; print "\033[10m"; }
+'
+
+# end.

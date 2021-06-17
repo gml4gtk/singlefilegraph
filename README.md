@@ -4,8 +4,9 @@ a Single File Graph layout library in c and Java <https://graphviewer.nl>
 
 See sfgdemo.c or sfg.h and the README1 file for details
 
-The directory wasm is about compiling sfg.c to wasm and run sugiyama graph layout in the browser see [this test version](https://graphviewer.nl/misc/projects/sfg/test02/index.html)
+In directory hypersfg is  GNU GPL Free QT5 gui program using this graph library to see it.  
 
+![screenshot](hypersfg-screenshot.png)
 
 To make the demo program sfgdemo type make
 
@@ -45,4 +46,14 @@ To run the Java version of sfg use: java -jar sfg.jar
 ![screenshot](./screenshot.png)
 
 Because sfg.c only needs calloc()/free() it is usable for embedded software
+
+To create callgraph as graphviz dot format the GNU cflow program can be used
+
+cflow sfg.c | ./tree2x.sh >sfg-callgraph-cflow.gv
+
+Also the calltree program can be used from schilytools at https://sourceforge.net/projects/schilytools/
+
+Example output of calltree -dot sfg.c is in sfg-c-callgraph-program.gv
+
+![calltree](./gml4gtk-calltree-program.png)
 
