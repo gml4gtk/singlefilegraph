@@ -2235,7 +2235,6 @@ finalize (bool no_backend)
 		int nypos = 0;
 		int nxsize = 0;
 		int nysize = 0;
-		int nntype = 0;
 		char *ntext = NULL;
 		int ef = 0;
 		int et = 0;
@@ -2428,6 +2427,9 @@ finalize (bool no_backend)
 			svg_callgraph_tree_edges = NULL;
 			svg_callgraph_tree_edges_count = 0;
 		}
+		/* ready with layouter */
+		status = sfg_deinit ();
+		if (status) { }
 	}
 	/*
 	 * end added
