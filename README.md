@@ -53,7 +53,5 @@ cflow sfg.c | ./tree2x.sh >sfg-callgraph-cflow.gv
 
 Also the calltree program can be used from schilytools at https://sourceforge.net/projects/schilytools/
 
-Example output of calltree -dot sfg.c is in sfg-c-callgraph-program.gv
-
-![calltree](./gml4gtk-calltree-program.png)
+In the gcc directory is a gnu gcc compiler patch.
 

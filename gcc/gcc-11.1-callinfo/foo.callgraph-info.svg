@@ -1,0 +1,33 @@
+<svg width="273" height="250" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+ <g>
+  <title>callgraph-info</title>
+  <style>
+    .small { font: italic 15px sans-serif; }
+  </style>
+  <line id="edge_1" y2="212" x2="206" y1="167" x1="206" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="2" stroke="#000000" fill="none"/>
+  <line id="edge_2" y2="167" x2="106" y1="122" x1="147" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="2" stroke="#000000" fill="none"/>
+  <line id="edge_3" y2="167" x2="206" y1="122" x1="147" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="2" stroke="#000000" fill="none"/>
+  <line id="edge_4" y2="122" x2="147" y1="77" x1="147" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="2" stroke="#000000" fill="none"/>
+  <line id="edge_5" y2="77" x2="147" y1="77" x1="106" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="2" stroke="#000000" fill="none"/>
+  <line id="edge_6" y2="167" x2="106" y1="77" x1="106" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="2" stroke="#000000" fill="none"/>
+  <line id="edge_7" y2="77" x2="52" y1="32" x1="106" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="2" stroke="#000000" fill="none"/>
+  <line id="edge_8" y2="77" x2="106" y1="32" x1="106" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="2" stroke="#000000" fill="none"/>
+  <line id="edge_9" y2="77" x2="147" y1="32" x1="106" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="2" stroke="#000000" fill="none"/>
+  <rect id="node_1" x="84" y="160" width="45" height="15" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke="#000000" fill="#7fff00"/>
+  <text x="85" y="174" class="small">fputc</text>
+  <rect id="node_2" x="25" y="70" width="54" height="15" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke="#000000" fill="#7fff00"/>
+  <text x="26" y="84" class="small">printf</text>
+  <rect id="node_3" x="184" y="205" width="45" height="15" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke="#000000" fill="#7fff00"/>
+  <text x="185" y="219" class="small">fgetc</text>
+  <rect id="node_4" x="166" y="160" width="81" height="15" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke="#000000" fill="#7fff00"/>
+  <text x="167" y="174" class="small">hello_GCC</text>
+  <rect id="node_5" x="134" y="115" width="27" height="15" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke="#000000" fill="#7fff00"/>
+  <text x="135" y="129" class="small">zoo</text>
+  <rect id="node_6" x="134" y="70" width="27" height="15" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke="#000000" fill="#7fff00"/>
+  <text x="135" y="84" class="small">bar</text>
+  <rect id="node_7" x="93" y="70" width="27" height="15" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke="#000000" fill="#7fff00"/>
+  <text x="94" y="84" class="small">foo</text>
+  <rect id="node_8" x="88" y="25" width="36" height="15" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke="#000000" fill="#7fff00"/>
+  <text x="89" y="39" class="small">main</text>
+ </g>
+</svg>

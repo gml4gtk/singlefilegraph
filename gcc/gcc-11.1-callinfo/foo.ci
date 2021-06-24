@@ -1,0 +1,19 @@
+graph: { title: "foo.c"
+node: { title: "hello_GCC" label: "hello_GCC\nfoo.c:3:6" }
+node: { title: "fgetc" label: "fgetc\n/usr/include/stdio.h:491:12" shape : ellipse }
+edge: { sourcename: "hello_GCC" targetname: "fgetc" label: "foo.c:5:2" }
+node: { title: "zoo" label: "zoo\nfoo.c:8:6" }
+node: { title: "fputc" label: "fputc\n/usr/include/stdio.h:527:12" shape : ellipse }
+edge: { sourcename: "zoo" targetname: "fputc" label: "foo.c:10:2" }
+edge: { sourcename: "zoo" targetname: "hello_GCC" label: "foo.c:11:2" }
+node: { title: "bar" label: "bar\nfoo.c:14:6" }
+edge: { sourcename: "bar" targetname: "zoo" label: "foo.c:16:1" }
+node: { title: "foo" label: "foo\nfoo.c:19:6" }
+edge: { sourcename: "foo" targetname: "bar" label: "foo.c:21:1" }
+edge: { sourcename: "foo" targetname: "fputc" label: "foo.c:22:2" }
+node: { title: "main" label: "main\nfoo.c:25:5" }
+node: { title: "printf" label: "printf\n/usr/include/stdio.h:332:12" shape : ellipse }
+edge: { sourcename: "main" targetname: "printf" label: "foo.c:28:2" }
+edge: { sourcename: "main" targetname: "foo" label: "foo.c:29:2" }
+edge: { sourcename: "main" targetname: "bar" label: "foo.c:30:2" }
+}
