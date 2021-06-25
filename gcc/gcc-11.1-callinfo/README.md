@@ -61,7 +61,7 @@ gcc -fcallgraph-info=su test.c
 gcc -fcallgraph-info=da test.c  
 gcc -fcallgraph-info=su,da test.c  
   
-This is also ritter by GCC about this option:  
+This is also mentioned by GCC about this option:  
 The command line option -fcallgraph-info is added and makes the  
 compiler generate another output file (xxx.ci) for each compilation  
 unit (or LTO partitoin), which is a valid VCG file (you can launch  
