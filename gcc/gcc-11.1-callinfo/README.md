@@ -6,8 +6,6 @@ gcc -fcallgraph-info generates a callgraph ci file which is a vcg graph usable w
 
 The graph routines are integrated in the gcc source to generate directly images and no graphviz or other extra program is needed  
 
-With this the GNU GCC compiler is the first compiler generating graph images directly on the fly during compilation.  
-
 The howto:  
 Do not change the system gcc but create own customized gcc in own $HOME directory.  
 Get the gcc-11.1 release version sources from gnu.org or it mirrors at gcc.gnu.org  
@@ -63,6 +61,24 @@ gcc -fcallgraph-info=su test.c
 gcc -fcallgraph-info=da test.c  
 gcc -fcallgraph-info=su,da test.c  
   
+This is also ritter by GCC about this option:  
+The command line option -fcallgraph-info is added and makes the  
+compiler generate another output file (xxx.ci) for each compilation  
+unit (or LTO partitoin), which is a valid VCG file (you can launch  
+your favorite VCG viewer on it unmodified) and contains the "final"  
+callgraph of the unit.  "final" is a bit of a misnomer as this is  
+actually the callgraph at RTL expansion time, but since most  
+high-level optimizations are done at the Tree level and RTL doesn't  
+usually fiddle with calls, it's final in almost all cases.  Moreover,  
+the nodes can be decorated with additional info: -fcallgraph-info=su  
+adds stack usage info and -fcallgraph-info=da dynamic allocation info.  
+  
+And it is documented in the adacore tools:  
+This option helps locating the objects that introduce potentially  
+unbounded stack requirements.  
+https://docs.adacore.com/live/wave/gnatstack/html/gnatstack_ug/Getting_Started_with_GNATstack.html  
+  
+
 SPDX-License-Identifier: GPL-3.0+  
 License-Filename: LICENSE  
 
