@@ -8,6 +8,8 @@ In directory hypersfg is  GNU GPL Free QT5 gui program using this graph library 
 
 ![screenshot](hypersfg-screenshot.png)
 
+The directory wasm is about compiling sfg.c to wasm and run sugiyama graph layout in the browser see [this test version](https://graphviewer.nl/misc/projects/sfg/test02/index.html)
+
 To make the demo program sfgdemo type make
 
 To cleanup use make clean
@@ -43,7 +45,7 @@ In the java directory is the Java source and a jar file
 
 To run the Java version of sfg use: java -jar sfg.jar
 
-![screenshot](./screenshot.png)
+![screenshot](screenshot.png)
 
 Because sfg.c only needs calloc()/free() it is usable for embedded software
 
@@ -52,11 +54,18 @@ To create callgraph as graphviz dot format the GNU cflow program can be used
 cflow sfg.c | ./tree2x.sh >sfg-callgraph-cflow.gv
 
 Also the calltree program can be used from schilytools at https://sourceforge.net/projects/schilytools/
+
+Example output of calltree -dot sfg.c is in sfg-c-callgraph-program.gv
+
+![calltree](./gml4gtk-calltree-program.png)  
+
+In directory gcc are patches for gcc compiler  
   
-In the gcc directory is a gnu gcc compiler patch.  
+The next iteration of sfg.c is called d4dag.c  
   
 In directory qsfg is a modified qvge qt5 graph editor running sfg.c graph layouter like this:  
   
 ![qsfg](qsfg.png)
   
-
+![qsfg](qsfg2.png)
+  

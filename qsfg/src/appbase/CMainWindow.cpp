@@ -293,12 +293,14 @@ void CMainWindow::createStartPage()
 	setCentralWidget(startPage);
 }
 
-
+// show the base name of the file
 void CMainWindow::updateTitle()
 {
-    return;
+
+    QFileInfo fi(m_mainTitleText);
+    if (0) qDebug() << m_mainTitleText;
     setWindowTitle(QString("%1 - %2")
-                   .arg(m_mainTitleText, QApplication::applicationDisplayName())
+                   .arg(fi.baseName(), QApplication::applicationDisplayName())
     );
 }
 

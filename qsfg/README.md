@@ -21,6 +21,15 @@ CONFIG += USE_GVGRAPH
   
 ![screenshot](qsfg.png)
   
+![screenshot](qsfg2.png)
+  
+![screenshot](qsfg3.png)
+  
+![screenshot](qsfg4.png)
+  
+This can read the gexf xml graph format used by the gephi program  
+This can read basic graphml xml format used by multiple programs.  
+  
 This is the text of the qvge program  
   
 **QVGE** is a multiplatform graph editor written in C++/Qt. Its main goal is to make possible visually edit two-dimensional graphs
