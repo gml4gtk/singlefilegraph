@@ -1,0 +1,312 @@
+QVGE 0.6.3/Master - mostly merged back from 0.7.dev branch
+-------------------------------------------------------------------------------
+Bugfixes:
+- fixed building with OGDF support (#130, #139)
+- fixed import of multiline labels from DOT (#141)
+- fixed DOT: shape="box" not recognized (#140) - thanks to casiosmu for fixing this!
+- fixed crash after exporting to SVG and reopening the document (#145)
+- fixed various typos and export to GraphML (#147) - thanks to luzpaz!
+
+
+
+QVGE 0.6.2
+-------------------------------------------------------------------------------
+New features/improvements:
+- import of GraphML in SocNetV format supported
+- GraphViz accessibility and version can be checked out of the Options dialog
+- if GraphViz layout engine happens to freeze, it can be aborted by user via GUI (no need to call Task Manager anymore)
+
+Bugfixes:
+- fixed crash when pressing Escape after creating of a node and immediately editing of a text label (#123)
+- fixed issue with forwarding keyboard events during editing of a text label (#124)
+- fixed importing default GraphML attributes
+- fixed a typo in the default attribute name (#125)
+- fixed loading edge id from DOT format
+- fixed moving nodes via keyboard
+- fixed nodes snapping after transformation
+- fixed restoring windows & panels layout
+- Fedora 32, Qt 5.14: too big font on startup buttons (#120)
+
+Windows:
+- GraphViz 2.44 binaries are shipped together
+
+
+
+QVGE 0.6.1
+-------------------------------------------------------------------------------
+New features/improvements:
+- added import of plain/plain_ext GraphViz format
+- added import of dot files via GraphViz engine (#116)
+- added layout via GraphViz engine (#118)
+
+Bugfixes:
+- fixed item transformation with pressed Shift key
+- fixed disappearing of the cursor when a key was pressed during transformation
+- fixed potential stack overflow during dragging (Qt bug?)
+- fixed cancelling the drag via Esc key
+- right clicks during drag are ignored
+
+Externals:
+- OGDF and Boost removed from source tree (only external libraries can be used for now)
+
+Linux:
+- fixed various "make install" related issues (#110, #113, #114, #115)
+
+Windows:
+- fixed installer issue with putting 64-bit executable under Program Files (x86)
+- GraphViz 2.38 binaries are shipped together
+
+
+
+QVGE 0.6.0
+-------------------------------------------------------------------------------
+New features/improvements:
+- added polyedges (#23)
+- added export to SVG format
+- recent files list entries can be cleaned up (#89)
+- Ctrl+Right/Ctrl+Left change weights of selected edges 
+- when editing a label, Enter begins a new line, Esc finishes editing
+- transformation tool: Drag+Shift performs parallel transformation
+- "Factor" mode added next to "Transform" (#102)
+- improved export & import of Graphviz format (using boost-BGL instead of OGDF)
+- PDF export: automatically sets page orientation; printer options made persistent (#73)
+- a scene loaded from file is automatically centered by its contents
+- improved drawing of edge selection
+ 
+Bugfixes:
+- fixed crash after undoing of a recent drag operation
+- fixed issue when a document could not be opened (#96)
+- fixed issue with setting label properties while label editor is open
+- fixed issue with drawing arrows (#14)
+- fixed: objects being moved are always ensured to be visible during the movement
+- fixed: scroll offset during drag made constant (avoiding acceleration issue with dragging at viewport's edges)
+
+GCC/MinGW:
+- fixed <math.h> include issue (#101)
+
+Externals:
+- read_proc is deprecated and replaced by QProcessInfo
+- QSint widgets updated to the latest snapshot (0.4.x)
+
+OGDF:
+- OGDF updated to v.2020-02 (more stable than previous one)
+- qvge can be built & linked against an external OGDF library 
+- "Layout" menu is moved under "OGDF" submenu
+- "Create new graph" dialog is moved under "OGDF" menu (#97)
+- Davidson-Harel layout added
+
+Windows:
+- portable mode implemented (#54)
+- auto registration of XGR documents after starting the app (#74)
+
+Linux:
+- "qmake -r PREFIX=.." should be respected now (#69,#93)
+- fixed menu with opened windows (#88)
+- fixed "Segmentation fault" issue when loading documents (#82)
+- fixed "Buffer/Memory containment" issues (#80)
+- fixed desktop integration (#91)
+- fixed including Qt5 X11Extras into project (#92)
+- fixed glitches of some UI elements (#99)
+- fixed adding default file extensions while export (#86)
+
+
+
+QVGE 0.5.5
+-------------------------------------------------------------------------------
+- support of Qt 5.13
+- support of MSVC 2017
+- support of MinGW 7
+
+- label editing can be finished with Enter; Shift+Enter starts new line (#77)
+- when exporting to image, a resolution can be customized (#73)
+- added export to GraphML format; node ports supported now (#28)
+- nodes & edges editor UI improved
+- "tooltip" attribute is shown as a popup tooltip
+
+- improvements/fixes in drawing arrows (#14)
+- some fixes of label editing logic
+- fixed project issue when building on MS Windows having Cygwin installed 
+- fixed potential crash if wrong grid size was set/read
+- fixed interception of direct edges with elliptical nodes
+- fixed custom installation path under Linux (#69)
+- fixed crash on copying items with pressed Ctrl (#75)
+- fixed items ID visibility when dragging with pressed Ctrl (#78)
+- fixed handling of edge cancellation by right click
+- fixed issue with undo/redo manager 
+- fixed grid snapping issue with pressed Alt key
+- fixed export of UTF-8 encoded text to GraphViz/DOT
+- fixed input/output of size attribute to GEXF format
+- fixed building issue under Linux/Unix (file name mismatch in one of 3rdParies) (#81)
+- fixed potential crash when using "Zoom Back" function after loading a graph document
+
+Windows installation:
+- Build moved from MSVC 2015 to MinGW 7
+- Qt updated to 5.13.2
+- Installation/binary packages made significantly smaller
+ 
+
+QVGE 0.5.4
+-------------------------------------------------------------------------------
+- added shortcuts for quick node resizing (Ctrl+Up, Ctrl+Down)
+- added mini help panel (#15)
+- added "restore zoom after fit" feature (#65)
+- added nodes transformation mode (#24)
+- auto scroll during drag implemented (#56)
+
+- some labels drawing optimizations
+- fixed crash after editing a node port
+- fixed drawing direction arrows when nodes are too close
+- fixed some edge drawing issues
+- fixed crash on reading *.xgr files in 32-bit versions
+- fixed regression on opening main window in maximized mode
+- fixed issue of scaling of the recent files list on the start page
+
+
+QVGE 0.5.3
+-------------------------------------------------------------------------------
+- default paste behavior modified: items will be preferably pasted into a visible scene's area
+- selection copied to clipboard can be pasted as an image to any software
+- DOT export: scene background attribute exported as well
+- DOT export: extended to optionally export only the topology (#63)
+- added more action hints
+- added fast movement of the selected items by Shift + Arrow keys
+- added start page with common file actions (#59)
+- added exit out of the complete application (with all windows)
+
+- fixed crash on deleting items via Cut or Delete actions (#55)
+- fixed some item selection issues
+- fixed export of image and PDF documents (auto crop added as well)
+
+
+QVGE 0.5.2
+-------------------------------------------------------------------------------
+- View Menu: added Toolbars & Panels submenu (#52) 
+- View Menu: item ids can be shown/hidden separately from labels (#47)
+- added in-place label editing (by double click)
+- added node port colors 
+- added timed auto backups (#60)
+- added basic import from GraphViz/DOT format via OGDF (#53)
+- added Sugiyama graph layout (via OGDF)
+
+- more diagnostic shown if file reading failed
+- selection of global attributes made more convenient
+- logic of movement of the selected items made more intuitive (#48)
+- snap to grid enabled by default (#45)
+- label font editor extended a little
+- item painting optimizations and corrections
+- item ids are now editable via context menu only (by right click)
+- double click on a node port shows its properties
+- newly started application instance now overtakes the parent's instance settings
+- Commutation Table: when adding a column, a list with available attribute ids is shown
+- Commutation Table: added button bar
+
+- fixed font reading/setting issue
+- fixed bug with changing style of selected items after applying a new scheme
+- fixed drawing of transparent items
+- fixed storing/applying of grid snap properties (#49)
+- fixed placement of edge labels (#50)
+- fixed some GEXF-related issues (#51)
+- fixed canvas expansion after changing item IDs (#44)
+- (32-bit-version): fixed crash while cloning the selection
+- fixed issue with storing DOT format if ids include spaces 
+
+
+QVGE 0.5.1 (bugfix beta)
+-------------------------------------------------------------------------------
+- some GEXF format IO fixes
+- port renaming optimizations
+
+
+QVGE 0.5.0 (beta)
+-------------------------------------------------------------------------------
+- changed project directory structure
+- globally renamed: CConnection -> CEdge etc.
+- some menu texts corrected & tooltips added
+
+- added basic support of node ports
+- added buttons to change attribute's name & type 
+- color schemes menu moved into Edit
+- added "Factor Nodes" dialog
+- added zoom/fit to selection
+- added custom columns to the Topology editor
+- added "Search" feature
+
+- fixed issue with document change notification when a new document is created
+- fixed issue with putting empty states into the undo/redo stack after editing
+	of complex attributes (color, font etc)
+- fixed generation of the default ids for nodes/edges
+- fixed opening of documents with unicode names
+- fixed writing non-latin symbols to GEXF files as well as description & version number (#33)
+- fixed writing graph attributes to GEXF files
+- fixed storing of default class attributes
+
+DPSE changes:
+- added node models conversion via context menu for selected nodes
+
+
+QVGE 0.4.3 (beta)
+-------------------------------------------------------------------------------
+- item tooltips visually improved
+- fixed issue with moving the mouse over the Mini Navigator when invoked 
+  by the corner button
+- fixed issue with restoring of scene interactive state after panning
+- fixed a crash when leaving property editor after changing a value
+- fixed editing of string and numerical values after typing next character
+- fixed a couple of visual issues with double values
+
+
+QVGE 0.4.2 (beta)
+-------------------------------------------------------------------------------
+- added new color scheme (Sunny Spring)
+- added common editor modes to simplify the editing
+- default node & edge properties set to UI when new scene is attached
+- auto-assign of currently selected node & edge properties to the newly created items
+- more tool- & status tips displayed
+- some common operations made more intuitive (clone items with pressed Ctrl etc.)
+
+- fixed issue with dragging items over their labels
+- (Linux) fixed issue with default IO directory
+- (FreeBSD) fixed restoring of maximized windows (Qt issue)
+- (Windows) added uninstaller to the setup packages
+
+
+QVGE 0.4.1 (beta)
+-------------------------------------------------------------------------------
+- mouse navigation speedup
+- more precise node outline & edge width (resolution of 0.1 px)
+- nodes can have no background (i.e. be transparent)
+- single nodes may be created by left double click on empty space
+- added cropping scene to contents
+- added "hexagon" node shape
+- added editing of nodes & edges textual labels
+- added default color schemes
+- added support for FreeBSD platform
+
+- fixed potential memory leaks & crash when setting attributes constrains
+- fixed some default node & edge attributes
+- removed "label.size" subattribute (font's pointSize is used instead)
+- graph creation dialog made optional
+- (Windows) fixed issue with opening of associated files by double click
+- (Windows) added version info to the executable
+- (Linux) fixed restoring of maximized windows (Qt issue)
+
+
+QVGE 0.4.0 (beta)
+-------------------------------------------------------------------------------
+- added export to GEXF format
+- added import from GML format (via OGDF)
+- added support for Cygwin platform (not all features yet)
+- added support for node outline 
+
+- corrected and improved import from GEXF format
+- fixed some issues with attribute inheritance
+- fixed some issues with files IO
+- fixed some issues with application UI
+- fixed issue when a node was sometimes created on a wrong place
+- fixed issue with cancelling of edge creation by right mouse button
+- fixed scene panning by right mouse button when initially clicked on an item
+
+
+QVGE 0.3.0 (alpha)
+-------------------------------------------------------------------------------- 
+- initial public release

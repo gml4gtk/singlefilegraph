@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Terminal=false
+Name=Qt Visual Graph Editor
+Comment=View and manipulate small till middle-sized graphs
+Exec=qvgeapp %F
+Icon=qvge
+Type=Application
+Categories=Graphics;2DGraphics;Qt;
+MimeType=application/xgr;text/vnd.graphviz

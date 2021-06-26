@@ -52,6 +52,11 @@ To create callgraph as graphviz dot format the GNU cflow program can be used
 cflow sfg.c | ./tree2x.sh >sfg-callgraph-cflow.gv
 
 Also the calltree program can be used from schilytools at https://sourceforge.net/projects/schilytools/
-
-In the gcc directory is a gnu gcc compiler patch.
+  
+In the gcc directory is a gnu gcc compiler patch.  
+  
+In directory qsfg is a modified qvge qt5 graph editor running sfg.c graph layouter like this:  
+  
+![qsfg](qsfg.png)
+  
 
