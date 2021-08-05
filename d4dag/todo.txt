@@ -1,0 +1,813 @@
+Some source code rules to keep eye on when programming and testing
+Most are closed-source non-free products but for example psv-studio can be used free for this.
+Few of these tools can be used at low-costs for not much money to pay for a license.
+
+rosecheckers has unmaintained software on sourceforge but last commit is from year 2021.
+which should check for cert standards and that has it own
+site with text or xml file available for download. It also generates dot graph data!
+This tool is called rosebud and available at rosecheckers on sourceforge
+
+This info can also be used with the Linux kernel sparse checker software
+
+Rule 1.1	MISRA-C2012-1.1	The program shall contain no violations of the standard C syntax and constraints, and shall not exceed the implementation’s translation limits.
+Rule 1.2 	MISRA-C2012-1.2	Language extensions should not be used
+Rule 1.3 	MISRA-C2012-1.3	There shall be no occurrence of undefined or critical unspecified behaviour
+Rule 2.1 	MISRA-C2012-2.1	A project shall not contain unreachable code
+Rule 2.2 	MISRA-C2012-2.2	There shall be no dead code
+Rule 2.3	MISRA-C2012-2.3	A project should not contain unused type declarations
+Rule 2.4 	MISRA-C2012-2.4	A project should not contain unused tag declarations
+Rule 2.5	MISRA-C2012-2.5	A project should not contain unused macro declarations
+Rule 2.6 	MISRA-C2012-2.6	A function should not contain unused label declarations
+Rule 2.7 	MISRA-C2012-2.7	There should be no unused parameters in functions
+Rule 3.1 	MISRA-C2012-3.1	The character sequences /* an // shall not be used within a comment
+Rule 3.2	MISRA-C2012-3.2	If the source line containing a // comment ends with a \ character in the source character set, the next line becomes part of the comment. This may result in unintentional removal of code.
+Rule 4.1 	MISRA-C2012-4.1	Octal and hexadecimal escape sequences shall be terminated
+Rule 4.2	MISRA-C2012-4.2	Trigraphs should not be used
+Rule 5.1 	MISRA-C2012-5.1	External identifiers shall be distinct
+Rule 5.2	MISRA-C2012-5.2	Identifiers declared in the same scope and name space shall be distinct
+Rule 5.3	MISRA-C2012-5.3	An identifier declared in an inner scope shall not hide an identifier declared in an outer scope
+Rule 5.4 	MISRA-C2012-5.4	Macro identifiers shall be distinct
+Rule 5.5 	MISRA-C2012-5.5	Identifiers shall be distinct from macro names
+Rule 5.6	MISRA-C2012-5.6	A typedef name shall be a unique identifier
+Rule 5.7 	MISRA-C2012-5.7	A tag name shall be a unique identifier
+Rule 5.8	MISRA-C2012-5.8	Identifiers that define objects or functions with external linkage shall be unique
+Rule 5.9 	MISRA-C2012-5.9	Identifiers that define objects or functions with internal linkage should be unique
+Rule 6.1	MISRA_C2012-6.1	Bit-fields shall only be declared with an appropriate type
+Rule 6.2	MISRA-C2012-6.2	Single-bit named bit fields shall not be of a signed type
+Rule 7.1 	MISRA-C2012-7.1	Octal constants shall not be used
+Rule 7.2	MISRA_C2012-7.2	A “u” or “U” suffix shall be applied to all integer constants that are represented in an unsigned type
+Rule 7.3 	MISRA-C2012-7.3	The lowercase character “l” shall not be used in a literal suffix
+Rule 7.4	MISRA-C2012-7.4	A string literal shall not be assigned to an object unless the object's type is pointer to const-qualified char
+Rule 8.1	MISRA-C2012-8.1	Types shall be explicitly specified
+Rule 8.2	MISRA-C2012-8.2	Function types shall be in prototype form with named parameters
+Rule 8.3 	MISRA-C2012-8.3	All declarations of an object or function shall use the same names and type qualifiers
+Rule 8.4	MISRA-C2012-8.4	A compatible declaration shall be visible when an object or function with external linkage is defined
+Rule 8.5	MISRA-C2012-8.5	An external object or function shall be declared once in one and only one file
+Rule 8.6	MISRA-C2012-8.6	An identifier with external linkage shall have exactly one external definition
+Rule 8.7	MISRA-C2012-8.7	Functions and objects should not be defined with external linkage if they are referenced in only one translation unit
+Rule 8.8	MISRA-C2012-8.8	The static storage class specifier shall be used in all declarations of objects and functions that have internal linkage
+Rule 8.9	MISRA-C2012-8.9	An object should be defined at block scope if its identifier only appears in a single function
+Rule 8.10	MISRA-C2012-8.10	An inline function shall be declared with the static storage class
+Rule 8.11 	MISRA-C2012-8.11	When an array with external linkage is declared, its size should be explicitly specified
+Rule 8.12 	MISRA-C2012-8.12	Within an enumerator list, the value of an implicitly-specified enumeration constant shall be unique
+Rule 8.13	MISRA-C2012-8.13	A pointer should point to a const-qualified type whenever possible
+Rule 8.14 	MiSRA-C2012-8.14	The restrict type qualifi er shall not be used
+Rule 9.1 	MISRA-C2012-9.1	The value of an object with automatic storage duration shall not be read before it has been set
+Rule 9.2	MISRA-C2012-9.2	The initializer for an aggregate or union shall be enclosed in braces
+Rule 9.3	MISRA-C2012-9.3	Arrays shall not be partially initialized
+Rule 9.4	MISRA-C2012-9.4	An element of an object shall not be in itialized more than once
+Rule 9.5 	MISRA-C2012-9.5	Where designated initializers are used t o initialize an array object the size of the array shall be specified explicitly
+Rule 10.1 	MISRA-C2012-10.1	Operands shall not be of an inappropriate essential type
+Rule 10.2 	MISRA-C2012-10.2	Expressions of essentially character type shall not be used inappropriately in addition and subtraction operations
+Rule 10.3 	MISRA-C2012-10.3	The value of an expression shall not be assigned to an object with a narrower essential type or of a different essential type category
+Rule 10.4 	MISRA-C2012-10.4	Both operands of an operator in which the usual arithmetic conversions are performed s hall have the same essential type category
+Rule 10.5 	MISRA_C2012-10.5	The value of an expression should not be cast to an inappropriate essential type
+Rule 10.6 	MISRA-C2012-10.6	The value of a composite expression shall not be assigned to an object with wider essential type
+Rule 10.7 	MISRA-C2012-10.7	If a composite expression is used as one operand of an operator in which the usual arithmetic conversions are performed then the other operand shall not have wider essential type
+Rule 10.8 	MISRA-C2012-10.8	The value of a composite expression shall not be cast to a different essential type category or a wider essential type
+Rule 11.1 	MISRA-C2012-11.1	Conversions shall not be performed between a pointer to a function and any other type
+Rule 11.2	MISRA-C2012-11.2	Conversions shall not be performed between a pointer to an incomplete type and any other type
+Rule 11.3 	MISRA-C2012-11.3	A cast shall not be performed between a pointer to object type and a pointer to a diff erent object type
+Rule 11.4 	MISRA-C2012-11.4	A conversion should not be performed between a pointer to object and an integer type
+Rule 11.5 	MISRA-C2012-11.5	A conversion should not be performed from pointer to void into pointer to object
+Rule 11.6 	MISRA-C2012-11.6	A cast shall not be performed between pointer to void and an arithmetic type
+Rule 11.7 	MISRA-C2012-11.7	A cast shall not be performed between pointer to object and a noninteger arithmetic type
+Rule 11.8 	MISRA-C2012-11.8	A cast shall not remove any const or volatile qualification from the type pointed to by a pointer
+Rule 11.9 	MISRA-C2012-11.9	The macro NULL shall be the only per mitted form of integer null pointer constant
+Rule 12.1 	MiSRA-C2012-12.1	The precedence of operators within expressions should be made explicit
+Rule 12.2 	MISRA-C2012-12.2	The right hand operand of a shift operator shall lie in the range zero to one less than the width in bits of the essential type of the left hand operand
+Rule 12.3 	MISRA-C2012-12.3	The comma operator should not be used
+Rule 12.4 	MISRA-C2012-12.4	Evaluation of constant expressions should not lead to unsigned integer wrap-around
+Rule 13.1 	MISRA-C2012-13.1	Initializer lists shall not contain persistent side eff ects
+Rule 13.2 	MISRA-C2012-13.2	The value of an expression and its persistent side eff ects shall be the same under all permitted evaluation orders
+Rule 13.3 	MISRA-C2012-13.3	A full expression containing an increment (++) or decrement (--) operator should hav e no other potential side eff ects other than that caused by the increment or decrement operator
+Rule 13.4 	MISRA-C2012-13.4	The result of an assignment operator should not be used
+Rule 13.5 	MISRA-C2012-13.5	The right hand operand of a logical && or || operator shall not contain persistent side effects
+Rule 13.6 	MISRA-C2012-13.6	The operand of the sizeof operator shall not contain any expression which has potential side effects
+Rule 14.1 	MISRA-C2012-14.1	A loop counter shall not have essentially fl oating type
+Rule 14.2 	MISRA-C2012-14.2	A for loop shall be well-formed
+Rule 14.3	MISRA-C2012-14.3	Controlling expressions shall not be invariant
+Rule 14.4 	MISRA-C2012-14.4	The controlling expression of an if statement and the controlling expression of an iteration- statement shall have essentially Boolean type
+Rule 15.1 	MISRA-C2012-15.1	The goto statement should not be used
+Rule 15.2 	MISRA-C2012-15.2	The goto statement shall jump to a label declared later in the same function
+Rule 15.3 	MISRA-C2012-15.3	Any label referenced by a goto statement shall be declared in the same block, or in any block enclosing the goto statement
+Rule 15.4 	MISRA-C2012-15.4	There should be no more than one break or goto statement used to terminate any iteration statement
+Rule 15.5 	MISRA-C2012-15.5	A function should have a single point of exit at the end
+Rule 15.6 	MISRA-C2012-15.6	The body of an iteration-statement or a selection-statement shall be a compound-statement
+Rule 15.7 	MISRA-C2012-15.7	All if … else if constructs shall be terminated with an else statement
+Rule 16.1	MISRA-C2012-16.1	All switch statements shall be well-formed
+Rule 16.2 	MISRA-C2012-16.2	A switch label shall only be used when the most closely-enclosing compound statement is the body of a switch statement
+Rule 16.3 	MISRA-C2012-16.3	An unconditional break statement shall terminate every switch-clause
+Rule 16.4 	MISRA-C2012-16.4	Every switch statement shall have a default label
+Rule 16.5 	MISRA-C2012-16.5	A default label shall appear as either the first or the last switch label of a switch statement
+Rule 16.6 	MISRA-C2012-16.6	Every switch statement shall have at least two switch-clauses
+Rule 16.7 	MISRA-C2012-16.7	A switch-expression shall not have essentially Boolean type
+Rule 17.1 	MISRA-C2012-17.1	The features of shall not be used
+Rule 17.2	MISRA-C2012-17.2	Functions shall not call themselves, either directly or indirectly
+Rule 17.3	MISRA-C2012-17.3	A function shall not be declared implicitly
+Rule 17.4	MISRA-C2012-17.4	All exit paths from a function with non-void return type shall have an explicit return statement with an expression
+Rule 17.5 	MISRA-C2012-17.5	The function argument corresponding to a parameter declared to have an array type shall have an appropriate number of elements
+Rule 17.6 	MISRA-C2012-17.6	The declaration of an array parameter shall not contain the static keyword between the [ ]
+Rule 17.7	MISRA-C2012-17.7	The value returned by a function having non-void return type shall be used
+Rule 17.8 	MISRA-C2012-17.8	A function parameter should not be modifi ed
+Rule 18.1 	MISRA-C2012-18.1	A pointer resulting from arithmetic on a pointer operand shall address an element of the same array as that pointer operand
+Rule 18.3	MISRA-C2012-18.3	The relational operators >, >=, < and <= shall not be applied to objects of pointer type except where they point into the same object
+Rule 18.4	MISRA-C2012-18.4	The +, -, += and -= operators should not be applied to an expression of pointer type
+Rule 18.5 	MISRA-C2012-18.5	Declarations should contain no more than two levels of pointer nesting
+Rule 18.6 	MISRA-C2012-18.6	The address of an object with automatic storage shall not be copied to another object that persists after the first object has ceased to exist
+Rule 18.7	MISRA-C2012-18.7	Flexible array members shall not be declared
+Rule 18.8 	MISRA-C2012-18.8	Variable-length array types shall not be used
+Rule 19.2 	MiSRA-C2012-19.2	The union keyword should not be used
+Rule 20.1 	MISRA-C2012-20.1	#include directives should only be preceded by preprocessor directives or comments
+Rule 20.2 	MISRA-C2012-20.2	The ', " or \ characters and the /* or // character sequences shall not occur in a header file name
+Rule 20.3 	MISRA-C2012-20.3	The #include directive shall be followed by either a or "filename" sequence
+Rule 20.4 	MISRA-C2012-20.4	A macro shall not be defined with the same name as a keyword
+Rule 20.5 	MISRA-C2012-20.5	#undef should not be used
+Rule 20.6 	MISRA-C2012-20.6	Tokens that look like a preprocessing directive shall not occur within a macro argument
+Rule 20.7	MISRA-C2012-20.7	Expressions resulting from the expansion of macro parameters shall be enclosed in parentheses
+Rule 20.8 	MISRA-C2012-20.8	The controlling expression of a #if or #elif preprocessing directive shall evaluate to 0 or 1
+Rule 20.9 	MISRA-C2012-20.9	All identifiers used in the controlling expression of #if or #elif preprocessing directives shall be #defi ne’d before evaluation
+Rule 20.10 	MISRA-C2012-21.10	The # and ## preprocessor operators should not be used
+Rule 20.11 	Misra-c2012-21.11	A macro parameter immediately following a # operator shall not immediately be followed by a ## operator
+Rule 20.12 	MISRA-C2012-21.12	A macro parameter used as an operand to the # or ## o perators, which is itself subj ect to further macro replacement, shall only be used as an operand to these operators
+Rule 20.13 	MISRA-C2012-20.13	A line whose first token is # shall be a valid preprocessing directive
+Rule 20.14	MISRA-C2012-20.14	All #else, #elif and #endif preprocessor directives shall reside in the same file as the #if, #ifdef or #ifndef directive to which they are related
+Rule 21.1 	MISRA-C2012-21.1	#defi ne and #undef shall not be used on a reserved identifier or reserved macro name
+Rule 21.2	MISRA-C2012-21.2	A reserved identifier or macro name shall not be declared
+Rule 21.3 	MISRA-C2012-21.3	The memory allocation and deallocation functions of shall not be used
+Rule 21.4 	MISRA-C2012-21.4	The standard header file shall not be used
+Rule 21.5 	MISRA-C2012-21.5	The standard header file shall not be used
+Rule 21.6	MISRA-C2012-21.6	The Standard Library input/output functions shall not be used
+Rule 21.7 	MISRA-C2012-21.7	The atof, atoi, atol and atoll functions of shall not be used
+Rule 21.8 	MISRA-C2012-21.8	The library functions abort, exit, getenv and system of shall not be used
+Rule 21.9 	MISRA-C2012-21.9	The library functions bsearch and qsort of shall not be used
+Rule 21.10	MISRA-C2012-21.10	The Standard Library time and date functions shall not be used
+Rule 21.11 	MISRA-C2012-21.11	The standard header file shall not be used
+Rule 21.12	MISRA-C2012-21.12	The exception handling features of should not be used
+Rule 22.1 	MISRA-C2012-22.1	All resources obtained dynamically by means of Standard Library functions shall be explicitly released
+Rule 22.2 	MISRA-C2012-22.2	A block of memory shall only be freed if it was allocated by means of a Standard Library function
+Rule 22.4 	MISRA-C2012-22.4	There shall be no attempt to write to a stream which has been opened as read-only
+Rule 22.5	MISRA-C2012-22.5	A pointer to a FILE object shall not be dereferenced
+Rule 22.6 	MISRA-C2012-22.6	The value of a pointer to a FILE shall not be used after the associated stream has been closed
+1	CWE-910 : The software uses or accesses a file descriptor after it has been closed.
+2	CWE-415: The product calls free() twice on the same memory address, potentially leading to modification of unexpected memory locations.
+3	CWE-404: The program does not release or incorrectly releases a resource before it is made available for re-use.
+4	CWE-401: The software does not sufficiently track and release allocated memory after it has been used, which slowly consumes remaining memory.
+5	CWE-369: The product divides a value by zero.
+6	CWE-252: The software does not check the return value from a method or function, which can prevent it from detecting unexpected states and conditions.
+7	CWE-783: The program uses an expression in which operator precedence causes incorrect logic to be used.
+8	CWE-561: The software contains dead code, which can never be executed.
+9	CWE-484 : The program omits a break statement within a switch or similar construct, causing code associated with multiple conditions to execute. This can cause problems when the programmer only intended to execute code associated with one condition.
+10	CWE-478: The code does not have a default case in a switch statement, which might lead to complex logical errors and resultant weaknesses.
+11	CWE-338: The product uses a Pseudo-Random Number Generator (PRNG) in a security context, but the PRNG's algorithm is not cryptographically strong.
+12	CWE-121: Stack-based Buffer Overflow
+13	CWE-122: Heap-based Buffer Overflow
+14	CWE-124: Buffer Underwrite ('Buffer Underflow')
+15	CWE-126: Buffer Over-read
+16	CWE-127: Buffer Under-read
+17	CWE-197: Numeric Truncation Error
+18	CWE-242: Use of Inherently Dangerous Function
+19	CWE-398: Indicator of Poor Code Quality
+20	CWE-401: Improper Release of Memory Before Removing Last Reference ('Memory Leak')
+21	CWE-416: Use After Free
+22	CWE-457: Use of Uninitialized Variable
+23	CWE-476: NULL Pointer Dereference
+24	CWE-483: Incorrect Block Delimitation
+25	CWE-562: Return of Stack Variable Address
+26	CWE-563: Assignment to Variable without Use ('Unused Variable')
+27	CWE-570: Expression is Always False
+28	CWE-571: Expression is Always True
+29	CWE-674: Uncontrolled Recursion
+30	CWE-758: Reliance on Undefined, Unspecified, or Implementation-Defined Behavior
+31	CWE-762: Mismatched Memory Management Routines
+32	CWE-704: Incorrect Type Conversion or Cast
+33	CWE-843: Access of Resource Using Incompatible Type ('Type Confusion')
+34	CWE-15: External Control of System or Configuration Setting
+35	CWE-908: Use of Uninitialized Resource
+36	CWE-911: Improper Update of Reference Count
+37	CWE-772: Missing Release of Resource after Effective Lifetime
+38	CWE-833: Improper Locking
+39	CWE-413: Improper Resource Locking
+40	CWE-335: Incorrect Usage of Seeds in Pseudo-Random Number Generator (PRNG)
+41	CWE-468: Incorrect Pointer Scaling
+42	CWE-825: Expired Pointer Dereference
+43	CWE-466: Return of Pointer Value Outside of Expected Range
+44	CWE-390: Detection of Error Condition Without Action
+45	CWE-1069: Empty Exception Block
+46	CWE-477: Use of Obsolete Function
+47	CWE-676: Use of Potentially Dangerous Function
+48	CWE-749: Exposed Dangerous Method or Function
+49	CWE-547: Use of Hard-coded, Security-relevant Constants
+50	CWE-628: Function Call with Incorrectly Specified Arguments
+51	CWE-694: Use of Multiple Resources with Duplicate Identifier
+52	CWE-1041: Use of Redundant Code
+53	CWE-1045: Parent Class with a Virtual Destructor and a Child Class without a Virtual Destructor
+54	CWE-1046: Creation of Immutable Text Using String Concatenation
+55	CWE-1116: Inaccurate Comments
+56	CWE-1077: Floating Point Comparison with Incorrect Operator
+57	CWE-681: Incorrect Conversion between Numeric Types
+58	CWE-1071: Empty Code Block
+59	CWE-1126: Declaration of Variable with Unnecessarily Wide Scope
+60	CWE-1113: Inappropriate Comment Style
+61	CWE-1109: Use of Same Variable for Multiple Purposes
+62	CWE-1108: Excessive Reliance on Global Variables
+63	CWE-1102: Reliance on Machine-Dependent Data Representation
+64	CWE-1098: Data Element containing Pointer Item without Proper Copy Control Element
+65	CWE-1078: Inappropriate Source Code Style or Formatting
+66	CWE-590: Free of Memory not on the Heap
+67	CWE-664: Improper Control of a Resource Through its Lifetime
+68	CWE-788: Access of Memory Location After End of Buffer
+69	CWE-786: Access of Memory Location Before Start of Buffer
+70	CWE-687: Function Call With Incorrectly Specified Argument Value
+71	CWE-688: Function Call With Incorrect Variable or Reference as Argument
+72	CWE-686: Function Call With Incorrect Argument Type
+73	CWE-665: Improper Initialization
+74	CWE-391: Unchecked Error Condition
+75	CWE-703: Improper Check or Handling of Exceptional Conditions
+76	CWE-119: Improper Restriction of Operations within the Bounds of a Memory Buffer
+77	CWE-685: Function Call With Incorrect Number of Arguments
+78	CWE-672: Operation on a Resource after Expiration or Release
+79	CWE-771: Missing Reference to Active Allocated Resource
+80	CWE-775: Missing Release of File Descriptor or Handle after Effective Lifetime
+81	CWE-190: Integer Overflow or Wraparound
+82	CWE-595: Comparison of Object References Instead of Object Contents
+83	CWE-467: Use of sizeof() on a Pointer Type
+84	CWE-682: Incorrect Calculation
+85	CWE-587: Assignment of a Fixed Address to a Pointer
+86	CWE-131: Incorrect Calculation of Buffer Size
+87	CWE-362: Concurrent Execution using Shared Resource with Improper Synchronization ('Race Condition')
+88	CWE-195: Signed to Unsigned Conversion Error
+89	CWE-128: Wrap-around Error
+90	CWE-597: Use of Wrong Operator in String Comparison
+91	CWE-834: Excessive Iteration
+92	CWE-768: Incorrect Short Circuit Evaluation
+93	CWE-392: Missing Report of Error Condition
+94	CWE-415: Double Free
+
+This is the top of bugs in 2021 according to mitre
+
+
+The list below provides insight to the community at large into the most critical and current software security weaknesses.
+Rank 	ID 	Name 	Score
+[1] 	CWE-787 	Out-of-bounds Write 	65.93
+[2] 	CWE-79 	Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') 	46.84
+[3] 	CWE-125 	Out-of-bounds Read 	24.9
+[4] 	CWE-20 	Improper Input Validation 	20.47
+[5] 	CWE-78 	Improper Neutralization of Special Elements used in an OS Command ('OS Command Injection') 	19.55
+[6] 	CWE-89 	Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection') 	19.54
+[7] 	CWE-416 	Use After Free 	16.83
+[8] 	CWE-22 	Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal') 	14.69
+[9] 	CWE-352 	Cross-Site Request Forgery (CSRF) 	14.46
+[10] 	CWE-434 	Unrestricted Upload of File with Dangerous Type 	8.45
+[11] 	CWE-306 	Missing Authentication for Critical Function 	7.93
+[12] 	CWE-190 	Integer Overflow or Wraparound 	7.12
+[13] 	CWE-502 	Deserialization of Untrusted Data 	6.71
+[14] 	CWE-287 	Improper Authentication 	6.58
+[15] 	CWE-476 	NULL Pointer Dereference 	6.54
+[16] 	CWE-798 	Use of Hard-coded Credentials 	6.27
+[17] 	CWE-119 	Improper Restriction of Operations within the Bounds of a Memory Buffer 	5.84
+[18] 	CWE-862 	Missing Authorization 	5.47
+[19] 	CWE-276 	Incorrect Default Permissions 	5.09
+[20] 	CWE-200 	Exposure of Sensitive Information to an Unauthorized Actor 	4.74
+[21] 	CWE-522 	Insufficiently Protected Credentials 	4.21
+[22] 	CWE-732 	Incorrect Permission Assignment for Critical Resource 	4.2
+[23] 	CWE-611 	Improper Restriction of XML External Entity Reference 	4.02
+[24] 	CWE-918 	Server-Side Request Forgery (SSRF) 	3.78
+[25] 	CWE-77 	Improper Neutralization of Special Elements used in a Command ('Command Injection') 	3.58
+
+
+This are misra error messages
+
+/* Kapitel 1 */
+1,1,"All code shall conform to ISO 9899:1990 \"Programming languages - C \ E 2 \", amended and "
+"corrected by ISO/IEC 9899/COR1:1995, ISO/IEC 9899/AMD1:1995, and ISO/IEC 9899/COR2:1996.",MISRA|MISRA_2004,
+
+1,2,"No reliance shall be placed on undefined or unspecified behaviour.",MISRA|MISRA_2004,
+
+1,3,"Multiple compilers and/or languages shall only be used if there is a common defined "
+"interface standard for object code to which the languages/compilers/assembler conforms",MISRA|MISRA_2004,
+
+1,4,"The compiler/linker shall be checked to ensure that 31 character significance and "
+"case sensitivity are supported for external identifiers",MISRA|MISRA_2004,
+
+1,5,"Floating point implementations should comply with a defined floating-point standard",MISRA|MISRA_2004,
+
+/* Kapitel 2 */
+2,1,"Assembly language shall be encapsulated and isolated",MISRA|MISRA_2004,
+
+2,2,"Source code shall only use /* ... */ style comments",MISRA|MISRA_2004,
+
+2,3,"The character sequence /* shall not be used within a comment",MISRA|MISRA_2004,
+
+2,4,"Sections of code should not be \"commented out\"",MISRA|MISRA_2004,
+
+
+/* Kapitel 3 */
+3,1,"All usage of implementation-defined behaviour shall be documented ",MISRA|MISRA_2004,
+
+3,2,"The character set and corresponding encoding shall be documented",MISRA|MISRA_2004,
+
+3,3,"The implementation of integer division in the chosen compiler should "
+"be determined, documented and taken into account",MISRA|MISRA_2004,
+
+3,4,"All use of the #pragma directive shall be documented and explained",MISRA|MISRA_2004,
+
+3,5,"If it is being relied upon, the implementation-defined behaviour and "
+"packing of bitfields shall be documented",MISRA|MISRA_2004,
+
+3,6,"All libraries used in production code shall be written to comply with "
+"the provisions of this document, and shall have been subject to appropriate validation",MISRA|MISRA_2004,
+
+
+/* Kapitel 4 */
+4,1,"Only those escape sequences that are defined in the ISO C standard shall be used",MISRA|MISRA_2004|MISRA_PREPROC,
+
+4,2,"Trigraphs shall not be used",MISRA|MISRA_2004,
+
+
+/* Kapitel 5*/
+5,1,"Identifiers (internal and external) shall not rely on the significance "
+"of more than 31 characters",MISRA|MISRA_2004,
+
+5,2,"Identifiers in an inner scope shall not use the same name as an identifier "
+"in an outer scope, and therefor hide that identifier",MISRA|MISRA_2004,
+
+5,3,"A typedef name shall be a unique identifier",MISRA|MISRA_2004,
+
+5,4,"A tag name shall be a unique identifier",MISRA|MISRA_2004,
+
+5,5,"No object or function identifier with static storage duration should be reused",MISRA|MISRA_2004,
+
+5,6,"No identifier in one name space should have the same spelling as an identifier "
+"in another name space, with the exception of structure and union member names",MISRA|MISRA_2004,
+
+5,7,"No identifier name should be reused",MISRA|MISRA_2004,
+
+
+/* Kapitel 6 */
+6,1,"The plain char type shall be used only for the storage and use of character values",MISRA|MISRA_2004,
+
+6,2,"signed and unsigned char type shall be used only for the storage and use of numeric values",MISRA|MISRA_2004,
+
+6,3,"typedefs that indicate size and signedness should be used in place of the basic types",MISRA|MISRA_2004,
+
+6,4,"Bit fields shall only be defined to be of type unsigned int or signed int",MISRA|MISRA_2004,
+
+6,5,"Bit fields of type signed int shall be at least 2 bit long",MISRA|MISRA_2004,
+
+
+/* Kapitel 7 */
+7,1,"Octal constants (other than zero) and octal escape sequences shall not be used",MISRA|MISRA_2004,
+
+
+/* Kapitel 8 */
+8,1,"Functions shall have prototype declaration and the prototype shall "
+"be visible at both the function definition and call",MISRA|MISRA_2004,
+
+8,2,"Whenever an object or function is declared or defined, its type shall "
+"be explicitly stated",MISRA|MISRA_2004,
+
+8,3,"For each function parameter the type given in the declaration and "
+"definition shall be identical, and the return type shall also be identical",MISRA|MISRA_2004,
+
+8,4,"If objects or functions are declared more than once their type shall be compatible",MISRA|MISRA_2004,
+
+8,5,"There shall be no definition of objects or functions in a header file",MISRA|MISRA_2004,
+
+8,6,"Functions shall be declared at file scope",MISRA|MISRA_2004,
+
+8,7,"Objects shall be defined at block scope if they are only accessed from "
+"within a single function",MISRA|MISRA_2004,
+
+8,8,"An external object or function shall be declared in one and only one file",MISRA|MISRA_2004,
+
+8,9,"An identifier with external linkage shall have excactly one external definition",MISRA|MISRA_2004,
+
+8,10,"All declarations and definitions of objects and functions at file scope shall "
+"have internal linkage  unless external linkage is required",MISRA|MISRA_2004,
+
+8,11,"The static storage class specifier shall be used in definitions and declarations "
+"of objects and functions that have internal linkage",MISRA|MISRA_2004,
+
+8,12,"When an array is declared with external linkage, its size shall be stated "
+"or defined implicitly be initialisation",MISRA|MISRA_2004,
+
+
+/* Kapitel 9 */
+9,1,"All automatic variables shall have been assigned a value before being used",MISRA|MISRA_2004,
+
+9,2,"Braces shall be used to indicate and match the structure in the non-zero "
+"initialisation of arrays and structures",MISRA|MISRA_2004,
+
+9,3,"In an enumerator list, the \"=\" construct shall not be used to explicitly "
+"initialise members other than the first, unless all items are explicitly initialised",MISRA|MISRA_2004,
+
+
+/* Kapitel 10 */
+10,1,"The value of an expression of integer type shall not be implicitly converted to a different underlying type if: \n"
+"  a) it is not a conversion to a wider integer type of the same signedness, or\n"
+"  b) the expression is complex, or\n"
+"  c) the expression is not constant and is a function argument, or\n"
+"  d) the expression is not constant and is a return expression",MISRA|MISRA_2004,
+
+10,2,"The value of an expression of floating type shall not be implicitly converted to a different type if:\n"
+"  a) it is not a conversion to a wider floating type, or\n"
+"  b) the expression is complex, or\n"
+"  c) the expression is a function argument, or\n"
+"  d) the expression is a return expression\n",MISRA|MISRA_2004,
+
+10,3,"The value of a complex expression of integer type may only be cast "
+"to a atype that is narrower and of the same signedness as the "
+"underlying type of the expression",MISRA|MISRA_2004,
+
+10,4,"The value of a complex expression of floating type may only be cast "
+"to a narrower floating type",MISRA|MISRA_2004,
+
+10,5,"If the bitwise operators ~ and << are applied to an operand of "
+"underlying type unsigned char or unsigned short, the result "
+"shall be immediately cast to the underlying type of the operand",MISRA|MISRA_2004,
+
+10,6,"A \"U\" suffix shall be applied to all constants of unsigned type",MISRA|MISRA_2004,
+
+/* Kapitel 11 */
+11,1,"Conversions shall not be performed between a pointer to a function and any type "
+"other than an integral type",MISRA|MISRA_2004,
+
+11,2,"Conversions shall not be performed between a pointer to object and any type "
+"other than an integral type, another pointer to object type or a pointer to void",MISRA|MISRA_2004,
+
+11,3,"A cast should not be performed between a pointer type and an integral type",MISRA|MISRA_2004,
+
+11,4,"A cast should not be performed between a pointer to object type and a "
+"different pointer to object type.",MISRA|MISRA_2004,
+
+11,5,"A cast shall not be performed that removes any const or volatile qualification "
+"from the type addresses by a pointer",MISRA|MISRA_2004,
+
+
+/* Kapitel 12 */
+12,1,"Limited dependence should be placed on C's operator precedence rules in expressions",MISRA|MISRA_2004,
+
+12,2,"The value of an expression shall be the same under any order of "
+"evaluation that the standard permits",MISRA|MISRA_2004,
+
+12,3,"The sizeof operator shall not be used on expressions that contain side effects",MISRA|MISRA_2004,
+
+12,4,"The right-hand operand of a logical && or || operator shall not "
+"contain side effects",MISRA|MISRA_2004,
+
+12,5,"The operands of a logical && or || shall be primary-expressions",MISRA|MISRA_2004,
+
+12,6,"The operands of logical operators (&&, || and !) should be effectively Boolean, "
+"Expressions that are effectively Booleand should not be used as operands to "
+"eperators other than(&&, || and !)",MISRA|MISRA_2004,
+
+12,7,"Bitweise operators shall not be applied to operands whose underlying type is signed",MISRA|MISRA_2004,
+
+12,8,"The right-hand operand of a shift operator shall lie between zero and one less "
+"than the width in bits of ther underlying type of the left-hand operand.",MISRA|MISRA_2004,
+
+12,9,"The unary minus operator shall not be applied to an expression whose underlying type is unsigned",MISRA|MISRA_2004,
+
+12,10,"The comma operator shall not be used",MISRA|MISRA_2004,
+
+12,11,"Evaluation of constant unsigned integer expressions should not lead to wrap-around",MISRA|MISRA_2004,
+
+12,12,"The underlying bit representation of floating-point values shall not be used",MISRA|MISRA_2004,
+
+12,13,"The increment (++) and decrement (--) operators should not be mixed with other "
+"operators in an expression",MISRA|MISRA_2004,
+
+
+/* Kapitel 13 */
+13,1,"Assignment opetaors shall not be used in expressions that yield a Boolean value",MISRA|MISRA_2004,
+
+13,2,"Tests of a value against zero should be made explicit, unless the operand is effectively Boolean",MISRA|MISRA_2004,
+
+13,3,"Floating-point expressions shall not be tested for equality or inequality",MISRA|MISRA_2004,
+
+13,4,"The controlling expression of a for statement shall not contain any objects of floating type.",MISRA|MISRA_2004,
+
+13,5,"The three expressions of a for statement shall be concerned only with loop control",MISRA|MISRA_2004,
+
+13,6,"Numeric variables being used within a for loop for iteration counting shall not be modified in the body of the loop",MISRA|MISRA_2004,
+
+13,7,"Boolean operations whose results are invariant shall not be permitted",MISRA|MISRA_2004,
+
+
+/* Kapitel 14 */
+14,1,"There shall be no unreachable code",MISRA|MISRA_2004,
+
+14,2,"All non-null statements shall either:\n"
+"  a) have at least one side-effect however executed, or\n"
+"  b) cause control flow to change",MISRA|MISRA_2004,
+
+14,3,"Before preprocessing, a null statement shall only occur on a line by itself; it may be "
+"followed by a comment provided that the first character following the null statement "
+"is a white-space character.",MISRA|MISRA_2004,
+
+14,4,"The goto statement shall not be used",MISRA|MISRA_2004,
+
+14,5,"The continue statement shall not be used",MISRA|MISRA_2004,
+
+14,6,"For any interation statement there shall be at most one braek statement used for loop termination",MISRA|MISRA_2004,
+
+14,7,"A function shall have a single point of exit at the end of the function",MISRA|MISRA_2004,
+
+14,8,"The statement forming the body of a switch, while, do ... while or for statement "
+"shall be a compound statement",MISRA|MISRA_2004,
+
+14,9,"An if (expression) construct shall be followed by a compound statement. The else "
+"keyword shall be followed by either a compound statement, or another if statement",MISRA|MISRA_2004,
+
+14,10,"All if ... else if constructs shall be terminated with an else clause",MISRA|MISRA_2004,
+
+
+/* Kapitel 15 */
+15,1,"A switch label shall only be used when the most closely-enclosing compound statement is the body of a switch statement",MISRA|MISRA_2004,
+
+15,2,"An unconditional break statement shall terminate every non-empty switch clause",MISRA|MISRA_2004,
+
+15,3,"The final clause of a switch statement shall be the default clause",MISRA|MISRA_2004,
+
+15,4,"A Switch expression shall not represent a value that is effectively Boolean",MISRA|MISRA_2004,
+
+15,5,"Every switch statement shall have at least one case clause",MISRA|MISRA_2004,
+
+
+/* Kapitel 16 */
+16,1,"Functions shall not be defined with a variable number of arguments",MISRA|MISRA_2004,
+
+16,2,"Functions shall not call themselves, either directly or indirectly",MISRA|MISRA_2004,
+
+16,3,"Identifiers shall be given for all of the parameters in a function prototype declaration",MISRA|MISRA_2004,
+
+16,4,"The identifiers used in the declaration and definition of a function shall be identical",MISRA|MISRA_2004,
+
+16,5,"Functions with no parameters shall be declared with parameter type void",MISRA|MISRA_2004,
+
+16,6,"The number of arguments passed to a function shall match the number of parameters",MISRA|MISRA_2004,
+
+16,7,"A pointer parameter in a function prototype should be declared as pointer to  const "
+"if the pointer is not used to modify the addressed object",MISRA|MISRA_2004,
+
+16,8,"All exit paths from a function with non-void return type shall have an explicit "
+"return statement with an expression",MISRA|MISRA_2004,
+
+16,9,"A function identifier shall only be used with either a preceding &, or with a "
+"parenthesised parameter list, which may be empty",MISRA|MISRA_2004,
+
+16,10,"If a function returns error information, then that error information shall be tested",MISRA|MISRA_2004,
+
+
+/* Kapitel 17 */
+17,1,"Pointer arithmetic shall only be applied to pointers that address an array or array element",MISRA|MISRA_2004,
+
+17,2,"Pointer subtraction shall only be apllied to pointers that address elements of the same array",MISRA|MISRA_2004,
+
+17,3,">, >=, <, <= shall not be applied to pointer types except where they point to the same array",MISRA|MISRA_2004,
+
+17,4,"Array indexing shall be the only allowed form of pointer arithmetic",MISRA|MISRA_2004,
+
+17,5,"The declaration of objects should contain no more than 2 levels of pointer indirection",MISRA|MISRA_2004,
+
+17,6,"The address of an object with automatic storage shall not be assigned to an other "
+"object that may persist after the first object has ceased to exist",MISRA|MISRA_2004,
+
+
+/* Kapitel 18 */
+18,1,"All structure and union types shall be complete at the end of a translation unit",MISRA|MISRA_2004,
+
+18,2,"An object shall not be assigned to an overlapping object",MISRA|MISRA_2004,
+
+18,3,"An area of memory shall not be reused for unrelated purposes",MISRA|MISRA_2004,
+
+18,4,"Unions shall not be used",MISRA|MISRA_2004,
+
+
+/* Kapitel 19 */
+19,1,"#include statements in a file should only be preceded by other preprocessor directives or comments",MISRA|MISRA_2004,
+
+19,2,"Non-standard characters should not occur in header file names in #include directives",MISRA|MISRA_2004,
+
+19,3,"The #include directive shall be followed by either a <filename> or \"filename\" sequence",MISRA|MISRA_2004,
+
+19,4,"C macros shall only expand to a braced initialiser, a constant, a parenthesised "
+"expression, a type qualifier, a storage class specifier, or a do-while-zero construct",MISRA|MISRA_2004,
+
+19,5,"Macros shall not be #defined'd or #undef'd within a block",MISRA|MISRA_2004,
+
+19,6,"#undef shall not be used",MISRA|MISRA_2004,
+
+19,7,"A function should be used in preference to a function-like macro",MISRA|MISRA_2004,
+
+19,8,"A function-like macro shall not be invoked without all of its arguments",MISRA|MISRA_2004,
+
+19,9,"Arguments to a function-like macro shall not contain tokens that look like preprocessing directives",MISRA|MISRA_2004,
+
+19,10,"In the definition of a function-like macro each instance of a parameter shall be enclosed "
+"in parentheses unless it is used as the operand of # or ##",MISRA|MISRA_2004,
+
+19,11,"All macro identifiers in preprocessor directives shall be defined before use, except "
+"in #ifdef and #ifndef preprocessor directives and the defined() operator",MISRA|MISRA_2004,
+
+19,12,"There shall be at most one occurrence of the # or ## preprocessor operators in a "
+"single macro definition",MISRA|MISRA_2004,
+
+19,13,"The # and ## preprocessor operators should not be used",MISRA|MISRA_2004,
+
+19,14,"The defined preprocessor operator shall only be used in one of the two standard forms",MISRA|MISRA_2004,
+
+19,15,"Precautions shall be taken in order to prevent the contents of a header file being included twice",MISRA|MISRA_2004,
+
+19,16,"Preprocessing directives shall be syntactically meaningful even when excluded by the preprocessor",MISRA|MISRA_2004,
+
+19,17,"All #else, #elif and #endif preprocessor directives shall reside in the same file as "
+"the #if or #ifdef directive to which they are related",MISRA|MISRA_2004,
+
+
+/* Kapitel 20 */
+20,1,"Reserved  identifiers, macros and functions in the standard library, shall not "
+"be defined, redefined or undefined",MISRA|MISRA_2004,
+
+20,2,"The names of standard library macros, objects and functions shall not be reused",MISRA|MISRA_2004,
+
+20,3,"The validity of values passed to library functions shall be checked",MISRA|MISRA_2004,
+
+20,4,"Dynamic heap memory allocation shall not be used",MISRA|MISRA_2004,
+
+20,5,"The error indicator errno shall not be used",MISRA|MISRA_2004,
+
+20,6,"The macro offsetof, in library <stddef.h>, shall not be used",MISRA|MISRA_2004,
+
+20,7,"The setjmp macro and the longjmp function shall not be used",MISRA|MISRA_2004,
+
+20,8,"The signal handling facilities of <signal.h> shall not be used",MISRA|MISRA_2004,
+
+20,9,"The input/output library <stdio.h> shall not be used in production code",MISRA|MISRA_2004,
+
+20,10,"The library functions atof, atoi and atol from library <stdlib.h> shall not be used",MISRA|MISRA_2004,
+
+20,11,"The library functions abort, exit, getenv and system from library <stdlib.h> shall not be used.",MISRA|MISRA_2004,
+
+20,12,"The time handling functions of library <time.h> shall not be used",MISRA|MISRA_2004,
+
+
+/* Kapitel 21 */
+21,1,"Minimisation of run-time failures shall be ensured by the use of at least one of:\n"
+"  a) static analysis tools/techniques\n"
+"  b) dynamic analysis tools/techniques\n"
+"  c) explicit coding of checks to handle run-time faults",MISRA|MISRA_2004,
+
+The ckermit software has much experience to create poratble c and have recommendations at
+https://www.kermitproject.org/ckcplm.html
+
+
+    Try to keep variable and function names unique within 6 characters, especially if they are used across modules, since 6 is the maximum for some old linkers (actually, this goes back to TOPS-10 and -20 and other old DEC OS's where C-Kermit never ran anyway; a more realistic maximum is probably somewhere between 8 and 16). We know for certain that VAX C has a 31-character max because it complains -- others might not complain, but just silently truncate, thus folding two or more routines/variables into one.
+
+    Keep preprocessor symbols unique within 8 characters; that's the max for some preprocessors (sorry, I can't give a specific example, but in 1988 or thereabouts, I had to change character-set symbols like TC_LATIN1 and TC_LATIN2 to TC_1LATIN and TC_2LATIN because the digits were being truncated and ignored on a platform where I actually had to build C-Kermit 5A; unfortunately I didn't note which platform -- maybe some early Ultrix version?)
+
+    Don't create preprocessor symbols, or variable or function names, that start with underscore (_). These are usually reserved for internal use by the compiler and header files.
+
+    Don't put #include directives inside functions or { blocks }.
+
+    Don't use the #if or #elif preprocessor constructions, only use #ifdef, #ifndef, #define, #undef, and #endif. C-Kermit must be buildable on old as well as new platforms, and computers are still running whose C preprocessors do not support these constructions. Not even within #ifdef..#endif, because cpp reads all directives that start with # (e.g. to find the matching #endif for the most recent #ifdef) and when it encounters an unknown directive, it stops with a fatal error.
+
+    Put tokens after #endif in comment brackets, e.g. #endif /* FOO */.
+
+    Don't indent preprocessor statements - # must always be first char on line.
+
+    Don't put whitespace after # in preprocessor statements.
+
+    Don't use #pragma, even within #ifdefs -- it makes some preprocessors give up.
+
+    Same goes for #module, #if, etc - #ifdefs do NOT protect them.
+
+    Don't use logical operators in preprocessor constructions.
+
+    Avoid #ifdefs inside argument list to function calls (I can't remember why this one is here, but probably needn't be; we do this all the time).
+
+    Always cast strlen() in expressions to int:
+    if ((int)strlen(foo) < x)...
+
+    Avoid typedefs; they might be portable but they are very confusing and there's no way to test for their presence or absence at compile time. Use preprocessor symbols instead if possible; at least you can test their definitions.
+
+    Unsigned long is not portable; use a preprocessor symbol (Kermit uses ULONG for this).
+
+    Long long is not portable. If you really need it, be creative.
+
+    Similarly 1234LL is not portable, nor almost any other constant modifier other than L.
+
+    Unsigned char is not portable, use CHAR (a preprocessor symbol defined in the Kermit header files) and always take precautions against character signage (more about this below).
+
+    Don't use initializers with automatic arrays or structs: it's not portable.
+
+    Don't use big automatic arrays or structs in functions that might be called recursively; some platforms have fixed-size stacks (e.g. Windows 9x: 256K) and recursive functions crash with stack overflow. Even when there is not a compiler limitation, this causes memory to be consumed without bound, and can end up filling swap space.
+
+    Don't assume that struct assignment performs a copy, or that it even exists.
+
+    Don't use sizeof to get the size of an array; someone might come along later and and change it from static to malloc'd. Always use a symbol to refer to the array's size.
+
+    Don't put prototypes for static functions into header files that are used by modules that don't contain that function; the link step can fail with unresolved references (e.g. on AOS/VS).
+
+    Avoid the construction *++p (the order of evaluation varies; it shouldn't but at least one compiler had a bug that made me include this item).
+
+    Don't use triple assignments, like a = b = c = 0; (or quadruple, etc). Some compilers generate bad code for these, or crash, etc (some version of DEC C as I recall).
+
+    Some compilers don't allow structure members to have the same names as other identifiers. Try to give structure members unique names.
+
+    Don't assume anything about order of evaluation in boolean expressions, or that they will stop early if a required condition is not true, e.g.:
+
+      if (i > 0 && p[i-1] == blah)
+
+    can still dump core if i == 0 (hopefully this is not true of any modern compiler, but I would not have said this if it did not actually happen somewhere).
+
+    Don't have a switch() statement with no cases (e.g. because of #ifdefs); this is a fatal error in some compilers.
+
+    Don't put lots of code in a switch case; move it out to a separate function; some compilers run out of memory when presented with a huge switch() statement -- it's not the number of cases that matters; it's the overall amount of code.
+
+    Some compilers might also limit the number of switch() cases, e.g. to 254.
+
+    Don't put anything between "switch() {" and "case:" -- switch blocks are not like other blocks.
+
+    Don't jump into or out of switches.
+
+    Don't make character-string constants longer than about 250 bytes. Longer strings should be broken up into arrays of strings.
+
+    Don't write into character-string constants (obviously). Even when you know you are not writing past the end; the compiler or linker might have put them into read-only and/or shared memory, and/or coalesced multiple equal constants so if you change one you change them all.
+
+    Don't depend on '\r' being carriage return.
+
+    Don't depend on '\n' being linefeed or for that matter any SINGLE character.
+
+    Don't depend on '\r' and '\n' being different (e.g. as separate switch() cases).
+
+    In other words, don't use \n or \r to stand for specific characters; use \012 and \015 instead.
+
+    Don't code for "buzzword 1.0 compliance", unless "buzzword" is K&R and "1.0" is the first edition.
+
+    Don't use or depend on anything_t (size_t, pid_t, etc), except time_t, without #ifdef protection (time_t is the only one I've found that is accepted everywhere). This is a tough one because the same function might require (say) a size_t arg on one platform, whereas size_t is unheard of on another; or worse, it might require a totally different data type, like int or long or some other typedef'd thing. It has often proved necessary to define a symbol to stand for the type of a particular argument to a particular library or system function to get around this problem.
+
+    Don't use or depend on internationalization ("i18n") features, wchar_t, locales, etc, in portable code; they are not portable. Anyway, locales are not the right model for Kermit's multi-character-set support. Kermit does all character-set conversion itself and does not use any external libraries or functions.
+
+    In particular, don't use any library functions that deal with wide characters or Unicode in any form. These are not only nonportable, but a constantly shifting target (e.g. the ones in glibc).
+
+    Don't make any assumption about signal handler type. It can be void, int, long, or anything else. Always declare signal handlers as SIGTYP (see definition in ckcdeb.h and augment it if necessary) and always use SIGRETURN at exit points from signal handlers.
+
+    Signals should always be re-armed to be used again (this barely scratches the surface -- the differences between BSD/V7 and System V and POSIX signal handling are numerous, and some platforms do not even support signals, alarms, or longjmps correctly or at all -- avoid all of this if you can).
+
+    On the other hand, don't assume that signals are disarmed after being raised. In some platforms you have to re-arm them, in others they stay armed.
+
+    Don't call malloc() and friends from a signal handler; don't do anything but setting integer global variables in a signal handler.
+
+    malloc() does not initialize allocated memory -- it never said it did. Don't expect it to be all 0's.
+
+    Did You Know: malloc() can succeed and the program can still dump core later when it attempts to use the malloc'd memory? (This happens when allocation is deferred until use and swap space is full.)
+
+    memset(), memmove(), and memcpy() are not portable, don't use them without protecting them in ifdefs (we have USE_MEMCPY for this). bzero()/bcopy() too, except we're guaranteed to have bzero()/bcopy() when using the sockets library (not really). See examples in the source.
+
+    Don't assume that strncpy() stops on the first null byte -- most versions always copy the number of bytes given in arg 3, padding out with 0's and overwriting whatever was there before. Use C-Kermit ckstrncpy() if you want predictable non-padding behavior, guaranteed NUL-termination, and a useful return code.
+
+    DID YOU KNOW.. that some versions of inet_blah() routines return IP addresses in network byte order, while others return them local machine byte order? So passing them to ntohs() or whatever is not always the right thing to do.
+
+    Don't use ANSI-format function declarations without #ifdef CK_ANSIC, and always provide an #else for the non-ANSI case.
+
+    Use the Kermit _PROTOTYP() macro for declaring function prototypes; it works in both the ANSI and non-ANSI cases.
+
+    Don't depend on any other ANSI preprocessor features like "pasting" -- they are often missing or nonoperational.
+
+    Don't assume any C++ syntax or semantics.
+
+    Don't use // as a comment introducer. C is not C++.
+
+    Don't declare a string as "char foo[]" in one module and "extern char * foo" in another, or vice-versa: this causes core dumps.
+
+    With compiler makers falling all over themselves trying to outdo each other in ANSI strictness, it has become increasingly necessary to cast EVERYTHING. Especially char vs unsigned char. We need to use unsigned chars if we want to deal with 8-bit character sets, but most character- and string-oriented APIs want (signed) char arguments, so explicit casts are necessary. It would be nice if every compiler had a -funsigned-char option (as gcc does), but they don't.
+
+    a[x], where x is an unsigned char, can produce a wild memory reference if x, when promoted to an int, becomes negative. Cast it to (unsigned), even though it ALREADY IS unsigned.
+
+    Be careful how you declare functions that have char or long arguments; for ANSI compilers you MUST use ANSI declarations to avoid promotion problems, but you can't use ANSI declarations with non-ANSI compilers. Thus declarations of such functions must be hideously entwined in #ifdefs. Example:
+
+      int                          /*  Put character in server command buffer  */
+      #ifdef CK_ANSIC
+      putsrv(char c)
+      #else
+      putsrv(c) char c;
+      #endif /* CK_ANSIC */
+      /* putsrv */ {
+          *srvptr++ = c;
+          *srvptr = '\0';           /* Make sure buffer is null-terminated */
+          return(0);
+      }
+
+    Be careful how you return characters from functions that return int values -- "getc-like functions" -- in the ANSI world. Unless you explicitly cast the return value to (unsigned), it is likely to be "promoted" to an int and have its sign extended.
+
+    At least one compiler (the one on DEC OSF/1 1.3) treats "/*" and "*/" within string constants as comment begin and end. No amount of #ifdefs will get around this one. You simply can't put these sequences in a string constant, e.g. "/usr/local/doc/*.*".
+
+    Avoid putting multiple macro references on a single line, e.g.:
+
+      putchar(BS); putchar(SP); putchar(BS)
+
+This overflows the CPP output buffer of more than a few C preprocessors (this happened, for example, with SunOS 4.1 cc, which evidently has a 1K macro expansion buffer). 
+
+
